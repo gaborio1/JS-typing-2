@@ -1,0 +1,2351 @@
+:root {
+    /* BORDERS */
+    /* --border-gold: darkgoldenrod; */
+    /* --border-gold: rgba(184, 135, 11, 0.659); */
+    --border-gold: rgba(184, 135, 11, 0.401);
+
+    --border-grey: rgb(208, 208, 208);
+    /* --border-grey: rgb(87, 97, 105); */
+    /* --border-grey: #1B1B1B; */
+
+    --border-blue: #529de1;
+
+    --text-field-offwhite: #ffffffba;
+    --text-field-white: white;
+
+    /* FONT SIZES */
+    --font-24: 24px;
+    --font-32: 32px;
+    --font-48: 48px;
+    --font-64: 64px;
+
+    /* BORDER RADIUS */
+    /* APP, WRAPS */
+    --wrap-border-radius: 8px;
+    /* TIMER, INPUT, MESSAGE DIV */
+    --small-border-radius: 5px;
+    --button-border-radius: 5px;
+    --cursor-border-radius: 4px;
+
+    /* WIDTH / HEIGHT */
+    --app-width: 1000px;
+    --app-height: 850px;
+
+    --app__main-wrap-width: 900px;
+
+    /* BODY BACKGROUND */
+    /* --body-background--light: whitesmoke; */
+    --body-background--light: #ffffff;
+
+    --body-background--dark: #000000;
+
+    /* APP BACKGROUND*/
+    /* --app-background--light: #f0efeb; */
+    --app-background--light: ##f3f3f3;
+    --app-background--light: rgb(244, 244, 244);
+
+    --app-background--dark: rgb(28, 28, 28);
+
+    /* WRAP BACKGROUND */
+    /* --wrap-highlight--light: rgba(251, 239, 214, 0.521); */
+    --wrap-highlight--light: #e1e1e1;
+    --wrap-highlight--light: #ebebeb;
+
+    --wrap-highlight--dark: rgb(25, 25, 25);
+
+    /* #FFFFFF */
+    /* #F3F3F3 */
+    /* #E1E1E1 */
+    /* #1B1B1B */
+
+    /* --background-transition: 0.4s; */
+}
+
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* filter: grayscale(1); */
+    /* transition: all var(--background-transition); */
+}
+
+/* 
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+Chrome will also apply highlighting to other elements such as DIV's used as modals. To prevent the highlight on those and all other elements as well, you can do:
+
+⚠️ Accessibility warning
+Please notice that removing outline from input is an accessibility bad practice. Users using screen readers will not be able to see where their pointer is focused at. */
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    /* THIS AFFECTS SPANS IN TEXT FIELDS */
+    text-align: center;
+    background: var(--body-background--light);
+    /* background-color: rgba(251, 239, 214, 0.521) */
+    filter: grayscale(0.2);
+    /* filter: grayscale(1); */
+
+    /* transition: background 2s; */
+}
+
+body.dark-theme {
+    background: var(--body-background--dark);
+    filter: grayscale(0.45);
+
+    /* transition: background 2s; */
+}
+
+h1 {
+    font-weight: 300;
+}
+
+/* COLOUR CODE EXAMPLES */
+h3 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.hidden {
+    /* visibility: hidden; */
+    display: none;
+}
+
+/* WRAP TITLES */
+
+/* BLACK BY DEFAULT */
+.wrap-title {
+    font-weight: 100;
+    /* color: darkgoldenrod; */
+}
+
+/* ALL DARK THEME WRAP TITLES */
+.container.dark-theme .wrap-title {
+    font-weight: 100;
+    color: darkgoldenrod;
+}
+
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  MAIN APP  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--app-width);
+    height: 100px;
+    background: var(--app-background--light);
+    font-weight: 100;
+    /* margin: 50px auto; */
+    border: 1px solid var(--border-grey);
+    border-radius: var(--wrap-border-radius);
+    /* THIS WILL AFFECT BORDER COLOUR CHANGE WHEN SWITCHING TO DARK MODE */
+    /* transition: border-color 1s; */
+
+    /* transition: background var(--background-transition); */
+    /* transition: all var(--background-transition); */
+}
+
+/* .container.timer-style__container {
+    transition: border-color 1s;
+} */
+
+.container.dark-theme {
+    border: 1px solid var(--border-gold);
+    background-color: rgb(28, 28, 28);
+    /* transition: border-color 1s; */
+}
+
+/* .container.dark-theme.timer-style__container {
+    transition: border-color 1s;
+} */
+
+.wrapper {
+    width: var(--app__main-wrap-width);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:disabled:hover {
+    cursor: default;
+}
+
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  SECTIONS  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.active-container,
+.next-container,
+.input-container,
+.controls-container,
+/* .stats-container, */
+.colour-code-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.next-container {
+    margin-top: 25px;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CONTROLS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0px 0px 0px;
+    height: 150px;
+
+    /* transition: background var(--background-transition); */
+}
+
+/* .controls-container.dark-theme {
+    transition: background var(--background-transition);
+} */
+
+.control-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    height: 150px;
+    padding: 10px 0px 10px 0px;
+
+    /* transition: background var(--background-transition); */
+}
+
+.spacer-div {
+    height: 125px;
+    border-left: 1px solid var(--border-grey);
+}
+
+.container.dark-theme .spacer-div {
+    border-left: 1px solid var(--border-gold);
+}
+
+.difficulty-radios-container,
+.punctuation-buttons-container,
+.capital-buttons-container,
+.sound-buttons-container,
+.timer-buttons-container,
+.enter-buttons-container {
+    /* FLEX: COLUMN WILL INCREASE DIFF RADIOS HEIGHT (WITH MARGIN OR SOME SPACE) */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: start; */
+    height: fit-content;
+    /* border: 1px solid black; */
+}
+
+/* .difficulty-radios-container {
+    width: 100%;
+    height: 75px;
+    float: left;
+    border: 1px solid red;
+} */
+
+/* TEXT  (20-50) AND CURRENT LENGTH*/
+.control-wrap.dark-theme {
+    color: darkgoldenrod;
+    /* transition: background var(--background-transition); */
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER CONTROLS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.scene--controls {
+    width: var(--app__main-wrap-width);
+    height: 150px;
+    margin: 0px auto;
+    perspective: 800px;
+}
+
+.card--controls {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.card__face--controls {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 25px 0px 0px 0px;
+    backface-visibility: hidden;
+}
+
+/* ADVANCED / DEFAULT LEVEL */
+.card__face--front--controls {
+    /* background: rgb(250, 124, 124); */
+    background: var(--wrap-highlight--light);
+    border: 1px solid var(--border-grey);
+    border-radius: var(--wrap-border-radius);
+}
+
+.card__face--front--controls.dark-theme {
+    background: var(--wrap-highlight--dark);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--wrap-border-radius);
+}
+
+/* BEGINNER LEVEL */
+.card__face--back--controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background: rgba(0, 119, 255, 0.295); */
+    /* background: rgba(0, 76, 163, 0.658); */
+    /* border: 1px solid var(--border-gold); */
+
+    background: var(--wrap-highlight--light);
+    border: 1px solid var(--border-grey);
+
+    border-radius: var(--wrap-border-radius);
+    /* padding: 5px 0px 5px 0px; */
+    transform: rotateY(180deg);
+}
+
+.card__face--back--controls.dark-theme {
+    /* background: rgba(0, 119, 255, 0.507);
+    background: rgba(0, 119, 255, 0.295); */
+    background: var(--wrap-highlight--dark);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--wrap-border-radius);
+}
+
+.spacer-div__beginner-controls {
+    height: 90%;
+    margin: auto 5px;
+    border-left: 1px solid var(--border-grey);
+}
+
+.spacer-div__beginner-controls.dark-theme {
+    border-left: 1px solid var(--border-gold);
+}
+
+.card--controls.flipped {
+    transform: rotateY(180deg);
+}
+
+/* .levels-wrap {
+    width: 300px;
+} */
+
+/* 1. LEVELS WRAP */
+
+.levels-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    /* border: 1px solid black; */
+}
+
+/* !!! TEMP FIX UNTIL MORE CONTENT IS ADDED !!! */
+/* .control-wrap__beginner.control-wrap__beginner-5 {
+    justify-content: start;
+} */
+
+.level-button-container {
+    width: 100%;
+    height: 100px;
+    /* border: 1px solid black; */
+}
+
+.level-selection-type-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
+/* RADIOS ONLY */
+.gram-radios-container,
+.rows-radios-container {
+    height: fit-content;
+    /* border: 1px solid red; */
+}
+
+/* TOOLTIP */
+/* SOURCE: https://www.w3schools.com/css/css_tooltip.asp#:~:text=HTML%3A%20Use%20a%20container%20element,with%20class%3D%22tooltiptext%22%20. */
+
+/* Tooltip container (HOVERABLE TEXT) */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    /* width: 120px; */
+    /* background-color: black; */
+    background-color: rgba(0, 0, 0, 0.317);
+    background-color: rgba(191, 179, 179, 0.895);
+
+    color: rgb(0, 0, 0);
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    border: 1px solid var(--border-gold);
+    border-radius: var(--button-border-radius);
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* BOTTOM TOOLTEXT */
+.tooltip .tooltiptext {
+    width: 80px;
+    /* BELOW WITH LITTLE GAP */
+    /* top: 120%;
+    left: 50%; */
+    /* TOP RIGHT */
+    top: -300%;
+    /* top: -300%;
+    left: 50%; */
+    margin-left: -40px;
+    /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* POSITION TOOLTIP ABOVE CONTAINER DIV (RELATIVE TO) */
+.tooltip.level-1 .tooltiptext,
+.tooltip.level-2 .tooltiptext,
+.tooltip.level-3 .tooltiptext {
+    /* top: -255%;
+    left: 50%; */
+    top: -80px;
+    left: 40px;
+}
+
+.tooltip.level-4 .tooltiptext,
+.tooltip.level-5 .tooltiptext,
+.tooltip.level-6 .tooltiptext {
+    /* top: -400%;
+    left: 50%; */
+    top: -108px;
+    left: 40px;
+}
+
+.tooltip.level-7 .tooltiptext,
+.tooltip.level-8 .tooltiptext,
+.tooltip.level-9 .tooltiptext {
+    /* top: -550%;
+    left: 50%; */
+    top: -136px;
+    left: 40px;
+}
+
+/* TOOLTIP BOTTOM ARROW */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(191, 179, 179) transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* .beginner-control-hide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    margin: 0px auto;
+} */
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TEXT CONTAINERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.text-fields-wrap {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    justify-content: center;
+    /* height: fit-content; */
+    height: 125px;
+    /* !!! ONLY 50 PX MARGING IS VISIBLE, FIND OTHER 25PX !!! */
+    margin-top: 75px;
+    /* padding: 10px 0px 10px 0px; */
+    background: var(--text-field-white);
+    border: 1px solid var(--border-grey);
+    border-radius: var(--wrap-border-radius);
+    /* border: 1px solid red; */
+
+    /* transition: background var(--background-transition); */
+}
+
+.text-fields-wrap.dark-theme {
+    background: var(--wrap-highlight--dark);
+    border: 1px solid var(--border-gold);
+
+    /* transition: background var(--background-transition); */
+}
+
+.active-container {
+    font-weight: 400;
+    /* margin-top: 10px; */
+    margin-bottom: 5px;
+}
+
+.next-container {
+    color: rgb(74, 73, 73);
+    margin-top: 0px;
+}
+
+/* BOTH LINES */
+.text-span-container {
+    width: 100%;
+    height: 50px;
+    padding-top: 4px;
+    /* background: var(--text-field-offwhite); */
+    /* border: 1px solid var(--border-grey); */
+}
+
+/* TEXT FIELD BORDERS NOT IN USE */
+/* .text-span-container.dark-theme {
+    background: rgba(48, 75, 92, 0.08);
+    border: 1px solid var(--border-gold);
+} */
+
+/* ACTIVE LINE SPANS */
+.active-txt-span {
+    font-size: var(--font-32);
+    /* LETTER SPACING */
+    padding: 0px 1px 0px 0px;
+}
+
+.text-span-container.dark-theme .active-txt-span {
+    /* color: beige; */
+    /* color: grey; */
+    color: rgb(178, 178, 178);
+}
+
+.text-span-container.dark-theme .active-txt-span.red {
+    color: red;
+}
+
+.text-span-container.dark-theme .active-txt-span.orange {
+    color: orange;
+}
+
+.text-span-container.dark-theme .active-txt-span.green {
+    color: green;
+    color: var(--border-blue);
+}
+
+/* LAST SPACE IN ACTIVE LINE(BORDER NEEDS WIDTH AND HEIGHT) */
+
+/* ENTER OFF, LAST SPACE */
+.active-txt-span:last-child {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    width: 16px;
+    height: 30px;
+    /* background: lightskyblue; */
+}
+
+/* COLOUR-THEME CLASS NOT ADDED YET */
+.active-txt-span.dark-theme:last-child {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    width: 16px;
+    height: 30px;
+    background: lightskyblue;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER ON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+/* ACTIVE ENTER */
+.active-txt-span.active-txt-span--enter {
+    display: inline-block;
+    position: relative;
+    /* top: 5px; */
+    top: -3px;
+    left: 10px;
+    width: 45px;
+    height: 20px;
+    height: 30px;
+    height: 39px;
+
+    padding-top: 8px;
+    border-radius: var(--cursor-border-radius);
+
+    font-size: 20px;
+    margin: 0px 0px 0px 10px;
+    /* SAME AS CONTROL PANEL BUTTONS : ACTIVE */
+    /* background: rgb(226, 226, 226); */
+    background: rgba(135, 206, 250, 0.647);
+}
+
+.text-span-container.dark-theme .active-txt-span--enter {
+    /* background: rgb(100, 100, 100); */
+    background: #529ce193;
+}
+
+/* NEXT ENTER */
+p .active-txt-span.active-txt-span--enter {
+    /* display: inline-block; */
+
+    /* DO NOT SHOW ENTER ICON IN NEXT LINE */
+    display: none;
+    opacity: 0.7;
+    position: relative;
+    /* top: 5px; */
+    top: -1px;
+    left: 10px;
+    width: 45px;
+    height: 39px;
+
+    padding-top: 6px;
+    border-radius: var(--cursor-border-radius);
+
+    font-size: 20px;
+    margin: 0px 0px 0px 10px;
+    background: rgba(135, 206, 250, 0.156);
+}
+
+/* ENTER ON ENTER */
+/* .active-txt-span:last-child {
+    display: inline-block;
+    position: relative;w
+    top: 5;
+    top: 1px;
+    width: 22px;
+    width: 45px;
+    height: 20px;
+
+    font-size: 20px;
+    margin: 0px 0px 0px 10px;
+    background: lightskyblue;
+} */
+
+/* NEXT LINE STRING */
+.text-span-next {
+    font-size: var(--font-32);
+    letter-spacing: 0.5px;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 INPUT ROW 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.input-container {
+    width: 100%;
+    /* width: 110%; */
+    /* width: 850px; */
+    height: 50px;
+    margin: 50px 0px 0px 0px;
+    padding: 0px 25px 0px 25px;
+
+    /* border: 2px solid red; */
+
+    /* transition: background var(--background-transition); */
+}
+
+/* TIMER */
+.counter-div {
+    width: 125px;
+    height: 50px;
+    font-size: var(--font-32);
+    padding: 5px;
+    border-radius: var(--small-border-radius);
+    /* background: var(--text-field-offwhite); */
+    background: var(--wrap-highlight--light);
+    border: 1px solid var(--border-grey);
+
+    /* transition: background var(--background-transition); */
+}
+
+.counter-div.dark-theme {
+    background: rgba(86, 85, 86, 0.412);
+    background: rgba(48, 75, 92, 0.291);
+    background: rgba(48, 75, 92, 0.08);
+
+    border: 1px solid var(--border-gold);
+    border: 1px solid rgba(184, 135, 11, 0.253);
+
+    /* transition: background var(--background-transition); */
+}
+
+.counter-div.dark-theme {
+    /* color: beige; */
+    color: darkgoldenrod;
+
+    /* transition: background var(--background-transition); */
+}
+
+.input {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.text-input {
+    width: 500px;
+    height: 50px;
+    padding: 0px 20px 0px 20px;
+    font-size: var(--font-32);
+    text-align: left;
+    /* HAS TO ADJUST AS FORM IS DISABLED */
+    margin-right: 22px;
+    /* CENTER WILL ALSO PUT CURSOR IN THE MIDDLE */
+    /* text-align: center; */
+    /* color: grey; */
+    color: rgb(74, 73, 73);
+    font-weight: 300;
+    /* border: none; */
+    border: 1px solid var(--border-grey);
+    border-radius: var(--small-border-radius);
+    background: var(--text-field-white);
+
+    /* transition: background var(--background-transition); */
+}
+
+.text-input.dark-theme {
+    /* color: rgb(225, 224, 224); */
+    color: rgb(178, 178, 178);
+    font-weight: 300;
+    /* border: none; */
+    border: 1px solid rgba(184, 135, 11, 0.253);
+    background: rgba(48, 75, 92, 0.291);
+
+    /* transition: background var(--background-transition); */
+}
+
+/* REFRESH ICON FOR NEW TEXT */
+/* NOT IN USE */
+/* .material-symbols-sharp {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+} */
+
+/* .start-button:active:hover {
+    background: lightgreen;
+} */
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 STATISTICS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.stats-and-keys-container {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    /* border: 2px solid black; */
+}
+
+.stats-container {
+    /* height: 225px; */
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* border: 2px solid red; */
+}
+
+/* SAME AS CONTROL WRAP */
+.stat-wrap {
+    /* USE THIS WITH .keyboard - zoom: 105% */
+    /* width: 100px; */
+    width: 150px;
+    height: 100px;
+    height: 112px;
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+
+    padding: 8px;
+    border: 1px solid var(--border-grey);
+    border-radius: var(--wrap-border-radius);
+
+    /* background: rgba(184, 135, 11, 0.199); */
+    background: var(--wrap-highlight--light);
+
+    /* transition: background var(--background-transition); */
+}
+
+.stat-wrap.dark-theme {
+    /* SLIGTHLY LIGHTER THAN KEYBOARD KEYS */
+    background: var(--wrap-highlight--dark);
+    border: 1px solid var(--border-gold);
+
+    /* transition: background var(--background-transition); */
+}
+
+.speed-span {
+    font-size: var(--font-48);
+}
+
+.speed-span.dark-theme {
+    color: rgb(222, 131, 13);
+    color: darkgoldenrod;
+}
+
+/* // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 MESSAGE DIV 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.message-div {
+    position: absolute;
+    top: 475px;
+    left: 250px;
+
+    width: 500px;
+    height: 50px;
+
+    font-size: 24px;
+    /* color: orange; */
+    /* background: var(--wrap-highlight--light); */
+
+    padding: 10px;
+    border: 1px solid var(--border-grey);
+    border-radius: var(--small-border-radius);
+
+    /* transition: background var(--background-transition); */
+}
+
+.message-div.dark-theme {
+    color: rgb(222, 131, 13);
+    border: 1px solid rgba(184, 135, 11, 0.253);
+    background: rgba(135, 206, 250, 0.12);
+    background: rgba(48, 75, 92, 0.08);
+
+    /* transition: background var(--background-transition); */
+}
+
+/* // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 KEYBOARD 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+/* SOURCE: https://codepen.io/gschier/pen/VKgyaY */
+
+.keyboard {
+    position: relative;
+    /* width: fit-content; */
+    top: 45px;
+    zoom: 77.5%;
+    /* zoom: 77%; */
+    /* zoom: 105%; */
+    text-align: center;
+    /* font-size: 16px; */
+    font-size: 12px;
+    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    /* padding: 20px 0px 20px 0px; */
+    /* border: 1px solid var(--border-gold); */
+    /* border: 2px solid red; */
+}
+
+.keyboard__row {
+    display: inline-block;
+    height: 3em;
+    margin: 0.2em;
+}
+
+.keyboard__row--h1 {
+    height: 1.7em;
+    line-height: 1.4em;
+}
+
+.keyboard__row--h3 {
+    height: 3.3em;
+}
+
+.keyboard__row > * {
+    position: relative;
+    text-align: center;
+    float: left;
+    border-radius: 0.3em;
+    margin: 0.2em;
+    padding: 0.2em;
+    width: 3.3em;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    /* color: var(--border-gold); */
+    -webkit-user-select: none;
+
+    border: 1px solid var(--border-grey);
+    border: 1px solid rgb(177, 177, 177);
+
+    /* BLACK KEYS STYLE */
+
+    /* background: #333; */
+    /* color: #eee; */
+    /* border: 1px solid #444; */
+    /* box-shadow: 0 0.2em 0 0.05em #222; */
+    /* box-shadow: 0 0.1em 0 0.03em #222; */
+    /* border-bottom-color: #555; */
+
+    /* transition: background var(--background-transition); */
+}
+
+.keyboard.dark-theme .keyboard__row > * {
+    color: var(--border-gold);
+    -webkit-user-select: none;
+    /* border: 1px solid #444; */
+    /* border: 1px solid rgb(0, 0, 0); */
+    border: 1px solid var(--border-gold);
+    background: rgb(20, 20, 20);
+    /* BLACK KEYS STYLE */
+
+    /* background: #333; */
+    /* color: #eee; */
+    /* border: 1px solid #444; */
+    /* box-shadow: 0 0.2em 0 0.05em #222; */
+    /* box-shadow: 0 0.1em 0 0.03em #222; */
+    /* border-bottom-color: #555; */
+
+    /* transition: background var(--background-transition); */
+}
+
+.keyboard__row--h1 > div {
+    width: 3.5em;
+}
+
+/* KEY PRESSED ON KEYBOARD */
+.keyboard__row > div[data-pressed],
+.keyboard__row > div:active {
+    /* background: #2a2a2a; */
+    background: var(--wrap-highlight--light);
+    /* background: rgba(255, 166, 0, 0.474); */
+    background: rgba(0, 128, 0, 0.304);
+    background: #529ce180;
+
+    border-width: 2px;
+    /* BLACK KEYBOARD */
+    /* color: #aaa; */
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0.2em;
+    /* box-shadow: 0 0 0 0.05em black; */
+}
+
+.keyboard.dark-theme .keyboard__row > div[data-pressed],
+.keyboard.dark-theme .keyboard__row > div:active {
+    background: rgba(0, 128, 0, 0.304);
+    background: #529ce180;
+}
+
+.key--w3 {
+    width: 4.6em;
+}
+
+.key--w4 {
+    width: 6em;
+}
+
+.key--w5 {
+    width: 6.5em;
+}
+
+.key--w6 {
+    width: 8.3em;
+}
+
+.key--space {
+    width: 18em;
+}
+
+.key--double > * {
+    padding-top: 0.1em;
+}
+
+.key--letter {
+    line-height: 2.8em;
+}
+
+.key--bottom-left > * {
+    position: absolute;
+    text-align: left;
+    bottom: 0.4em;
+    left: 0.4em;
+}
+
+.key--bottom-right > * {
+    position: absolute;
+    text-align: right;
+    bottom: 0.4em;
+    right: 0.4em;
+}
+
+.key--fn > * {
+    font-size: 0.6em;
+    line-height: 1em;
+    padding-top: 1.2em;
+    padding-right: 0.2em;
+    text-align: right;
+    float: right;
+}
+
+.key--word > * {
+    font-size: 0.8em;
+}
+
+.key--arrow--tall > *,
+.key--arrow > * {
+    font-size: 0.5em;
+    line-height: 3em;
+}
+
+.key--arrow {
+    height: 1.8em;
+    margin-top: 1.7em;
+    line-height: 0.5em;
+}
+
+.key--arrow--tall > * {
+    padding-top: 0.2em;
+}
+
+.keyboard > .keyboard__row {
+    text-align: center;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 COLOUR CODE 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.colour-code-container {
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0px 0px 0px;
+
+    /* border: 2px solid red; */
+}
+
+.colour-code-wrap {
+    width: 150px;
+    height: 75px;
+    padding: 8px;
+    border: 1px solid var(--border-grey);
+    border-radius: var(--wrap-border-radius);
+    line-height: 1.6rem;
+    /* background: rgba(184, 135, 11, 0.199); */
+    background: var(--wrap-highlight--light);
+
+    /* transition: background var(--background-transition); */
+}
+
+.colour-code-wrap.dark-theme {
+    /* SLIGHTLY DARKER THAN KEYBOARD KEYS */
+    background: var(--wrap-highlight--dark);
+    border: 1px solid var(--border-gold);
+
+    /* transition: background var(--background-transition); */
+}
+
+/* EXAMPLE TEXT */
+.colour-code-wrap--not-typed.dark-theme h3,
+.colour-code-wrap--skipped.dark-theme h3 {
+    color: rgba(255, 255, 255, 0.509);
+}
+
+.colour-code-wrap h3 {
+    margin-bottom: 8px;
+}
+
+/* EXAMPLE TEXT CURSOR BACKGROUND */
+.colour-code-wrap--skipped.dark-theme .background {
+    background: rgb(100, 100, 100);
+}
+
+.colour-counter-span {
+    font-size: var(--font-32);
+}
+
+.keystrokes-span,
+.accuracy-span {
+    font-size: var(--font-48);
+}
+
+.keystrokes-span.dark-theme {
+    color: darkgoldenrod;
+}
+
+/* THIS OVERWRITES COLOUR CLASSES ADDED IN JS */
+.accuracy-span.dark-theme {
+    color: darkgoldenrod;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 INSTRUCTIONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+/* h1 */
+.instructions-header {
+    text-decoration: underline;
+    font-weight: 400;
+    margin: 0px 0px 50px 300px;
+    /* border: 1px solid green; */
+}
+
+.instructions-header.dark-theme {
+    color: darkgoldenrod;
+}
+
+.instructions-container {
+    position: absolute;
+
+    width: var(--app-width);
+    height: fit-content;
+
+    margin: 50px auto;
+    padding: 25px 0px 50px 50px;
+
+    background: #f0efeb;
+
+    /* padding: 20px 12px 0px 20px; */
+
+    /* font-family: "Roboto", sans-serif; */
+    text-align: left;
+    font-weight: 300;
+    line-height: 1.3rem;
+
+    transform-style: preserve-3d;
+    transition: transform 1s;
+
+    /* VERTICAL SCROLL FOR OVERFLOW CONTENT */
+    /* overflow-x: hidden; */
+    overflow-y: auto;
+
+    /* backface-visibility: hidden; */
+    border: 1px solid var(--border-grey);
+    border-radius: var(--wrap-border-radius);
+    /* border: 2px solid orange; */
+}
+
+.instructions-container p,
+.instructions-container li {
+    line-height: 1.4rem;
+}
+
+.instructions-wrapper {
+    width: 800px;
+    height: fit-content;
+    /* margin-top: -50px; */
+    /* border: 1px solid red; */
+}
+
+.instructions-wrapper hr {
+    width: 100%;
+    border-top: 3px solid var(--border-grey);
+}
+
+.instructions-wrapper.dark-theme hr {
+    width: 100%;
+    border: none;
+    border-top: 3px solid darkgoldenrod;
+    border-top: 3px solid rgba(184, 135, 11, 0.258);
+}
+
+.instructions-container.dark-theme {
+    background-color: rgb(28, 28, 28);
+    color: rgb(178, 178, 178);
+    border: 1px solid var(--border-gold);
+    /* padding: 25px 0px 50px 50px; */
+}
+
+.instructions-container p {
+    margin-left: 20px;
+}
+
+.instructions-container h3 {
+    margin-bottom: 5px;
+    display: inline;
+}
+
+.instructions-container.dark-theme h3 {
+    /* color: rgb(222, 131, 13); */
+    color: darkgoldenrod;
+}
+
+.instructions-container li {
+    margin-left: 30px;
+}
+
+.instructions-container span {
+    font-weight: 400;
+    margin-right: 3px;
+}
+
+/* --------- DISABLED --------- */
+
+/* CURSOR TOOLTIP ON HOVER, POSITION IS NOW STICKY */
+
+/* .instructions-cursor-tooltip {
+    opacity: 0.3;
+
+    position: sticky;
+
+    margin-top: -25px;
+    margin-bottom: 50px;
+    margin-left: 825px;
+
+    width: fit-content;
+    height: 25px;
+
+    padding: 2px 4px 2px 4px;
+
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.514);
+    color: white;
+
+    top: 0;
+    left: 0;
+
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.instructions-cursor-tooltip h4 {
+    font-weight: 100;
+}
+
+.instructions-cursor-tooltip.dark-theme {
+    background: #4d4d4d91;
+    color: rgb(219, 168, 37);
+    border: 1px solid rgb(219, 168, 37);
+}
+
+.instructions-container:hover .instructions-cursor-tooltip {
+    opacity: 1;
+} */
+
+/* ------------ END ------------ */
+
+/* .instructions-container:hover {
+    cursor: pointer;
+} */
+
+/* TEST PROBLEM KEYS DIV (NOT IN USE)*/
+
+/* .problem-keys-container {
+    width: 1000px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    padding: 5px;
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+} */
+
+/* !!! RED CLASS DOES NOT OVERWRITE CSS COLOUR !!! */
+/* .problem-keys-container span {
+    width: 40px;
+    font-size: var(--font-32);
+    margin: 0px 1px 0px 1px;
+
+    padding: 0px 5px 0px 5px;
+   
+    color: rgba(73, 74, 73, 0.427);
+    border: 1px solid rgba(73, 74, 73, 0.427);
+    border-radius: 4px;
+} */
+
+/* .problem-keys-container span.red {
+    font-size: var(--font-32);
+    font-weight: 500;
+    background: rgba(255, 0, 0, 0.247);
+    border: 1px solid red;
+    border-radius:var(--small-border-radius);
+} */
+
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  COLOURS  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.green {
+    color: green;
+    color: var(--border-blue);
+}
+
+.light-green {
+    color: rgb(63, 188, 63);
+}
+
+.yellow-green {
+    color: yellowgreen;
+}
+
+.yellow {
+    color: rgb(255, 255, 0);
+}
+
+.gold {
+    color: gold;
+}
+
+.orange {
+    color: orange;
+}
+
+.orange-red {
+    color: rgb(255, 102, 0);
+}
+
+.red {
+    color: red;
+    /* background: rgba(255, 0, 0, 0.463); */
+}
+
+/* PROBLEM KEYS ON KEYBOARD */
+.red-background {
+    background: rgba(255, 0, 0, 0.463);
+}
+
+/* CURRENTLY TYPED KEY 100MS FLASH */
+.green-background__keyboard {
+    background: rgba(0, 128, 0, 0.304);
+    background: #529ce194;
+}
+
+#keyboard.dark-theme .green-background__keyboard {
+    background: rgba(0, 128, 0, 0.304);
+    background: #529ce194;
+}
+
+/* CURRENTLY TYPED KEY WITH EXISTING RED BACKGROUND */
+#keyboard .red-background.green-background__keyboard {
+    background: rgba(0, 128, 0, 0.304);
+    background: #529ce194;
+}
+
+.keyboard.dark-theme .red-background {
+    background: rgba(255, 0, 0, 0.463);
+}
+
+.dark-gold-background {
+    /* background-color: darkgoldenrod; */
+    background: rgba(255, 166, 0, 0.581);
+}
+
+.keyboard.dark-theme .dark-gold-background {
+    /* background: rgba(255, 255, 255, 0.509); */
+    background: rgba(255, 166, 0, 0.581);
+}
+
+/* .ligtht-sky-blue-background {
+
+} */
+
+/* CURSOR */
+.background {
+    background: lightgrey;
+}
+
+.text-span-container.dark-theme .background {
+    border: 1px solid rgb(67, 67, 67);
+    background: rgb(100, 100, 100);
+}
+
+.no-background {
+    background: none;
+}
+
+.black-border {
+    border: 1px solid black;
+    border-radius: var(--cursor-border-radius);
+}
+
+/* DARK-THEME CURSOR BORDER */
+.text-span-container.dark-theme .black-border {
+    /* border-color: lightgray; */
+    border-color: rgb(231, 231, 231);
+}
+
+.red-border {
+    border: 1px solid red;
+    border-radius: var(--cursor-border-radius);
+}
+
+.orange-border {
+    border: 1px solid orange;
+    border-radius: var(--cursor-border-radius);
+}
+
+.redOrangeDiv {
+    width: 75px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  ANIMATIONS  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.fadeIn {
+    /* DISABLE WITH Z INDEX */
+    /* z-index: 1; */
+    animation: fadeIn 2s linear;
+    /* FADE IN AND STAY SO */
+    animation-fill-mode: forwards;
+}
+
+.fadeOut {
+    /* DISABLE WITH Z INDEX */
+    /* z-index: -1; */
+    animation: fadeOut 1s linear;
+    /* FADE OUT AND STAY SO */
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.totalFadeOut {
+    /* DISABLE WITH Z INDEX */
+    /* z-index: -1; */
+    animation: totalFadeOut 1.5s linear;
+    /* FADE OUT AND STAY SO */
+    animation-fill-mode: forwards;
+}
+
+@keyframes totalFadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* CONTAINER (APP) WHILE TIMER IS RUNNING */
+.timer-style__container {
+    border-color: transparent;
+}
+
+.timer-style__container.dark-theme {
+    border-color: transparent;
+    background: black;
+}
+
+/* BODY WHILE TIMER IS RUNNING */
+.timer-style__body {
+    background: var(--app-background--light);
+}
+
+/* MESSAGE DIV WHILE TIMER IS RUNNING */
+.timer-style__message-div {
+    border-color: transparent;
+    background: var(--app-background--light);
+}
+
+.timer-style__message-div.dark-theme {
+    border-color: transparent;
+    background: black;
+}
+
+/* .enlarged {
+    font-size: 35px;
+} */
+
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CUSTOM STYLES 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  RANGE  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+/* SOURCE: https://www.cssportal.com/style-input-range/ */
+input[type="range"] {
+    /* DISABLED AS IT WILL ADD A WHITE BACKGROUND */
+    /* height: 17px; */
+    -webkit-appearance: none;
+    margin: 10px 0;
+    /* width: 100%; */
+    /* width: 125px; */
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+/* TRACK */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000;
+    background: #50555c;
+    border-radius: 14px;
+    border: 0px solid #ff6987;
+}
+
+/* SLIDER */
+input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 11px;
+    width: 15px;
+    border-radius: 8px;
+    background: #529de1;
+
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -4.5px;
+}
+
+/* DARK THEME */
+/* GREEN .75 */
+/* background: rgba(0, 128, 0, 0.75); */
+
+/* SLIDER HOVER */
+input[type="range"]::-webkit-slider-thumb:hover {
+    /* background: lightgreen; */
+    background: #50555c;
+    background: #2796ff;
+    /* height: 15px; */
+    /* width: 20px; */
+    /* margin-left: 1px; */
+}
+
+/* !!! NOT WORKING !!! */
+/* SLIDER: DISABLED: HOVER */
+input[type="range"]::-webkit-slider-thumb:disabled:hover {
+    /* background: lightgreen; */
+    background: #529de1;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #50555c;
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000;
+    background: #50555c;
+    border-radius: 14px;
+    border: 0px solid #ff6987;
+}
+
+input[type="range"]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 11px;
+    width: 17px;
+    border-radius: 8px;
+    background: #529de1;
+    cursor: pointer;
+}
+
+input[type="range"]::-ms-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+    background: #50555c;
+    border: 0px solid #ff6987;
+    border-radius: 28px;
+    box-shadow: 1px 1px 1px #000000;
+}
+
+input[type="range"]::-ms-fill-upper {
+    background: #50555c;
+    border: 0px solid #ff6987;
+    border-radius: 28px;
+    box-shadow: 1px 1px 1px #000000;
+}
+
+input[type="range"]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 11px;
+    width: 17px;
+    border-radius: 8px;
+    background: #529de1;
+    cursor: pointer;
+}
+
+input[type="range"]:focus::-ms-fill-lower {
+    background: #50555c;
+}
+
+input[type="range"]:focus::-ms-fill-upper {
+    background: #50555c;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 RADIOS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+/* SOURCE: https://codepen.io/manabox/pen/raQmpL */
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    /* BUG:  THIS WILL CAUSE A HORIZONTAL OVERFLOV / SCROLL */
+    /* position: absolute; */
+    /* left: -9999px; */
+
+    /* INSTEAD: */
+    display: none;
+}
+
+/* RADIO LABEL TEXT */
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+    position: relative;
+    width: 75px;
+    height: 16px;
+    padding-left: 28px;
+    cursor: pointer;
+
+    margin: 4px;
+
+    /* line-height: 20px; */
+    display: inline-block;
+    color: #666;
+}
+
+.control-wrap.dark-theme [type="radio"]:checked + label,
+.control-wrap.dark-theme [type="radio"]:not(:checked) + label {
+    color: darkgoldenrod;
+}
+
+/* [type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label:hover {
+    color: red;
+} */
+
+/* ENABLED: HOVER */
+
+/* RADIO HOVER BACKGROUND HIGHLIGHT */
+/* TRY TO ADJUST WIDTH */
+/* [type="radio"]:checked + label, */
+[type="radio"]:not(:checked) + label:hover {
+    /* BACKGROUND ONLY */
+    /* background: lightgreen;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; */
+    /* TEXT */
+    /* color: #529de1; */
+    font-weight: 500;
+    color: #50555c;
+}
+
+/* DISABLED: HOVER */
+[type="radio"]:not(:checked):disabled + label:hover {
+    cursor: default;
+    font-weight: 300;
+
+    color: #50555c;
+}
+
+/* :CHECKED: DISABLED: HOVER */
+[type="radio"]:checked:disabled + label:hover {
+    cursor: default;
+    font-weight: 300;
+
+    color: #50555c;
+}
+
+/* OUTER CIRCLE */
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+.control-wrap.dark-theme [type="radio"]:checked + label:before,
+.control-wrap.dark-theme [type="radio"]:not(:checked) + label:before {
+    border: 1px solid darkgoldenrod;
+    border-radius: 100%;
+    background: #4d4d4d91;
+}
+
+/* [type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before:hover {
+    background: red;
+} */
+
+/* INNER CIRCLE */
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    /* background: #f87da9; */
+    /* SAME AS SLIDER THUMB */
+    background: #529de1;
+
+    /* GREEN .75 */
+    /* background: rgba(0, 128, 0, 0.75); */
+
+    /* CENTER ITS POSITION */
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+/* DARK THEME */
+/* GREEN .75 */
+/* background: rgba(0, 128, 0, 0.75); */
+
+/* [type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after:hover {
+    background: red;
+} */
+
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* ANOTHER SIMPLE ONE FROM W3SCHOOLS: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  BLINK  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+.blink {
+    -webkit-animation: blink-text 800ms linear infinite;
+    -moz-animation: blink-text 800ms linear infinite;
+    -ms-animation: blink-text 800ms linear infinite;
+    -o-animation: blink-text 800ms linear infinite;
+    animation: blink-text 800ms linear infinite;
+}
+
+@-webkit-keyframes blink-text {
+    0% {
+        color: black;
+        opacity: 1;
+    }
+
+    20% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    30% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    40% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    50% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    60% {
+        color: black;
+        opacity: 0;
+    }
+
+    70% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    80% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    90% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    98% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    100% {
+        color: black;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink-text {
+    0% {
+        color: black;
+        opacity: 1;
+    }
+
+    20% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    30% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    40% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    50% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    60% {
+        color: black;
+        opacity: 0;
+    }
+
+    70% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    80% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    90% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    98% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    100% {
+        color: black;
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes blink-text {
+    0% {
+        color: black;
+        opacity: 1;
+    }
+
+    20% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    30% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    40% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    50% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    60% {
+        color: black;
+        opacity: 0;
+    }
+
+    70% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    80% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    90% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    98% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    100% {
+        color: black;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes blink-text {
+    0% {
+        color: black;
+        opacity: 1;
+    }
+
+    20% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    30% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    40% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    50% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    60% {
+        color: black;
+        opacity: 0;
+    }
+
+    70% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    80% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    90% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    98% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    100% {
+        color: black;
+        opacity: 1;
+    }
+}
+
+@keyframes blink-text {
+    0% {
+        color: black;
+        opacity: 1;
+    }
+
+    20% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    30% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    40% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    50% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    60% {
+        color: black;
+        opacity: 0;
+    }
+
+    70% {
+        color: black;
+        opacity: 0.2;
+    }
+
+    80% {
+        color: black;
+        opacity: 0.4;
+    }
+
+    90% {
+        color: black;
+        opacity: 0.6;
+    }
+
+    98% {
+        color: black;
+        opacity: 0.8;
+    }
+
+    100% {
+        color: black;
+        opacity: 1;
+    }
+}
+
+/* .input-container {
+    width: 750px;
+    height: 100px;
+    margin: 50px auto;
+    border: 3px solid darkgoldenrod;
+} */
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 APP / INFO FLIP 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.scene--main {
+    width: var(--app-width);
+    height: var(--app-height);
+    margin: 0px auto;
+    /* perspective: 2000px; */
+    perspective: 800px;
+}
+
+.card--main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.card__face--main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+/* .card__face--front {
+    background: red;
+} */
+
+.card__face--back--main {
+    /* background: blue; */
+    transform: rotateY(180deg);
+    /* transform: rotateX(180deg); */
+}
+
+.card--main.flipped {
+    transform: rotateY(180deg);
+}
+
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ALL BUTTONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+/* DUPLICATES: 
+
+HOVER:
+    font-weight: 500;
+    border-width: 2px;
+
+
+*/
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    background: none;
+    border-radius: var(--button-border-radius);
+}
+
+.btn--control {
+    width: 45px;
+    height: 25px;
+    /* background: rgba(0, 128, 128, 0.228) */
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TOGGLE BUTTONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+.btn--toggle {
+    color: red;
+    border: 1px solid red;
+}
+
+.btn--control.btn--toggle:hover {
+    font-weight: 500;
+    border-width: 2px;
+}
+
+.btn--toggle.toggle-on {
+    color: green;
+    border: 1px solid green;
+    color: var(--border-blue);
+    border: 1px solid var(--border-blue);
+}
+
+.btn--toggle:disabled {
+    opacity: 0.3;
+}
+
+.btn--toggle:disabled:hover {
+    font-weight: 100;
+    border-width: 1px;
+}
+
+/* APPLY BUTTONS */
+.btn--apply {
+    color: black;
+    border: 1px solid black;
+}
+
+.btn--apply.dark-theme {
+    background: #4d4d4d4a;
+    color: rgb(219, 168, 37);
+    border: 1px solid darkgoldenrod;
+}
+
+.btn--apply.apply--active:hover {
+    font-weight: 500;
+    border-width: 2px;
+}
+
+.btn--apply:disabled {
+    opacity: 0.3;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER LEVEL BUTTONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.btn--level {
+    width: 80px;
+    height: 20px;
+    /* margin: 5px; */
+    margin: 4px;
+    /* color: black; */
+    background: rgba(255, 0, 0, 0.321);
+
+    border: 1px solid red;
+    letter-spacing: 5px;
+}
+
+.btn--level.dark-theme {
+    color: rgb(219, 168, 37);
+}
+
+.beginner-container .btn--level.toggle-on {
+    /* color: black; */
+    background: rgba(0, 128, 0, 0.304);
+    border: 1px solid green;
+    background: #529ce180;
+    border: 1px solid var(--border-blue);
+
+    font-weight: 500;
+}
+
+.btn--level:hover {
+    font-weight: 500;
+    border-width: 2px;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 SELECTION TYPE BUTTON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰*/
+.btn--toggle__selection-type {
+    width: 100px;
+    color: black;
+    background: rgba(255, 166, 0, 0.474);
+    border: 1px solid orange;
+}
+
+.btn--toggle__selection-type.dark-theme {
+    background: #4d4d4d4a;
+    color: rgb(219, 168, 37);
+    border: 1px solid darkgoldenrod;
+}
+
+.btn--toggle__selection-type:hover {
+    font-weight: 500;
+    border-width: 2px;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ALL FLIP BUTTONS🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+/* HIDE BUTTON */
+
+.flip-button__card--main {
+    opacity: 0.3;
+
+    position: sticky;
+
+    width: 75px;
+    height: 25px;
+
+    padding: 2px 4px 2px 4px;
+
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    background: whitesmoke;
+    color: black;
+
+    top: 25px;
+    left: 825px;
+
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: var(--button-border-radius);
+}
+
+button.btn--flip {
+    /* HAVE TO RESET BORDER WIDTH AS THEY ARE ALWAYS ACTIVE */
+    border-width: 1px;
+}
+
+button.btn--flip.dark-theme {
+    /* HAVE TO RESET BORDER WIDTH AS THEY ARE ALWAYS ACTIVE */
+    border-width: 1px;
+    background: #4d4d4d4a;
+    color: rgb(219, 168, 37);
+    border: 1px solid darkgoldenrod;
+}
+
+button.btn--flip.dark-theme:hover {
+    /* HAVE TO RESET BORDER WIDTH AS THEY ARE ALWAYS ACTIVE */
+    opacity: 1;
+}
+
+/* TEMP SETTING TO POSITION HIDE BEGINNER */
+/* .control-wrap__beginner-5 button.btn--flip {
+    margin-top: 13px;
+} */
+
+button.btn--flip:hover {
+    font-weight: 500;
+    border-width: 2px;
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 START BUTTON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+.btn--start {
+    width: 125px;
+    height: 50px;
+    font-family: "Roboto", sans-serif;
+    font-size: var(--font-32);
+    font-weight: 100;
+    background: rgb(144, 238, 144);
+    background: var(--border-blue);
+    background: #68b6ff;
+    border: 1px solid var(--border-grey);
+    /* border: 1px solid black; */
+    /* transition: background var(--background-transition); */
+}
+
+.btn--start:disabled:hover {
+    /* background-color: yellow; */
+    font-weight: 100;
+    border-width: 1px;
+}
+
+.btn--start.dark-theme {
+    color: rgb(229, 172, 28);
+    background: rgba(0, 128, 0, 0.75);
+    /* background: var(--border-blue); */
+    /* background: #184e81; */
+    background: #175ea0;
+    border: 1px solid darkgoldenrod;
+    /* transition: background var(--background-transition); */
+}
+
+.btn--start.apply--active.dark-theme:hover {
+    border-width: 2px;
+}
+
+.btn--start.apply--active:hover {
+    font-weight: 400;
+    border: 2px solid rgb(156, 156, 156);
+}
+
+.btn--start.apply--active:disabled:hover {
+    font-weight: 100;
+    border: 1px solid var(--border-grey);
+}
+
+.btn--start.apply--active.dark-theme:hover {
+    border: 2px solid darkgoldenrod;
+}
+
+.btn--start.apply--active.dark-theme:disabled:hover {
+    font-weight: 100;
+    border: 1px solid darkgoldenrod;
+}
+
+.btn--start:disabled {
+    opacity: 0.3;
+}
+
+/* HIDE INFO BUTTON */
+.instructions-container:hover .flip-button__card--main {
+    opacity: 0.7;
+}

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <!-- REFRESH ICON NOT IN USE -->
+    <!-- <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- HOWLER JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"
+        integrity="sha512-dMiBqqEV5i3KqpAdsgQSSZ72DnNib7otY0X+b/Tnn1EmLym1dxuZ19csdZqBnfDniKd9bmNtzStQzuMrIa5Ngw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="colour-theme body">
+    <!-- APP / INFO -->
+    <div id="scene--main" class="scene--main timer-style">
+
+        <!-- TOOLTIP -->
+        <!-- <div id="instructions-cursor-tooltip" class="instructions-cursor-tooltip colour-theme">
+            Click to close.
+        </div> -->
+
+        <div id="card--main" class="card--main">
+            <!-- CARD-FACE -->
+            <div id="container" class="container card__face--main card__face--front--main colour-theme">
+                <div class="wrapper">
+
+                    <!-- <h1>JS touch-typing practice</h1> -->
+
+
+                    <!-- CONTROL PANEL / PRACTICE PANEL -->
+                    <div id="scene--controls" class="scene--controls">
+                        <div id="card--controls" class="card--controls">
+
+                            <!-- CONTROLS CONTAINER -->
+                            <div id="controls-container"
+                                class="controls-container fadeout-with-timer card__face--controls card__face--front--controls colour-theme">
+
+                                <div class="control-wrap difficulty-control-wrap colour-theme">
+                                    <h4 class="wrap-title">Difficulty</h4>
+
+                                    <div class="difficulty-radios-container">
+                                        <input type="radio" id="100"
+                                            class="radio difficulty-radio disabled-during-timer" name="difficulty"
+                                            value="100" checked="checked" />
+                                        <label for="100">100</label>
+                                        <br />
+
+                                        <input type="radio" id="200"
+                                            class="radio difficulty-radio disabled-during-timer" name="difficulty"
+                                            value="200" />
+                                        <label for="200">200</label>
+                                        <br />
+
+                                        <input type="radio" id="JavaScript"
+                                            class="radio difficulty-radio disabled-during-timer" name="difficulty"
+                                            value="JavaScript" />
+                                        <label for="JavaScript">JS</label>
+                                        <br />
+
+                                    </div>
+
+                                    <button id="diffuculty-apply" class="btn--control btn--apply colour-theme"
+                                        disabled="true">
+                                        Apply
+                                    </button>
+
+                                </div>
+
+                                <div class="spacer-div colour-theme"></div>
+
+                                <div class="control-wrap punctuation-capital-control-wrap colour-theme">
+                                    <h4 class="wrap-title">Punctuation</h4>
+                                    <div class="punctuation-buttons-container">
+                                        <button id="punctuation-toggle"
+                                            class="btn--control btn--toggle btn--toggle__punctuation disabled-during-timer">
+                                            Off
+                                        </button>
+                                        <button id="punctuation-apply" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+
+                                    <h4 class="wrap-title">Capital letters</h4>
+                                    <div class="capital-buttons-container">
+                                        <button id="capital-toggle"
+                                            class="btn--control btn--toggle disabled-during-timer">
+                                            Off
+                                        </button>
+                                        <button id="capital-apply" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-div colour-theme"></div>
+
+                                <div class="control-wrap enter-control-wrap colour-theme">
+                                    <h4 class="wrap-title">Enter key</h4>
+                                    <div class="enter-buttons-container">
+                                        <button id="enter-toggle"
+                                            class="btn--control btn--toggle disabled-during-timer toggle-off">
+                                            Off
+                                        </button>
+                                        <button id="enter-apply" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+
+
+                                    <h4 class="wrap-title">Timer</h4>
+                                    <div class="timer-buttons-container">
+                                        <button id="timer-toggle"
+                                            class="btn--control btn--toggle disabled-during-timer toggle-on">
+                                            On
+                                        </button>
+                                        <button id="timer-apply" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="spacer-div colour-theme"></div>
+
+                                <div class="control-wrap line-length-control-wrap colour-theme">
+                                    <!-- <form> -->
+                                    <!-- <label for="length">Line length (20 - 50):</label> -->
+                                    <h4 class="wrap-title">Line length</h4>
+                                    (20 - 50)<input type="range" id="length" class="disabled-during-timer" name="length"
+                                        min="20" max="50" value="40" />
+                                    <span id="length-display-span">30</span>
+                                    <button id="length-apply" class="btn--control btn--apply colour-theme"
+                                        disabled="true">
+                                        Apply
+                                    </button>
+                                    <!-- <input type=" submit" value="Apply"> -->
+                                    <!-- </form> -->
+                                </div>
+
+                                <div class="spacer-div colour-theme"></div>
+
+                                <div class="control-wrap timer-sound-control-wrap colour-theme">
+
+                                    <h4 class="wrap-title">Sound</h4>
+                                    <div class="sound-buttons-container">
+                                        <button id="sound-toggle"
+                                            class="btn--control btn--toggle toggle-on disabled-during-timer">
+                                            On
+                                        </button>
+                                        <button id="sound-apply" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+                                    <h4 class="wrap-title">Dark theme</h4>
+                                    <div class="">
+                                        <button id="theme-toggle"
+                                            class="btn--control btn--toggle disabled-during-timer">
+                                            Off
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <div class="spacer-div colour-theme"></div>
+
+
+                                <div class="control-wrap info-control-wrap colour-theme">
+                                    <h4 class="wrap-title">Info</h4>
+                                    <button
+                                        class="btn--control btn--flip flip-button--main colour-theme disabled-during-timer">Show</button>
+                                    </button>
+                                    <h4 class="wrap-title">Beginner Level</h4>
+                                    <button id="beginner-control-show-button"
+                                        class="btn--control btn--flip flip-button--controls disabled-during-timer colour-theme">Show</button>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <!-- BEGINNER CONTROLS CONTAINER -->
+                            <div
+                                class="beginner-container card__face--controls card__face--back--controls colour-theme">
+                                <!-- <h3>Beginner level - select key groups</h3> -->
+
+                                <!-- WRAP 1. -->
+                                <div
+                                    class="control-wrap levels-wrap control-wrap__beginner control-wrap__beginner-1 colour-theme">
+
+                                    <!-- <h4 class="wrap-title">Levels</h4> -->
+
+                                    <div class="level-button-container colour-theme">
+                                        <!-- <h4>Levels</h4> -->
+                                        <button id="level-1" class="level-1 btn--level colour-theme tooltip">
+                                            J F
+                                            <h4 class="tooltiptext">R Index<br>L index</h4>
+                                        </button>
+                                        <button id="level-2" class="level-2 btn--level colour-theme tooltip">
+                                            U R K
+                                            <h4 class="tooltiptext">R Index<br>L index<br>L middle</h4>
+                                        </button>
+                                        <button id="level-3" class="level-3 btn--level colour-theme tooltip">
+                                            D E I
+                                            <h4 class="tooltiptext">L middle<br>L middle<br>R middle</h4>
+                                        </button>
+                                        <button id="level-4" class="level-4 btn--level colour-theme tooltip">
+                                            C G N
+                                            <h4 class="tooltiptext">L index<br>L index<br>R index</h4>
+                                        </button>
+                                        <button id="level-5" class="level-5 btn--level colour-theme tooltip">
+                                            T S L
+                                            <h4 class="tooltiptext">L Index<br>L ring<br>R ring</h4>
+                                        </button>
+                                        <button id="level-6" class="level-6 btn--level colour-theme tooltip">
+                                            O B A
+                                            <h4 class="tooltiptext">R ring<br>L index<br>L pinky</h4>
+                                        </button>
+                                        <button id="level-7" class="level-7 btn--level colour-theme tooltip">
+                                            V H M
+                                            <h4 class="tooltiptext">L Index<br>R index<br>R index</h4>
+                                        </button>
+                                        <button id="level-8" class="level-8 btn--level colour-theme tooltip">
+                                            W X Q
+                                            <h4 class="tooltiptext">L ring<br>L middle<br>R pinky</h4>
+                                        </button>
+                                        <button id="level-9" class="level-9 btn--level colour-theme tooltip">
+                                            Y P Z
+                                            <h4 class="tooltiptext">R Index<br>R pinky<br>L ring</h4>
+                                        </button>
+                                    </div>
+
+                                    <div class="level-selection-type-container">
+                                        <!-- <h4 class="wrap-title"></h4> -->
+                                        <button id="btn--toggle__selection-type"
+                                            class="btn--control btn--toggle__selection-type colour-theme">
+                                            Through
+                                        </button>
+                                        <button id="levels-apply" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="spacer-div__beginner-controls colour-theme"></div>
+
+                                <!-- WRAP . -->
+
+                                <div class="control-wrap control-wrap__beginner control-wrap__beginner-2 colour-theme">
+                                    <h4 class="wrap-title">Consecutive</h4>
+                                    <div class="gram-radios-container">
+                                        <input type="radio" id="2" class="radio gram-radio disabled-during-timer"
+                                            name="difficulty" value="2" />
+                                        <label for="2">2</label>
+                                        <br />
+
+                                        <input type="radio" id="3" class="radio gram-radio disabled-during-timer"
+                                            name="difficulty" value="3" />
+                                        <label for="3">3</label>
+                                        <br />
+
+                                        <input type="radio" id="4" class="radio gram-radio disabled-during-timer"
+                                            name="difficulty" value="4" />
+                                        <label for="4">4</label>
+                                        <br />
+                                    </div>
+
+                                    <button id="grams-apply" class="btn--control btn--apply colour-theme"
+                                        disabled="true">
+                                        Apply
+                                    </button>
+                                </div>
+
+                                <div class="spacer-div__beginner-controls colour-theme"></div>
+
+                                <div class="control-wrap control-wrap__beginner control-wrap__beginner-3 colour-theme">
+                                    <h4 class="wrap-title">Keyboard rows</h4>
+                                    <div class="rows-radios-container">
+                                        <input type="radio" id="top" class="radio row-radio disabled-during-timer"
+                                            name="rows" value="top" />
+                                        <label for="top">Top</label>
+                                        <br />
+
+                                        <input type="radio" id="home" class="radio row-radio disabled-during-timer"
+                                            name="rows" value="home" />
+                                        <label for="home">Home</label>
+                                        <br />
+
+                                        <input type="radio" id="bottom" class="radio row-radio disabled-during-timer"
+                                            name="rows" value="bottom" />
+                                        <label for="bottom">Bottom</label>
+                                        <br />
+                                    </div>
+
+                                    <button id="rows-apply" class="btn--control btn--apply colour-theme"
+                                        disabled="true">
+                                        Apply
+                                    </button>
+                                </div>
+
+
+
+
+
+                                <div class="spacer-div__beginner-controls colour-theme"></div>
+
+
+
+                                <div class="control-wrap control-wrap__beginner control-wrap__beginner-4 colour-theme">
+
+                                    <h4 class="wrap-title">Punctuation</h4>
+                                    <div class="punctuation-buttons-container">
+
+                                        <button id="punctuation-toggle__beginner"
+                                            class="btn--control btn--toggle btn--toggle__beginner disabled-during-timer"
+                                            disabled="true">
+                                            Off
+                                        </button>
+                                        <button id="punctuation-apply__beginner"
+                                            class="btn--control btn--apply colour-theme" disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+
+                                    <h4 class="wrap-title">Capital letters</h4>
+                                    <div class="capital-buttons-container">
+                                        <button id="capital-toggle__beginner"
+                                            class="btn--control btn--toggle btn--toggle__beginner disabled-during-timer"
+                                            disabled="true">
+                                            Off
+                                        </button>
+                                        <button id="capital-apply__beginner"
+                                            class="btn--control btn--apply colour-theme" disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="spacer-div__beginner-controls colour-theme"></div>
+
+                                <div class="control-wrap control-wrap__beginner control-wrap__beginner-5 colour-theme">
+                                    <h4 class="wrap-title">Enter key</h4>
+                                    <div class="enter-buttons-container">
+                                        <button id="enter-toggle__beginner"
+                                            class="btn--control btn--toggle btn--toggle__beginner disabled-during-timer toggle-off"
+                                            disabled="true">
+                                            Off
+                                        </button>
+                                        <button id="enter-apply__beginner" class="btn--control btn--apply colour-theme"
+                                            disabled="true">
+                                            Apply
+                                        </button>
+                                    </div>
+                                    <h4 class="wrap-title">Advanced level</h4>
+                                    <button id="beginner-control-hide-button"
+                                        class="btn--control btn--flip flip-button--controls colour-theme">
+                                        Show
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXT FIELDS -->
+                    <div class="text-fields-wrap colour-theme">
+
+                        <div class="active-container">
+                            <div id="text-span-active" class="text-span-container colour-theme"></div>
+                        </div>
+
+                        <div class="next-container">
+                            <div id="text-span-next" class="text-span-container text-span-next colour-theme">
+                                <p id="text-span-next-p"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INPUT ROW (TIMER, USER INPUT, START BUTTON) -->
+                    <div class="input-container">
+                        <div id="counter-div" class="counter-div colour-theme"></div>
+                        <!-- <form action="#" class="form"> -->
+                        <label for="input"></label>
+                        <input type="text" id="input" class="text-input colour-theme" name="input"
+                            placeholder="                 Click Start ➡" />
+                        <!-- </form> -->
+                        <button id="btn--start" class="btn--start colour-theme">
+                            <!-- NOT IN USE -->
+                            <!-- <span id="refresh-icon" class="material-symbols-sharp hidden">
+                                autorenew
+                            </span> -->
+                            Start
+                        </button>
+                    </div>
+
+
+                    <!-- THIS IS POSITIONED USING RELATIVE-TOP/LEFT -->
+                    <div id="message-div" class="message-div colour-theme"></div>
+
+                    <div class="stats-and-keys-container fadeout-with-timer">
+                        <div id="stats-container__left" class="stats-container">
+                            <div class="stat-wrap colour-theme">
+                                <h4 class="wrap-title">Average Speed</h4>
+                                <span id="speed-span" class="speed-span colour-theme">0</span>
+                            </div>
+                            <div class="stat-wrap colour-theme">
+                                <h4 class="wrap-title">Colours</h4>
+                                <span id="green-counter-span" class="green colour-counter-span">0</span>
+                                <div class="redOrangeDiv">
+                                    <span id="red-counter-span" class="red colour-counter-span">0</span>
+                                    <span id="orange-counter-span" class="orange colour-counter-span">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- SOURCE: https://codepen.io/gschier/pen/VKgyaY -->
+                        <div id="keyboard" class="keyboard colour-theme">
+
+                            <!-- <div id="message-div" class="message-div"></div> -->
+
+                            <!-- <div class="keyboard__row keyboard__row--h1">
+                                <div data-key="27" class="key--word">
+                                    <span>esc</span>
+                                </div>
+                                <div data-key="112" class="key--fn">
+                                    <span>F1</span>
+                                </div>
+                                <div data-key="113" class="key--fn">
+                                    <span>F2</span>
+                                </div>
+                                <div data-key="114" class="key--fn">
+                                    <span>F3</span>
+                                </div>
+                                <div data-key="115" class="key--fn">
+                                    <span>F4</span>
+                                </div>
+                                <div data-key="116" class="key--fn">
+                                    <span>F5</span>
+                                </div>
+                                <div data-key="117" class="key--fn">
+                                    <span>F6</span>
+                                </div>
+                                <div data-key="118" class="key--fn">
+                                    <span>F7</span>
+                                </div>
+                                <div data-key="119" class="key--fn">
+                                    <span>F8</span>
+                                </div>
+                                <div data-key="120" class="key--fn">
+                                    <span>F9</span>
+                                </div>
+                                <div data-key="121" class="key--fn">
+                                    <span>F10</span>
+                                </div>
+                                <div data-key="122" class="key--fn">
+                                    <span>F11</span>
+                                </div>
+                                <div data-key="123" class="key--fn">
+                                    <span>F12</span>
+                                </div>
+                                <div data-key="n/a" class="key--word">
+                                    <span>pwr</span>
+                                </div>
+                            </div> -->
+
+
+                            <div class="keyboard__row">
+                                <div class="key--double" data-key="192">
+                                    <div>~</div>
+                                    <div>`</div>
+                                </div>
+                                <div class="key--double" data-key="49">
+                                    <div>!</div>
+                                    <div>1</div>
+                                </div>
+                                <div class="key--double" data-key="50">
+                                    <div>@</div>
+                                    <div>2</div>
+                                </div>
+                                <div class="key--double" data-key="51">
+                                    <div>#</div>
+                                    <div>3</div>
+                                </div>
+                                <div class="key--double" data-key="52">
+                                    <div>$</div>
+                                    <div>4</div>
+                                </div>
+                                <div class="key--double" data-key="53">
+                                    <div>%</div>
+                                    <div>5</div>
+                                </div>
+                                <div class="key--double" data-key="54">
+                                    <div>^</div>
+                                    <div>6</div>
+                                </div>
+                                <div class="key--double" data-key="55">
+                                    <div>&</div>
+                                    <div>7</div>
+                                </div>
+                                <div class="key--double" data-key="56">
+                                    <div>*</div>
+                                    <div>8</div>
+                                </div>
+                                <div class="key--double" data-key="57">
+                                    <div>(</div>
+                                    <div>9</div>
+                                </div>
+                                <div class="key--double" data-key="48">
+                                    <div>)</div>
+                                    <div>0</div>
+                                </div>
+                                <div class="key--double" data-key="189">
+                                    <div>_</div>
+                                    <div>-</div>
+                                </div>
+                                <div class="key--double" data-key="187">
+                                    <div>+</div>
+                                    <div>=</div>
+                                </div>
+                                <div class="key--bottom-right key--word key--w4" data-key="8">
+                                    <span>delete</span>
+                                </div>
+                            </div>
+                            <div class="keyboard__row">
+                                <div class="key--bottom-left key--word key--w4" data-key="9">
+                                    <span>tab</span>
+                                </div>
+                                <!-- .key--letter IS CURRENTLY OUT OF USE, REPLACED BY .key--tracked -->
+                                <!-- WHICH WILL BE ADDED TO NUMERIC KEYS IN FUTURE -->
+                                <div class="key--letter key--tracked" data-char="Q">Q</div>
+                                <div class="key--letter key--tracked" data-char="W">W</div>
+                                <div class="key--letter key--tracked" data-char="E">E</div>
+                                <div class="key--letter key--tracked" data-char="R">R</div>
+                                <div class="key--letter key--tracked" data-char="T">T</div>
+                                <div class="key--letter key--tracked" data-char="Y">Y</div>
+                                <div class="key--letter key--tracked" data-char="U">U</div>
+                                <div class="key--letter key--tracked" data-char="I">I</div>
+                                <div class="key--letter key--tracked" data-char="O">O</div>
+                                <div class="key--letter key--tracked" data-char="P">P</div>
+                                <div class="key--double" data-key="219" data-char="{[">
+                                    <div>{</div>
+                                    <div>[</div>
+                                </div>
+                                <div class="key--double" data-key="221" data-char="}]">
+                                    <div>}</div>
+                                    <div>]</div>
+                                </div>
+                                <div class="key--double" data-key="220" data-char="|\">
+                                    <div>|</div>
+                                    <div>\</div>
+                                </div>
+                            </div>
+                            <div class="keyboard__row">
+                                <div id="capslock-key" class="key--bottom-left key--word key--w5" data-key="20">
+                                    <span>caps lock</span>
+                                </div>
+                                <div class="key--letter key--tracked" data-char="A">A</div>
+                                <div class="key--letter key--tracked" data-char="S">S</div>
+                                <div class="key--letter key--tracked" data-char="D">D</div>
+                                <div class="key--letter key--tracked" data-char="F">F</div>
+                                <div class="key--letter key--tracked" data-char="G">G</div>
+                                <div class="key--letter key--tracked" data-char="H">H</div>
+                                <div class="key--letter key--tracked" data-char="J">J</div>
+                                <div class="key--letter key--tracked" data-char="K">K</div>
+                                <div class="key--letter key--tracked" data-char="L">L</div>
+                                <div class="key--double" data-key="186">
+                                    <div>:</div>
+                                    <div>;</div>
+                                </div>
+                                <div class="key--double" data-key="222">
+                                    <div>"</div>
+                                    <div>'</div>
+                                </div>
+                                <div id="key--enter" class="key--bottom-right key--word key--w5" data-key="13">
+                                    <span>return</span>
+                                </div>
+                            </div>
+                            <div class="keyboard__row">
+                                <div class="key--bottom-left key--word key--w6" data-key="16">
+                                    <span>shift</span>
+                                </div>
+                                <div class="key--letter key--tracked" data-char="Z">Z</div>
+                                <div class="key--letter key--tracked" data-char="X">X</div>
+                                <div class="key--letter key--tracked" data-char="C">C</div>
+                                <div class="key--letter key--tracked" data-char="V">V</div>
+                                <div class="key--letter key--tracked" data-char="B">B</div>
+                                <div class="key--letter key--tracked" data-char="N">N</div>
+                                <div class="key--letter key--tracked" data-char="M">M</div>
+                                <div class="key--double" data-key="188">
+                                    <div>&lt;</div>
+                                    <div>,</div>
+                                </div>
+                                <div class="key--double" data-key="190">
+                                    <div>&gt;</div>
+                                    <div>.</div>
+                                </div>
+                                <div class="key--double" data-key="191">
+                                    <div>?</div>
+                                    <div>/</div>
+                                </div>
+                                <div class="key--bottom-right key--word key--w6" data-key="16-R">
+                                    <span>shift</span>
+                                </div>
+                            </div>
+                            <div class="keyboard__row keyboard__row--h3">
+                                <div class="key--bottom-left key--word">
+                                    <span>fn</span>
+                                </div>
+                                <div class="key--bottom-left key--word key--w1" data-key="17">
+                                    <span>control</span>
+                                </div>
+                                <div class="key--bottom-left key--word key--w1" data-key="18">
+                                    <span>option</span>
+                                </div>
+                                <div class="key--bottom-right key--word key--w3" data-key="91">
+                                    <span>command</span>
+                                </div>
+                                <div class="key--double key--right key--space" data-key="32" data-char=" ">
+                                    &nbsp;
+                                </div>
+                                <div class="key--bottom-left key--word key--w3" data-key="93-R">
+                                    <span>command</span>
+                                </div>
+                                <div class="key--bottom-left key--word key--w1" data-key="18-R">
+                                    <span>option</span>
+                                </div>
+                                <div data-key="37" class="key--arrow">
+                                    <span>&#9664;</span>
+                                </div>
+                                <div class="key--double key--arrow--tall" data-key="38">
+                                    <div>&#9650;</div>
+                                    <div>&#9660;</div>
+                                </div>
+                                <div data-key="39" class="key--arrow">
+                                    <span>&#9654;</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="stats-container__rigth" class="stats-container">
+                            <div class="stat-wrap colour-theme">
+                                <h4 class="wrap-title">Keystrokes</h4>
+                                <span id="keystrokes-span" class="keystrokes-span colour-theme">
+                                    0
+                                </span>
+                            </div>
+                            <div class="stat-wrap colour-theme">
+                                <h4 class="wrap-title">Accuracy</h4>
+                                <span id="accuracy-span" class="accuracy-span colour-theme">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="colour-code-container" class="colour-code-container fadeout-with-timer">
+                        <div class="colour-code-wrap colour-theme">
+                            <h4 class="wrap-title">Correct</h4>
+                            <h3 class="green">Abc</h3>
+                        </div>
+                        <div class="colour-code-wrap colour-theme">
+                            <h4 class="wrap-title">Wrong</h4>
+                            <h3 class="red">Abc</h3>
+                        </div>
+                        <div class="colour-code-wrap colour-theme">
+                            <h4 class="wrap-title">Backspace</h4>
+                            <h3 class="orange">Abc</h3>
+                        </div>
+                        <div class="colour-code-wrap colour-code-wrap--not-typed colour-theme">
+                            <h4 class="wrap-title">Not typed</h4>
+                            <h3>Abc</h3>
+                        </div>
+                        <div class="colour-code-wrap colour-code-wrap--skipped colour-theme">
+                            <h4 class="wrap-title">Skipped</h4>
+                            <h3>
+                                <span class="green">A</span>
+                                <span class="red-border background">b</span>
+                                <span>c</span>
+                                /
+                                <span class="red-border">__</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- WRAPPER -->
+                </div>
+                <!-- card__face--front -->
+            </div>
+
+            <!-- CARD-BACK -->
+            <div id="instructions-container"
+                class="instructions-container card__face--main card__face--back--main colour-theme">
+
+                <!-- TOOLTIP (DISABLED, BUTTON IS NOW USED)-->
+                <!-- <div id="instructions-cursor-tooltip" class="instructions-cursor-tooltip colour-theme">
+                    <h4>Click to close</h4>
+                </div> -->
+
+
+                <button class="flip-button--main btn--flip flip-button__card--main colour-theme">Hide info</button>
+
+                <div class="instructions-wrapper colour-theme">
+
+                    <h1 class="instructions-header colour-theme">How to use this app</h1>
+                    <br>
+                    <h3>General advice</h3>
+                    <p>
+                        It isn't about speed. Always, always correct mistakes.
+                        Make 100% accuracy you goal. By correcting all errors
+                        you can still score 100%. This program will allow you to
+                        make 5 consecutive errors.
+                        That is your last chance to use Backspace and type those
+                        letters again. If you fail to do so after the fourth
+                        wrong character in a row, the
+                        page will reload and current session will be lost,
+                        including all control settings.
+                    </p>
+
+                    <br>
+                    <hr>
+                    <br>
+
+                    <h3>Advanced level (default)</h3>
+                    <p>
+                        If you are confident typing all letter keys, this advanced level will help you practice what
+                        you have learned so far.
+                        <br>
+                        The app is ready to go with default settings, just click "Start" , make sure your Capslock is
+                        off and start typing. The first keypress will trigger the timer and session will start.
+                        You won't be able to make any changes to the control panel settings while timer is running, as
+                        all
+                        controls are disabled in timer mode.
+                        If you want to customise settings, make your adjustments before typing the first key.
+
+                    </p>
+                    <br>
+                    <h3>Advanced controls (Use any combination of text modifiers)</h3>
+                    <ul>
+                        <li>
+                            <span>Difficulty:</span>
+                            Most common 100 / 200 English words and JavaScript reserved words.
+                        </li>
+
+                        <li>
+                            <span>Punctuation:</span> On / Off (default). Affects every word.
+                        </li>
+                        <li>
+                            <span>Capital letters:</span> On / Off (default). Affects every word.
+                        </li>
+                        <li>
+                            <span>Enter key:</span>
+                            Appends enter key to the end of line. On / Off (default).
+                        </li>
+                        <li>
+                            <span>Timer:</span>
+                            1 minute countdown timer. On (default) / Off.
+                        </li>
+                        <li>
+                            <span>Line length:</span>
+                            Sets the average length of text that fits into a text field (Ranges from 4-6 to 11-13
+                            words).
+                        </li>
+                        <li>
+                            <span>Sound:</span>
+                            Keyboard click for valid keys and alert for wrong keys. On (default) / Off.
+                        </li>
+                        <li>
+                            <span>Colour theme:</span>
+                            Light (default) / Dark.
+                        </li>
+                        <li>
+                            <span>Info:</span>
+                            Show / hide info card.
+                        </li>
+                        <li>
+                            <span>Beginner level:</span>
+                            Switches to beginner level controls.
+                        </li>
+                    </ul>
+
+                    <br>
+                    <!-- <hr> -->
+                    <!-- <br> -->
+
+                    <h3>Text fields</h3>
+                    <ul>
+                        <li>
+                            <span>Active text field:</span>
+                            Text field 1. Words currently being typed, cursor tracks current position.
+                        </li>
+                        <li>
+                            <span>Next field:</span>
+                            Text field 2. Preview of the next active field text.
+                        </li>
+                    </ul>
+
+                    <br>
+                    <!-- <hr> -->
+                    <!-- <br> -->
+
+                    <h3>Input section</h3>
+                    <ul>
+                        <li>
+                            <span>Timer:</span>
+                            60 second countdown (active by default).
+                        </li>
+                        <li>
+                            <span>Text input:</span>
+                            User input
+                        </li>
+                        <li><span>Start button:</span>
+                            Generates text
+                        </li>
+                    </ul>
+
+                    <!-- <br> -->
+                    <!-- <hr> -->
+                    <br>
+
+                    <h3>Counters / Statistics</h3>
+                    <ul>
+                        <li>
+                            <span>Average speed:</span>
+                            Shows current speed during timer and average speed at the end of session
+                        </li>
+                        <li>
+                            <span>Green / Red / Backspace:</span>
+                            Counter for each colour (correct key, wrong key, backspace)
+                        </li>
+                        <li>
+                            <span>Keystrokes:</span>
+                            Total number of keystrokes (including space / backspace)
+
+                        </li>
+                        <li>
+                            <span>Accuracy:</span>
+                            Current and total accuracy percentage rounded down to nearest integer
+                        </li>
+                    </ul>
+
+                    <br>
+
+                    <h3>Message field</h3>
+                    <ul>
+                        <li>
+                            <span>Instructions / warnings:</span>
+                            All messages, instructions and warnings are displayed here.
+                        </li>
+                    </ul>
+
+                    <br>
+
+                    <h3>Keyboard</h3>
+                    <ul>
+                        <li>
+                            <span>Problem key trackers:</span>
+                            Problem keys from previous session are highlighted in red.
+                        </li>
+                        <li>
+                            <span>Real time key tracker:</span>
+                            Keyboard tracks your keypresses and typed key is highlighted in green.
+                        </li>
+                        <li><span>Capslock detection:</span>
+                            Capslock key will flash if capslock is on.
+                        </li>
+                    </ul>
+
+                    <br>
+                    <!-- <hr> -->
+                    <!-- <br> -->
+
+                    <h3>Problem keys</h3>
+                    <p>
+                        Your problem keys are being highlighted in red on the keyboard during a session.
+                        When current session ends, all mistyped keys are remembered for the next session and
+                        the new text will only use words that contain your problem key(s) when you click "New".
+                        This feature will make you practice those keys.
+                        <br>
+                        If you want to skip this option, just click "New" again and you will get a new random set of
+                        words from the currently selected difficulty level.
+                    </p>
+
+                    <br>
+                    <!-- <hr> -->
+                    <!-- <br> -->
+
+                    <h3>Key / Cursor colour codes</h3>
+                    <ul>
+                        <li>
+                            <span>Cursor: </span>
+                            Actual cursor position has grey background with black border.
+                        </li>
+                        <li>
+                            <span>Correct: </span>
+                            All letters typed correctly are green.
+                        </li>
+                        <li>
+                            <span>Wrong:</span>
+                            Letter / space errors are marked with red colour and red border respectively.
+                        </li>
+                        <li>
+                            <span>Backspace:</span>
+                            Backspace corrections will temporarily be coloured orange until you re-type,
+                            backspace on space has an orange border.
+                        </li>
+                        <li>
+                            <span>Not typed:</span>
+                            Characters at / ahead of cursor position.
+                        </li>
+                        <li>
+                            <span>Skipped:</span>
+                            This app is very strict about space, hitting space on a word will result in the cursor
+                            moving to
+                            the first character of the next word. This action can not be undone!
+                        </li>
+                    </ul>
+
+                    <br>
+                    <hr>
+                    <br>
+
+                    <h3>Beginner level</h3>
+                    <p>
+                        Click "Show" Beninner level in bottom right corner of control panel.
+                        Select groups of keys you want to learn, a tooltip text with the recommended
+                        finger placements will appear above the selector buttons when selector is hovered over.
+                        (L - Left / R - right + finger).
+                        <br>
+                        Once selection is made, button colour changes to green (selected) from red (not selected).
+                        <br>
+                        Ideally, you want to learn the key groups in order (This is based on typing.com).
+                        <br>
+                        Start with J and F moving horizontally along each row until you have completed all nine groups.
+                        Start button will generate random words with random length (up to 6 characters long) using
+                        all the characters from selected groups.
+                        You can only practice one of the three types at once. (Letter group(s), consecutive letters or
+                        rows)
+
+                    </p>
+
+                    <br>
+
+                    <h3>Beginner controls</h3>
+                    <ul>
+                        <li>
+                            <span>Level selectors: </span>
+                            Select letter group.
+                        </li>
+                        <li>
+                            <span>Selection type toggle:</span>
+                            "Through "(default) will include all levels up to and including the one being selected.
+                            <br>
+                            "Random" allows you to single out level(s) in no particular order.
+                        </li>
+                        <li>
+                            <span>Consecutive:</span>
+                            The most common letter combinations (bigrams, trigrams and quadrigrams) in English.
+                        </li>
+                        <li>
+                            <span>Keyboard rows:</span>
+                            Top row / Home row / Bottom row words.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- card__face--back -->
+            </div>
+            <!-- CARD -->
+        </div>
+        <!-- SCENE -->
+    </div>
+
+    <!-- <div class="scene">
+            <div class="card">
+                <div class="card__face card__face--front">
+                    <button class="test-button"></button>
+                    front
+                </div>
+                <div class="card__face card__face--back">
+                    <button class="test-button"></button>
+                    back
+                </div>
+            </div>
+        </div> -->
+
+    <!-- <div class="problem-keys-container">
+        <span id="problem-key-span-a" class="problem-key-span">a</span>
+        <span id="problem-key-span-b" class="problem-key-span">b</span>
+        <span id="problem-key-span-c" class="problem-key-span">c</span>
+        <span id="problem-key-span-d" class="problem-key-span">d</span>
+        <span id="problem-key-span-e" class="problem-key-span">e</span>
+        <span id="problem-key-span-f" class="problem-key-span">f</span>
+        <span id="problem-key-span-g" class="problem-key-span">g</span>
+        <span id="problem-key-span-h" class="problem-key-span">h</span>
+        <span id="problem-key-span-i" class="problem-key-span">i</span>
+        <span id="problem-key-span-j" class="problem-key-span">j</span>
+        <span id="problem-key-span-k" class="problem-key-span">k</span>
+        <span id="problem-key-span-l" class="problem-key-span">l</span>
+        <span id="problem-key-span-m" class="problem-key-span">m</span>
+        <span id="problem-key-span-n" class="problem-key-span">n</span>
+        <span id="problem-key-span-o" class="problem-key-span">o</span>
+        <span id="problem-key-span-p" class="problem-key-span">p</span>
+        <span id="problem-key-span-q" class="problem-key-span">q</span>
+        <span id="problem-key-span-r" class="problem-key-span">r</span>
+        <span id="problem-key-span-s" class="problem-key-span">s</span>
+        <span id="problem-key-span-t" class="problem-key-span">t</span>
+        <span id="problem-key-span-u" class="problem-key-span">u</span>
+        <span id="problem-key-span-v" class="problem-key-span">v</span>
+        <span id="problem-key-span-w" class="problem-key-span">w</span>
+        <span id="problem-key-span-x" class="problem-key-span">x</span>
+        <span id="problem-key-span-y" class="problem-key-span">y</span>
+        <span id="problem-key-span-z" class="problem-key-span">z</span>
+    </div> -->
+
+    <div class="keyboard-container">
+        <div class="row-1"></div>
+        <div class="row-2"></div>
+        <div class="row-3"></div>
+        <div class="row-4"></div>
+        <div class="row-5"></div>
+    </div>
+
+
+
+    <script type="module" src="script.js" type="text/javascript"></script>
+</body>
+
+</html>
