@@ -255,6 +255,11 @@ button:disabled:hover {
     /* border: 1px solid black; */
 }
 
+/* ADVANCED LEVELS, BEGINNER GRAMS AND ROWS RADIOS */
+.radios-container {
+    margin-bottom: 20px;
+}
+
 /* .difficulty-radios-container {
     width: 100%;
     height: 75px;
