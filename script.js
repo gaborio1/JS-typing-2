@@ -115,7 +115,7 @@ let level_9_On = false;
 // let level_10_On = false;
 // let level_11_On = false;
 
-const levelsApply = document.getElementById("levels-apply");
+// const levelsApply = document.getElementById("levels-apply");
 
 const beginnerShowButton = document.getElementById(
     "beginner-control-show-button"
@@ -594,9 +594,9 @@ doc.addEventListener("keydown", testCapsLock);
 const setDifficultyLevel = () => {
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         if (difficultyRadios[i].checked) {
-            if (difficultyRadios[i].value === "100") {
+            if (difficultyRadios[i].value === "easy") {
                 targetArray = [...common100];
-            } else if (difficultyRadios[i].value === "200") {
+            } else if (difficultyRadios[i].value === "medium") {
                 targetArray = [...common200, ...common100];
             } else {
                 targetArray = [...jsReserved, ...jsObjPropMeth];
@@ -1060,8 +1060,6 @@ startButton.addEventListener("click", (event) => {
     }
 
     textInput.disabled = false;
-
-    levelsApply.disabled = true;
 
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 DETECT CAPSLOCK 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1550,35 +1548,15 @@ const allChangesApplied = () => {
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 DIFFICULTY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-// MAKE APPLY BUTTON ACTIVE IF SELECTION IS MADE
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
         // console.log(this);
         // console.log(targetArray);
-        difficultyApply.classList.add("apply--active");
-        difficultyApply.disabled = false;
-        startButton.classList.remove("apply--active");
-        disableStartButton();
-        messageDiv.textContent = "Apply changes!";
-        // if (allChangesApplied()) {
-        //     enableStartButton();
-        // }
+
+        setDifficultyLevel();
+        enableStartButton();
     });
 }
-
-difficultyApply.addEventListener("click", function () {
-    difficultyApply.classList.remove("apply--active");
-    difficultyApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    clearDataAndDisplay();
-    clearArrAndString();
-
-    setDifficultyLevel();
-    // console.log("DIFFICULTY SELECTED", targetArray);
-});
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER GRAMS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1586,361 +1564,189 @@ const disableRowsControls = () => {
     for (let i = 0, length = rowRadios.length; i < length; i++) {
         rowRadios[i].checked = false;
     }
-    rowsApply.disabled = true;
-    rowsApply.classList.remove("apply--active");
 };
 
 const disableGramsControls = () => {
     for (let i = 0, length = gramRadios.length; i < length; i++) {
         gramRadios[i].checked = false;
     }
-    gramsApply.disabled = true;
-    gramsApply.classList.remove("apply--active");
 };
 
 const gramRadios = document.getElementsByClassName("gram-radio");
-const gramsApply = document.getElementById("grams-apply");
+const beginnerToggles = document.getElementsByClassName("btn--toggle__beginner");
 
-// MAKE APPLY BUTTON ACTIVE IF SELECTION IS MADE
-for (let i = 0, length = gramRadios.length; i < length; i++) {
+for (let i = 0; i < gramRadios.length; i++) {
     gramRadios[i].addEventListener("click", function () {
-        gramsApply.classList.add("apply--active");
-        gramsApply.disabled = false;
-        startButton.classList.remove("apply--active");
-        disableStartButton();
-        clearDataAndDisplay();
-        messageDiv.textContent = "Apply changes!";
 
-        if (allChangesApplied()) {
-            enableStartButton();
-        }
+        enableStartButton();
+
         // DISABLE ROWS
         disableRowsControls();
         // DISABLE LEVELS AND LEVELS APPLY
         for (let i = 0; i < levelButtons.length; i += 1) {
             levelButtons[i].classList.remove("apply--active", "toggle-on");
         }
-        levelsApply.disabled = true;
-        levelsApply.classList.remove("apply--active", "toggle-on");
+
+        // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
+        for (let i = 0; i < beginnerToggles.length; i += 1) {
+            beginnerToggles[i].disabled = false;
+        }
+
+
+        // clearDataAndDisplay();
+        // clearArrAndString();
+
+        // for (let i = 0; i < gramRadios.length; i++) {
+        // if (gramRadios[i].checked) {
+        if (gramRadios[i].value === "2") {
+            console.log("2");
+            targetArray = [...bigrams];
+        } else if (gramRadios[i].value === "3") {
+            console.log("3");
+            targetArray = [...trigrams];
+        } else {
+            console.log("4");
+            targetArray = [...quadrigrams]; // "4"
+        }
+        // break;
+        // }
+        // }
+
     });
 }
-
-gramsApply.addEventListener("click", function () {
-    // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
-    for (let i = 0; i < beginnerToggles.length; i += 1) {
-        beginnerToggles[i].disabled = false;
-    }
-
-    gramsApply.classList.remove("apply--active");
-    gramsApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    clearDataAndDisplay();
-    clearArrAndString();
-
-    for (let i = 0, length = gramRadios.length; i < length; i++) {
-        if (gramRadios[i].checked) {
-            if (gramRadios[i].value === "2") {
-                targetArray = [...bigrams];
-            } else if (gramRadios[i].value === "3") {
-                targetArray = [...trigrams];
-            } else {
-                targetArray = [...quadrigrams]; // "4"
-            }
-            // break;
-        }
-    }
-});
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER ROWS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const rowRadios = document.getElementsByClassName("row-radio");
-const rowsApply = document.getElementById("rows-apply");
 
-// MAKE APPLY BUTTON ACTIVE IF SELECTION IS MADE
 for (let i = 0, length = rowRadios.length; i < length; i++) {
     rowRadios[i].addEventListener("click", function () {
-        rowsApply.classList.add("apply--active");
-        rowsApply.disabled = false;
-        startButton.classList.remove("apply--active");
-        disableStartButton();
-        clearDataAndDisplay();
-        messageDiv.textContent = "Apply changes!";
 
-        if (allChangesApplied()) {
-            enableStartButton();
-        }
+        // clearDataAndDisplay();
+        // clearArrAndString();
+
+
+        enableStartButton();
+
         // DISABLE GRAMS
         disableGramsControls();
         // DISABLE LEVELS AND LEVELS APPLY
         for (let i = 0; i < levelButtons.length; i += 1) {
             levelButtons[i].classList.remove("apply--active", "toggle-on");
         }
-        levelsApply.disabled = true;
-        levelsApply.classList.remove("apply--active", "toggle-on");
+
+
+        // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
+        for (let i = 0; i < beginnerToggles.length; i += 1) {
+            beginnerToggles[i].disabled = false;
+        }
+
+
+        if (rowRadios[i].value === "top") {
+            targetArray = [...topRow];
+        } else if (rowRadios[i].value === "home") {
+            targetArray = [...homeRow];
+        } else {
+            targetArray = [...bottomRow]; // "bottom"
+        }
+
     });
 }
 
-rowsApply.addEventListener("click", function () {
-    // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
-    for (let i = 0; i < beginnerToggles.length; i += 1) {
-        beginnerToggles[i].disabled = false;
-    }
-
-    rowsApply.classList.remove("apply--active");
-    rowsApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    clearDataAndDisplay();
-    clearArrAndString();
-
-    for (let i = 0, length = rowRadios.length; i < length; i++) {
-        if (rowRadios[i].checked) {
-            if (rowRadios[i].value === "top") {
-                targetArray = [...topRow];
-            } else if (rowRadios[i].value === "home") {
-                targetArray = [...homeRow];
-            } else {
-                targetArray = [...bottomRow]; // "bottom"
-            }
-            // break;
-        }
-    }
-});
-
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 LINE LENGTH 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-// DEFAULT LINE LENGTH (30), ALSO HARD CODED IN HTML
-
-// DISPLAY CURRENT VALUE OF SLIDER
 slider.onchange = function (event) {
     lengthDisplaySpan.textContent = slider.value;
-    lengthApply.classList.add("apply--active");
-    lengthApply.disabled = false;
-    disableStartButton();
-    messageDiv.textContent = "Apply changes!";
-};
 
-// GET SLIDER FINAL VALUE AND ASSIGN TO SEQUENCE LENGTH
-lengthApply.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
+    // clearDataAndDisplay();
+    // clearArrAndString();
     sequenceLength = slider.value;
-    lengthApply.classList.remove("apply--active");
-    lengthApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-});
+    enableStartButton();
+};
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 PUNCTUATION 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-// SELECT BOTH ADVANCED AND BEGINNER
-// const punctuationToggles = document.getElementsByClassName("btn--toggle__punctuation");
-// console.log(punctuationToggles);
-
-// 1. ONLY TOGGLE STYLE
 const handlePunctuationToggle = () => {
     // console.log("PUNCTUATION TOGGLE");
     toggleButtonStyle(punctuationToggle);
-    // 1. TOGGLE CLASS
-    punctuationApply.classList.toggle("apply--active");
-    // 2. SET STATUS BASED ON CLASS
-    punctuationApply.disabled = punctuationApply.classList.contains(
-        "apply--active"
-    )
-        ? false
-        : true;
 
-    startButton.disabled = allChangesApplied() ? false : true;
+    toggleButtonState(punctuationToggle);
 
-    messageDiv.textContent = "Apply changes!";
+    // clearDataAndDisplay();
+    // clearArrAndString();
+
 };
 
 punctuationToggle.addEventListener("click", handlePunctuationToggle);
 
-// for (let i = 0; i < punctuationToggles.length; i += 1) {
-//     punctuationToggles[i].addEventListener("click", handlePunctuationToggle);
-// }
-
-// 2. APPLY CHANGES WHEN CLICKED
-punctuationApply.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
-    toggleButtonState(punctuationToggle);
-    punctuationApply.classList.remove("apply--active");
-    punctuationApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    punctuationToggle.disabled = false;
-});
-
-// BEGINNER LEVEL
-
 const handlePunctuationToggleBeginner = () => {
-    // console.log("BEGINNER PUNCTUATION TOGGLE");
+    // console.log("PUNCTUATION TOGGLE");
     toggleButtonStyle(punctuationToggleBeginner);
-    punctuationApplyBegineer.classList.toggle("apply--active");
-    punctuationApplyBegineer.disabled =
-        punctuationApplyBegineer.classList.contains("apply--active")
-            ? false
-            : true;
 
-    startButton.disabled = allChangesApplied() ? false : true;
+    toggleButtonState(punctuationToggleBeginner);
 
-    messageDiv.textContent = "Apply changes!";
+    // clearDataAndDisplay();
+    // clearArrAndString();
+
 };
 
-punctuationToggleBeginner.addEventListener(
-    "click",
-    handlePunctuationToggleBeginner
-);
-
-punctuationApplyBegineer.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
-    toggleButtonState(punctuationToggleBeginner);
-    punctuationApplyBegineer.classList.remove("apply--active");
-    punctuationApplyBegineer.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    punctuationToggleBeginner.disabled = false;
-});
+punctuationToggleBeginner.addEventListener("click", handlePunctuationToggleBeginner);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CAPITAL 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handleCapitalToggle = () => {
     toggleButtonStyle(capitalToggle);
-    capitalApply.classList.toggle("apply--active");
-    capitalApply.disabled = capitalApply.classList.contains("apply--active")
-        ? false
-        : true;
+    toggleButtonState(capitalToggle);
 
-    startButton.disabled = allChangesApplied() ? false : true;
+    // clearDataAndDisplay();
+    // clearArrAndString();
 
-    messageDiv.textContent = "Apply changes!";
 };
 
 capitalToggle.addEventListener("click", handleCapitalToggle);
-
-capitalApply.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
-    toggleButtonState(capitalToggle);
-    capitalApply.classList.remove("apply--active");
-    capitalApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    capitalToggle.disabled = false;
-});
 
 // BEGINNER LEVEL
 
 const handleCapitalToggleBeginner = () => {
     toggleButtonStyle(capitalToggleBeginner);
-    capitalApplyBeginner.classList.toggle("apply--active");
-    capitalApplyBeginner.disabled = capitalApplyBeginner.classList.contains(
-        "apply--active"
-    )
-        ? false
-        : true;
+    toggleButtonState(capitalToggleBeginner);
 
-    startButton.disabled = allChangesApplied() ? false : true;
+    // clearDataAndDisplay();
+    // clearArrAndString();
 
-    messageDiv.textContent = "Apply changes!";
 };
 
 capitalToggleBeginner.addEventListener("click", handleCapitalToggleBeginner);
-
-capitalApplyBeginner.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
-    toggleButtonState(capitalToggleBeginner);
-    capitalApplyBeginner.classList.remove("apply--active");
-    capitalApplyBeginner.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    capitalToggleBeginner.disabled = false;
-});
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handleEnterToggle = () => {
     toggleButtonStyle(enterToggle);
-    enterApply.classList.toggle("apply--active");
-    enterApply.disabled = enterApply.classList.contains("apply--active")
-        ? false
-        : true;
+    toggleButtonState(enterToggle);
 
-    startButton.disabled = allChangesApplied() ? false : true;
-
-    messageDiv.textContent = "Apply changes!";
+    clearDataAndDisplay();
+    clearArrAndString();
 };
 
 enterToggle.addEventListener("click", handleEnterToggle);
-
-enterApply.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
-    toggleButtonState(enterToggle);
-    enterApply.classList.remove("apply--active");
-    enterApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    enterToggle.disabled = false;
-});
 
 // BEGINNER LEVEL
 
 const handleEnterToggleBeginner = () => {
     toggleButtonStyle(enterToggleBeginner);
-    enterApplyBeginner.classList.toggle("apply--active");
-    enterApplyBeginner.disabled = enterApplyBeginner.classList.contains(
-        "apply--active"
-    )
-        ? false
-        : true;
+    toggleButtonState(enterToggleBeginner);
 
-    startButton.disabled = allChangesApplied() ? false : true;
-
-    messageDiv.textContent = "Apply changes!";
+    clearDataAndDisplay();
+    clearArrAndString();
 };
 
 enterToggleBeginner.addEventListener("click", handleEnterToggleBeginner);
 
-enterApplyBeginner.addEventListener("click", function () {
-    clearDataAndDisplay();
-    clearArrAndString();
-    toggleButtonState(enterToggleBeginner);
-    enterApplyBeginner.classList.remove("apply--active");
-    enterApplyBeginner.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    enterToggleBeginner.disabled = false;
-});
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TIMER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // ONE TIME LISTENER FOR TIMER SETTIMEOUT
 const countdown = () => {
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     for (let i = 0; i < fadeWithTimerElements.length; i += 1) {
         fadeWithTimerElements[i].classList.remove("fadeIn");
         fadeWithTimerElements[i].classList.add("fadeOut");
@@ -1948,7 +1754,6 @@ const countdown = () => {
     document.querySelector(".body").classList.add("timer-style__body");
     container.classList.add("timer-style__container");
     messageDiv.classList.add("timer-style__message-div");
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     let seconds = 60;
     // seconds = 10;
@@ -2006,13 +1811,6 @@ const countdown = () => {
             setTimeout(clearTextFields, 1750);
             // textSpanContainerActive.classList.add("fadeOut");
 
-            // THIS IS NOT NECESSARY, ADD CLASS TO BOTH LINES AT ONCE SEE BELOW:
-            // const activeTextSpans =
-            //     document.getElementsByClassName("active-txt-span");
-            // for (let i = 0; i < activeTextSpans.length; i += 1) {
-            //     activeTextSpans[i].classList.add("totalFadeOut");
-            // }
-
             textSpanContainerNextParagraph.classList.add("totalFadeOut");
             textSpanContainerActive.classList.add("totalFadeOut");
 
@@ -2040,69 +1838,23 @@ const countdown = () => {
 const handleTimerToggle = () => {
     // console.log("TIMER TOGGLE", enterOn);
     toggleButtonStyle(timerToggle);
-    timerApply.classList.toggle("apply--active");
-    timerApply.disabled = timerApply.classList.contains("apply--active")
-        ? false
-        : true;
+    toggleButtonState(timerToggle);
 
-    startButton.disabled = allChangesApplied() ? false : true;
-
-    messageDiv.textContent = "Apply changes!";
+    // CLEAR DATA AND DISPLAY?
 };
 
 timerToggle.addEventListener("click", handleTimerToggle);
-
-timerApply.addEventListener("click", function () {
-    // console.log("TIMER APPLY START", enterOn);
-    clearDataAndDisplay();
-    // console.log("TIMER APPLY", enterOn);
-    clearArrAndString();
-    // console.log("TIMER APPLY", enterOn);
-    toggleButtonState(timerToggle);
-    // console.log("TIMER APPLY", enterOn);
-    timerApply.classList.remove("apply--active");
-    timerApply.disabled = true;
-    if (allChangesApplied()) {
-        // console.log("TIMER APPLY", enterOn);
-        enableStartButton();
-        messageDiv.textContent = "";
-        // console.log("TIMER APPLY", enterOn);
-    }
-    timerToggle.disabled = false;
-    // console.log("TIMER APPLY END", enterOn);
-});
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 SOUND 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handleSoundToggle = () => {
     toggleButtonStyle(soundToggle);
-    soundApply.classList.toggle("apply--active");
-    soundApply.disabled = soundApply.classList.contains("apply--active")
-        ? false
-        : true;
+    toggleButtonState(soundToggle);
 
-    messageDiv.textContent = "Apply changes!";
-
-    // DO NOT DISABLE START BUTTON WHEN TURNING SOUND ON / OFF
-    // startButton.disabled = allChangesApplied()
-    //     ? false
-    //     : true;
+    // ADD FOCUS TO INPUT !!!
 };
 
 soundToggle.addEventListener("click", handleSoundToggle);
-
-soundApply.addEventListener("click", function () {
-    // clearDataAndDisplay();
-    // clearArrAndString();
-    toggleButtonState(soundToggle);
-    soundApply.classList.remove("apply--active");
-    soundApply.disabled = true;
-    if (allChangesApplied()) {
-        enableStartButton();
-        messageDiv.textContent = "";
-    }
-    soundToggle.disabled = false;
-});
 
 // ONE OFF FUNCTION RUNS ON FIRST KEYPRESS
 const startCountdown = () => {
@@ -2144,6 +1896,7 @@ for (let i = 0; i < controlFlipButtons.length; i += 1) {
     });
 }
 
+
 // CLICK ANYWHERE TO CLOSE INSTRUCTIONS (DISABLED)
 // instructionsContainer.addEventListener("click", function () {
 //     card.classList.toggle("flipped");
@@ -2167,26 +1920,6 @@ themeToggle.addEventListener("click", handleThemeToggle);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER CONTROLS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-// ONLY ENABLE LEVELS APPLY IF AT LEAST ONE GROUP IS SELECTED
-const enableLevelsApply = () => {
-    // 1. CHECK IF AT LEAST ONE LEVEL IS SELECTED
-    let selectionMade = false; // RESET TO FALSE BEFORE LOOP
-    for (let i = 0; i < levelButtons.length; i += 1) {
-        if (levelButtons[i].classList.contains("apply--active")) {
-            selectionMade = true;
-            break;
-        }
-    }
-
-    // 2. ONLY ACTIVATE APPLY IF AT LEAST ONE LEVEL IS SELECTED
-    if (selectionMade) {
-        levelsApply.classList.add("apply--active");
-        levelsApply.disabled = false;
-    } else {
-        levelsApply.classList.remove("apply--active");
-        levelsApply.disabled = true;
-    }
-};
 
 // ARRAY FOR THE CURRENTLY SELECTED KEYS
 let selectedBeginerKeys = [];
@@ -2195,9 +1928,9 @@ let selectedBeginerKeys = [];
 let randomKeyWordsArray = [];
 
 // ALL 3 TOGGLE BUTTONS (PUNCTUATION, CAPITAL AND ENTER)
-const beginnerToggles = document.getElementsByClassName(
-    "btn--toggle__beginner"
-);
+// const beginnerToggles = document.getElementsByClassName(
+//     "btn--toggle__beginner"
+// );
 
 // CHOOSE SELECTION TYPE (RANDOM (ONE AT A TIME) OR INCLUSIVE (UP TO SELECTED))
 // INCLUSIVE UP TO SELECTION IS NOW DEFAULT
@@ -2207,7 +1940,6 @@ const selectInclusiveToggle = document.getElementById(
     "btn--toggle__selection-type"
 );
 selectInclusiveToggle.addEventListener("click", function () {
-    levelsApply.disabled = true;
 
     // RESET ALL BUTTONS (REMOVE CONTROL-APPLY-ACTIVE AND TOGGLE ON CLASSES)
     for (let i = 0; i < levelButtons.length; i += 1) {
@@ -2228,88 +1960,6 @@ selectInclusiveToggle.addEventListener("click", function () {
         // console.log(inclusiveSelected);
     }
 });
-
-// console.log("INCLUSIVE SELECTED");
-for (let i = 0; i < levelButtons.length; i += 1) {
-    // console.log(this);
-    // console.log(this.innerText);
-    // console.log(this.id);
-
-    // console.log("CLICKED", levelButtons[i], "index:", i);
-    levelButtons[i].addEventListener("click", function () {
-        // INCLUSIVE SELECTED
-        if (inclusiveSelected) {
-            // REMOVE CLASSES FIRST
-            for (let i = 0; i < levelButtons.length; i += 1) {
-                levelButtons[i].classList.remove(
-                    "toggle-on",
-                    "toggle-off",
-                    "apply--active"
-                );
-            }
-
-            // LOOP THROUGH LEVELBUTTOONS AND ACTIVATE THEM UP TO INDEX OF SELECTED LEVEL
-            for (let j = 0; j <= i; j += 1) {
-                // console.log("INCLUSIVE SELECTION:", levelButtons[j]);
-                levelButtons[j].classList.add("apply--active", "toggle-on");
-            }
-
-            disableStartButton();
-            clearDataAndDisplay();
-            enableLevelsApply();
-
-            messageDiv.textContent = "Apply changes!";
-
-            // 1. CHECK IF AT LEAST ONE LEVEL IS SELECTED
-            let selectionMade = false; // RESET TO FALSE BEFORE LOOP
-            for (let i = 0; i < levelButtons.length; i += 1) {
-                if (levelButtons[i].classList.contains("apply--active")) {
-                    // console.log("FOUND", levelButtons[i]);
-                    selectionMade = true;
-                    break;
-                }
-            }
-
-            // console.log("SELECTION MADE:", selectionMade);
-
-            // 2. ONLY ACTIVATE APPLY IF AT LEAST ONE LEVEL IS SELECTED
-            if (selectionMade) {
-                levelsApply.classList.add("apply--active");
-                levelsApply.disabled = false;
-            } else {
-                levelsApply.classList.remove("apply--active");
-                levelsApply.disabled = true;
-            }
-
-            // RESET SELECTED BEGINNER KEYS ARRAY, IT WILL BE UPDATED WITH APPLY BUTTON
-            selectedBeginerKeys = [];
-        }
-        // INDIVIDUALLY SELECT (ONE BY ONE, ANY ORDER)
-        else {
-            disableStartButton();
-            clearDataAndDisplay();
-            messageDiv.textContent = "Apply changes!";
-
-            toggleLevelButtonStyle(this);
-            // console.log(levelButtons);
-
-            enableLevelsApply();
-
-            // ONLY DISPLAY MESSAGE IF CHANGES HAVE BEEN MADE (APPLY BUTTON IS ACTIVE)
-            if (levelsApply.classList.contains("apply--active")) {
-                messageDiv.textContent = "Apply changes!";
-            } else {
-                messageDiv.textContent = "";
-            }
-
-            // RESET SELECTED BEGINNER KEYS ARRAY, IT WILL BE UPDATED WITH APPLY BUTTON
-            selectedBeginerKeys = [];
-        }
-        // DISABLE RADIOS
-        disableGramsControls();
-        disableRowsControls();
-    });
-}
 
 // TOGGLE LEVEL BUTTON STYLE, CLASSES ARE NOW USED TO STYLE
 const toggleLevelButtonStyle = (element) => {
@@ -2389,83 +2039,149 @@ const toggleLevelButtonState = (element) => {
     }
 };
 
-// 2. APPLY CHANGES TO ALL LEVELS WHEN APPLY CLICKED
-levelsApply.addEventListener("click", function () {
-    // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
-    for (let i = 0; i < beginnerToggles.length; i += 1) {
-        beginnerToggles[i].disabled = false;
-    }
+// console.log("INCLUSIVE SELECTED");
+for (let i = 0; i < levelButtons.length; i += 1) {
+    // console.log(this);
+    // console.log(this.innerText);
+    // console.log(this.id);
 
-    randomKeyWordsArray = []; // RESET TO AVOID DUPLICATES IF APPLY IS CLICKED AGAIN
-    selectedBeginerKeys = []; // RESET TO AVOID DUPLICATES
-    enableStartButton();
-    levelsApply.disabled = true;
-
-    levelsApply.classList.remove("apply--active");
-    // THIS WILL UPDATE LEVEL STATES ARRAY
-    for (let i = 0; i < levelButtons.length; i += 1) {
-        toggleLevelButtonState(levelButtons[i]);
-    }
-
-    messageDiv.textContent = "";
-
-    // LEVEL BUTTON STATES ARRAY IS USED TO LOOP THROUGH ALL BOOLEANS
-    let levelStateArray = [
-        level_1_On,
-        level_2_On,
-        level_3_On,
-        level_4_On,
-        level_5_On,
-        level_6_On,
-        level_7_On,
-        level_8_On,
-        level_9_On,
-    ];
-
-    // console.log(levelStateArray);
-
-    // UPDATE TARGET ARRAY WITH RANDOM WORDS(RANDOM LENGTH 1-6) MADE FROM SELECTED LEVELS
-
-    // LOOP THROUGH levelStateArray AND IF CURRENT VALUE IS TRUE, CONCAT CORRESPONDING LEVEL KEY ARRAY TO selectedBeginerKeys
-
-    // 1. FIND ALL SELECTED KEYS IN GROUPS
-    for (let i = 0; i < levelStateArray.length; i += 1) {
-        if (levelStateArray[i]) {
-            selectedBeginerKeys = selectedBeginerKeys.concat(keyLevelsArray[i]);
-        }
-    }
-
-    // 2. GENERATE WORDS USING ONLY THOSE SELECTED KEYS
-    const generateWords = (numOfWords) => {
-        for (let i = 0; i < numOfWords; i += 1) {
-            let randomWord = "";
-            let length = getRandomIdxLessThanNum(6);
-            while (randomWord.length <= length) {
-                randomWord += getRandomFromArr(selectedBeginerKeys);
+    // console.log("CLICKED", levelButtons[i], "index:", i);
+    levelButtons[i].addEventListener("click", function () {
+        // INCLUSIVE SELECTED
+        if (inclusiveSelected) {
+            // REMOVE CLASSES FIRST
+            for (let i = 0; i < levelButtons.length; i += 1) {
+                levelButtons[i].classList.remove(
+                    "toggle-on",
+                    "toggle-off",
+                    "apply--active"
+                );
             }
-            randomKeyWordsArray.push(randomWord);
+
+            // LOOP THROUGH LEVELBUTTOONS AND ACTIVATE THEM UP TO INDEX OF SELECTED LEVEL
+            for (let j = 0; j <= i; j += 1) {
+                // console.log("INCLUSIVE SELECTION:", levelButtons[j]);
+                levelButtons[j].classList.add("apply--active", "toggle-on");
+            }
+
+            disableStartButton();
+            clearDataAndDisplay();
+
+            messageDiv.textContent = "Apply changes!";
+
+            // 1. CHECK IF AT LEAST ONE LEVEL IS SELECTED
+            let selectionMade = false; // RESET TO FALSE BEFORE LOOP
+            for (let i = 0; i < levelButtons.length; i += 1) {
+                if (levelButtons[i].classList.contains("apply--active")) {
+                    // console.log("FOUND", levelButtons[i]);
+                    selectionMade = true;
+                    break;
+                }
+            }
+
+            // console.log("SELECTION MADE:", selectionMade);
+
+            // RESET SELECTED BEGINNER KEYS ARRAY, IT WILL BE UPDATED WITH APPLY BUTTON
+            selectedBeginerKeys = [];
         }
-    };
+        // INDIVIDUALLY SELECT (ONE BY ONE, ANY ORDER)
+        else {
+            disableStartButton();
+            clearDataAndDisplay();
+            messageDiv.textContent = "Apply changes!";
 
-    generateWords(500);
-    // console.log("RANDOM KEY WORDS ARRAY:", randomKeyWordsArray);
+            toggleLevelButtonStyle(this);
+            // console.log(levelButtons);
 
-    // 3. UPDATE TARGET ARRAY WITH randomKeyWordsArray
-    targetArray = [...randomKeyWordsArray];
-});
+
+
+
+            // RESET SELECTED BEGINNER KEYS ARRAY, IT WILL BE UPDATED WITH APPLY BUTTON
+            selectedBeginerKeys = [];
+        }
+        // DISABLE RADIOS
+        disableGramsControls();
+        disableRowsControls();
+
+        // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
+        for (let i = 0; i < beginnerToggles.length; i += 1) {
+            beginnerToggles[i].disabled = false;
+        }
+
+        randomKeyWordsArray = []; // RESET TO AVOID DUPLICATES IF APPLY IS CLICKED AGAIN
+        selectedBeginerKeys = []; // RESET TO AVOID DUPLICATES
+        enableStartButton();
+
+        // THIS WILL UPDATE LEVEL STATES ARRAY
+        for (let i = 0; i < levelButtons.length; i += 1) {
+            toggleLevelButtonState(levelButtons[i]);
+        }
+
+
+        // LEVEL BUTTON STATES ARRAY IS USED TO LOOP THROUGH ALL BOOLEANS
+        let levelStateArray = [
+            level_1_On,
+            level_2_On,
+            level_3_On,
+            level_4_On,
+            level_5_On,
+            level_6_On,
+            level_7_On,
+            level_8_On,
+            level_9_On,
+        ];
+
+        // console.log(levelStateArray);
+
+        // UPDATE TARGET ARRAY WITH RANDOM WORDS(RANDOM LENGTH 1-6) MADE FROM SELECTED LEVELS
+
+        // LOOP THROUGH levelStateArray AND IF CURRENT VALUE IS TRUE, CONCAT CORRESPONDING LEVEL KEY ARRAY TO selectedBeginerKeys
+
+        // 1. FIND ALL SELECTED KEYS IN GROUPS
+        for (let i = 0; i < levelStateArray.length; i += 1) {
+            if (levelStateArray[i]) {
+                selectedBeginerKeys = selectedBeginerKeys.concat(keyLevelsArray[i]);
+            }
+        }
+
+        // 2. GENERATE WORDS USING ONLY THOSE SELECTED KEYS
+        const generateWords = (numOfWords) => {
+            for (let i = 0; i < numOfWords; i += 1) {
+                let randomWord = "";
+                let length = getRandomIdxLessThanNum(6);
+                while (randomWord.length <= length) {
+                    randomWord += getRandomFromArr(selectedBeginerKeys);
+                }
+                randomKeyWordsArray.push(randomWord);
+            }
+        };
+
+        generateWords(500);
+        // console.log("RANDOM KEY WORDS ARRAY:", randomKeyWordsArray);
+
+        // 3. UPDATE TARGET ARRAY WITH randomKeyWordsArray
+        targetArray = [...randomKeyWordsArray];
+
+    });
+}
+
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
+
+    // RESET LEVEL BUTTONS, NO PRE-SELECTION OPTION !
+    for (let i = 0; i < levelButtons.length; i += 1) {
+        levelButtons[i].classList.remove("apply--active", "toggle-on");
+    }
+
     beginnerOn = true;
 
     timerOn = false;
 
-    // +++++++++++++++++++++++++++++++++++++++++++++
     // MAKING SURE TIMERON IS FALSE IN BEGINNER
     if (timerToggle.classList.contains("toggle-on") && beginnerOn) {
         timerOn = false;
     }
-    // +++++++++++++++++++++++++++++++++++++++++++++
 
     // DISABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
     for (let i = 0; i < beginnerToggles.length; i += 1) {
@@ -2503,9 +2219,8 @@ beginnerShowButton.addEventListener("click", function () {
         }
     }
     if (preSelectedLevels) {
-        // console.log("PRE SELECTED LEVELS");
-        levelsApply.disabled = false;
-        levelsApply.classList.add("apply--active");
+        console.log("PRE SELECTED LEVELS");
+
     }
 
     startButton.disabled = true;
@@ -2513,6 +2228,7 @@ beginnerShowButton.addEventListener("click", function () {
     textInput.disabled = true;
     clearDataAndDisplay();
     clearArrAndString();
+
 });
 
 // HIDE BEGINNER LEVELS
@@ -2544,12 +2260,10 @@ beginnerHideButton.addEventListener("click", function () {
 
     enterOn = enterToggle.classList.contains("toggle-on") ? true : false;
 
-    // +++++++++++++++++++++++++++++++++++++++++++++
     // if (timerToggle.innerText === "On") {
     if (timerToggle.classList.contains("toggle-on")) {
         timerOn = true;
     }
-    // +++++++++++++++++++++++++++++++++++++++++++++
 
     problemKeysSet.clear();
 
@@ -2564,14 +2278,11 @@ beginnerHideButton.addEventListener("click", function () {
     for (let i = 0, length = gramRadios.length; i < length; i++) {
         gramRadios[i].checked = false;
     }
-    gramsApply.disabled = true;
-    gramsApply.classList.remove("apply--active");
 
     for (let i = 0, length = rowRadios.length; i < length; i++) {
         rowRadios[i].checked = false;
     }
-    rowsApply.disabled = true;
-    rowsApply.classList.remove("apply--active");
+
 });
 
 // JS NOT IN USE, POSITION IS NOW STICKY IN CSS
@@ -2596,12 +2307,12 @@ beginnerHideButton.addEventListener("click", function () {
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
         MAKE DIFFICULTY LEVEL OPTIONS SIMPLER
-            EASY
-            MEDIUM
-            HARD
+            ☑️ EASY
+            ☑️ MEDIUM
+            ☑️ HARD
 
-            EASY: RANDOM 100
-            MEDIUM: RANDOM 200 OR 500
+            ☑️ EASY: RANDOM 100
+            ☑️ MEDIUM: RANDOM 200 OR 500
             HARD: INCLUDE RANDOM SENTENCES
 
         CHANGE THE NUMBER OF CONSECUTIVE ERRORS ALLOWED
@@ -2615,9 +2326,9 @@ beginnerHideButton.addEventListener("click", function () {
             MOVE CURSOR BACK TO FIRST RED KEY
             CONTINUE SESSSION AS NORMAL AND REVEAL STATS AT THE END
 
-        GET RID OF APPLY BUTTONS
+        ☑️ GET RID OF APPLY BUTTONS
 
-        USE "HOW TO" INSTEAD OF "INFO"
+        ☑️ USE "HOW TO" INSTEAD OF "INFO"
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
