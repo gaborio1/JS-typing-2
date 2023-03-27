@@ -1546,6 +1546,20 @@ const allChangesApplied = () => {
     return allApplied;
 };
 
+const disableBeginnerToggles = () => {
+    for (let i = 0; i < beginnerToggles.length; i += 1) {
+        beginnerToggles[i].disabled = true;
+    }
+}
+
+const displaySelectionWarning = () => {
+    messageDiv.textContent = "SELECT LEVEL, GRAMS OR ROWS";
+}
+
+const clearMessageDiv = () => {
+    messageDiv.textContent = "";
+}
+
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 DIFFICULTY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
@@ -1609,7 +1623,10 @@ for (let i = 0; i < gramRadios.length; i++) {
         // }
         // }
 
+        clearMessageDiv();
+
     });
+
 }
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER ROWS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1647,7 +1664,10 @@ for (let i = 0, length = rowRadios.length; i < length; i++) {
             targetArray = [...bottomRow]; // "bottom"
         }
 
+        clearMessageDiv();
+
     });
+
 }
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 LINE LENGTH 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1929,12 +1949,6 @@ let randomKeyWordsArray = [];
 //     "btn--toggle__beginner"
 // );
 
-const disableBeginnerToggles = () => {
-    for (let i = 0; i < beginnerToggles.length; i += 1) {
-        beginnerToggles[i].disabled = true;
-    }
-}
-
 // CHOOSE SELECTION TYPE (RANDOM (ONE AT A TIME) OR INCLUSIVE (UP TO SELECTED))
 // INCLUSIVE UP TO SELECTION IS NOW DEFAULT
 let inclusiveSelected = true;
@@ -1964,6 +1978,9 @@ selectInclusiveToggle.addEventListener("click", function () {
         selectInclusiveToggle.innerText = "Through";
         // console.log(inclusiveSelected);
     }
+
+    displaySelectionWarning();
+
 });
 
 // TOGGLE LEVEL BUTTON STYLE, CLASSES ARE NOW USED TO STYLE
@@ -2148,7 +2165,10 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             // console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
             disableStartButton();
             disableBeginnerToggles();
+            displaySelectionWarning();
 
+        } else {
+            clearMessageDiv();
         }
 
         // console.log(levelStateArray);
@@ -2175,12 +2195,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
                 randomKeyWordsArray.push(randomWord);
             }
         };
-
-
-
-
-
-
 
         generateWords(500);
         // console.log("RANDOM KEY WORDS ARRAY:", randomKeyWordsArray);
@@ -2255,6 +2269,8 @@ beginnerShowButton.addEventListener("click", function () {
     clearDataAndDisplay();
     clearArrAndString();
 
+    displaySelectionWarning();
+
 });
 
 // HIDE BEGINNER LEVELS
@@ -2308,6 +2324,8 @@ beginnerHideButton.addEventListener("click", function () {
     for (let i = 0, length = rowRadios.length; i < length; i++) {
         rowRadios[i].checked = false;
     }
+
+    clearMessageDiv();
 
 });
 
@@ -2429,13 +2447,13 @@ CURRENT BRANCH: none
             
     PROBLEMS:
 
-        DISPAY MESSAGE: "MAKE LEVEL SELECTION" IF NO LEVEL / GRAMS / ROWS ARE SELECTED
+        ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT
+
+        ☑️ DISPAY MESSAGE: "MAKE LEVEL SELECTION" IF NO LEVEL / GRAMS / ROWS ARE SELECTED
 
         ☑️ DISABLE TOGGLES AND START BUTTON IF LEVEL SELECTORS ARE ALL UNSELECTED IN BEGINNER RANDOM
 
         ☑️ RESET WRONG KEY COUNTER WITH START !!! IT IS KEEPING TRACK OF IT FROM PREVIOUS SESSION !!!
-
-        LINE:2339 HOW TO HANDLE APPLY BUTTONS WHEN SWITCHING BETWEEN ADV/BEGINNER ???
 
         ENTER AND SPACE KEYS TRIGGER CARD FLIP AFTER FLIP BUTTON IS CLICKED (FOCUS???)
                
