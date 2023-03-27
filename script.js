@@ -213,7 +213,7 @@ let accuracy = 0;
 
 // TRACK CONSECUTIVE WRONG KEYS
 let wrongCounter = 0;
-const maxMistakes = 5;
+let maxMistakes = 15;
 
 // TRACK PROBLEM KEYS (NO DUPLICATES IN SET)
 let problemKeysSet = new Set();
@@ -596,10 +596,13 @@ const setDifficultyLevel = () => {
         if (difficultyRadios[i].checked) {
             if (difficultyRadios[i].value === "easy") {
                 targetArray = [...common100];
+                maxMistakes = 15;
             } else if (difficultyRadios[i].value === "medium") {
                 targetArray = [...common200, ...common100];
+                maxMistakes = 12;
             } else {
                 targetArray = [...jsReserved, ...jsObjPropMeth];
+                maxMistakes = 9;
             }
             break;
         }
@@ -2269,7 +2272,10 @@ beginnerShowButton.addEventListener("click", function () {
     clearDataAndDisplay();
     clearArrAndString();
 
-    displaySelectionWarning();
+    setTimeout(() => {
+        displaySelectionWarning();
+    }, 700)
+
 
 });
 
@@ -2360,9 +2366,9 @@ beginnerHideButton.addEventListener("click", function () {
             HARD: INCLUDE RANDOM SENTENCES
 
         CHANGE THE NUMBER OF CONSECUTIVE ERRORS ALLOWED
-            EASY:15
-            MEDIUM:10
-            HARD:5
+            ☑️ EASY:15
+            ☑️ MEDIUM:12
+            ☑️ HARD:9
 
         WHEN MAX NUM OF ERRORS HAVE BEEN MADE:
             DO NOT RESET COUNTERS
