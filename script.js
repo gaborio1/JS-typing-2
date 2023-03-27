@@ -1599,13 +1599,10 @@ for (let i = 0; i < gramRadios.length; i++) {
         // for (let i = 0; i < gramRadios.length; i++) {
         // if (gramRadios[i].checked) {
         if (gramRadios[i].value === "2") {
-            console.log("2");
             targetArray = [...bigrams];
         } else if (gramRadios[i].value === "3") {
-            console.log("3");
             targetArray = [...trigrams];
         } else {
-            console.log("4");
             targetArray = [...quadrigrams]; // "4"
         }
         // break;
@@ -1932,6 +1929,12 @@ let randomKeyWordsArray = [];
 //     "btn--toggle__beginner"
 // );
 
+const disableBeginnerToggles = () => {
+    for (let i = 0; i < beginnerToggles.length; i += 1) {
+        beginnerToggles[i].disabled = true;
+    }
+}
+
 // CHOOSE SELECTION TYPE (RANDOM (ONE AT A TIME) OR INCLUSIVE (UP TO SELECTED))
 // INCLUSIVE UP TO SELECTION IS NOW DEFAULT
 let inclusiveSelected = true;
@@ -1948,6 +1951,8 @@ selectInclusiveToggle.addEventListener("click", function () {
 
     disableStartButton();
     clearDataAndDisplay();
+
+    disableBeginnerToggles();
 
     selectInclusiveToggle.classList.toggle("toggle-on");
     if (selectInclusiveToggle.classList.contains("toggle-on")) {
@@ -2067,8 +2072,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             disableStartButton();
             clearDataAndDisplay();
 
-            messageDiv.textContent = "Apply changes!";
-
             // 1. CHECK IF AT LEAST ONE LEVEL IS SELECTED
             let selectionMade = false; // RESET TO FALSE BEFORE LOOP
             for (let i = 0; i < levelButtons.length; i += 1) {
@@ -2086,16 +2089,11 @@ for (let i = 0; i < levelButtons.length; i += 1) {
         }
         // INDIVIDUALLY SELECT (ONE BY ONE, ANY ORDER)
         else {
+
             disableStartButton();
             clearDataAndDisplay();
-            messageDiv.textContent = "Apply changes!";
 
             toggleLevelButtonStyle(this);
-            // console.log(levelButtons);
-
-
-
-
             // RESET SELECTED BEGINNER KEYS ARRAY, IT WILL BE UPDATED WITH APPLY BUTTON
             selectedBeginerKeys = [];
         }
@@ -2131,6 +2129,28 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             level_9_On,
         ];
 
+        // ONLY ENABLE TOGGLES AND START IF AT LEAST ONE IS SELECTED
+        const selectionIsMade = () => {
+            let selectionMade = false;
+            for (let i = 0; i < levelButtons.length; i += 1) {
+
+                if (levelButtons[i].classList.contains("toggle-on")) {
+                    selectionMade = true;
+                    break;
+                }
+            }
+            return selectionMade;
+        }
+
+
+        // DISABLE TOGGLES AND START IF NO SELECTION IS MADE
+        if (!selectionIsMade()) {
+            // console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
+            disableStartButton();
+            disableBeginnerToggles();
+
+        }
+
         // console.log(levelStateArray);
 
         // UPDATE TARGET ARRAY WITH RANDOM WORDS(RANDOM LENGTH 1-6) MADE FROM SELECTED LEVELS
@@ -2155,6 +2175,12 @@ for (let i = 0; i < levelButtons.length; i += 1) {
                 randomKeyWordsArray.push(randomWord);
             }
         };
+
+
+
+
+
+
 
         generateWords(500);
         // console.log("RANDOM KEY WORDS ARRAY:", randomKeyWordsArray);
@@ -2402,6 +2428,11 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+        DISPAY MESSAGE: "MAKE LEVEL SELECTION" IF NO LEVEL / GRAMS / ROWS ARE SELECTED
+
+        ☑️ DISABLE TOGGLES AND START BUTTON IF LEVEL SELECTORS ARE ALL UNSELECTED IN BEGINNER RANDOM
+
         ☑️ RESET WRONG KEY COUNTER WITH START !!! IT IS KEEPING TRACK OF IT FROM PREVIOUS SESSION !!!
 
         LINE:2339 HOW TO HANDLE APPLY BUTTONS WHEN SWITCHING BETWEEN ADV/BEGINNER ???
