@@ -197,7 +197,7 @@ let punctuationOn = false;
 let capitalOn = false;
 let enterOn = false;
 // DISABLED
-let timerOn = true;
+let timerOn = false;
 let timerRunning = false;
 // let timerOn = false;
 let soundOn = true;
@@ -2274,7 +2274,7 @@ beginnerShowButton.addEventListener("click", function () {
 
     setTimeout(() => {
         displaySelectionWarning();
-    }, 700)
+    }, 1000)
 
 
 });
