@@ -43,40 +43,29 @@ const difficultyApply = document.getElementById("diffuculty-apply");
 const difficultyRadios = document.getElementsByClassName("difficulty-radio");
 // LENGTH
 const slider = document.getElementById("length");
-const lengthApply = document.getElementById("length-apply");
 const lengthDisplaySpan = document.getElementById("length-display-span");
 // PUNCTUATION
 const punctuationToggle = document.getElementById("punctuation-toggle");
-const punctuationApply = document.getElementById("punctuation-apply");
 const punctuationToggleBeginner = document.getElementById(
     "punctuation-toggle__beginner"
 );
-const punctuationApplyBegineer = document.getElementById(
-    "punctuation-apply__beginner"
-);
 // CAPITAL
 const capitalToggle = document.getElementById("capital-toggle");
-const capitalApply = document.getElementById("capital-apply");
 const capitalToggleBeginner = document.getElementById(
     "capital-toggle__beginner"
 );
 const capitalApplyBeginner = document.getElementById("capital-apply__beginner");
 // ENTER
 const enterToggle = document.getElementById("enter-toggle");
-const enterApply = document.getElementById("enter-apply");
 const enterToggleBeginner = document.getElementById("enter-toggle__beginner");
-const enterApplyBeginner = document.getElementById("enter-apply__beginner");
 // SOUND
 const soundToggle = document.getElementById("sound-toggle");
-const soundApply = document.getElementById("sound-apply");
 // COLOUR THEME
 const colourThemeElements = document.getElementsByClassName("colour-theme");
 const themeToggle = document.getElementById("theme-toggle");
-const themeApply = document.getElementById("theme-apply");
 
 // TIMER
 const timerToggle = document.getElementById("timer-toggle");
-const timerApply = document.getElementById("timer-apply");
 // ELEMENTS THAT FADE WHILE TIMER IS ON
 const fadeWithTimerElements =
     document.getElementsByClassName("fadeout-with-timer");
@@ -1553,15 +1542,15 @@ const disableBeginnerToggles = () => {
     for (let i = 0; i < beginnerToggles.length; i += 1) {
         beginnerToggles[i].disabled = true;
     }
-}
+};
 
 const displaySelectionWarning = () => {
     messageDiv.textContent = "SELECT LEVEL, GRAMS OR ROWS";
-}
+};
 
 const clearMessageDiv = () => {
     messageDiv.textContent = "";
-}
+};
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 DIFFICULTY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1590,11 +1579,12 @@ const disableGramsControls = () => {
 };
 
 const gramRadios = document.getElementsByClassName("gram-radio");
-const beginnerToggles = document.getElementsByClassName("btn--toggle__beginner");
+const beginnerToggles = document.getElementsByClassName(
+    "btn--toggle__beginner"
+);
 
 for (let i = 0; i < gramRadios.length; i++) {
     gramRadios[i].addEventListener("click", function () {
-
         enableStartButton();
 
         // DISABLE ROWS
@@ -1608,7 +1598,6 @@ for (let i = 0; i < gramRadios.length; i++) {
         for (let i = 0; i < beginnerToggles.length; i += 1) {
             beginnerToggles[i].disabled = false;
         }
-
 
         // clearDataAndDisplay();
         // clearArrAndString();
@@ -1627,9 +1616,7 @@ for (let i = 0; i < gramRadios.length; i++) {
         // }
 
         clearMessageDiv();
-
     });
-
 }
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER ROWS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1638,10 +1625,8 @@ const rowRadios = document.getElementsByClassName("row-radio");
 
 for (let i = 0, length = rowRadios.length; i < length; i++) {
     rowRadios[i].addEventListener("click", function () {
-
         // clearDataAndDisplay();
         // clearArrAndString();
-
 
         enableStartButton();
 
@@ -1652,12 +1637,10 @@ for (let i = 0, length = rowRadios.length; i < length; i++) {
             levelButtons[i].classList.remove("apply--active", "toggle-on");
         }
 
-
         // ENABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
         for (let i = 0; i < beginnerToggles.length; i += 1) {
             beginnerToggles[i].disabled = false;
         }
-
 
         if (rowRadios[i].value === "top") {
             targetArray = [...topRow];
@@ -1668,20 +1651,17 @@ for (let i = 0, length = rowRadios.length; i < length; i++) {
         }
 
         clearMessageDiv();
-
     });
-
 }
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 LINE LENGTH 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 slider.onchange = function (event) {
     lengthDisplaySpan.textContent = slider.value;
-
-    // clearDataAndDisplay();
-    // clearArrAndString();
     sequenceLength = slider.value;
     enableStartButton();
+    clearDataAndDisplay();
+    // clearArrAndString();
 };
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 PUNCTUATION 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1689,12 +1669,9 @@ slider.onchange = function (event) {
 const handlePunctuationToggle = () => {
     // console.log("PUNCTUATION TOGGLE");
     toggleButtonStyle(punctuationToggle);
-
     toggleButtonState(punctuationToggle);
-
-    // clearDataAndDisplay();
+    clearDataAndDisplay();
     // clearArrAndString();
-
 };
 
 punctuationToggle.addEventListener("click", handlePunctuationToggle);
@@ -1702,25 +1679,23 @@ punctuationToggle.addEventListener("click", handlePunctuationToggle);
 const handlePunctuationToggleBeginner = () => {
     // console.log("PUNCTUATION TOGGLE");
     toggleButtonStyle(punctuationToggleBeginner);
-
     toggleButtonState(punctuationToggleBeginner);
-
-    // clearDataAndDisplay();
+    clearDataAndDisplay();
     // clearArrAndString();
-
 };
 
-punctuationToggleBeginner.addEventListener("click", handlePunctuationToggleBeginner);
+punctuationToggleBeginner.addEventListener(
+    "click",
+    handlePunctuationToggleBeginner
+);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CAPITAL 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handleCapitalToggle = () => {
     toggleButtonStyle(capitalToggle);
     toggleButtonState(capitalToggle);
-
-    // clearDataAndDisplay();
+    clearDataAndDisplay();
     // clearArrAndString();
-
 };
 
 capitalToggle.addEventListener("click", handleCapitalToggle);
@@ -1730,10 +1705,8 @@ capitalToggle.addEventListener("click", handleCapitalToggle);
 const handleCapitalToggleBeginner = () => {
     toggleButtonStyle(capitalToggleBeginner);
     toggleButtonState(capitalToggleBeginner);
-
-    // clearDataAndDisplay();
+    clearDataAndDisplay();
     // clearArrAndString();
-
 };
 
 capitalToggleBeginner.addEventListener("click", handleCapitalToggleBeginner);
@@ -1743,9 +1716,8 @@ capitalToggleBeginner.addEventListener("click", handleCapitalToggleBeginner);
 const handleEnterToggle = () => {
     toggleButtonStyle(enterToggle);
     toggleButtonState(enterToggle);
-
     clearDataAndDisplay();
-    clearArrAndString();
+    // clearArrAndString();
 };
 
 enterToggle.addEventListener("click", handleEnterToggle);
@@ -1755,13 +1727,11 @@ enterToggle.addEventListener("click", handleEnterToggle);
 const handleEnterToggleBeginner = () => {
     toggleButtonStyle(enterToggleBeginner);
     toggleButtonState(enterToggleBeginner);
-
     clearDataAndDisplay();
-    clearArrAndString();
+    // clearArrAndString();
 };
 
 enterToggleBeginner.addEventListener("click", handleEnterToggleBeginner);
-
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TIMER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1777,7 +1747,7 @@ const countdown = () => {
 
     let seconds = 60;
     // seconds = 10;
-    // seconds = 5;
+    seconds = 5;
     const tick = () => {
         const counter = document.getElementById("counter-div");
         seconds -= 1;
@@ -1859,8 +1829,7 @@ const handleTimerToggle = () => {
     // console.log("TIMER TOGGLE", enterOn);
     toggleButtonStyle(timerToggle);
     toggleButtonState(timerToggle);
-
-    // CLEAR DATA AND DISPLAY?
+    clearDataAndDisplay();
 };
 
 timerToggle.addEventListener("click", handleTimerToggle);
@@ -1916,7 +1885,6 @@ for (let i = 0; i < controlFlipButtons.length; i += 1) {
     });
 }
 
-
 // CLICK ANYWHERE TO CLOSE INSTRUCTIONS (DISABLED)
 // instructionsContainer.addEventListener("click", function () {
 //     card.classList.toggle("flipped");
@@ -1940,7 +1908,6 @@ themeToggle.addEventListener("click", handleThemeToggle);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BEGINNER CONTROLS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-
 // ARRAY FOR THE CURRENTLY SELECTED KEYS
 let selectedBeginerKeys = [];
 
@@ -1960,7 +1927,6 @@ const selectInclusiveToggle = document.getElementById(
     "btn--toggle__selection-type"
 );
 selectInclusiveToggle.addEventListener("click", function () {
-
     // RESET ALL BUTTONS (REMOVE CONTROL-APPLY-ACTIVE AND TOGGLE ON CLASSES)
     for (let i = 0; i < levelButtons.length; i += 1) {
         levelButtons[i].classList.remove("toggle-on", "apply--active");
@@ -1983,7 +1949,6 @@ selectInclusiveToggle.addEventListener("click", function () {
     }
 
     displaySelectionWarning();
-
 });
 
 // TOGGLE LEVEL BUTTON STYLE, CLASSES ARE NOW USED TO STYLE
@@ -2109,7 +2074,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
         }
         // INDIVIDUALLY SELECT (ONE BY ONE, ANY ORDER)
         else {
-
             disableStartButton();
             clearDataAndDisplay();
 
@@ -2135,7 +2099,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             toggleLevelButtonState(levelButtons[i]);
         }
 
-
         // LEVEL BUTTON STATES ARRAY IS USED TO LOOP THROUGH ALL BOOLEANS
         let levelStateArray = [
             level_1_On,
@@ -2153,15 +2116,13 @@ for (let i = 0; i < levelButtons.length; i += 1) {
         const selectionIsMade = () => {
             let selectionMade = false;
             for (let i = 0; i < levelButtons.length; i += 1) {
-
                 if (levelButtons[i].classList.contains("toggle-on")) {
                     selectionMade = true;
                     break;
                 }
             }
             return selectionMade;
-        }
-
+        };
 
         // DISABLE TOGGLES AND START IF NO SELECTION IS MADE
         if (!selectionIsMade()) {
@@ -2169,7 +2130,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             disableStartButton();
             disableBeginnerToggles();
             displaySelectionWarning();
-
         } else {
             clearMessageDiv();
         }
@@ -2183,7 +2143,9 @@ for (let i = 0; i < levelButtons.length; i += 1) {
         // 1. FIND ALL SELECTED KEYS IN GROUPS
         for (let i = 0; i < levelStateArray.length; i += 1) {
             if (levelStateArray[i]) {
-                selectedBeginerKeys = selectedBeginerKeys.concat(keyLevelsArray[i]);
+                selectedBeginerKeys = selectedBeginerKeys.concat(
+                    keyLevelsArray[i]
+                );
             }
         }
 
@@ -2204,14 +2166,11 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
         // 3. UPDATE TARGET ARRAY WITH randomKeyWordsArray
         targetArray = [...randomKeyWordsArray];
-
     });
 }
 
-
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
-
     // RESET LEVEL BUTTONS, NO PRE-SELECTION OPTION !
     for (let i = 0; i < levelButtons.length; i += 1) {
         levelButtons[i].classList.remove("apply--active", "toggle-on");
@@ -2263,7 +2222,6 @@ beginnerShowButton.addEventListener("click", function () {
     }
     if (preSelectedLevels) {
         console.log("PRE SELECTED LEVELS");
-
     }
 
     startButton.disabled = true;
@@ -2274,9 +2232,7 @@ beginnerShowButton.addEventListener("click", function () {
 
     setTimeout(() => {
         displaySelectionWarning();
-    }, 1000)
-
-
+    }, 1000);
 });
 
 // HIDE BEGINNER LEVELS
@@ -2332,7 +2288,6 @@ beginnerHideButton.addEventListener("click", function () {
     }
 
     clearMessageDiv();
-
 });
 
 // JS NOT IN USE, POSITION IS NOW STICKY IN CSS
@@ -2453,7 +2408,9 @@ CURRENT BRANCH: none
             
     PROBLEMS:
 
-        ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT
+        ☑️ BEGINNER / ADVANCED TOGGLES (PUNCTUATION, CAPITAL, TIMER ) TO CLEAR TEXT FIELDS
+
+        ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT?
 
         ☑️ DISPAY MESSAGE: "MAKE LEVEL SELECTION" IF NO LEVEL / GRAMS / ROWS ARE SELECTED
 
