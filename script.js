@@ -1671,6 +1671,7 @@ const handlePunctuationToggle = () => {
     toggleButtonStyle(punctuationToggle);
     toggleButtonState(punctuationToggle);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
     // clearArrAndString();
 };
 
@@ -1681,6 +1682,7 @@ const handlePunctuationToggleBeginner = () => {
     toggleButtonStyle(punctuationToggleBeginner);
     toggleButtonState(punctuationToggleBeginner);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
     // clearArrAndString();
 };
 
@@ -1695,6 +1697,7 @@ const handleCapitalToggle = () => {
     toggleButtonStyle(capitalToggle);
     toggleButtonState(capitalToggle);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
     // clearArrAndString();
 };
 
@@ -1706,6 +1709,7 @@ const handleCapitalToggleBeginner = () => {
     toggleButtonStyle(capitalToggleBeginner);
     toggleButtonState(capitalToggleBeginner);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
     // clearArrAndString();
 };
 
@@ -1717,6 +1721,7 @@ const handleEnterToggle = () => {
     toggleButtonStyle(enterToggle);
     toggleButtonState(enterToggle);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
     // clearArrAndString();
 };
 
@@ -1728,6 +1733,7 @@ const handleEnterToggleBeginner = () => {
     toggleButtonStyle(enterToggleBeginner);
     toggleButtonState(enterToggleBeginner);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
     // clearArrAndString();
 };
 
@@ -1830,6 +1836,7 @@ const handleTimerToggle = () => {
     toggleButtonStyle(timerToggle);
     toggleButtonState(timerToggle);
     clearDataAndDisplay();
+    textInput.placeholder = "                 Click Start ➡";
 };
 
 timerToggle.addEventListener("click", handleTimerToggle);
@@ -2408,9 +2415,14 @@ CURRENT BRANCH: none
             
     PROBLEMS:
 
+        BEGINNER SELECTION TO DISPAY "CLICK START"
+
         ☑️ BEGINNER / ADVANCED TOGGLES (PUNCTUATION, CAPITAL, TIMER ) TO CLEAR TEXT FIELDS
 
+        ☑️ BEGINNER / ADVANCED TOGGLES (PUNCTUATION, CAPITAL, TIMER AND ENTER ) TO DISPLAY "CLICK START"
+
         ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT?
+            ☑️ ADDED 700MS SETTIMEOUT DELAY
 
         ☑️ DISPAY MESSAGE: "MAKE LEVEL SELECTION" IF NO LEVEL / GRAMS / ROWS ARE SELECTED
 
