@@ -1616,6 +1616,8 @@ for (let i = 0; i < gramRadios.length; i++) {
         // }
 
         clearMessageDiv();
+        clearDataAndDisplay();
+        textInput.placeholder = "                 Click Start ➡";
     });
 }
 
@@ -1651,6 +1653,8 @@ for (let i = 0, length = rowRadios.length; i < length; i++) {
         }
 
         clearMessageDiv();
+        clearDataAndDisplay();
+        textInput.placeholder = "                 Click Start ➡";
     });
 }
 
@@ -1753,7 +1757,7 @@ const countdown = () => {
 
     let seconds = 60;
     // seconds = 10;
-    seconds = 5;
+    // seconds = 5;
     const tick = () => {
         const counter = document.getElementById("counter-div");
         seconds -= 1;
@@ -2173,6 +2177,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
         // 3. UPDATE TARGET ARRAY WITH randomKeyWordsArray
         targetArray = [...randomKeyWordsArray];
+        textInput.placeholder = "                 Click Start ➡";
     });
 }
 
@@ -2415,7 +2420,9 @@ CURRENT BRANCH: none
             
     PROBLEMS:
 
-        BEGINNER SELECTION TO DISPAY "CLICK START"
+        ☑️ CLEAR TEXT INPUT WHEN GRAMS/ROWS ARE SELECTED 
+
+        ☑️ BEGINNER SELECTION TO DISPAY "CLICK START"
 
         ☑️ BEGINNER / ADVANCED TOGGLES (PUNCTUATION, CAPITAL, TIMER ) TO CLEAR TEXT FIELDS
 
