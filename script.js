@@ -115,6 +115,7 @@ const beginnerHideButton = document.getElementById(
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰   TEXT FIELDS   🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const textFieldsWrap = document.getElementById("text-fields-wrap");
 // ACTIVE SPAN
 const textSpanContainerActive = document.getElementById("text-span-active");
 // NEXT SPAN
@@ -1325,6 +1326,13 @@ startButton.addEventListener("click", (event) => {
             //     wordArrays[lineIdx][wordIdx][charIdx]
             // );
 
+            messageDiv.textContent = "WRONG KEY TYPED!";
+            textFieldsWrap.classList.add("red-border--thick");
+            setTimeout(() => {
+                messageDiv.textContent = "";
+                textFieldsWrap.classList.remove("red-border--thick");
+            }, 200);
+
             if (typedKey === "Enter" && enterOn) {
                 // console.log("ENTER TYPED");
                 if (strIdx === stringWords.length - 1) {
@@ -1448,6 +1456,13 @@ startButton.addEventListener("click", (event) => {
             if (soundOn) {
                 playSound("mixkit-message-pop-alert-2354.mp3", 0.25);
             }
+
+            messageDiv.textContent = "SPACE ON WORD!";
+            textFieldsWrap.classList.add("red-border--thick");
+            setTimeout(() => {
+                messageDiv.textContent = "";
+                textFieldsWrap.classList.remove("red-border--thick");
+            }, 200);
 
             redCounter += wordArrays[lineIdx][wordIdx].length; // INCREMENT RED COUNTER WITH WORD'S LENGTH
 
@@ -1859,6 +1874,7 @@ timerToggle.addEventListener("click", handleTimerToggle);
 const handleSoundToggle = () => {
     toggleButtonStyle(soundToggle);
     toggleButtonState(soundToggle);
+    textInput.focus();
 
     // ADD FOCUS TO INPUT !!!
 };
@@ -1890,6 +1906,9 @@ for (let i = 0; i < flipButtons.length; i += 1) {
         instructionsContainer.scrollTop = 0;
         // NOT WORKING:
         // instructionsContainer.scrollIntoView();
+        if (!card.classList.contains("flipped")) {
+            textInput.focus();
+        }
     });
 }
 
@@ -1922,6 +1941,7 @@ const handleThemeToggle = () => {
             colourThemeElements[i].classList.remove("dark-theme");
         }
     }
+    textInput.focus();
 };
 
 themeToggle.addEventListener("click", handleThemeToggle);
@@ -2349,9 +2369,9 @@ beginnerHideButton.addEventListener("click", function () {
             HARD: INCLUDE RANDOM SENTENCES
 
         CHANGE THE NUMBER OF CONSECUTIVE ERRORS ALLOWED
-            ☑️ EASY:15
-            ☑️ MEDIUM:12
-            ☑️ HARD:9
+            ☑️ EASY:20
+            ☑️ MEDIUM:16
+            ☑️ HARD:12
 
         WHEN MAX NUM OF ERRORS HAVE BEEN MADE:
             DO NOT RESET COUNTERS
@@ -2426,6 +2446,11 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+            ADD FOCUS TO TEXT INPUT DURING SESSION WHEN: (IF SESSION HASN'T STARTED TXT IPUT IS DISABLED SO IT WILL NOT FOCUS BY DEFAULT)
+                ☑️ SOUND TOGGLE
+                ☑️ THEME TOGGLE
+                ☑️ HIDE BEGINNER ?
 
         ☑️ UNSELECT GRAMS/ROWS WITH SELECTION TYPE TOGGLE ?
 

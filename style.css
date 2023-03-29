@@ -511,7 +511,6 @@ button:disabled:hover {
 .text-fields-wrap.dark-theme {
     background: var(--wrap-highlight--dark);
     border: 1px solid var(--border-gold);
-
     /* transition: background var(--background-transition); */
 }
 
@@ -843,6 +842,7 @@ p .active-txt-span.active-txt-span--enter {
 
 .message-div.dark-theme {
     color: rgb(222, 131, 13);
+    color: red;
     border: 1px solid rgba(184, 135, 11, 0.253);
     background: rgba(135, 206, 250, 0.12);
     background: rgba(48, 75, 92, 0.08);
@@ -1392,6 +1392,16 @@ p .active-txt-span.active-txt-span--enter {
 .red-border {
     border: 1px solid red;
     border-radius: var(--cursor-border-radius);
+}
+
+/* TEXT FIELDS WRAP HIGHLIGHT FOR WRONG KEY */
+.red-border--thick {
+    border: 3px solid rgba(255, 0, 0, 0.556);
+    /* border-radius: var(--cursor-border-radius); */
+}
+
+.red-border--thick.dark-theme {
+    border: 3px solid rgba(255, 0, 0, 0.556);
 }
 
 .orange-border {
