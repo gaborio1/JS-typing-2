@@ -1947,6 +1947,9 @@ selectInclusiveToggle.addEventListener("click", function () {
     clearDataAndDisplay();
 
     disableBeginnerToggles();
+    // DISABLE RADIOS
+    disableGramsControls();
+    disableRowsControls();
 
     selectInclusiveToggle.classList.toggle("toggle-on");
     if (selectInclusiveToggle.classList.contains("toggle-on")) {
@@ -2423,6 +2426,8 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+        UNSELECT GRAMS/ROWS WITH SELECTION TYPE TOGGLE ?
 
         ☑️ CLEAR TEXT INPUT WHEN GRAMS/ROWS ARE SELECTED 
 
