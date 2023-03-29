@@ -2083,6 +2083,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             // RESET SELECTED BEGINNER KEYS ARRAY, IT WILL BE UPDATED WITH APPLY BUTTON
             selectedBeginerKeys = [];
         }
+
         // INDIVIDUALLY SELECT (ONE BY ONE, ANY ORDER)
         else {
             disableStartButton();
@@ -2137,12 +2138,14 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
         // DISABLE TOGGLES AND START IF NO SELECTION IS MADE
         if (!selectionIsMade()) {
-            // console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
+            console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
             disableStartButton();
+            textInput.placeholder = "";
             disableBeginnerToggles();
             displaySelectionWarning();
         } else {
             clearMessageDiv();
+            textInput.placeholder = "                 Click Start ➡";
         }
 
         // console.log(levelStateArray);
@@ -2177,7 +2180,8 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
         // 3. UPDATE TARGET ARRAY WITH randomKeyWordsArray
         targetArray = [...randomKeyWordsArray];
-        textInput.placeholder = "                 Click Start ➡";
+
+        // textInput.placeholder = "                 Click Start ➡";
     });
 }
 
