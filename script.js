@@ -202,7 +202,7 @@ let accuracy = 0;
 
 // TRACK CONSECUTIVE WRONG KEYS
 let wrongCounter = 0;
-let maxMistakes = 15;
+let maxMistakes = 20;
 
 // TRACK PROBLEM KEYS (NO DUPLICATES IN SET)
 let problemKeysSet = new Set();
@@ -585,13 +585,13 @@ const setDifficultyLevel = () => {
         if (difficultyRadios[i].checked) {
             if (difficultyRadios[i].value === "easy") {
                 targetArray = [...common100];
-                maxMistakes = 15;
+                maxMistakes = 20;
             } else if (difficultyRadios[i].value === "medium") {
                 targetArray = [...common200, ...common100];
-                maxMistakes = 12;
+                maxMistakes = 16;
             } else {
                 targetArray = [...jsReserved, ...jsObjPropMeth];
-                maxMistakes = 9;
+                maxMistakes = 12;
             }
             break;
         }
@@ -991,6 +991,11 @@ const reloadSequence = () => {
     }, 5000);
 };
 
+const handleMaxErrors = () => {
+    console.log("MAX NUMBER OF ERRORS REACHED", wrongCounter, "/", maxMistakes);
+    messageDiv.innerText = `${wrongCounter} CONSECUTIVE ERRORS!`;
+};
+
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ALWAYS CENTER APP VERTICALLY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // SOURCE: https://stackoverflow.com/questions/15615552/get-div-height-with-plain-javascript
@@ -1149,6 +1154,8 @@ startButton.addEventListener("click", (event) => {
         typedKey = event.key;
         // console.log("EVENT: KEYDOWN", event.key);
 
+        console.log("ERRORS", wrongCounter);
+
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
         for (let i = 0; i < letterKeys.length; i += 1) {
             // console.log(typedKey);
@@ -1170,8 +1177,9 @@ startButton.addEventListener("click", (event) => {
 
         // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
         if (wrongCounter >= maxMistakes) {
+            handleMaxErrors();
+
             reloadSequence();
-            // document.removeEventListener("keydown", handleKeyEvent);
             textInput.removeEventListener("keydown", handleKeyEvent);
         }
 
@@ -1472,8 +1480,9 @@ startButton.addEventListener("click", (event) => {
 
         // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
         if (wrongCounter >= maxMistakes) {
+            handleMaxErrors();
+
             reloadSequence();
-            // document.removeEventListener("keydown", handleKeyEvent);
             textInput.removeEventListener("keydown", handleKeyEvent);
         }
     };
@@ -2141,7 +2150,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
         // DISABLE TOGGLES AND START IF NO SELECTION IS MADE
         if (!selectionIsMade()) {
-            console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
+            // console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
             disableStartButton();
             textInput.placeholder = "";
             disableBeginnerToggles();
@@ -2369,22 +2378,13 @@ CURRENT BRANCH: none
     TRY RESETTING LEVEL TO COMMON100 - LINE 2317
 
 
-     !!! WRITE A FUNCTION FOR THESE !!! (disableGrams(), disableRows()) !!!
+     !!! WRITE A FUNCTION FOR THESE !!! (placeholderClickStart()) !!!
 
-    DISABLE ALL OTHER OPTIONS
-        for (let i = 0, length = gramRadios.length; i < length; i++) {
-            gramRadios[i].checked = false;
-        }
-        gramsApply.disabled = true;
-        gramsApply.classList.remove("apply--active");
+        textInput.placeholder = "                 Click Start ➡";
 
-        for (let i = 0, length = rowRadios.length; i < length; i++) {
-            rowRadios[i].checked = false;
-        }
-        rowsApply.disabled = true;
-        rowsApply.classList.remove("apply--active");
+    !!! WRITE A FUNCTION FOR THESE !!! (handleMaxErrors()) !!!
 
-
+        if ((wrongCounter = maxMistakes)) {
 
     ADD COLOUR-THEME CLASS TO EVERY ELEMENT AFFECTED ???
 
@@ -2427,7 +2427,7 @@ CURRENT BRANCH: none
             
     PROBLEMS:
 
-        UNSELECT GRAMS/ROWS WITH SELECTION TYPE TOGGLE ?
+        ☑️ UNSELECT GRAMS/ROWS WITH SELECTION TYPE TOGGLE ?
 
         ☑️ CLEAR TEXT INPUT WHEN GRAMS/ROWS ARE SELECTED 
 
