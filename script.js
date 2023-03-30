@@ -740,11 +740,19 @@ const handleBackspace = () => {
         const currentCharacter = document.getElementById(`span-${strIdx}`);
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // DECREMENT WRONG COUNTER IF IF BACKSPACE WAS USED
         if (currentCharacter.classList.contains("red")) {
             wrongCounter -= 1;
         }
 
-        console.log("BACKSPACE WRONG COUNTER", wrongCounter);
+        // console.log("BACKSPACE WRONG COUNTER", wrongCounter);
+
+        if (wrongCounter > 0) {
+            messageDiv.textContent = "KEEP CORRECTING!";
+            setTimeout(() => {
+                messageDiv.textContent = "";
+            }, 200);
+        }
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
@@ -1163,7 +1171,7 @@ startButton.addEventListener("click", (event) => {
         typedKey = event.key;
         // console.log("EVENT: KEYDOWN", event.key);
 
-        console.log("WRONG COUNTER KEY EVENTS", wrongCounter);
+        // console.log("WRONG COUNTER KEY EVENTS", wrongCounter);
 
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
         for (let i = 0; i < letterKeys.length; i += 1) {
@@ -1343,7 +1351,7 @@ startButton.addEventListener("click", (event) => {
             if (wrongCounter > 4) {
                 textFieldsWrap.classList.add("red-border--thick");
                 setTimeout(() => {
-                    messageDiv.textContent = "";
+                    // messageDiv.textContent = "";
                     textFieldsWrap.classList.remove("red-border--thick");
                 }, 200);
             }
@@ -1351,7 +1359,7 @@ startButton.addEventListener("click", (event) => {
             if (wrongCounter > 9) {
                 textFieldsWrap.classList.add("red-background");
                 setTimeout(() => {
-                    messageDiv.textContent = "";
+                    // messageDiv.textContent = "";
                     textFieldsWrap.classList.remove("red-background");
                 }, 200);
             }
@@ -1427,7 +1435,7 @@ startButton.addEventListener("click", (event) => {
 
             wrongCounter += 1;
 
-            console.log("WRONG COUNTER", wrongCounter);
+            // console.log("WRONG COUNTER", wrongCounter);
 
             // UPDATE PROBLEM KEY SET
             if (
@@ -2416,8 +2424,9 @@ CURRENT BRANCH: none
 
     DECREMENT ORANGE COUNTER WITH BACKSPACE
         USE NUMBER OF CONSECUTIVE ERRORS TO STYLE WARNING DYNAMICALLY
+            ☑️ DIV: RED BORDER AFTER 5 ERRORS AND RED BORDER/BACKGROUND AFTER 10 CONSECUTIVE ERRORS
 
-    ☑️MAKE TIMER DISABLED BY DEFAULT???
+    ☑️ MAKE TIMER DISABLED BY DEFAULT???
     ☑️ MAKE STYLE CHANGES BASED ON timerRunning INSTEAD OF timerOn
     ☑️ BEGINNER: DO NOT ACTIVATE START BUTTON WITH PUNCT/CAPITAL/ENTER APPLY UNTIL LEVEL HAS BEEN SELECTED!
 
@@ -2477,6 +2486,8 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+            IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
 
             ADD FOCUS TO TEXT INPUT DURING SESSION WHEN: (IF SESSION HASN'T STARTED TXT IPUT IS DISABLED SO IT WILL NOT FOCUS BY DEFAULT)
                 ☑️ SOUND TOGGLE
