@@ -739,6 +739,14 @@ const handleBackspace = () => {
 
         const currentCharacter = document.getElementById(`span-${strIdx}`);
 
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        if (currentCharacter.classList.contains("red")) {
+            wrongCounter -= 1;
+        }
+
+        console.log("BACKSPACE WRONG COUNTER", wrongCounter);
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
         // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
         if (currentCharacter.innerText === " ") {
             currentCharacter.classList.add("orange-border");
@@ -1155,7 +1163,7 @@ startButton.addEventListener("click", (event) => {
         typedKey = event.key;
         // console.log("EVENT: KEYDOWN", event.key);
 
-        console.log("ERRORS", wrongCounter);
+        console.log("WRONG COUNTER KEY EVENTS", wrongCounter);
 
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
         for (let i = 0; i < letterKeys.length; i += 1) {
@@ -1326,12 +1334,28 @@ startButton.addEventListener("click", (event) => {
             //     wordArrays[lineIdx][wordIdx][charIdx]
             // );
 
-            messageDiv.textContent = "WRONG KEY TYPED!";
-            textFieldsWrap.classList.add("red-border--thick");
+            messageDiv.textContent = "WRONG KEY!";
             setTimeout(() => {
                 messageDiv.textContent = "";
-                textFieldsWrap.classList.remove("red-border--thick");
             }, 200);
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            if (wrongCounter > 4) {
+                textFieldsWrap.classList.add("red-border--thick");
+                setTimeout(() => {
+                    messageDiv.textContent = "";
+                    textFieldsWrap.classList.remove("red-border--thick");
+                }, 200);
+            }
+
+            if (wrongCounter > 9) {
+                textFieldsWrap.classList.add("red-background");
+                setTimeout(() => {
+                    messageDiv.textContent = "";
+                    textFieldsWrap.classList.remove("red-background");
+                }, 200);
+            }
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             if (typedKey === "Enter" && enterOn) {
                 // console.log("ENTER TYPED");
@@ -1402,6 +1426,8 @@ startButton.addEventListener("click", (event) => {
             }
 
             wrongCounter += 1;
+
+            console.log("WRONG COUNTER", wrongCounter);
 
             // UPDATE PROBLEM KEY SET
             if (
@@ -2386,7 +2412,12 @@ beginnerHideButton.addEventListener("click", function () {
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 CURRENT BRANCH: none
-    MAKE TIMER DISABLED BY DEFAULT???
+
+
+    DECREMENT ORANGE COUNTER WITH BACKSPACE
+        USE NUMBER OF CONSECUTIVE ERRORS TO STYLE WARNING DYNAMICALLY
+
+    ☑️MAKE TIMER DISABLED BY DEFAULT???
     ☑️ MAKE STYLE CHANGES BASED ON timerRunning INSTEAD OF timerOn
     ☑️ BEGINNER: DO NOT ACTIVATE START BUTTON WITH PUNCT/CAPITAL/ENTER APPLY UNTIL LEVEL HAS BEEN SELECTED!
 
