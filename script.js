@@ -1342,10 +1342,13 @@ startButton.addEventListener("click", (event) => {
             //     wordArrays[lineIdx][wordIdx][charIdx]
             // );
 
-            messageDiv.textContent = "WRONG KEY!";
-            setTimeout(() => {
-                messageDiv.textContent = "";
-            }, 200);
+            if (typedKey !== "Enter") {
+                messageDiv.textContent = "WRONG KEY!";
+                setTimeout(() => {
+                    messageDiv.textContent = "";
+                }, 200);
+            }
+
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             if (wrongCounter > 4) {
@@ -2486,6 +2489,8 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+            ☑️ STOP CORRECT ENTER KEY PRESS TRIGGERING WRONG KEY WARNING
 
             IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
 
