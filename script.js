@@ -731,73 +731,67 @@ const logKeyEventEnd = () => {
 let typedKey = "";
 
 const handleBackspace = () => {
-    if (typedKey === "Backspace" && charIdx > 0) {
-        // console.log("BACKSPACE");
+    // console.log("BACKSPACE");
 
-        orangeCounter += 1;
-        prevChar();
+    orangeCounter += 1;
+    prevChar();
 
-        const currentCharacter = document.getElementById(`span-${strIdx}`);
+    const currentCharacter = document.getElementById(`span-${strIdx}`);
 
-        // console.log(currentCharacter);
+    // console.log(currentCharacter);
 
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // HAS TO CHECK FOR NULL (NOT UNDEFINED) BEFORE RED CLASS AS IT WONT READ CLASSLIST OF "NULL"
-        // if (currentCharacter === null) {
-        //     console.log(wrongCounter);
-        //     console.log("NULL");
-        //     console.log(wrongCounter);
-        //     wrongCounter -= 1;
-        //     console.log(wrongCounter);
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // HAS TO CHECK FOR NULL (NOT UNDEFINED) BEFORE RED CLASS AS IT WONT READ CLASSLIST OF "NULL"
+    if (currentCharacter === null) {
+        console.log(wrongCounter);
+        console.log("NULL");
+        console.log(wrongCounter);
+        wrongCounter -= 1;
+        console.log(wrongCounter);
 
-        //     messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter - 1} `;
-        // }
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-        // DECREMENT WRONG COUNTER IF BACKSPACE WAS USED 
-        // ERROR: THIS WILL NOT WORK AT THE END OF LINE AS WE GET NULL VALUES FROM NON EXISTING SPANS !!!
-        // if (currentCharacter.classList.contains("red") || currentCharacter === null) {
-        if (currentCharacter.classList.contains("red")) {
-            wrongCounter -= 1;
-        }
-
-
-        // console.log("BACKSPACE WRONG COUNTER", wrongCounter);
-
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        if (wrongCounter > 0) {
-            // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter} `;
-            messageDiv.textContent = "KEEP CORRECTING!";
-            setTimeout(() => {
-                messageDiv.textContent = "";
-            }, 200);
-        }
-
-        if (wrongCounter === 0) {
-            messageDiv.textContent = "";
-        }
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-        // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
-        if (currentCharacter.innerText === " ") {
-            currentCharacter.classList.add("orange-border");
-        }
-
-        if (strIdx === stringWords.length - 1) {
-            currentCharacter.classList.add("orange-border");
-        }
-
-        currentCharacter.classList.add("orange", "background", "black-border");
-        currentCharacter.classList.remove("red", "green");
-
-        const nextCharacter = document.getElementById(`span-${strIdx + 1}`);
-        nextCharacter.classList.remove(
-            "background",
-            "black-border",
-            "red-border"
-        );
+        // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter - 1} `;
+        // messageDiv.textContent = "NULL";
+        messageDiv.textContent = "KEEP CORRECTING!";
     }
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // DECREMENT WRONG COUNTER IF BACKSPACE WAS USED
+    // ERROR: THIS WILL NOT WORK AT THE END OF LINE AS WE GET NULL VALUES FROM NON EXISTING SPANS !!!
+    // if (currentCharacter.classList.contains("red") || currentCharacter === null) {
+    if (currentCharacter.classList.contains("red")) {
+        wrongCounter -= 1;
+    }
+
+    // console.log("BACKSPACE WRONG COUNTER", wrongCounter);
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    if (wrongCounter > 0) {
+        // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter} `;
+        messageDiv.textContent = "KEEP CORRECTING!";
+        setTimeout(() => {
+            messageDiv.textContent = "";
+        }, 200);
+    }
+
+    if (wrongCounter === 0) {
+        messageDiv.textContent = "";
+    }
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
+    if (currentCharacter.innerText === " ") {
+        currentCharacter.classList.add("orange-border");
+    }
+
+    if (strIdx === stringWords.length - 1) {
+        currentCharacter.classList.add("orange-border");
+    }
+
+    currentCharacter.classList.add("orange", "background", "black-border");
+    currentCharacter.classList.remove("red", "green");
+
+    const nextCharacter = document.getElementById(`span-${strIdx + 1}`);
+    nextCharacter.classList.remove("background", "black-border", "red-border");
 };
 
 //🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CORRECT KEY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1287,7 +1281,9 @@ startButton.addEventListener("click", (event) => {
 
         // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BACKSPACE 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-        handleBackspace();
+        if (typedKey === "Backspace" && charIdx > 0) {
+            handleBackspace();
+        }
 
         // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CORRECT KEY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1439,7 +1435,6 @@ startButton.addEventListener("click", (event) => {
                     // +++++++++++++++++
                     wrongCounter = 0;
                     // +++++++++++++++++
-
 
                     //  WORD[0] - WORD[LENGTH-1], ALL CHARACTERS IN WORD EXCLUDING TRAILING SPACE
                     if (charIdx < wordArrays[lineIdx][wordIdx].length - 1) {
@@ -2547,6 +2542,11 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+            KEEP TRACK OF NUMBER OF WRONG KEYS IF CURSOR GOES BEYOND END OF LINE
+                ☑️ DISPLAY "KEEP CORRECTING" MESSAGE WITH BACKSPACE
+
+            ☑️ ORANGE SPANS WILL NOT GO RED IF THEY GET WRONG AGAIN IN DARK-THEME 
 
             ☑️ CLEAR TEXT INPUT WITH NEW LINE
 
