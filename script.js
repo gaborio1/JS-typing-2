@@ -739,19 +739,43 @@ const handleBackspace = () => {
 
         const currentCharacter = document.getElementById(`span-${strIdx}`);
 
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // DECREMENT WRONG COUNTER IF IF BACKSPACE WAS USED
+        // console.log(currentCharacter);
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // HAS TO CHECK FOR NULL (NOT UNDEFINED) BEFORE RED CLASS AS IT WONT READ CLASSLIST OF "NULL"
+        // if (currentCharacter === null) {
+        //     console.log(wrongCounter);
+        //     console.log("NULL");
+        //     console.log(wrongCounter);
+        //     wrongCounter -= 1;
+        //     console.log(wrongCounter);
+
+        //     messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter - 1} `;
+        // }
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        // DECREMENT WRONG COUNTER IF BACKSPACE WAS USED 
+        // ERROR: THIS WILL NOT WORK AT THE END OF LINE AS WE GET NULL VALUES FROM NON EXISTING SPANS !!!
+        // if (currentCharacter.classList.contains("red") || currentCharacter === null) {
         if (currentCharacter.classList.contains("red")) {
             wrongCounter -= 1;
         }
 
+
         // console.log("BACKSPACE WRONG COUNTER", wrongCounter);
 
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         if (wrongCounter > 0) {
+            // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter} `;
             messageDiv.textContent = "KEEP CORRECTING!";
             setTimeout(() => {
                 messageDiv.textContent = "";
             }, 200);
+        }
+
+        if (wrongCounter === 0) {
+            messageDiv.textContent = "";
         }
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -825,6 +849,7 @@ const correctEndOfLineSpace = () => {
     displayColourCounterValues();
     // 3. NOW, MOVE ON TO NEXT LINE
     nextLine();
+    clearTextInput();
     wordCounter += 1;
     // console.log("WORD COUNTER TEST:", wordCounter);
     textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
@@ -838,6 +863,10 @@ const correctEndOfLineSpace = () => {
     textSpanContainerNextParagraph.innerHTML = "";
     // APPEND TEXT AS SPANS !!!
     createSpans(lineIdx + 1, textSpanContainerNextParagraph);
+
+    // +++++++++++++++++++++++++
+    messageDiv.textContent = "";
+    // +++++++++++++++++++++++++
 };
 
 // ALL OTHER SPACES
@@ -850,6 +879,10 @@ const correctSpaceNotEndOfLine = () => {
     let currentCharacter = document.getElementById(`span-${strIdx - 1}`);
     currentCharacter.classList.remove("background", "black-border");
     // }
+
+    // +++++++++++++++++++++++++
+    messageDiv.textContent = "";
+    // +++++++++++++++++++++++++
 
     nextWord();
     clearTextInput();
@@ -1205,13 +1238,11 @@ startButton.addEventListener("click", (event) => {
 
         // ONLY KEEP TRACK OF KEYSTROKES WHILE CLOCK IS RUNNING (NOW DISABLED, KEYSTROKES ARE ALWAYS COUNTED)
         // if (timerOn) {
-        // +++++++++++++++++++++++++++++++++++++++++++++
 
         // if (timerRunning) {
         if (typedKey !== "CapsLock") {
             keyStrokeCounter += 1;
         }
-        // +++++++++++++++++++++++++++++++++++++++++++++
 
         // console.log("KEYSTROKE COUNTER:", keyStrokeCounter);
         keystrokesSpan.textContent = keyStrokeCounter;
@@ -1342,11 +1373,31 @@ startButton.addEventListener("click", (event) => {
             //     wordArrays[lineIdx][wordIdx][charIdx]
             // );
 
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            wrongCounter += 1;
+
             if (typedKey !== "Enter") {
                 messageDiv.textContent = "WRONG KEY!";
+
+                // MAKE WARNING CONSTANT, DO NOT FLASH IF MORE THEN 1 ERRORS
+                // messageDiv.textContent = wrongCounter > 1 && wrongCounter !== 0
+                //     ? `CORRECT ${wrongCounter} ERRORS!`
+                //     : `CORRECT ERROR!`;
+
+                // IF ONLY ONE ERROR, FLASH ERROR MESSAGE
+                // if (wrongCounter === 1) {
+                //     setTimeout(() => {
+                //         messageDiv.textContent = "";
+                //     }, 200);
+                // }
+
                 setTimeout(() => {
                     messageDiv.textContent = "";
                 }, 200);
+                if (wrongCounter === 0) {
+                    messageDiv.textContent = "";
+                }
             }
 
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1366,7 +1417,6 @@ startButton.addEventListener("click", (event) => {
                     textFieldsWrap.classList.remove("red-background");
                 }, 200);
             }
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             if (typedKey === "Enter" && enterOn) {
                 // console.log("ENTER TYPED");
@@ -1386,7 +1436,10 @@ startButton.addEventListener("click", (event) => {
                         );
                     }
 
+                    // +++++++++++++++++
                     wrongCounter = 0;
+                    // +++++++++++++++++
+
 
                     //  WORD[0] - WORD[LENGTH-1], ALL CHARACTERS IN WORD EXCLUDING TRAILING SPACE
                     if (charIdx < wordArrays[lineIdx][wordIdx].length - 1) {
@@ -1436,7 +1489,9 @@ startButton.addEventListener("click", (event) => {
                 }
             }
 
-            wrongCounter += 1;
+            // +++++++++++++++++
+            // wrongCounter += 1;
+            // +++++++++++++++++
 
             // console.log("WRONG COUNTER", wrongCounter);
 
@@ -2492,6 +2547,8 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+            ☑️ CLEAR TEXT INPUT WITH NEW LINE
 
             ☑️ STOP CORRECT ENTER KEY PRESS TRIGGERING WRONG KEY WARNING
 
