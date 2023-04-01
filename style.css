@@ -1307,6 +1307,10 @@ p .active-txt-span.active-txt-span--enter {
 .red-background {
     background: rgba(255, 0, 0, 0.463);
 }
+/* LAST SPACE HIGHLIGHT 200MS */
+.red-background.red-border {
+    background: rgba(255, 0, 0, 0.463);
+}
 
 .red-background.dark-theme {
     background: rgba(255, 0, 0, 0.463);

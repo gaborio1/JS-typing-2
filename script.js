@@ -742,40 +742,47 @@ const handleBackspace = () => {
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // HAS TO CHECK FOR NULL (NOT UNDEFINED) BEFORE RED CLASS AS IT WONT READ CLASSLIST OF "NULL"
-    if (currentCharacter === null) {
-        console.log(wrongCounter);
-        console.log("NULL");
-        console.log(wrongCounter);
-        wrongCounter -= 1;
-        console.log(wrongCounter);
 
-        // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter - 1} `;
-        // messageDiv.textContent = "NULL";
-        messageDiv.textContent = "KEEP CORRECTING!";
-    }
+    // if (currentCharacter === null) {
+    //     console.log(wrongCounter);
+    //     console.log("NULL");
+    //     console.log(wrongCounter);
+    //     wrongCounter -= 1;
+    //     console.log(wrongCounter);
+
+    //     // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter - 1} `;
+    //     // messageDiv.textContent = "NULL";
+    //     messageDiv.textContent = "KEEP CORRECTING!";
+    // }
+
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // DECREMENT WRONG COUNTER IF BACKSPACE WAS USED
     // ERROR: THIS WILL NOT WORK AT THE END OF LINE AS WE GET NULL VALUES FROM NON EXISTING SPANS !!!
-    // if (currentCharacter.classList.contains("red") || currentCharacter === null) {
-    if (currentCharacter.classList.contains("red")) {
-        wrongCounter -= 1;
-    }
+    // if (currentCharacter.classList.contains("red")) {
+    //     wrongCounter -= 1;
+    // }
 
     // console.log("BACKSPACE WRONG COUNTER", wrongCounter);
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    if (wrongCounter > 0) {
-        // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter} `;
-        messageDiv.textContent = "KEEP CORRECTING!";
-        setTimeout(() => {
-            messageDiv.textContent = "";
-        }, 200);
-    }
 
-    if (wrongCounter === 0) {
-        messageDiv.textContent = "";
-    }
+    // ONLY DISPAY MESSAGE UNTIL END OF LINE SPACE HAS BEEN REACHED,OR WHILE WRONG KEY (RED) ARE ENCOUNTERED
+
+    // IF COUNTING NON EXISTING SPANS, WRONGCOUNTER VALUE HAS TO BE ONE LESS
+    // if (wrongCounter > 0 && !currentCharacter.classList.contains("green")) {
+    //     // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter} `;
+    //     // messageDiv.textContent = `KEEP CORRECTING: ${wrongCounter}`;
+    //     messageDiv.textContent = `KEEP CORRECTING!`;
+    //     setTimeout(() => {
+    //         messageDiv.textContent = "";
+    //     }, 200);
+    // }
+
+    // if (wrongCounter === 0) {
+    //     messageDiv.textContent = "";
+    // }
+
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
@@ -979,7 +986,11 @@ const findNextWordIndex = () => {
 const spaceOnLastWord = () => {
     // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
 
-    wrongCounter += 1;
+    // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
+
+    // RESET WRONGCOUNTER
+    // wrongCounter += 1;
+    wrongCounter = 0;
     nextLine();
 
     textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
@@ -1000,7 +1011,11 @@ const spaceOnLastWord = () => {
 const spaceOnWord = () => {
     let currentCharacter = document.getElementById(`span-${strIdx - 1}`);
 
-    wrongCounter += 1;
+    // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
+
+    // RESET WRONGCOUNTER
+    // wrongCounter += 1;
+    wrongCounter = 0;
 
     console.log("<<<<< UNCAUGHT TYPE ERROR spaceOnWord()>>>>>");
     // ERROR: script.js:720 Uncaught TypeError: Cannot read properties of null (reading 'classList') at correctSpaceNotEndOfLine (script.js:720:22)
@@ -1376,6 +1391,8 @@ startButton.addEventListener("click", (event) => {
             if (typedKey !== "Enter") {
                 messageDiv.textContent = "WRONG KEY!";
 
+                // console.log("WRONG KEY ON LAST SPACE");
+
                 // MAKE WARNING CONSTANT, DO NOT FLASH IF MORE THEN 1 ERRORS
                 // messageDiv.textContent = wrongCounter > 1 && wrongCounter !== 0
                 //     ? `CORRECT ${wrongCounter} ERRORS!`
@@ -1527,6 +1544,15 @@ startButton.addEventListener("click", (event) => {
             if (stringWords[strIdx] === " ") {
                 // console.log("<<<<< ADD RED BORDER TO SPACE >>>>>");
                 currentCharacter.classList.add("red-border");
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                // HIGHLIGHT LAST SPACE IF WRONG KEY TYPED ON IT
+                if (strIdx === stringWords.length - 1) {
+                    currentCharacter.classList.add("red-background");
+                    setTimeout(() => {
+                        currentCharacter.classList.remove("red-background");
+                    }, 200);
+                }
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             }
 
             nextChar();
@@ -2542,6 +2568,14 @@ CURRENT BRANCH: none
        
             
     PROBLEMS:
+
+            TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
+                SPACEONLASTWORD
+                SPACEONWORD
+
+            RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER
+                SPACEONLASTWORD
+                SPACEONWORD
 
             KEEP TRACK OF NUMBER OF WRONG KEYS IF CURSOR GOES BEYOND END OF LINE
                 ☑️ DISPLAY "KEEP CORRECTING" MESSAGE WITH BACKSPACE
