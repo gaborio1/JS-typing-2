@@ -1311,6 +1311,10 @@ p .active-txt-span.active-txt-span--enter {
 .red-background.red-border {
     background: rgba(255, 0, 0, 0.463);
 }
+.text-fields-wrap.dark-theme .red-background.red-border {
+    background: rgba(255, 0, 0, 0.463);
+    border: 3px solid red;
+}
 
 .red-background.dark-theme {
     background: rgba(255, 0, 0, 0.463);

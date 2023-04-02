@@ -1391,7 +1391,9 @@ startButton.addEventListener("click", (event) => {
             if (typedKey !== "Enter") {
                 messageDiv.textContent = "WRONG KEY!";
 
-                // console.log("WRONG KEY ON LAST SPACE");
+                if (strIdx === stringWords.length - 1) {
+                    console.log("WRONG KEY ON LAST SPACE");
+                }
 
                 // MAKE WARNING CONSTANT, DO NOT FLASH IF MORE THEN 1 ERRORS
                 // messageDiv.textContent = wrongCounter > 1 && wrongCounter !== 0
@@ -1548,8 +1550,12 @@ startButton.addEventListener("click", (event) => {
                 // HIGHLIGHT LAST SPACE IF WRONG KEY TYPED ON IT
                 if (strIdx === stringWords.length - 1) {
                     currentCharacter.classList.add("red-background");
+                    currentCharacter.classList.add("red-border");
                     setTimeout(() => {
-                        currentCharacter.classList.remove("red-background");
+                        currentCharacter.classList.remove(
+                            "red-background",
+                            "red-border"
+                        );
                     }, 200);
                 }
                 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2468,7 +2474,7 @@ beginnerHideButton.addEventListener("click", function () {
 
 /*
 
- MACBOOK 25/3/23 20:25
+ MACBOOK 2/4/23 19:59 
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
