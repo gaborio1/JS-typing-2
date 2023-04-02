@@ -810,7 +810,7 @@ const correctKeyNotLastSpace = () => {
     let nextCharacter = document.getElementById(`span-${strIdx + 1}`);
     nextCharacter.classList.add("background", "black-border");
     let currentCharacter = document.getElementById(`span-${strIdx}`);
-    currentCharacter.classList.add("green", "enlarged");
+    currentCharacter.classList.add("green");
     currentCharacter.classList.remove(
         "red",
         "orange",
@@ -984,6 +984,7 @@ const findNextWordIndex = () => {
 
 // SPACE ON LAST WORD
 const spaceOnLastWord = () => {
+
     // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
 
     // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
@@ -1017,8 +1018,21 @@ const spaceOnWord = () => {
     // wrongCounter += 1;
     wrongCounter = 0;
 
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // console.log("SRTING IDX:", strIdx);
+    // LOOP OVER SPANS UP TO CURRENT-1 (EXCLUDING SPACE) AND REMOVE BLACK-BORDER
+    let charSpans = document.querySelectorAll(".active-txt-span");
+    // console.log(charSpans);
+    for (let i = 0; i < strIdx - 1; i += 1) {
+        // console.log(charSpans[i]);
+        charSpans[i].classList.remove("black-border", "background");
+    }
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     console.log("<<<<< UNCAUGHT TYPE ERROR spaceOnWord()>>>>>");
     // ERROR: script.js:720 Uncaught TypeError: Cannot read properties of null (reading 'classList') at correctSpaceNotEndOfLine (script.js:720:22)
+    // WITHOUT CURRENTCHARACTER AFTER NEXTLINE() IN NEW LINE RIGHT KEY WILL NOT BE RECOGNISED (WILL GO RED)
     currentCharacter.classList.remove("background", "black-border");
     const nextCharacter = document.getElementById(`span-${strIdx}`);
     nextCharacter.classList.add("background", "black-border");
@@ -2504,8 +2518,16 @@ beginnerHideButton.addEventListener("click", function () {
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH: none
+CURRENT BRANCH: span-refactor-1
 
+    GET RID OF ENLARGED CLASS
+        ☑️ JS
+        ☑️ CSS
+
+    ☑️ REMOVE BLACK-BORDER CLASS FROM SKIPPED WORD (LOOP OVER SPANS UP TO STRIDX-1 AND REMOVE CLASS)
+
+
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
     DECREMENT ORANGE COUNTER WITH BACKSPACE
         USE NUMBER OF CONSECUTIVE ERRORS TO STYLE WARNING DYNAMICALLY
