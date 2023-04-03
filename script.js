@@ -197,12 +197,14 @@ let keyStrokeCounter = 0;
 let wordCounter = 0;
 let greenCounter = 0;
 let redCounter = 0;
-// NOT IN USE YET
 let orangeCounter = 0;
 let accuracy = 0;
 
+// NON EXISTING (NULL VALUE) SPANS BEYOND END OF LINE SPACE
+let nullValueSpanCounter = 0;
+
 // TRACK CONSECUTIVE WRONG KEYS
-let wrongCounter = 0;
+let consecutiveErrorCounter = 0;
 let maxMistakes = 20;
 
 // TRACK PROBLEM KEYS (NO DUPLICATES IN SET)
@@ -736,6 +738,19 @@ const handleBackspace = () => {
     orangeCounter += 1;
     prevChar();
 
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    if (nullValueSpanCounter > 0) {
+        nullValueSpanCounter -= 1;
+        console.log("NULL COUNTER DECREMENTED:", nullValueSpanCounter);
+        messageDiv.textContent = `${nullValueSpanCounter} ERROR(S) INTO NEXT LINE!`;
+    }
+    if (nullValueSpanCounter === 0) {
+        nullValueSpanCounter = 0;
+        console.log("NULL COUNTER RESET TO 0", nullValueSpanCounter);
+        messageDiv.textContent = "";
+    }
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     const currentCharacter = document.getElementById(`span-${strIdx}`);
 
     // console.log(currentCharacter);
@@ -744,13 +759,13 @@ const handleBackspace = () => {
     // HAS TO CHECK FOR NULL (NOT UNDEFINED) BEFORE RED CLASS AS IT WONT READ CLASSLIST OF "NULL"
 
     // if (currentCharacter === null) {
-    //     console.log(wrongCounter);
+    //     console.log(consecutiveErrorCounter);
     //     console.log("NULL");
-    //     console.log(wrongCounter);
-    //     wrongCounter -= 1;
-    //     console.log(wrongCounter);
+    //     console.log(consecutiveErrorCounter);
+    //     consecutiveErrorCounter -= 1;
+    //     console.log(consecutiveErrorCounter);
 
-    //     // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter - 1} `;
+    //     // messageDiv.textContent = `ERRORS REMAINING: ${consecutiveErrorCounter - 1} `;
     //     // messageDiv.textContent = "NULL";
     //     messageDiv.textContent = "KEEP CORRECTING!";
     // }
@@ -760,26 +775,26 @@ const handleBackspace = () => {
     // DECREMENT WRONG COUNTER IF BACKSPACE WAS USED
     // ERROR: THIS WILL NOT WORK AT THE END OF LINE AS WE GET NULL VALUES FROM NON EXISTING SPANS !!!
     // if (currentCharacter.classList.contains("red")) {
-    //     wrongCounter -= 1;
+    //     consecutiveErrorCounter -= 1;
     // }
 
-    // console.log("BACKSPACE WRONG COUNTER", wrongCounter);
+    // console.log("BACKSPACE WRONG COUNTER", consecutiveErrorCounter);
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // ONLY DISPAY MESSAGE UNTIL END OF LINE SPACE HAS BEEN REACHED,OR WHILE WRONG KEY (RED) ARE ENCOUNTERED
 
     // IF COUNTING NON EXISTING SPANS, WRONGCOUNTER VALUE HAS TO BE ONE LESS
-    // if (wrongCounter > 0 && !currentCharacter.classList.contains("green")) {
-    //     // messageDiv.textContent = `ERRORS REMAINING: ${wrongCounter} `;
-    //     // messageDiv.textContent = `KEEP CORRECTING: ${wrongCounter}`;
+    // if (consecutiveErrorCounter > 0 && !currentCharacter.classList.contains("green")) {
+    //     // messageDiv.textContent = `ERRORS REMAINING: ${consecutiveErrorCounter} `;
+    //     // messageDiv.textContent = `KEEP CORRECTING: ${consecutiveErrorCounter}`;
     //     messageDiv.textContent = `KEEP CORRECTING!`;
     //     setTimeout(() => {
     //         messageDiv.textContent = "";
     //     }, 200);
     // }
 
-    // if (wrongCounter === 0) {
+    // if (consecutiveErrorCounter === 0) {
     //     messageDiv.textContent = "";
     // }
 
@@ -984,14 +999,13 @@ const findNextWordIndex = () => {
 
 // SPACE ON LAST WORD
 const spaceOnLastWord = () => {
-
     // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
 
     // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
 
     // RESET WRONGCOUNTER
-    // wrongCounter += 1;
-    wrongCounter = 0;
+    // consecutiveErrorCounter += 1;
+    consecutiveErrorCounter = 0;
     nextLine();
 
     textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
@@ -1015,8 +1029,8 @@ const spaceOnWord = () => {
     // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
 
     // RESET WRONGCOUNTER
-    // wrongCounter += 1;
-    wrongCounter = 0;
+    // consecutiveErrorCounter += 1;
+    consecutiveErrorCounter = 0;
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1065,8 +1079,13 @@ const reloadSequence = () => {
 };
 
 const handleMaxErrors = () => {
-    console.log("MAX NUMBER OF ERRORS REACHED", wrongCounter, "/", maxMistakes);
-    messageDiv.innerText = `${wrongCounter} CONSECUTIVE ERRORS!`;
+    console.log(
+        "MAX NUMBER OF ERRORS REACHED",
+        consecutiveErrorCounter,
+        "/",
+        maxMistakes
+    );
+    messageDiv.innerText = `${consecutiveErrorCounter} CONSECUTIVE ERRORS!`;
 };
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ALWAYS CENTER APP VERTICALLY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1115,7 +1134,7 @@ textInput.disabled = true;
 // ADD LISTENER
 startButton.addEventListener("click", (event) => {
     // RESET WRONG COUNTER
-    wrongCounter = 0;
+    consecutiveErrorCounter = 0;
 
     // console.log("<<<<< PROBLEM KEYS SET >>>>>", problemKeysSet);
     // console.log("<<<<< TEMP PROB WORDS >>>>>", tempProbWordsArr);
@@ -1227,7 +1246,7 @@ startButton.addEventListener("click", (event) => {
         typedKey = event.key;
         // console.log("EVENT: KEYDOWN", event.key);
 
-        // console.log("WRONG COUNTER KEY EVENTS", wrongCounter);
+        // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
         for (let i = 0; i < letterKeys.length; i += 1) {
@@ -1249,7 +1268,7 @@ startButton.addEventListener("click", (event) => {
         }
 
         // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
-        if (wrongCounter >= maxMistakes) {
+        if (consecutiveErrorCounter >= maxMistakes) {
             handleMaxErrors();
 
             reloadSequence();
@@ -1329,7 +1348,7 @@ startButton.addEventListener("click", (event) => {
                 playSound("mixkit-single-key-press-in-a-laptop-2541.wav", 1);
             }
 
-            wrongCounter = 0;
+            consecutiveErrorCounter = 0;
 
             //  WORD[0] - WORD[LENGTH-1], ALL CHARACTERS IN WORD EXCLUDING TRAILING SPACE
             if (charIdx < wordArrays[lineIdx][wordIdx].length - 1) {
@@ -1390,32 +1409,56 @@ startButton.addEventListener("click", (event) => {
             typedKey !== "Backspace" &&
             typedKey !== "CapsLock"
         ) {
-            // console.log(
-            //     "WRONG KEY!",
-            //     "typed:",
-            //     typedKey,
-            //     "actual:",
-            //     wordArrays[lineIdx][wordIdx][charIdx]
-            // );
+            console.log(
+                "WRONG KEY!",
+                "typed:",
+                typedKey,
+                "actual:",
+                wordArrays[lineIdx][wordIdx][charIdx]
+            );
 
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            wrongCounter += 1;
+            consecutiveErrorCounter += 1;
+
+            console.log("STRINWORDS LENGTH:", stringWords.length);
+
+            if (strIdx >= stringWords.length - 1) {
+                console.log("GONE BEYOND END OF LINE");
+                nullValueSpanCounter += 1;
+                console.log("NULL COUNTER:", nullValueSpanCounter);
+            }
+
+            // nullValueSpanCounter += 1;
+            // console.log("NULL COUNTER:", nullValueSpanCounter);
 
             if (typedKey !== "Enter") {
-                messageDiv.textContent = "WRONG KEY!";
-
-                if (strIdx === stringWords.length - 1) {
-                    console.log("WRONG KEY ON LAST SPACE");
+                if (nullValueSpanCounter > 0) {
+                    messageDiv.textContent = `${nullValueSpanCounter} ERROR(S) INTO NEXT LINE!`;
+                } else {
+                    messageDiv.textContent = "WRONG KEY!";
                 }
+                // messageDiv.textContent = "WRONG KEY!";
+
+                // ERROR ON LAST SPACE
+                if (
+                    strIdx === stringWords.length - 1 ||
+                    wordArrays[lineIdx][wordIdx][charIdx] === undefined
+                ) {
+                    console.log("WRONG KEY ON LAST SPACE");
+                    console.log("STR IDX:", strIdx);
+                    // nullValueSpanCounter += 1;
+                    // console.log("NULL COUNTER:", nullValueSpanCounter);
+                }
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
                 // MAKE WARNING CONSTANT, DO NOT FLASH IF MORE THEN 1 ERRORS
-                // messageDiv.textContent = wrongCounter > 1 && wrongCounter !== 0
-                //     ? `CORRECT ${wrongCounter} ERRORS!`
+                // messageDiv.textContent = consecutiveErrorCounter > 1 && consecutiveErrorCounter !== 0
+                //     ? `CORRECT ${consecutiveErrorCounter} ERRORS!`
                 //     : `CORRECT ERROR!`;
 
                 // IF ONLY ONE ERROR, FLASH ERROR MESSAGE
-                // if (wrongCounter === 1) {
+                // if (consecutiveErrorCounter === 1) {
                 //     setTimeout(() => {
                 //         messageDiv.textContent = "";
                 //     }, 200);
@@ -1424,14 +1467,12 @@ startButton.addEventListener("click", (event) => {
                 setTimeout(() => {
                     messageDiv.textContent = "";
                 }, 200);
-                if (wrongCounter === 0) {
+                if (consecutiveErrorCounter === 0) {
                     messageDiv.textContent = "";
                 }
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            if (wrongCounter > 4) {
+            if (consecutiveErrorCounter > 4) {
                 textFieldsWrap.classList.add("red-border--thick");
                 setTimeout(() => {
                     // messageDiv.textContent = "";
@@ -1439,7 +1480,7 @@ startButton.addEventListener("click", (event) => {
                 }, 200);
             }
 
-            if (wrongCounter > 9) {
+            if (consecutiveErrorCounter > 9) {
                 textFieldsWrap.classList.add("red-background");
                 setTimeout(() => {
                     // messageDiv.textContent = "";
@@ -1466,7 +1507,7 @@ startButton.addEventListener("click", (event) => {
                     }
 
                     // +++++++++++++++++
-                    wrongCounter = 0;
+                    consecutiveErrorCounter = 0;
                     // +++++++++++++++++
 
                     //  WORD[0] - WORD[LENGTH-1], ALL CHARACTERS IN WORD EXCLUDING TRAILING SPACE
@@ -1518,10 +1559,10 @@ startButton.addEventListener("click", (event) => {
             }
 
             // +++++++++++++++++
-            // wrongCounter += 1;
+            // consecutiveErrorCounter += 1;
             // +++++++++++++++++
 
-            // console.log("WRONG COUNTER", wrongCounter);
+            // console.log("WRONG COUNTER", consecutiveErrorCounter);
 
             // UPDATE PROBLEM KEY SET
             if (
@@ -1597,6 +1638,7 @@ startButton.addEventListener("click", (event) => {
                 textFieldsWrap.classList.remove("red-border--thick");
             }, 200);
 
+            // ERROR: THIS NOT WORKS? LOOK INTO THIS !!!
             redCounter += wordArrays[lineIdx][wordIdx].length; // INCREMENT RED COUNTER WITH WORD'S LENGTH
 
             accuracy = calcAccuracy(); // CALC ACCURACY AGAIN
@@ -1627,7 +1669,7 @@ startButton.addEventListener("click", (event) => {
         // logKeyEventEnd();
 
         // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
-        if (wrongCounter >= maxMistakes) {
+        if (consecutiveErrorCounter >= maxMistakes) {
             handleMaxErrors();
 
             reloadSequence();
@@ -2516,6 +2558,8 @@ beginnerHideButton.addEventListener("click", function () {
 
         ☑️ USE "HOW TO" INSTEAD OF "INFO"
 
+        SLIDER TOGGLE SWITCES?
+
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 CURRENT BRANCH: span-refactor-1
@@ -2525,6 +2569,11 @@ CURRENT BRANCH: span-refactor-1
         ☑️ CSS
 
     ☑️ REMOVE BLACK-BORDER CLASS FROM SKIPPED WORD (LOOP OVER SPANS UP TO STRIDX-1 AND REMOVE CLASS)
+
+    ADD RED BORDER/BACKGROUND HIGHLIGHT TO LAST SPACE IF CONSECUTIVE ERRORS ARE MADE
+        KEEP TRACK OF NULL VALUE CLICKS (NON EXISTING SPANS)
+            INCREMENT WITH ERROR
+            DECREMENT WITH BACKSPACE
 
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2551,7 +2600,7 @@ CURRENT BRANCH: span-refactor-1
 
     !!! WRITE A FUNCTION FOR THESE !!! (handleMaxErrors()) !!!
 
-        if ((wrongCounter = maxMistakes)) {
+        if ((consecutiveErrorCounter = maxMistakes)) {
 
     ADD COLOUR-THEME CLASS TO EVERY ELEMENT AFFECTED ???
 
@@ -2596,6 +2645,13 @@ CURRENT BRANCH: span-refactor-1
        
             
     PROBLEMS:
+
+            BUG: SPACE WILL TAKE CURSOR TO NEXT LINE FROM LAST SPACE EVEN IF IT WAS MISTYPED AND NOT CORRECTED!!!
+                1. INCREMENT NUMBER OF NULL VALUES (NON EXISTING SPANS) WITH WRONG CHARACTER TYPED
+                2. DECREMENT NULL COUNT WITH BACKSPACE
+                3. ONLY NOW ALLOW ENDOFLINESPACE() TO RUN ON SPACE KEYPRESS
+            NOTE: STRIDX GETS INCREMENTED ANE wordArrays[lineIdx][wordIdx][charIdx] WILL BE UNDEFINED !!!
+
 
             TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
                 SPACEONLASTWORD
