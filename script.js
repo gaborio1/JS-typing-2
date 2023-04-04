@@ -1021,7 +1021,6 @@ const spaceOnLastWord = () => {
         textSpanContainerNextParagraph.innerHTML = ""; // DELETE CONTENT
         createSpans(lineIdx + 1, textSpanContainerNextParagraph);
     }
-
 };
 
 // SPACE ON WORD
@@ -1273,9 +1272,7 @@ startButton.addEventListener("click", (event) => {
         if (typedKey === "Enter") {
             enterKey.classList.add("green-background__keyboard");
             setTimeout(function () {
-                enterKey.classList.remove(
-                    "green-background__keyboard"
-                );
+                enterKey.classList.remove("green-background__keyboard");
             }, 100);
         }
 
@@ -1651,7 +1648,7 @@ startButton.addEventListener("click", (event) => {
                 textFieldsWrap.classList.remove("red-border--thick");
             }, 200);
 
-            // ERROR: THIS NOT WORKS? LOOK INTO THIS !!!
+            // ERROR: THIS NOT WORKING? LOOK INTO THIS !!!
             redCounter += wordArrays[lineIdx][wordIdx].length; // INCREMENT RED COUNTER WITH WORD'S LENGTH
 
             accuracy = calcAccuracy(); // CALC ACCURACY AGAIN
@@ -2659,6 +2656,9 @@ CURRENT BRANCH: span-refactor-1
             
     PROBLEMS:
 
+            LIMIT MAX NUMBER OF WORDS SKIPPED BY SPACE, AT THE MOMENT IT IS INFINITE
+                spaceOnWord() CONSECUTIVE ERRORS ARE BEING RESET TO 0 HERE !!!
+
             BUG: SPACE WILL TAKE CURSOR TO NEXT LINE FROM LAST SPACE EVEN IF IT WAS MISTYPED AND NOT CORRECTED!!!
                 ☑️ 1. INCREMENT NUMBER OF NULL VALUES (NON EXISTING SPANS) WITH WRONG CHARACTER TYPED
                 ☑️ 2. DECREMENT NULL COUNT WITH BACKSPACE
@@ -2669,6 +2669,7 @@ CURRENT BRANCH: span-refactor-1
             TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
                 SPACEONLASTWORD
                 SPACEONWORD
+                LOOK INTO: displayColourCounterValues() THIS F UPDATES COUNTER SPANS
 
             RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER
                 SPACEONLASTWORD
