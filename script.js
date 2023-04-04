@@ -999,25 +999,29 @@ const findNextWordIndex = () => {
 
 // SPACE ON LAST WORD
 const spaceOnLastWord = () => {
-    // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
+    // ONLY RUN FUNCTION IF ALL NULL VALUE SPANS (BEYOND END OF LINE ERRORS) HAVE BEEN CORRECTED
+    if (nullValueSpanCounter < 1) {
+        // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
 
-    // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
+        // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
 
-    // RESET WRONGCOUNTER
-    // consecutiveErrorCounter += 1;
-    consecutiveErrorCounter = 0;
-    nextLine();
+        // RESET WRONGCOUNTER
+        // consecutiveErrorCounter += 1;
+        consecutiveErrorCounter = 0;
+        nextLine();
 
-    textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
-    createSpans(lineIdx, textSpanContainerActive); // APPEND SPANS CREATED FROM NEXT LINE
-    // ADD CURSOR TO FIRST CHAR IN LINE
-    const firstCharacter = document.getElementById("span-0");
-    firstCharacter.classList.add("background", "black-border");
+        textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
+        createSpans(lineIdx, textSpanContainerActive); // APPEND SPANS CREATED FROM NEXT LINE
+        // ADD CURSOR TO FIRST CHAR IN LINE
+        const firstCharacter = document.getElementById("span-0");
+        firstCharacter.classList.add("background", "black-border");
 
-    stringWords = wordArrays[lineIdx].join(""); // UPDATE STRWORDS
+        stringWords = wordArrays[lineIdx].join(""); // UPDATE STRWORDS
 
-    textSpanContainerNextParagraph.innerHTML = ""; // DELETE CONTENT
-    createSpans(lineIdx + 1, textSpanContainerNextParagraph);
+        textSpanContainerNextParagraph.innerHTML = ""; // DELETE CONTENT
+        createSpans(lineIdx + 1, textSpanContainerNextParagraph);
+    }
+
 };
 
 // SPACE ON WORD
@@ -1244,16 +1248,14 @@ startButton.addEventListener("click", (event) => {
     const handleKeyEvent = (event) => {
         // const typedKey = event.key;
         typedKey = event.key;
-        // console.log("EVENT: KEYDOWN", event.key);
+        console.log("EVENT: KEYDOWN", event.key);
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
+        const enterKey = document.getElementById("key--enter");
         for (let i = 0; i < letterKeys.length; i += 1) {
             // console.log(typedKey);
-
-            // ENTER KEY IS HANDLED SEPARATELY AS ITS TEXT CONTENT IS "RETURN" VS "ENTER" !
-            const enterKey = document.getElementById("key--enter");
 
             if (typedKey.toUpperCase() === letterKeys[i].innerText) {
                 // CLASS COLOUR: rgba(0, 128, 0, 0.304)
@@ -1265,6 +1267,16 @@ startButton.addEventListener("click", (event) => {
                     );
                 }, 100);
             }
+        }
+
+        // ENTER KEY IS HANDLED SEPARATELY AS ITS TEXT CONTENT IS "RETURN" VS "ENTER" !
+        if (typedKey === "Enter") {
+            enterKey.classList.add("green-background__keyboard");
+            setTimeout(function () {
+                enterKey.classList.remove(
+                    "green-background__keyboard"
+                );
+            }, 100);
         }
 
         // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
@@ -1362,7 +1374,7 @@ startButton.addEventListener("click", (event) => {
 
             // REMOVE CURSOR FROM SPACE
             if (typedKey === " ") {
-                // console.log("CORRECT KEY - SPACE");
+                console.log("CORRECT KEY - SPACE");
 
                 // END OF LINE SPACE
 
@@ -1527,6 +1539,7 @@ startButton.addEventListener("click", (event) => {
                     // if (typedKey === " ") {
                     // END OF LINE SPACE
 
+                    // if (strIdx === stringWords.length - 1) {
                     if (strIdx === stringWords.length - 1) {
                         correctEndOfLineSpace();
                     }
@@ -2626,7 +2639,7 @@ CURRENT BRANCH: span-refactor-1
         COMPLETE WORDS COUNTER
         TRACK KEYS TYPED IN REAL TIME ON KEYBOARD?
             ☑️ LETTER KEYS
-            ENTER
+            ☑️ ENTER
             NUMBERS
        
         ☑️ WRITE AND FORMAT INFO CARD
@@ -2647,9 +2660,9 @@ CURRENT BRANCH: span-refactor-1
     PROBLEMS:
 
             BUG: SPACE WILL TAKE CURSOR TO NEXT LINE FROM LAST SPACE EVEN IF IT WAS MISTYPED AND NOT CORRECTED!!!
-                1. INCREMENT NUMBER OF NULL VALUES (NON EXISTING SPANS) WITH WRONG CHARACTER TYPED
-                2. DECREMENT NULL COUNT WITH BACKSPACE
-                3. ONLY NOW ALLOW ENDOFLINESPACE() TO RUN ON SPACE KEYPRESS
+                ☑️ 1. INCREMENT NUMBER OF NULL VALUES (NON EXISTING SPANS) WITH WRONG CHARACTER TYPED
+                ☑️ 2. DECREMENT NULL COUNT WITH BACKSPACE
+                ☑️ 3. ONLY NOW ALLOW spaceOnLastWord() TO RUN ON SPACE KEYPRESS
             NOTE: STRIDX GETS INCREMENTED ANE wordArrays[lineIdx][wordIdx][charIdx] WILL BE UNDEFINED !!!
 
 
