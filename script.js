@@ -861,9 +861,6 @@ const correctEndOfLineSpace = () => {
 
     // 1. HAVE TO COUNT COLOURS IN LAST WORD BEFORE NEXTLINE() TO BE ABLE TO CHECK CURRENT LINE SPANS
     countSpanColoursInLastWord();
-    // 2. ALSO, UPDATE COLOUR COUNTER VALUES
-    displayColourCounterValues();
-    // 3. NOW, MOVE ON TO NEXT LINE
     nextLine();
     clearTextInput();
     wordCounter += 1;
@@ -1396,12 +1393,6 @@ startButton.addEventListener("click", (event) => {
 
                 wordCounter += 1;
 
-                // COUNT COLOUR SPANS IN LAST WORD WHEN TRAILING SPACE IS TYPED CORRECTLY
-                // countSpanColours();
-
-                // DISPLAY COLOUR COUNTER VALUES
-                displayColourCounterValues();
-
                 // CALC AND DISPLAY ACCURACY  accuracy = (100 / (greenCounter + redCounter)) * greenCounter;
                 accuracy = calcAccuracy();
                 resetAccSpanColours();
@@ -1553,12 +1544,6 @@ startButton.addEventListener("click", (event) => {
 
                     wordCounter += 1;
 
-                    // COUNT COLOUR SPANS IN LAST WORD WHEN TRAILING SPACE IS TYPED CORRECTLY
-                    // countSpanColours();
-
-                    // DISPLAY COLOUR COUNTER VALUES
-                    displayColourCounterValues();
-
                     // CALC AND DISPLAY ACCURACY  accuracy = (100 / (greenCounter + redCounter)) * greenCounter;
                     accuracy = calcAccuracy();
                     resetAccSpanColours();
@@ -1685,6 +1670,7 @@ startButton.addEventListener("click", (event) => {
             reloadSequence();
             textInput.removeEventListener("keydown", handleKeyEvent);
         }
+        displayColourCounterValues();
     };
 
     // ADD HANDLEKEYEVENT FOR KEYUP EVENT ONLY ONCE, REMOVE IT IF START IS CLICKED AGAIN, SEE IF BLOCK BELOW
@@ -2619,6 +2605,8 @@ CURRENT BRANCH: span-refactor-1
     
     FEATURES:
 
+        HIGHLIGHT SLIDER RAIL ON HOVER?
+
         HIGHLIGHT INPUT TEXT WHEN CORRECTING WITH BACKSPACE?
 
         CONNECT BEGINNER CONTROLS TO JAVASCRIPT
@@ -2656,6 +2644,10 @@ CURRENT BRANCH: span-refactor-1
             
     PROBLEMS:
 
+            ☑️ displayColourCounterValues() CALL THIS ON EVERY KEYPRESS (VALUES ARE ONLY UPDATED WITH SPACE!!)
+            COLOUR COUNTER DOESN'T UPDATE ON LAST SPACE, INSTEAD IT UPDATES AFTER IN NEXT LINE
+                LOOK INTO countSpanColoursInLastWord()
+
             LIMIT MAX NUMBER OF WORDS SKIPPED BY SPACE, AT THE MOMENT IT IS INFINITE
                 spaceOnWord() CONSECUTIVE ERRORS ARE BEING RESET TO 0 HERE !!!
 
@@ -2674,6 +2666,8 @@ CURRENT BRANCH: span-refactor-1
             RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER
                 SPACEONLASTWORD
                 SPACEONWORD
+
+            DELETE UNUSED VARIABLES, FUNCTIONS
 
             KEEP TRACK OF NUMBER OF WRONG KEYS IF CURSOR GOES BEYOND END OF LINE
                 ☑️ DISPLAY "KEEP CORRECTING" MESSAGE WITH BACKSPACE
