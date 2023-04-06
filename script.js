@@ -749,6 +749,41 @@ const handleBackspace = () => {
         console.log("NULL COUNTER RESET TO 0", nullValueSpanCounter);
         messageDiv.textContent = "";
     }
+
+    // DISPLAY END OF LINE SPACE WHEN USER CORRECTED ALL ERRORS BEYOND END OF LINE
+    if (strIdx === stringWords.length - 1) {
+        messageDiv.textContent = "END OF LINE SPACE";
+        setTimeout(() => {
+            messageDiv.textContent = "";
+        }, 200);
+        // CHECK LAST WORD FOR ERRORS WHEN USER REACHED LAST SPACE AFTER CORRECTING BEYOND THE LINE ERRORS
+        // 1. GET LENGTH OF LAST WORD
+        let lastWord = wordArrays[lineIdx][wordIdx];
+        console.log("LAST WORD/LENGTH", lastWord, lastWord.length);
+        // LOOP BACKWARDS FROM CURRENT(SPACE) - 1 FOR LASTWORD.LENGTH-1 TIMES (EXCLUDE SPACE)
+        // AND CHECK FOR RED CLASS, IF FOUND DISPLAY "MORE ERRORS TO CORRECT"
+        let charSpans = document.querySelectorAll(".active-txt-span");
+        let lastWordRedCounter = 0;
+        for (
+            let i = strIdx;
+            i > stringWords.length - 1 - lastWord.length - 1;
+            i -= 1
+        ) {
+            console.log(charSpans[i]);
+            if (charSpans[i].classList.contains("red")) {
+                lastWordRedCounter += 1;
+            }
+        }
+        console.log("LAST WORD RED COUNTER:", lastWordRedCounter);
+        // AFTER LAST SPACE MESSAGE, LET USER KNOW IF THERE'S ANY ERRORS LEFT IN LAST WORD
+        if (lastWordRedCounter > 0) {
+            setTimeout(() => {
+                messageDiv.textContent = `END OF LINE SPACE, ${lastWordRedCounter} MORE ERRORS`;
+                messageDiv.textContent = `${lastWordRedCounter} MORE ERROR(S) IN LAST WORD`;
+            }, 210);
+        }
+    }
+
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     const currentCharacter = document.getElementById(`span-${strIdx}`);
@@ -2605,6 +2640,9 @@ CURRENT BRANCH: span-refactor-1
     
     FEATURES:
 
+        ☑️ CHECK LAST WORD FOR ERRORS WHEN USER REACHED LAST SPACE AFTER CORRECTING BEYOND THE LINE ERRORS IN handleBackSpace()
+            KEEP MESSAGE UNTIL CURSOR REACHES FIRST ERROR IN LAST WORD ?
+
         HIGHLIGHT SLIDER RAIL ON HOVER?
 
         HIGHLIGHT INPUT TEXT WHEN CORRECTING WITH BACKSPACE?
@@ -2685,24 +2723,9 @@ CURRENT BRANCH: span-refactor-1
                 ☑️ THEME TOGGLE
                 ☑️ HIDE BEGINNER ?
 
-        ☑️ UNSELECT GRAMS/ROWS WITH SELECTION TYPE TOGGLE ?
-
-        ☑️ CLEAR TEXT INPUT WHEN GRAMS/ROWS ARE SELECTED 
-
-        ☑️ BEGINNER SELECTION TO DISPAY "CLICK START"
-
-        ☑️ BEGINNER / ADVANCED TOGGLES (PUNCTUATION, CAPITAL, TIMER ) TO CLEAR TEXT FIELDS
-
-        ☑️ BEGINNER / ADVANCED TOGGLES (PUNCTUATION, CAPITAL, TIMER AND ENTER ) TO DISPLAY "CLICK START"
-
         ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT?
             ☑️ ADDED 700MS SETTIMEOUT DELAY
 
-        ☑️ DISPAY MESSAGE: "MAKE LEVEL SELECTION" IF NO LEVEL / GRAMS / ROWS ARE SELECTED
-
-        ☑️ DISABLE TOGGLES AND START BUTTON IF LEVEL SELECTORS ARE ALL UNSELECTED IN BEGINNER RANDOM
-
-        ☑️ RESET WRONG KEY COUNTER WITH START !!! IT IS KEEPING TRACK OF IT FROM PREVIOUS SESSION !!!
 
         ENTER AND SPACE KEYS TRIGGER CARD FLIP AFTER FLIP BUTTON IS CLICKED (FOCUS???)
                
