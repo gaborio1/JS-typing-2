@@ -39,7 +39,6 @@ const colourCodeContainer = document.getElementById("colour-code-container");
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰   CONTROL PANEL   🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // DIFFICULTY
-const difficultyApply = document.getElementById("diffuculty-apply");
 const difficultyRadios = document.getElementsByClassName("difficulty-radio");
 // LENGTH
 const slider = document.getElementById("length");
@@ -748,6 +747,12 @@ const handleBackspace = () => {
         nullValueSpanCounter = 0;
         console.log("NULL COUNTER RESET TO 0", nullValueSpanCounter);
         messageDiv.textContent = "";
+
+        // REMOVE RED HIGHLIGHT FROM END OF LINE SPACE WHEN ALL BEYOND THE LINE ERRORS
+        // HIGHLIGHT ADDED IN WRONG KEY: if (typedKey !== "Enter") BLOCK
+        const charSpans = document.querySelectorAll(".active-txt-span");
+        const endOfLineSpace = charSpans[stringWords.length - 1];
+        endOfLineSpace.classList.remove("red-border", "red-background");
     }
 
     // DISPLAY END OF LINE SPACE WHEN USER CORRECTED ALL ERRORS BEYOND END OF LINE
@@ -762,7 +767,7 @@ const handleBackspace = () => {
         console.log("LAST WORD/LENGTH", lastWord, lastWord.length);
         // LOOP BACKWARDS FROM CURRENT(SPACE) - 1 FOR LASTWORD.LENGTH-1 TIMES (EXCLUDE SPACE)
         // AND CHECK FOR RED CLASS, IF FOUND DISPLAY "MORE ERRORS TO CORRECT"
-        let charSpans = document.querySelectorAll(".active-txt-span");
+        const charSpans = document.querySelectorAll(".active-txt-span");
         let lastWordRedCounter = 0;
         for (
             let i = strIdx;
@@ -778,7 +783,7 @@ const handleBackspace = () => {
         // AFTER LAST SPACE MESSAGE, LET USER KNOW IF THERE'S ANY ERRORS LEFT IN LAST WORD
         if (lastWordRedCounter > 0) {
             setTimeout(() => {
-                messageDiv.textContent = `END OF LINE SPACE, ${lastWordRedCounter} MORE ERRORS`;
+                // messageDiv.textContent = `END OF LINE SPACE, ${lastWordRedCounter} MORE ERRORS`;
                 messageDiv.textContent = `${lastWordRedCounter} MORE ERROR(S) IN LAST WORD`;
             }, 210);
         }
@@ -940,7 +945,7 @@ const correctSpaceNotEndOfLine = () => {
 
 const countSpanColours = () => {
     let lastWordLength = wordArrays[lineIdx][wordIdx - 1].length;
-    let charSpans = document.querySelectorAll(".active-txt-span");
+    const charSpans = document.querySelectorAll(".active-txt-span");
     // START LOOP BACKWARDS AND COUNT SPANS WITH GREEN CLASS
     for (let i = strIdx - 2; i >= strIdx - lastWordLength; i -= 1) {
         // PRINT LAST WORD SPANS WITHOUT TRAILING SPACE
@@ -969,7 +974,7 @@ const countSpanColours = () => {
 const countSpanColoursInLastWord = () => {
     // console.log("HELLO FROM  COUNTSPANCOLOURSLASTSPACE");
     let currentWordLength = wordArrays[lineIdx][wordIdx].length;
-    let charSpans = document.querySelectorAll(".active-txt-span");
+    const charSpans = document.querySelectorAll(".active-txt-span");
     // START LOOP BACKWARDS AND COUNT SPANS WITH GREEN CLASS
     // WE ARE STILL ON CURRENT WORD VS LAST WORD IN countSpanColours() ABOVE
     for (let i = strIdx - 1; i >= strIdx - currentWordLength + 1; i -= 1) {
@@ -1071,7 +1076,7 @@ const spaceOnWord = () => {
 
     // console.log("SRTING IDX:", strIdx);
     // LOOP OVER SPANS UP TO CURRENT-1 (EXCLUDING SPACE) AND REMOVE BLACK-BORDER
-    let charSpans = document.querySelectorAll(".active-txt-span");
+    const charSpans = document.querySelectorAll(".active-txt-span");
     // console.log(charSpans);
     for (let i = 0; i < strIdx - 1; i += 1) {
         // console.log(charSpans[i]);
@@ -1470,6 +1475,15 @@ startButton.addEventListener("click", (event) => {
             if (typedKey !== "Enter") {
                 if (nullValueSpanCounter > 0) {
                     messageDiv.textContent = `${nullValueSpanCounter} ERROR(S) INTO NEXT LINE!`;
+
+                    // HIGHLIGHT END OF LINE SPACE UNTIL CONSECUTIVE ERRORS ARE MADE (AND KEEP IT HIGHLIGHTED UNTIL ALL ERRORS ARE CORRECTED IN handleBackspace())
+                    const charSpans =
+                        document.querySelectorAll(".active-txt-span");
+                    const endOfLineSpace = charSpans[stringWords.length - 1];
+                    endOfLineSpace.classList.add(
+                        "red-border",
+                        "red-background"
+                    );
                 } else {
                     messageDiv.textContent = "WRONG KEY!";
                 }
@@ -2602,12 +2616,17 @@ CURRENT BRANCH: span-refactor-1
     ☑️ REMOVE BLACK-BORDER CLASS FROM SKIPPED WORD (LOOP OVER SPANS UP TO STRIDX-1 AND REMOVE CLASS)
 
     ADD RED BORDER/BACKGROUND HIGHLIGHT TO LAST SPACE IF CONSECUTIVE ERRORS ARE MADE
-        KEEP TRACK OF NULL VALUE CLICKS (NON EXISTING SPANS)
-            INCREMENT WITH ERROR
-            DECREMENT WITH BACKSPACE
+        ☑️ KEEP TRACK OF NULL VALUE CLICKS (NON EXISTING SPANS)
+            ☑️ INCREMENT WITH ERROR
+            ☑️ DECREMENT WITH BACKSPACE
 
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+    DUPLICATES:
+        charSpans
+        endOfLineSpace
+
 
     DECREMENT ORANGE COUNTER WITH BACKSPACE
         USE NUMBER OF CONSECUTIVE ERRORS TO STYLE WARNING DYNAMICALLY
@@ -2681,6 +2700,8 @@ CURRENT BRANCH: span-refactor-1
        
             
     PROBLEMS:
+
+            ERROR ON ORANGE BORDER SPACE SHOULD GET RED BORDER (IT STAYS ORANGE)
 
             ☑️ displayColourCounterValues() CALL THIS ON EVERY KEYPRESS (VALUES ARE ONLY UPDATED WITH SPACE!!)
             COLOUR COUNTER DOESN'T UPDATE ON LAST SPACE, INSTEAD IT UPDATES AFTER IN NEXT LINE
