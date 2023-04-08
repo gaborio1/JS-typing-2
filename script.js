@@ -100,10 +100,6 @@ let level_6_On = false;
 let level_7_On = false;
 let level_8_On = false;
 let level_9_On = false;
-// let level_10_On = false;
-// let level_11_On = false;
-
-// const levelsApply = document.getElementById("levels-apply");
 
 const beginnerShowButton = document.getElementById(
     "beginner-control-show-button"
@@ -114,6 +110,7 @@ const beginnerHideButton = document.getElementById(
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰   TEXT FIELDS   🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// WRAP CONTAINING BOTH TEXT FIELDS
 const textFieldsWrap = document.getElementById("text-fields-wrap");
 // ACTIVE SPAN
 const textSpanContainerActive = document.getElementById("text-span-active");
@@ -141,14 +138,11 @@ const keystrokesSpan = document.getElementById("keystrokes-span");
 const accuracySpan = document.getElementById("accuracy-span");
 // KEYBOARD
 const keyboard = document.getElementById("keyboard");
-
 // .key--letter IS NOW BEING REPLACED BY .key--tracked, THIS CLASS WILL BE ADDED TO NUMERIC KEYS
 // const letterKeys = document.getElementsByClassName("key--letter");
 const letterKeys = document.getElementsByClassName("key--tracked");
-
 // MESSAGE DIV
 const messageDiv = document.getElementById("message-div");
-
 // CAPSLOCK
 const capsLockKey = document.getElementById("capslock-key");
 
@@ -160,6 +154,7 @@ const capsLockKey = document.getElementById("capslock-key");
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 LOGIC VARIABLES 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+// TRACK START CLICKS
 let startButtonCounter = 0;
 // DEFAULT COMMON 100 WORDS
 let targetArray = [...common100];
@@ -176,21 +171,22 @@ let wordArrays = [];
 let stringWords = "";
 // STRINGWORDS NEXT
 let stringWordsNext = "";
+
 // CURSOR TRACKERS
 let lineIdx = 0;
 let wordIdx = 0;
 let strIdx = 0;
 let charIdx = 0;
+
 // DEFAULT CONTROL SETTINGS
 let punctuationOn = false;
 let capitalOn = false;
 let enterOn = false;
-// DISABLED
 let timerOn = false;
 let timerRunning = false;
-// let timerOn = false;
 let soundOn = true;
 
+// TOTAL KEYSTROKES
 let keyStrokeCounter = 0;
 // TEST: COUNT ALL COMPLETED WORDS (BOTH CORRECT AND INCORRECT)
 let wordCounter = 0;
@@ -201,11 +197,9 @@ let accuracy = 0;
 
 // NON EXISTING (NULL VALUE) SPANS BEYOND END OF LINE SPACE
 let nullValueSpanCounter = 0;
-
 // TRACK CONSECUTIVE WRONG KEYS
 let consecutiveErrorCounter = 0;
 let maxMistakes = 20;
-
 // TRACK PROBLEM KEYS (NO DUPLICATES IN SET)
 let problemKeysSet = new Set();
 const problemKeySpans = document.getElementsByClassName("problem-key-span");
@@ -215,7 +209,6 @@ let tempProbWordsArr = []; // WORDS THAT CONTAIN BROBLEM KEYS FROM PREVIOUS SESS
 let beginnerOn = false;
 // COLOUR THEME
 let darkThemeOn = false;
-// CAPSLOCK STATUS
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 FUNCTIONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -273,9 +266,6 @@ const toggleButtonStyle = (element) => {
         element.classList.add("toggle-on");
         element.innerText = "On";
     }
-    // if (element !== themeToggle) {
-    //     element.disabled = true;
-    // }
 };
 
 // TOGGLE BOOLEAN BUTTON STATE BASED ON CLASS ONLY IF BEGINNER LEVEL IS NOT SELECTED
@@ -283,66 +273,6 @@ const toggleButtonState = (element) => {
     // console.log(element);
     // if (!beginnerOn) {
     if (element.classList.contains("toggle-on")) {
-        //     if (element === punctuationToggle) {
-        //         punctuationOn = true;
-        //     }
-        //     if (element === punctuationToggleBeginner) {
-        //         punctuationOn = true;
-        //     }
-        //     if (element === capitalToggle) {
-        //         capitalOn = true;
-        //     }
-        //     if (element === capitalToggleBeginner) {
-        //         capitalOn = true;
-        //     }
-        //     if (element === soundToggle) {
-        //         soundOn = true;
-        //     }
-        //     // if (element === timerToggle && !beginnerOn) {
-        //     if (element === timerToggle) {
-        //         timerOn = true;
-        //     }
-        //     if (element === enterToggle) {
-        //         enterOn = true;
-        //     }
-        //     if (element === enterToggleBeginner) {
-        //         enterOn = true;
-        //     }
-        //     if (element === themeToggle) {
-        //         darkThemeOn = true;
-        //     }
-        // } else {
-        //     if (element === punctuationToggle) {
-        //         punctuationOn = false;
-        //     }
-        //     if (element === punctuationToggleBeginner) {
-        //         punctuationOn = false;
-        //     }
-        //     if (element === capitalToggle) {
-        //         capitalOn = false;
-        //     }
-        //     if (element === capitalToggleBeginner) {
-        //         capitalOn = false;
-        //     }
-        //     if (element === soundToggle) {
-        //         soundOn = false;
-        //     }
-        //     if (element === timerToggle) {
-        //         timerOn = false;
-        //     }
-        //     if (element === enterToggle) {
-        //         enterOn = false;
-        //     }
-        //     if (element === enterToggleBeginner) {
-        //         enterOn = false;
-        //     }
-        //     if (element === themeToggle) {
-        //         darkThemeOn = false;
-        //     }
-        // }
-
-        // !!! BUG: SWITCH() WILL ENABLE ENTERON IF OTHER TOGGLES ARE SWITCHED ON !!!
-
         switch (element) {
             case punctuationToggle:
                 punctuationOn = true;
@@ -422,7 +352,6 @@ const getStrLength = (arr) => {
 };
 
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
-
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
 const buildWordArrays = (numOfLines) => {
     // console.log("BUILD TARGET ARRAY", targetArray);
@@ -625,6 +554,7 @@ const findAndApplyProblemKeyWords = () => {
     // console.log("TARGET ARRAY:", targetArray);
 };
 
+// (event) WILL DESABLE START BUTTON !!!
 const handleCapslockChange = () => {
     if (event.getModifierState("CapsLock")) {
         // console.log("CAPSLOCK IS ON! - START BUTTON");
@@ -641,21 +571,7 @@ const removeProblemKeyHighlight = () => {
     }
 };
 
-// DISABLE CONTROL APPLY BUTTONS (DISABLED)
-
-// const disableApplyButtons = () => {
-//     difficultyApply.disabled = true;
-//     punctuationApply.disabled = true;
-//     capitalApply.disabled = true;
-//     enterApply.disabled = true;
-//     timerApply.disabled = true;
-//     lengthApply.disabled = true;
-//     soundApply.disabled = true;
-//     themeApply.disabled = true;
-// };
-
 // MAKE EACH CHARACTER OF THE STRING A span AND APPEND AS A CHILD ELEMENT TO ITS CONTAINER
-
 // CREATE SPANS FROM wordArrays' ARRAY OF WORDS, JOIN ELEMENS TO ONE STRING WITH SPACES AND THEN SPLIT
 // wordArrays[lineIdx] WILL BE INCREMENTED IN EVETLISTENER
 const createSpans = (lineIdx, location) => {
@@ -792,53 +708,7 @@ const handleBackspace = () => {
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     const currentCharacter = document.getElementById(`span-${strIdx}`);
-
     // console.log(currentCharacter);
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // HAS TO CHECK FOR NULL (NOT UNDEFINED) BEFORE RED CLASS AS IT WONT READ CLASSLIST OF "NULL"
-
-    // if (currentCharacter === null) {
-    //     console.log(consecutiveErrorCounter);
-    //     console.log("NULL");
-    //     console.log(consecutiveErrorCounter);
-    //     consecutiveErrorCounter -= 1;
-    //     console.log(consecutiveErrorCounter);
-
-    //     // messageDiv.textContent = `ERRORS REMAINING: ${consecutiveErrorCounter - 1} `;
-    //     // messageDiv.textContent = "NULL";
-    //     messageDiv.textContent = "KEEP CORRECTING!";
-    // }
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // DECREMENT WRONG COUNTER IF BACKSPACE WAS USED
-    // ERROR: THIS WILL NOT WORK AT THE END OF LINE AS WE GET NULL VALUES FROM NON EXISTING SPANS !!!
-    // if (currentCharacter.classList.contains("red")) {
-    //     consecutiveErrorCounter -= 1;
-    // }
-
-    // console.log("BACKSPACE WRONG COUNTER", consecutiveErrorCounter);
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // ONLY DISPAY MESSAGE UNTIL END OF LINE SPACE HAS BEEN REACHED,OR WHILE WRONG KEY (RED) ARE ENCOUNTERED
-
-    // IF COUNTING NON EXISTING SPANS, WRONGCOUNTER VALUE HAS TO BE ONE LESS
-    // if (consecutiveErrorCounter > 0 && !currentCharacter.classList.contains("green")) {
-    //     // messageDiv.textContent = `ERRORS REMAINING: ${consecutiveErrorCounter} `;
-    //     // messageDiv.textContent = `KEEP CORRECTING: ${consecutiveErrorCounter}`;
-    //     messageDiv.textContent = `KEEP CORRECTING!`;
-    //     setTimeout(() => {
-    //         messageDiv.textContent = "";
-    //     }, 200);
-    // }
-
-    // if (consecutiveErrorCounter === 0) {
-    //     messageDiv.textContent = "";
-    // }
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
     if (currentCharacter.innerText === " ") {
@@ -916,10 +786,7 @@ const correctEndOfLineSpace = () => {
     textSpanContainerNextParagraph.innerHTML = "";
     // APPEND TEXT AS SPANS !!!
     createSpans(lineIdx + 1, textSpanContainerNextParagraph);
-
-    // +++++++++++++++++++++++++
     messageDiv.textContent = "";
-    // +++++++++++++++++++++++++
 };
 
 // ALL OTHER SPACES
@@ -933,9 +800,7 @@ const correctSpaceNotEndOfLine = () => {
     currentCharacter.classList.remove("background", "black-border");
     // }
 
-    // +++++++++++++++++++++++++
     messageDiv.textContent = "";
-    // +++++++++++++++++++++++++
 
     nextWord();
     clearTextInput();
@@ -1031,6 +896,7 @@ const findNextWordIndex = () => {
             break;
         }
     }
+
     return nextWordIdx;
 };
 
@@ -1457,8 +1323,6 @@ startButton.addEventListener("click", (event) => {
                 wordArrays[lineIdx][wordIdx][charIdx]
             );
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
             consecutiveErrorCounter += 1;
 
             console.log("STRINWORDS LENGTH:", stringWords.length);
@@ -1499,19 +1363,6 @@ startButton.addEventListener("click", (event) => {
                     // nullValueSpanCounter += 1;
                     // console.log("NULL COUNTER:", nullValueSpanCounter);
                 }
-                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-                // MAKE WARNING CONSTANT, DO NOT FLASH IF MORE THEN 1 ERRORS
-                // messageDiv.textContent = consecutiveErrorCounter > 1 && consecutiveErrorCounter !== 0
-                //     ? `CORRECT ${consecutiveErrorCounter} ERRORS!`
-                //     : `CORRECT ERROR!`;
-
-                // IF ONLY ONE ERROR, FLASH ERROR MESSAGE
-                // if (consecutiveErrorCounter === 1) {
-                //     setTimeout(() => {
-                //         messageDiv.textContent = "";
-                //     }, 200);
-                // }
 
                 setTimeout(() => {
                     messageDiv.textContent = "";
@@ -1555,9 +1406,7 @@ startButton.addEventListener("click", (event) => {
                         );
                     }
 
-                    // +++++++++++++++++
                     consecutiveErrorCounter = 0;
-                    // +++++++++++++++++
 
                     //  WORD[0] - WORD[LENGTH-1], ALL CHARACTERS IN WORD EXCLUDING TRAILING SPACE
                     if (charIdx < wordArrays[lineIdx][wordIdx].length - 1) {
@@ -1602,10 +1451,6 @@ startButton.addEventListener("click", (event) => {
                 }
             }
 
-            // +++++++++++++++++
-            // consecutiveErrorCounter += 1;
-            // +++++++++++++++++
-
             // console.log("WRONG COUNTER", consecutiveErrorCounter);
 
             // UPDATE PROBLEM KEY SET
@@ -1645,7 +1490,6 @@ startButton.addEventListener("click", (event) => {
             if (stringWords[strIdx] === " ") {
                 // console.log("<<<<< ADD RED BORDER TO SPACE >>>>>");
                 currentCharacter.classList.add("red-border");
-                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 currentCharacter.classList.remove("orange-border");
                 // HIGHLIGHT LAST SPACE IF WRONG KEY TYPED ON IT
                 if (strIdx === stringWords.length - 1) {
@@ -1658,7 +1502,6 @@ startButton.addEventListener("click", (event) => {
                         );
                     }, 200);
                 }
-                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             }
 
             nextChar();
@@ -2602,19 +2445,7 @@ beginnerHideButton.addEventListener("click", function () {
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH: span-refactor-1
-
-    GET RID OF ENLARGED CLASS
-        ☑️ JS
-        ☑️ CSS
-
-    ☑️ REMOVE BLACK-BORDER CLASS FROM SKIPPED WORD (LOOP OVER SPANS UP TO STRIDX-1 AND REMOVE CLASS)
-
-    ADD RED BORDER/BACKGROUND HIGHLIGHT TO LAST SPACE IF CONSECUTIVE ERRORS ARE MADE
-        ☑️ KEEP TRACK OF NULL VALUE CLICKS (NON EXISTING SPANS)
-            ☑️ INCREMENT WITH ERROR
-            ☑️ DECREMENT WITH BACKSPACE
-
+CURRENT BRANCH: 
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
