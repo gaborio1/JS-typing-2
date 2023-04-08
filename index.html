@@ -664,18 +664,40 @@
 
                     <h1 class="instructions-header colour-theme">How to use this app</h1>
                     <br>
-                    <h3>General advice</h3>
+                    <h3>General advice and rules</h3>
                     <p>
                         It isn't about speed. Always, always correct mistakes.
                         Make 100% accuracy you goal. By correcting all errors
-                        you can still score 100%. This program will allow you to
-                        make 5 consecutive errors.
-                        That is your last chance to use Backspace and type those
-                        letters again. If you fail to do so after the fourth
-                        wrong character in a row, the
+                        you can still score 100%. This program allows you to
+                        make 20, 16 and 12 consecutive errors in easy, medium and hard levels respectively.
+                        This should be more than enough to use Backspace and type those
+                        letters again. If you fail to do so before reaching those tresholds, the
                         page will reload and current session will be lost,
                         including all control settings.
                     </p>
+                    <br>
+                    <ul>
+                        <li>
+                            <span>1:</span>
+                           You want to see everythig in blue to the left of the cursor.
+                        </li>
+                        <li><span>2:</span>
+                            Once you have clicked "Space" on a word, that word is done and cursor will jump to the next, regardless of whether current one is completed or not.
+                        </li>
+                        <li>
+                            <span>3:</span>
+                            Red means error, correct it immediately, before hitting space, or you won't be able to Backspace anymore.
+                        </li>
+                        <li><span>4:</span>
+                            
+                        </li>
+                        <li><span>5:</span>
+                            
+                        </li>
+                        <li><span>6:</span>
+                            
+                        </li>
+                    </ul>
 
                     <br>
                     <hr>
@@ -687,11 +709,11 @@
                         you have learned so far.
                         <br>
                         The app is ready to go with default settings, just click "Start" , make sure your Capslock is
-                        off and start typing. The first keypress will trigger the timer and session will start.
-                        You won't be able to make any changes to the control panel settings while timer is running, as
+                        off and start typing. When timer is enabled, the first keypress will trigger the countdown and starts a 60 second session.
+                        You won't be able to make any changes to the control panel settings now, as
                         all
-                        controls are disabled in timer mode.
-                        If you want to customise settings, make your adjustments before typing the first key.
+                        controls are hidden while timer is running.
+                        If you wish to customise settings, make your adjustments before typing the first key.
 
                     </p>
                     <br>
@@ -714,7 +736,7 @@
                         </li>
                         <li>
                             <span>Timer:</span>
-                            1 minute countdown timer. On (default) / Off.
+                            1 minute countdown timer. On / Off (default).
                         </li>
                         <li>
                             <span>Line length:</span>
@@ -730,8 +752,8 @@
                             Light (default) / Dark.
                         </li>
                         <li>
-                            <span>Info:</span>
-                            Show / hide info card.
+                            <span>How to:</span>
+                            Shows / hides info card.
                         </li>
                         <li>
                             <span>Beginner level:</span>
@@ -753,6 +775,11 @@
                             <span>Next field:</span>
                             Text field 2. Preview of the next active field text.
                         </li>
+                        <li>
+                            <span>Cursor:</span>
+                            Light theme: grey background with black border.
+                            Dark theme: grey background with white border.
+                        </li>
                     </ul>
 
                     <br>
@@ -763,7 +790,7 @@
                     <ul>
                         <li>
                             <span>Timer:</span>
-                            60 second countdown (active by default).
+                            60 second countdown (disabled by default).
                         </li>
                         <li>
                             <span>Text input:</span>
@@ -782,20 +809,20 @@
                     <ul>
                         <li>
                             <span>Average speed:</span>
-                            Shows current speed during timer and average speed at the end of session
+                            Shows current speed during timer and average speed at the end of session.
                         </li>
                         <li>
                             <span>Green / Red / Backspace:</span>
-                            Counter for each colour (correct key, wrong key, backspace)
+                            Counter for each colour (correct key, wrong key, backspace).
                         </li>
                         <li>
                             <span>Keystrokes:</span>
-                            Total number of keystrokes (including space / backspace)
+                            Total number of keystrokes (including space / backspace).
 
                         </li>
                         <li>
                             <span>Accuracy:</span>
-                            Current and total accuracy percentage rounded down to nearest integer
+                            Current and total accuracy percentage rounded down to nearest integer.
                         </li>
                     </ul>
 
@@ -822,7 +849,7 @@
                             Keyboard tracks your keypresses and typed key is highlighted in green.
                         </li>
                         <li><span>Capslock detection:</span>
-                            Capslock key will flash if capslock is on.
+                            Capslock key flashes in red if capslock is on.
                         </li>
                     </ul>
 
@@ -853,7 +880,7 @@
                         </li>
                         <li>
                             <span>Correct: </span>
-                            All letters typed correctly are green.
+                            All letters typed correctly are light blue.
                         </li>
                         <li>
                             <span>Wrong:</span>
@@ -866,13 +893,14 @@
                         </li>
                         <li>
                             <span>Not typed:</span>
-                            Characters at / ahead of cursor position.
+                            Characters at / ahead of cursor position or characters skipped by space on word.
                         </li>
                         <li>
                             <span>Skipped:</span>
                             This app is very strict about space, hitting space on a word will result in the cursor
                             moving to
-                            the first character of the next word. This action can not be undone!
+                            the first character of the next word. Red counter will be incremented by the length of every word you skip. This action can not be undone!
+
                         </li>
                     </ul>
 
@@ -905,12 +933,11 @@
                     <ul>
                         <li>
                             <span>Level selectors: </span>
-                            Select letter group.
+                            Select letter group(s).
                         </li>
                         <li>
                             <span>Selection type toggle:</span>
-                            "Through "(default) will include all levels up to and including the one being selected.
-                            <br>
+                            "Through " (default) will include all levels up to and including the one being selected, while
                             "Random" allows you to single out level(s) in no particular order.
                         </li>
                         <li>
