@@ -1646,6 +1646,7 @@ startButton.addEventListener("click", (event) => {
                 // console.log("<<<<< ADD RED BORDER TO SPACE >>>>>");
                 currentCharacter.classList.add("red-border");
                 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                currentCharacter.classList.remove("orange-border");
                 // HIGHLIGHT LAST SPACE IF WRONG KEY TYPED ON IT
                 if (strIdx === stringWords.length - 1) {
                     currentCharacter.classList.add("red-background");
@@ -2593,12 +2594,6 @@ beginnerHideButton.addEventListener("click", function () {
             ☑️ MEDIUM:16
             ☑️ HARD:12
 
-        WHEN MAX NUM OF ERRORS HAVE BEEN MADE:
-            DO NOT RESET COUNTERS
-            DO NOR RELOAD PAGE
-            MOVE CURSOR BACK TO FIRST RED KEY
-            CONTINUE SESSSION AS NORMAL AND REVEAL STATS AT THE END
-
         ☑️ GET RID OF APPLY BUTTONS
 
         ☑️ USE "HOW TO" INSTEAD OF "INFO"
@@ -2701,7 +2696,7 @@ CURRENT BRANCH: span-refactor-1
             
     PROBLEMS:
 
-            ERROR ON ORANGE BORDER SPACE SHOULD GET RED BORDER (IT STAYS ORANGE)
+            ☑️ ERROR ON ORANGE BORDER SPACE SHOULD GET RED BORDER (IT STAYS ORANGE)
 
             ☑️ displayColourCounterValues() CALL THIS ON EVERY KEYPRESS (VALUES ARE ONLY UPDATED WITH SPACE!!)
             COLOUR COUNTER DOESN'T UPDATE ON LAST SPACE, INSTEAD IT UPDATES AFTER IN NEXT LINE
