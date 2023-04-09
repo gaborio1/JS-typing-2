@@ -1500,6 +1500,7 @@ p .active-txt-span.active-txt-span--enter {
 
 /* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  RANGE  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 /* SOURCE: https://www.cssportal.com/style-input-range/ */
+
 input[type="range"] {
     /* DISABLED AS IT WILL ADD A WHITE BACKGROUND */
     /* height: 17px; */
@@ -1516,13 +1517,30 @@ input[type="range"]:focus {
 /* TRACK */
 input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
-    height: 0.5px;
+    height: 1px;
     cursor: pointer;
     animate: 0.2s;
-    box-shadow: 1px 1px 1px #000000;
-    background: #50555c;
+    /* box-shadow: 1px 1px 1px #000000; */
+    background: #b3becd;
     border-radius: 14px;
-    border: 0px solid #ff6987;
+    /* border: 3px solid #ff6987; */
+}
+
+/* DARK THEME TRACK */
+.control-wrap.dark-theme input[type="range"]::-webkit-slider-runnable-track {
+    background: #2a2d30;
+}
+
+/* TRACK HOVER */
+input[type="range"]::-webkit-slider-runnable-track:hover {
+    /* height: 1px; */
+    background: #646c78;
+}
+
+/* DARK THEME TRACK HOVER */
+.control-wrap.dark-theme
+    input[type="range"]::-webkit-slider-runnable-track:hover {
+    background: #4e545b;
 }
 
 /* SLIDER */
