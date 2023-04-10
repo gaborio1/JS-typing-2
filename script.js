@@ -200,6 +200,9 @@ let nullValueSpanCounter = 0;
 // TRACK CONSECUTIVE WRONG KEYS
 let consecutiveErrorCounter = 0;
 let maxMistakes = 20;
+// TRACK SPACE-ON-WORDS
+let skippedWordsCounter = 0;
+const maxSkippedWords = 5;
 // TRACK PROBLEM KEYS (NO DUPLICATES IN SET)
 let problemKeysSet = new Set();
 const problemKeySpans = document.getElementsByClassName("problem-key-span");
@@ -938,8 +941,6 @@ const spaceOnWord = () => {
     // consecutiveErrorCounter += 1;
     consecutiveErrorCounter = 0;
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
     // console.log("SRTING IDX:", strIdx);
     // LOOP OVER SPANS UP TO CURRENT-1 (EXCLUDING SPACE) AND REMOVE BLACK-BORDER
     const charSpans = document.querySelectorAll(".active-txt-span");
@@ -948,7 +949,6 @@ const spaceOnWord = () => {
         // console.log(charSpans[i]);
         charSpans[i].classList.remove("black-border", "background");
     }
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     console.log("<<<<< UNCAUGHT TYPE ERROR spaceOnWord()>>>>>");
     // ERROR: script.js:720 Uncaught TypeError: Cannot read properties of null (reading 'classList') at correctSpaceNotEndOfLine (script.js:720:22)
@@ -1276,6 +1276,9 @@ startButton.addEventListener("click", (event) => {
             if (typedKey === " ") {
                 console.log("CORRECT KEY - SPACE");
 
+                // RESEET SKIPPED WORDS COUNTER
+                skippedWordsCounter = 0;
+
                 // END OF LINE SPACE
 
                 if (strIdx === stringWords.length - 1) {
@@ -1542,6 +1545,15 @@ startButton.addEventListener("click", (event) => {
                 clearTextInput();
             }
 
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // HANDLE CONSECUTIVE SKOPPED WORDS (CURRENTLY MAX=5)
+            skippedWordsCounter += 1;
+            if (skippedWordsCounter >= maxSkippedWords) {
+                reloadSequence();
+                textInput.removeEventListener("keydown", handleKeyEvent);
+            }
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
             // ======= SPACE ON LAST WORD (WRONG CHAR AND SPACE) ==========
             if (wordIdx === wordArrays[lineIdx].length - 1) {
                 spaceOnLastWord();
@@ -1556,7 +1568,7 @@ startButton.addEventListener("click", (event) => {
 
         // logKeyEventEnd();
 
-        // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
+        // MORE THAN 20/16/12 MISTAKES: GOODBYE MESSAGE SEQUENCE
         if (consecutiveErrorCounter >= maxMistakes) {
             handleMaxErrors();
 
@@ -2490,7 +2502,7 @@ CURRENT BRANCH:
 
         HIGHLIGHT SLIDER RAIL ON HOVER?
 
-        HIGHLIGHT INPUT TEXT WHEN CORRECTING WITH BACKSPACE?
+        ☑️ HIGHLIGHT INPUT TEXT WHEN CORRECTING WITH BACKSPACE?
 
         CONNECT BEGINNER CONTROLS TO JAVASCRIPT
             ☑️ PUNCTUATION
@@ -2527,13 +2539,15 @@ CURRENT BRANCH:
             
     PROBLEMS:
 
+            DISABLE START BUTTON (AND OTHERS TOO) DURING RELOAD SEQUENCE
+
             ☑️ ERROR ON ORANGE BORDER SPACE SHOULD GET RED BORDER (IT STAYS ORANGE)
 
             ☑️ displayColourCounterValues() CALL THIS ON EVERY KEYPRESS (VALUES ARE ONLY UPDATED WITH SPACE!!)
             COLOUR COUNTER DOESN'T UPDATE ON LAST SPACE, INSTEAD IT UPDATES AFTER IN NEXT LINE
                 LOOK INTO countSpanColoursInLastWord()
 
-            LIMIT MAX NUMBER OF WORDS SKIPPED BY SPACE, AT THE MOMENT IT IS INFINITE
+            ☑️ LIMIT MAX NUMBER OF WORDS SKIPPED BY SPACE, AT THE MOMENT IT IS INFINITE
                 spaceOnWord() CONSECUTIVE ERRORS ARE BEING RESET TO 0 HERE !!!
 
             BUG: SPACE WILL TAKE CURSOR TO NEXT LINE FROM LAST SPACE EVEN IF IT WAS MISTYPED AND NOT CORRECTED!!!
@@ -2548,7 +2562,7 @@ CURRENT BRANCH:
                 SPACEONWORD
                 LOOK INTO: displayColourCounterValues() THIS F UPDATES COUNTER SPANS
 
-            RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER
+            RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER ???
                 SPACEONLASTWORD
                 SPACEONWORD
 
@@ -2585,7 +2599,6 @@ CURRENT BRANCH:
         LOOK INTO PROBLEMKEYWORDS AGAIN (AFTER COMPLETING PROBLEMKEYWORDS WITH NO ERROR, TARGET ARRAY SHOULD UPDATE TO DEFAULT)
         !!! THIS IS A TEMPORARY FIX, HAS TO USE CURRENTLY SELECTED DIFFICULTY ARRAY !!!
         WHEN START BUTTON CLICKED CHECK WHAT THE CURRENT SELECTON IS ON THE RADIOS, USE MATCHING ARRAY FOR TARGET
-        DO NOT ACTIVATE START BUTTON UNTIL ALL THE APPLY BUTTONS HAVE BEEN CLICKED
         (WHEN ONE CLICKED, CHECK IF ANY OTHERS HAVE ACTIVE CLASS, IF YES, DO NOT ACTIVATE START BUTTON)
         REMOVE FADE CLASS FROM RED PANEL WHEN BLUE PANEL IS HIDDEN (THIS IS A BUG, TRY TO FIX TIMER ISSUE)
         HANDLE CONTROL PANEL SETTINGS WHEN SWITCHING PANELS (RESET ALL SETTINGS PROBABLY THE BEST)
@@ -2595,8 +2608,6 @@ CURRENT BRANCH:
             LINE LENGTH 
             TIMER
             SOUND
-
-        LINE LENGTH SLIDER SHOULD NOT HIGHLIGHT ON HOVER WHILE TIMER IS ON
 
         WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
             ☑️ HIGHLIGHT APPLY BUTTON TO RE-SUBMIT ???
@@ -2608,11 +2619,7 @@ CURRENT BRANCH:
             SLIDER
       
         CAPSLOCK MUST NOT ACTIVATE TIMER ?
-        CONTROL APPLY BUTTONS DELETES "CLICK START" MESSAGE FROM TXT INPUT
-        
-        ADD EVENTLISTENER TO CONTROL OPTIONS WHEN PAGE LOADS? BEFORE START BUTTON IS CLICKED?
-        
-        STOP MOVING CURSOR WHEN LETTER CHARACTER IS TYPED INSTEAD OF SPACE AFTER WORD IS TYPED ?
+      
         NOTES:
             !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
 
