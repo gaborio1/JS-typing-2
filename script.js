@@ -962,6 +962,12 @@ const spaceOnWord = () => {
 // END MESSEAGE SEQUENCE (MESSAGES - RELOAD)
 const reloadSequence = () => {
     textInput.readOnly = true;
+
+    // DISABLE ALL CONTROLS AND START BUTTON DURING SEQUENCE (ADVANCED MODE)
+    for (let i = 0; i < disabledDuringTimer.length; i += 1) {
+        disabledDuringTimer[i].disabled = true;
+    }
+
     // THIS HAS TO STAY INSIDE KEY EVENTS AS handleKeyEvent WILL BE NOT RECOGNISED
     // document.removeEventListener("keydown", handleKeyEvent);
     textInput.value = "     ❌   Don't play silly games!  ❌";
@@ -1964,7 +1970,6 @@ const startCountdown = () => {
     countdown();
     textInput.removeEventListener("keydown", startCountdown);
     // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
-    startButton.disabled = true;
 
     // DISABLE CONTROL INPUTS/TOGGLES
     for (let i = 0; i < disabledDuringTimer.length; i += 1) {
@@ -2539,7 +2544,9 @@ CURRENT BRANCH:
             
     PROBLEMS:
 
-            DISABLE START BUTTON (AND OTHERS TOO) DURING RELOAD SEQUENCE
+            STYLE DISABLED LEVEL SELECTORS IN BEGINNER MODE
+
+            ☑️ DISABLE START BUTTON (AND OTHERS TOO) DURING RELOAD SEQUENCE
 
             ☑️ ERROR ON ORANGE BORDER SPACE SHOULD GET RED BORDER (IT STAYS ORANGE)
 
