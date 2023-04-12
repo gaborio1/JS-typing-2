@@ -675,7 +675,7 @@ const handleBackspace = () => {
     }
 
     // DISPLAY END OF LINE SPACE WHEN USER CORRECTED ALL ERRORS BEYOND END OF LINE
-    if (strIdx === stringWords.length - 1) {
+    if (strIdx === stringWords.length - 1 && lastWordRedCounter < 1) {
         messageDiv.textContent = "END OF LINE SPACE";
         setTimeout(() => {
             messageDiv.textContent = "";
@@ -686,8 +686,10 @@ const handleBackspace = () => {
         console.log("LAST WORD/LENGTH", lastWord, lastWord.length);
         // LOOP BACKWARDS FROM CURRENT(SPACE) - 1 FOR LASTWORD.LENGTH-1 TIMES (EXCLUDE SPACE)
         // AND CHECK FOR RED CLASS, IF FOUND DISPLAY "MORE ERRORS TO CORRECT"
+
         const charSpans = document.querySelectorAll(".active-txt-span");
         let lastWordRedCounter = 0;
+
         for (
             let i = strIdx;
             i > stringWords.length - 1 - lastWord.length - 1;
@@ -1160,6 +1162,34 @@ startButton.addEventListener("click", (event) => {
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // const charSpans = document.querySelectorAll(".active-txt-span");
+        // let currentRedCounter = 0;
+        // if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
+        //     console.log(
+        //         " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+        //         wordArrays[lineIdx][wordIdx]
+        //     );
+        //     // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
+        //     // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
+        //     for (
+        //         let i = strIdx;
+        //         // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
+        //         i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
+        //         i -= 1
+        //     ) {
+        //         console.log(charSpans[i]);
+        //         if (charSpans[i].classList.contains("red")) {
+        //             currentRedCounter += 1;
+        //             console.log("HELLO");
+        //         }
+        //     }
+        //     console.log("CURRENT REDS:", currentRedCounter);
+        // }
+
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
         const enterKey = document.getElementById("key--enter");
         for (let i = 0; i < letterKeys.length; i += 1) {
@@ -1265,6 +1295,36 @@ startButton.addEventListener("click", (event) => {
             if (soundOn) {
                 playSound("mixkit-single-key-press-in-a-laptop-2541.wav", 1);
             }
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            const charSpans = document.querySelectorAll(".active-txt-span");
+            let currentRedCounter = 0;
+            if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
+                console.log(
+                    " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+                    wordArrays[lineIdx][wordIdx]
+                );
+                // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
+                // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
+                for (
+                    let i = strIdx;
+                    // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
+                    i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
+                    i -= 1
+                ) {
+                    console.log(charSpans[i]);
+                    if (charSpans[i].classList.contains("red")) {
+                        currentRedCounter += 1;
+                        console.log("RED CLASS");
+                        messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
+                        setTimeout(() => {
+                            messageDiv.textContent = "";
+                        }, 200);
+                    }
+                }
+                console.log("CURRENT REDS:", currentRedCounter);
+            }
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             consecutiveErrorCounter = 0;
 
@@ -1486,6 +1546,36 @@ startButton.addEventListener("click", (event) => {
             if (nextCharacter !== null) {
                 currentCharacter.classList.add("red");
             }
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            const charSpans = document.querySelectorAll(".active-txt-span");
+            let currentRedCounter = 0;
+            if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
+                console.log(
+                    " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+                    wordArrays[lineIdx][wordIdx]
+                );
+                // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
+                // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
+                for (
+                    let i = strIdx;
+                    // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
+                    i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
+                    i -= 1
+                ) {
+                    console.log(charSpans[i]);
+                    if (charSpans[i].classList.contains("red")) {
+                        currentRedCounter += 1;
+                        console.log("RED CLASS");
+                        messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
+                        setTimeout(() => {
+                            messageDiv.textContent = "";
+                        }, 200);
+                    }
+                }
+                console.log("CURRENT REDS:", currentRedCounter);
+            }
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // ONLY ACCESS NEXT CHAR IF IT IS NOT THE END OF LINE SPACE
             if (strIdx < stringWords.length - 1) {
@@ -2470,6 +2560,36 @@ CURRENT BRANCH:
         charSpans
         endOfLineSpace
 
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            const charSpans = document.querySelectorAll(".active-txt-span");
+            let currentRedCounter = 0;
+            if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
+                console.log(
+                    " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+                    wordArrays[lineIdx][wordIdx]
+                );
+                // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
+                // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
+                for (
+                    let i = strIdx;
+                    // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
+                    i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
+                    i -= 1s
+                ) {
+                    console.log(charSpans[i]);
+                    if (charSpans[i].classList.contains("red")) {
+                        currentRedCounter += 1;
+                        console.log("RED CLASS");
+                        messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
+                        setTimeout(() => {
+                            messageDiv.textContent = "";
+                        }, 200);
+                    }
+                }
+                console.log("CURRENT REDS:", currentRedCounter);
+            }
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
     DECREMENT ORANGE COUNTER WITH BACKSPACE
         USE NUMBER OF CONSECUTIVE ERRORS TO STYLE WARNING DYNAMICALLY
@@ -2501,6 +2621,9 @@ CURRENT BRANCH:
 
     
     FEATURES:
+
+        COUNT RED CLASS IN WORD ON CORRECT SPACE AND DISPLAY MESSAGE "n ERRORS IN WORD"
+        countSpanColours(), countSpanColoursLastWord()
 
         ☑️ CHECK LAST WORD FOR ERRORS WHEN USER REACHED LAST SPACE AFTER CORRECTING BEYOND THE LINE ERRORS IN handleBackSpace()
             KEEP MESSAGE UNTIL CURSOR REACHES FIRST ERROR IN LAST WORD ?
@@ -2543,6 +2666,8 @@ CURRENT BRANCH:
        
             
     PROBLEMS:
+
+            CAPSLOCK MUST NOT ACTIVATE TIMER ? (DETECT CAPSLOCK CHANGE)
 
             STYLE DISABLED LEVEL SELECTORS IN BEGINNER MODE
 
@@ -2624,8 +2749,6 @@ CURRENT BRANCH:
             ☑️ TOGGLE BUTTONS (:disabled:hover {ORIGINAL FONTWEIGHT})
             ☑️ RADIO LABELS
             SLIDER
-      
-        CAPSLOCK MUST NOT ACTIVATE TIMER ?
       
         NOTES:
             !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
