@@ -22,6 +22,7 @@ import {
     // keysLevel_8,
     // keysLevel_9,
     keyLevelsArray,
+    sentences,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -392,6 +393,22 @@ const buildWordArrays = (numOfLines) => {
 
         wordArrays.push(arr);
     }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // const addSpaceToWords = (arr) => {
+    //     let updatedArray = [];
+    //     for (let i = 0; i < arr.length; i += 1) {
+    //         updatedArray.push(arr[i] + " ");
+    //     }
+    //     return updatedArray;
+    // };
+
+    // console.log(addSpaceToWords(sentences[0]));
+    // sentences.forEach((sentence) => {
+    //     wordArrays.push(addSpaceToWords(sentence));
+    // });
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 };
 
 // CLEAR INDEX TRACKERS
