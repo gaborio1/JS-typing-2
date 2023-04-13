@@ -202,7 +202,7 @@ let consecutiveErrorCounter = 0;
 let maxMistakes = 20;
 // TRACK SPACE-ON-WORDS
 let skippedWordsCounter = 0;
-const maxSkippedWords = 5;
+const maxSkippedWords = 6;
 // TRACK PROBLEM KEYS (NO DUPLICATES IN SET)
 let problemKeysSet = new Set();
 const problemKeySpans = document.getElementsByClassName("problem-key-span");
