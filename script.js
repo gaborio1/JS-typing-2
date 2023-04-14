@@ -358,41 +358,62 @@ const getStrLength = (arr) => {
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
 const buildWordArrays = (numOfLines) => {
+    console.log(document.getElementById("sentences").checked);
     // console.log("BUILD TARGET ARRAY", targetArray);
     // console.log("TARGET ARRAY FROM BUILDARRAYS:", targetArray);
-    for (let i = 0; i < numOfLines; i += 1) {
-        let arr = [];
-        // ALLOW EXTRA SPACE FOR ENTER KEY AT THE END OF LINE
-        if (enterOn && sequenceLength > 44) {
-            sequenceLength = 44;
-        }
 
-        while (true) {
-            if (getStrLength(arr) >= sequenceLength) break;
-
-            let currWord = getRandomFromArr(targetArray); // GET RANDOM WORD
-            if (punctuationOn) {
-                currWord += getRandomFromArr(punctMarks); // CONCAT RANDOM PUNCT MARK
+    if (document.getElementById("sentences").checked === false) {
+        for (let i = 0; i < numOfLines; i += 1) {
+            let arr = [];
+            // ALLOW EXTRA SPACE FOR ENTER KEY AT THE END OF LINE
+            if (enterOn && sequenceLength > 44) {
+                sequenceLength = 44;
             }
-            if (capitalOn) {
-                currWord = capitaliseWord(currWord); // MAKE FIRST CHAR UPPERCASE
+
+            while (true) {
+                if (getStrLength(arr) >= sequenceLength) break;
+
+                let currWord = getRandomFromArr(targetArray); // GET RANDOM WORD
+                if (punctuationOn) {
+                    currWord += getRandomFromArr(punctMarks); // CONCAT RANDOM PUNCT MARK
+                }
+                if (capitalOn) {
+                    currWord = capitaliseWord(currWord); // MAKE FIRST CHAR UPPERCASE
+                }
+                currWord += " ";
+
+                arr.push(currWord);
             }
-            currWord += " ";
 
-            arr.push(currWord);
+            // REPLACE TRAILING SPACE WITH ENTER SIGN ON LAST WORD OF ARRAY
+            if (enterOn) {
+                arr[arr.length - 1] =
+                    arr[arr.length - 1].substring(
+                        0,
+                        arr[arr.length - 1].length - 1
+                    ) + "⏎";
+            }
+
+            wordArrays.push(arr);
         }
+    } else {
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // REPLACE TRAILING SPACE WITH ENTER SIGN ON LAST WORD OF ARRAY
-        if (enterOn) {
-            arr[arr.length - 1] =
-                arr[arr.length - 1].substring(
-                    0,
-                    arr[arr.length - 1].length - 1
-                ) + "⏎";
+        const addSpaceToWords = (arr) => {
+            let updatedArray = [];
+            for (let i = 0; i < arr.length; i += 1) {
+                updatedArray.push(arr[i] + " ");
+            }
+            return updatedArray;
+        };
+
+        console.log(addSpaceToWords(sentences[0]));
+        for (let i = 0; i < numOfLines; i += 1) {
+            wordArrays.push(addSpaceToWords(getRandomFromArr(sentences)));
         }
-
-        wordArrays.push(arr);
     }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // const addSpaceToWords = (arr) => {
@@ -404,9 +425,9 @@ const buildWordArrays = (numOfLines) => {
     // };
 
     // console.log(addSpaceToWords(sentences[0]));
-    // sentences.forEach((sentence) => {
-    //     wordArrays.push(addSpaceToWords(sentence));
-    // });
+    // for (let i = 0; i < numOfLines; i += 1) {
+    //     wordArrays.push(addSpaceToWords(getRandomFromArr(sentences)));
+    // }
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 };
@@ -530,6 +551,22 @@ const testCapsLock = (event) => {
 doc.addEventListener("keyup", testCapsLock);
 doc.addEventListener("keydown", testCapsLock);
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++
+
+const disableSentenceModifiers = () => {
+    punctuationToggle.disabled = true;
+    capitalToggle.disabled = true;
+    enterToggle.disabled = true;
+    slider.disabled = true;
+};
+
+const enableSentenceModifiers = () => {
+    punctuationToggle.disabled = false;
+    capitalToggle.disabled = false;
+    enterToggle.disabled = false;
+    slider.disabled = true;
+};
+
 // SET DIFFICULTY LEVEL BASED ON RADIOS STATE
 const setDifficultyLevel = () => {
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
@@ -537,13 +574,22 @@ const setDifficultyLevel = () => {
             if (difficultyRadios[i].value === "easy") {
                 targetArray = [...common100];
                 maxMistakes = 20;
+                enableSentenceModifiers();
             } else if (difficultyRadios[i].value === "medium") {
                 targetArray = [...common200, ...common100];
                 maxMistakes = 16;
-            } else {
+                enableSentenceModifiers();
+            } else if (difficultyRadios[i].value === "hard") {
                 targetArray = [...jsReserved, ...jsObjPropMeth];
                 maxMistakes = 12;
+                enableSentenceModifiers();
+                // SENTENCES
+            } else {
+                console.log("SENTENCES SELECTED, DISABLE MODIFIERS");
+                disableSentenceModifiers();
             }
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++
+
             break;
         }
     }
@@ -2569,7 +2615,15 @@ beginnerHideButton.addEventListener("click", function () {
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH: 
+CURRENT BRANCH: sentences-1
+
+
+
+    DISABLE
+        PUNCTUATION
+        CAPITALS
+        ENTER
+        LENGTH
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 

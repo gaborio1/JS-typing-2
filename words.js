@@ -598,14 +598,14 @@ export const bottomRow = [
 export const punctMarks = [",", ".", "!", "?", ":", ";", "-", "'"];
 
 export const sentences = [
-    ["I", "hope", "this", "email", "finds", "you", "well"],
-    ["I", "hope", "you", "had", "a", "good", "weekend"],
-    ["I", "hope", "you", "had", "a", "great", "trip"],
-    ["I", "hope", "you", "had", "a", "nice", "break"],
-    ["I", "hope", "you", "are", "well"],
-    ["I", "hope", "all", "is", "well"],
-    ["Hope", "you're", "enjoying", "your", "holiday"],
-    ["Hope", "you're", "enjoyed", "the", "event"],
+    ["I", "hope", "this", "email", "finds", "you", "well."],
+    ["I", "hope", "you", "had", "a", "good", "weekend."],
+    ["I", "hope", "you", "had", "a", "great", "trip."],
+    ["I", "hope", "you", "had", "a", "nice", "break."],
+    ["I", "hope", "you", "are", "well."],
+    ["I", "hope", "all", "is", "well."],
+    ["Hope", "you're", "enjoying", "your", "holiday."],
+    ["Hope", "you're", "enjoyed", "the", "event."],
     [
         "I'm",
         "glad",
@@ -617,9 +617,9 @@ export const sentences = [
         "talk",
         "at",
         "the",
-        "convention",
+        "convention.",
     ],
-    ["It", "was", "great", "to", "see", "you", "on", "Thursday"],
+    ["It", "was", "great", "to", "see", "you", "on", "Thursday."],
 ];
 
 // export default common100;
