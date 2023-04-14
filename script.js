@@ -358,7 +358,7 @@ const getStrLength = (arr) => {
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
 const buildWordArrays = (numOfLines) => {
-    console.log(document.getElementById("sentences").checked);
+    // console.log(document.getElementById("sentences").checked);
     // console.log("BUILD TARGET ARRAY", targetArray);
     // console.log("TARGET ARRAY FROM BUILDARRAYS:", targetArray);
 
@@ -407,7 +407,6 @@ const buildWordArrays = (numOfLines) => {
             return updatedArray;
         };
 
-        console.log(addSpaceToWords(sentences[0]));
         for (let i = 0; i < numOfLines; i += 1) {
             wordArrays.push(addSpaceToWords(getRandomFromArr(sentences)));
         }
@@ -585,7 +584,7 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 // SENTENCES
             } else {
-                console.log("SENTENCES SELECTED, DISABLE MODIFIERS");
+                // console.log("SENTENCES SELECTED, DISABLE MODIFIERS");
                 disableSentenceModifiers();
             }
             // ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -722,12 +721,12 @@ const handleBackspace = () => {
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     if (nullValueSpanCounter > 0) {
         nullValueSpanCounter -= 1;
-        console.log("NULL COUNTER DECREMENTED:", nullValueSpanCounter);
+        // console.log("NULL COUNTER DECREMENTED:", nullValueSpanCounter);
         messageDiv.textContent = `${nullValueSpanCounter} ERROR(S) INTO NEXT LINE!`;
     }
     if (nullValueSpanCounter === 0) {
         nullValueSpanCounter = 0;
-        console.log("NULL COUNTER RESET TO 0", nullValueSpanCounter);
+        // console.log("NULL COUNTER RESET TO 0", nullValueSpanCounter);
         messageDiv.textContent = "";
 
         // REMOVE RED HIGHLIGHT FROM END OF LINE SPACE WHEN ALL BEYOND THE LINE ERRORS
@@ -746,7 +745,7 @@ const handleBackspace = () => {
         // CHECK LAST WORD FOR ERRORS WHEN USER REACHED LAST SPACE AFTER CORRECTING BEYOND THE LINE ERRORS
         // 1. GET LENGTH OF LAST WORD
         let lastWord = wordArrays[lineIdx][wordIdx];
-        console.log("LAST WORD/LENGTH", lastWord, lastWord.length);
+        // console.log("LAST WORD/LENGTH", lastWord, lastWord.length);
         // LOOP BACKWARDS FROM CURRENT(SPACE) - 1 FOR LASTWORD.LENGTH-1 TIMES (EXCLUDE SPACE)
         // AND CHECK FOR RED CLASS, IF FOUND DISPLAY "MORE ERRORS TO CORRECT"
 
@@ -758,12 +757,12 @@ const handleBackspace = () => {
             i > stringWords.length - 1 - lastWord.length - 1;
             i -= 1
         ) {
-            console.log(charSpans[i]);
+            // console.log(charSpans[i]);
             if (charSpans[i].classList.contains("red")) {
                 lastWordRedCounter += 1;
             }
         }
-        console.log("LAST WORD RED COUNTER:", lastWordRedCounter);
+        // console.log("LAST WORD RED COUNTER:", lastWordRedCounter);
         // AFTER LAST SPACE MESSAGE, LET USER KNOW IF THERE'S ANY ERRORS LEFT IN LAST WORD
         if (lastWordRedCounter > 0) {
             setTimeout(() => {
@@ -1056,12 +1055,12 @@ const reloadSequence = () => {
 };
 
 const handleMaxErrors = () => {
-    console.log(
-        "MAX NUMBER OF ERRORS REACHED",
-        consecutiveErrorCounter,
-        "/",
-        maxMistakes
-    );
+    // console.log(
+    //     "MAX NUMBER OF ERRORS REACHED",
+    //     consecutiveErrorCounter,
+    //     "/",
+    //     maxMistakes
+    // );
     messageDiv.innerText = `${consecutiveErrorCounter} CONSECUTIVE ERRORS!`;
 };
 
@@ -1221,37 +1220,9 @@ startButton.addEventListener("click", (event) => {
     const handleKeyEvent = (event) => {
         // const typedKey = event.key;
         typedKey = event.key;
-        console.log("EVENT: KEYDOWN", event.key);
+        // console.log("EVENT: KEYDOWN", event.key);
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
-
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-        // const charSpans = document.querySelectorAll(".active-txt-span");
-        // let currentRedCounter = 0;
-        // if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
-        //     console.log(
-        //         " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
-        //         wordArrays[lineIdx][wordIdx]
-        //     );
-        //     // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
-        //     // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
-        //     for (
-        //         let i = strIdx;
-        //         // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
-        //         i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
-        //         i -= 1
-        //     ) {
-        //         console.log(charSpans[i]);
-        //         if (charSpans[i].classList.contains("red")) {
-        //             currentRedCounter += 1;
-        //             console.log("HELLO");
-        //         }
-        //     }
-        //     console.log("CURRENT REDS:", currentRedCounter);
-        // }
-
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // TRACK TYPED KEY ON KEYBOARD (100MS FLASH)
         const enterKey = document.getElementById("key--enter");
@@ -1363,10 +1334,10 @@ startButton.addEventListener("click", (event) => {
             const charSpans = document.querySelectorAll(".active-txt-span");
             let currentRedCounter = 0;
             if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
-                console.log(
-                    " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
-                    wordArrays[lineIdx][wordIdx]
-                );
+                // console.log(
+                //     " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+                //     wordArrays[lineIdx][wordIdx]
+                // );
                 // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
                 // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
                 for (
@@ -1375,17 +1346,17 @@ startButton.addEventListener("click", (event) => {
                     i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
                     i -= 1
                 ) {
-                    console.log(charSpans[i]);
+                    // console.log(charSpans[i]);
                     if (charSpans[i].classList.contains("red")) {
                         currentRedCounter += 1;
-                        console.log("RED CLASS");
+                        // console.log("RED CLASS");
                         messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
                         setTimeout(() => {
                             messageDiv.textContent = "";
                         }, 200);
                     }
                 }
-                console.log("CURRENT REDS:", currentRedCounter);
+                // console.log("CURRENT REDS:", currentRedCounter);
             }
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1403,7 +1374,7 @@ startButton.addEventListener("click", (event) => {
 
             // REMOVE CURSOR FROM SPACE
             if (typedKey === " ") {
-                console.log("CORRECT KEY - SPACE");
+                // console.log("CORRECT KEY - SPACE");
 
                 // RESEET SKIPPED WORDS COUNTER
                 skippedWordsCounter = 0;
@@ -1447,22 +1418,22 @@ startButton.addEventListener("click", (event) => {
             typedKey !== "Backspace" &&
             typedKey !== "CapsLock"
         ) {
-            console.log(
-                "WRONG KEY!",
-                "typed:",
-                typedKey,
-                "actual:",
-                wordArrays[lineIdx][wordIdx][charIdx]
-            );
+            // console.log(
+            //     "WRONG KEY!",
+            //     "typed:",
+            //     typedKey,
+            //     "actual:",
+            //     wordArrays[lineIdx][wordIdx][charIdx]
+            // );
 
             consecutiveErrorCounter += 1;
 
-            console.log("STRINWORDS LENGTH:", stringWords.length);
+            // console.log("STRINGWORDS LENGTH:", stringWords.length);
 
             if (strIdx >= stringWords.length - 1) {
-                console.log("GONE BEYOND END OF LINE");
+                // console.log("GONE BEYOND END OF LINE");
                 nullValueSpanCounter += 1;
-                console.log("NULL COUNTER:", nullValueSpanCounter);
+                // console.log("NULL COUNTER:", nullValueSpanCounter);
             }
 
             // nullValueSpanCounter += 1;
@@ -1490,8 +1461,8 @@ startButton.addEventListener("click", (event) => {
                     strIdx === stringWords.length - 1 ||
                     wordArrays[lineIdx][wordIdx][charIdx] === undefined
                 ) {
-                    console.log("WRONG KEY ON LAST SPACE");
-                    console.log("STR IDX:", strIdx);
+                    // console.log("WRONG KEY ON LAST SPACE");
+                    // console.log("STR IDX:", strIdx);
                     // nullValueSpanCounter += 1;
                     // console.log("NULL COUNTER:", nullValueSpanCounter);
                 }
@@ -1614,10 +1585,10 @@ startButton.addEventListener("click", (event) => {
             const charSpans = document.querySelectorAll(".active-txt-span");
             let currentRedCounter = 0;
             if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
-                console.log(
-                    " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
-                    wordArrays[lineIdx][wordIdx]
-                );
+                // console.log(
+                //     " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+                //     wordArrays[lineIdx][wordIdx]
+                // );
                 // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
                 // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
                 for (
@@ -1626,17 +1597,17 @@ startButton.addEventListener("click", (event) => {
                     i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
                     i -= 1
                 ) {
-                    console.log(charSpans[i]);
+                    // console.log(charSpans[i]);
                     if (charSpans[i].classList.contains("red")) {
                         currentRedCounter += 1;
-                        console.log("RED CLASS");
+                        // console.log("RED CLASS");
                         messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
                         setTimeout(() => {
                             messageDiv.textContent = "";
                         }, 200);
                     }
                 }
-                console.log("CURRENT REDS:", currentRedCounter);
+                // console.log("CURRENT REDS:", currentRedCounter);
             }
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -2502,9 +2473,9 @@ beginnerShowButton.addEventListener("click", function () {
             break;
         }
     }
-    if (preSelectedLevels) {
-        console.log("PRE SELECTED LEVELS");
-    }
+    // if (preSelectedLevels) {
+    //     console.log("PRE SELECTED LEVELS");
+    // }
 
     startButton.disabled = true;
     startButton.classList.remove("apply--active");
@@ -2617,13 +2588,17 @@ beginnerHideButton.addEventListener("click", function () {
 
 CURRENT BRANCH: sentences-1
 
+    ☑️ STYLE DIFFICULTY RADIOS FOR 4 LEVELS
 
+    FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
 
     DISABLE
-        PUNCTUATION
-        CAPITALS
-        ENTER
-        LENGTH
+        ☑️ PUNCTUATION
+        ☑️ CAPITALS
+        ☑️ ENTER
+        ☑️ LENGTH
+
+    INCLUDE SENTENCES IN INFO CARD
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
