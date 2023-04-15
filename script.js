@@ -1116,6 +1116,36 @@ const setMarginTop = function () {
     }
 };
 
+// COUNT AND DISPLAY REDS IN CURRENT WORD WHEN REACHING TRAILING SPACE
+const countErrorsInCurrentWord = () => {
+    const charSpans = document.querySelectorAll(".active-txt-span");
+    let currentRedCounter = 0;
+    if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
+        // console.log(
+        //     " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
+        //     wordArrays[lineIdx][wordIdx]
+        // );
+        // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
+        // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
+        for (
+            let i = strIdx;
+            i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
+            i -= 1
+        ) {
+            // console.log(charSpans[i]);
+            if (charSpans[i].classList.contains("red")) {
+                currentRedCounter += 1;
+                // console.log("RED CLASS");
+                messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
+                setTimeout(() => {
+                    messageDiv.textContent = "";
+                }, 200);
+            }
+        }
+        // console.log("CURRENT REDS:", currentRedCounter);
+    }
+};
+
 // LISTENER EVENTS
 window.addEventListener("resize", setMarginTop);
 window.addEventListener("load", setMarginTop);
@@ -1353,33 +1383,7 @@ startButton.addEventListener("click", (event) => {
             }
 
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            const charSpans = document.querySelectorAll(".active-txt-span");
-            let currentRedCounter = 0;
-            if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
-                // console.log(
-                //     " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
-                //     wordArrays[lineIdx][wordIdx]
-                // );
-                // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
-                // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
-                for (
-                    let i = strIdx;
-                    // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
-                    i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
-                    i -= 1
-                ) {
-                    // console.log(charSpans[i]);
-                    if (charSpans[i].classList.contains("red")) {
-                        currentRedCounter += 1;
-                        // console.log("RED CLASS");
-                        messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
-                        setTimeout(() => {
-                            messageDiv.textContent = "";
-                        }, 200);
-                    }
-                }
-                // console.log("CURRENT REDS:", currentRedCounter);
-            }
+            countErrorsInCurrentWord();
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             consecutiveErrorCounter = 0;
@@ -1604,33 +1608,7 @@ startButton.addEventListener("click", (event) => {
             }
 
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            const charSpans = document.querySelectorAll(".active-txt-span");
-            let currentRedCounter = 0;
-            if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
-                // console.log(
-                //     " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
-                //     wordArrays[lineIdx][wordIdx]
-                // );
-                // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
-                // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
-                for (
-                    let i = strIdx;
-                    // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
-                    i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
-                    i -= 1
-                ) {
-                    // console.log(charSpans[i]);
-                    if (charSpans[i].classList.contains("red")) {
-                        currentRedCounter += 1;
-                        // console.log("RED CLASS");
-                        messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
-                        setTimeout(() => {
-                            messageDiv.textContent = "";
-                        }, 200);
-                    }
-                }
-                // console.log("CURRENT REDS:", currentRedCounter);
-            }
+            countErrorsInCurrentWord();
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // ONLY ACCESS NEXT CHAR IF IT IS NOT THE END OF LINE SPACE
@@ -2610,10 +2588,6 @@ beginnerHideButton.addEventListener("click", function () {
 
 CURRENT BRANCH: sentences-1
 
-    REGEX FOR EXTRACTING WORDS FROM STRING:
-        /[a-zA-Z]+(?:'[a-zA-Z]+)*|[!?.](?![!?.])/G
-        /\w+(?:'\w+)*|[!?.](?![!?.])/g
-
     ☑️ STYLE DIFFICULTY RADIOS FOR 4 LEVELS
 
     FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
@@ -2624,45 +2598,18 @@ CURRENT BRANCH: sentences-1
         ☑️ ENTER
         ☑️ LENGTH
 
-    INCLUDE SENTENCES IN INFO CARD
+    ☑️ INCLUDE SENTENCES IN INFO CARD
 
-    WRITE FUNCTION THAT EXTRACTS WORDS WITH PUNCTUATION MARKS FROM STRING
+    ☑️ WRITE FUNCTION THAT EXTRACTS WORDS WITH PUNCTUATION MARKS FROM STRING
+        FIND REGEX FOR EXTRACTING WORDS FROM STRING:
+        THIS MATCHES WORD WITH PUNCTUATION MARK /\w+[\.?!:]/G
+        /\w+(?:'\w+)*|[!?.](?![!?.])/g
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
     DUPLICATES:
         charSpans
         endOfLineSpace
-
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            const charSpans = document.querySelectorAll(".active-txt-span");
-            let currentRedCounter = 0;
-            if (charIdx === wordArrays[lineIdx][wordIdx].length - 2) {
-                console.log(
-                    " CURSOR ON SPACE CHECK WORD FOR RED CLASS NOW - ",
-                    wordArrays[lineIdx][wordIdx]
-                );
-                // START LOOP BACKWARDS FROM STRIDX FOR CURR LEN ITERATIONS AND COUNT REDS
-                // ASSIGN IT TO LOCAL VARIBALE "CURRENTREDCOUNTER" AND DISPLAY IT IN MESSAGE
-                for (
-                    let i = strIdx;
-                    // i > stringWords[strIdx - wordArrays[lineIdx][wordIdx].length];
-                    i > strIdx - wordArrays[lineIdx][wordIdx].length + 1;
-                    i -= 1s
-                ) {
-                    console.log(charSpans[i]);
-                    if (charSpans[i].classList.contains("red")) {
-                        currentRedCounter += 1;
-                        console.log("RED CLASS");
-                        messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
-                        setTimeout(() => {
-                            messageDiv.textContent = "";
-                        }, 200);
-                    }
-                }
-                console.log("CURRENT REDS:", currentRedCounter);
-            }
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
     DECREMENT ORANGE COUNTER WITH BACKSPACE
