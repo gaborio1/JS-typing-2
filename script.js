@@ -355,6 +355,31 @@ const getStrLength = (arr) => {
     return length;
 };
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// EXTRACTING WORDS AND WORDS WITH PUNCT MARKS FROM STRING (sentences[])
+const extractWords = (arr) => {
+    let extractedWords = [];
+    arr.forEach((sentence) => {
+        let foundWords = sentence.split(" ");
+        // console.log(foundWords);
+        extractedWords.push(foundWords);
+    });
+    return extractedWords;
+};
+
+// ADD SPACE TO WORDS
+const addSpaceToWords = (arr) => {
+    let updatedArray = [];
+    for (let i = 0; i < arr.length; i += 1) {
+        updatedArray.push(arr[i] + " ");
+    }
+    return updatedArray;
+};
+
+// console.log(extractWords(sentences));
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
 const buildWordArrays = (numOfLines) => {
@@ -362,6 +387,7 @@ const buildWordArrays = (numOfLines) => {
     // console.log("BUILD TARGET ARRAY", targetArray);
     // console.log("TARGET ARRAY FROM BUILDARRAYS:", targetArray);
 
+    // FIRST THREE DIFFICULTY LEVELS (EASY, MEDIUM AND HARD)
     if (document.getElementById("sentences").checked === false) {
         for (let i = 0; i < numOfLines; i += 1) {
             let arr = [];
@@ -397,18 +423,14 @@ const buildWordArrays = (numOfLines) => {
             wordArrays.push(arr);
         }
     } else {
+        // SENTENCES DIFFICULTY LEVEL
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        const addSpaceToWords = (arr) => {
-            let updatedArray = [];
-            for (let i = 0; i < arr.length; i += 1) {
-                updatedArray.push(arr[i] + " ");
-            }
-            return updatedArray;
-        };
-
+        // CONVERT ARRAY OF STRINGS (sentences) TO ARRAY OF ARRAY OF WORDS
         for (let i = 0; i < numOfLines; i += 1) {
-            wordArrays.push(addSpaceToWords(getRandomFromArr(sentences)));
+            wordArrays.push(
+                addSpaceToWords(getRandomFromArr(extractWords(sentences)))
+            );
         }
     }
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2588,6 +2610,10 @@ beginnerHideButton.addEventListener("click", function () {
 
 CURRENT BRANCH: sentences-1
 
+    REGEX FOR EXTRACTING WORDS FROM STRING:
+        /[a-zA-Z]+(?:'[a-zA-Z]+)*|[!?.](?![!?.])/G
+        /\w+(?:'\w+)*|[!?.](?![!?.])/g
+
     ☑️ STYLE DIFFICULTY RADIOS FOR 4 LEVELS
 
     FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
@@ -2599,6 +2625,8 @@ CURRENT BRANCH: sentences-1
         ☑️ LENGTH
 
     INCLUDE SENTENCES IN INFO CARD
+
+    WRITE FUNCTION THAT EXTRACTS WORDS WITH PUNCTUATION MARKS FROM STRING
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
