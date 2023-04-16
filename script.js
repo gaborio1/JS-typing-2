@@ -165,7 +165,7 @@ let targetArray = [...common100];
 let sequenceLength = 30;
 // let sequenceLength = 10;
 // DEFAULT HARD CODED ARRAY LENGTH (NUMBER OF LINES GENERATED WITH START BUTTON)
-const wordsArrLength = 20;
+const wordsArrLength = 50;
 // ARRAY OF WORDARRAYS (LINES)
 let wordArrays = [];
 // STRING BASED ON CURRENT LINE
@@ -585,7 +585,7 @@ const enableSentenceModifiers = () => {
     punctuationToggle.disabled = false;
     capitalToggle.disabled = false;
     enterToggle.disabled = false;
-    slider.disabled = true;
+    slider.disabled = false;
 };
 
 // SET DIFFICULTY LEVEL BASED ON RADIOS STATE
