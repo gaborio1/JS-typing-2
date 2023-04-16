@@ -52,6 +52,8 @@
     --wrap-highlight--light: #ebebeb;
 
     --wrap-highlight--dark: rgb(25, 25, 25);
+    /*  USE THIS WITH DARK GREEN */
+    /* --wrap-highlight--dark: rgba(25, 25, 25, 0); */
 
     /* #FFFFFF */
     /* #F3F3F3 */
@@ -162,6 +164,8 @@ h3 {
 .container.dark-theme {
     border: 1px solid var(--border-gold);
     background-color: rgb(28, 28, 28);
+    /* USE THIS WTH TRANSPARENT WRAP HIGHLIGHT DARK */
+    /* background-color: rgb(5, 31, 39); */
     /* transition: border-color 1s; */
 }
 
