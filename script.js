@@ -374,6 +374,15 @@ const extractWords = (arr) => {
     return extractedWords;
 };
 
+// THIS IS TO TRANSFORM CAPITALISED WORDS INTO LOWERCASE (BEGINNER - TOP ROW WORDS ARRAY)
+const lowerCaseArrElements = (arr) => {
+    let updatedArray = [];
+    arr.forEach((word) => {
+        updatedArray.push(word.toLowerCase());
+    });
+    return updatedArray;
+};
+
 // ADD SPACE TO WORDS
 const addSpaceToWords = (arr) => {
     let updatedArray = [];
@@ -1897,7 +1906,8 @@ for (let i = 0, length = rowRadios.length; i < length; i++) {
         }
 
         if (rowRadios[i].value === "top") {
-            targetArray = [...topRow];
+            // targetArray = [...topRow];
+            targetArray = [...lowerCaseArrElements(topRow)];
         } else if (rowRadios[i].value === "home") {
             targetArray = [...homeRow];
         } else {
