@@ -12,15 +12,6 @@ import {
     topRow,
     bottomRow,
     homeRow,
-    // keysLevel_1,
-    // keysLevel_2,
-    // keysLevel_3,
-    // keysLevel_4,
-    // keysLevel_5,
-    // keysLevel_6,
-    // keysLevel_7,
-    // keysLevel_8,
-    // keysLevel_9,
     keyLevelsArray,
     sentences,
 } from "./words.js";
@@ -41,10 +32,10 @@ const colourCodeContainer = document.getElementById("colour-code-container");
 
 // DIFFICULTY
 const difficultyRadios = document.getElementsByClassName("difficulty-radio");
-// LENGTH
+// LINE LENGTH SLIDER
 const slider = document.getElementById("length");
 const lengthDisplaySpan = document.getElementById("length-display-span");
-// PUNCTUATION
+// TOGGLES
 const punctuationToggle = document.getElementById("punctuation-toggle");
 const punctuationToggleBeginner = document.getElementById(
     "punctuation-toggle__beginner"
@@ -54,7 +45,6 @@ const capitalToggle = document.getElementById("capital-toggle");
 const capitalToggleBeginner = document.getElementById(
     "capital-toggle__beginner"
 );
-const capitalApplyBeginner = document.getElementById("capital-apply__beginner");
 // ENTER
 const enterToggle = document.getElementById("enter-toggle");
 const enterToggleBeginner = document.getElementById("enter-toggle__beginner");
@@ -235,7 +225,6 @@ const nextWord = () => {
 };
 
 const nextLine = () => {
-    console.log("NEXTLINE()");
     lineIdx += 1;
     wordIdx = 0;
     charIdx = 0;
@@ -254,6 +243,11 @@ const clearTextInput = () => {
     textInput.value = "";
     // AFTER WORD IS COMPLETED CLEAR PLACEHOLDER TOO, ITS HARDCODED IN HTML
     textInput.placeholder = "";
+};
+
+// TEXT INPUT PLACEHOLDER
+const placeholderClickStart = () => {
+    textInput.placeholder = "                 Click Start ➡";
 };
 
 // PICK RANDOM ELEMENT FROM ARRAY (USED WITH TARGET ARRAY AND PUNCTUATION MARKS ARRAY)
@@ -363,7 +357,6 @@ const getStrLength = (arr) => {
     return length;
 };
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // EXTRACTING WORDS AND WORDS WITH PUNCT MARKS FROM STRING (sentences[])
 const extractWords = (arr) => {
     let extractedWords = [];
@@ -395,8 +388,6 @@ const addSpaceToWords = (arr) => {
 
 // console.log(extractWords(sentences));
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
 const buildWordArrays = (numOfLines) => {
@@ -404,7 +395,8 @@ const buildWordArrays = (numOfLines) => {
     // console.log("BUILD TARGET ARRAY", targetArray);
     // console.log("TARGET ARRAY FROM BUILDARRAYS:", targetArray);
 
-    // FIRST THREE DIFFICULTY LEVELS (EASY, MEDIUM AND HARD)
+    // !IMPORTANT: SENTENCES RADIO SHOULD BE DISABLED WHEN SHOWING BEGINNER LEVEL OTHERWISE IF SENTENCES WAS THE LAST RADIO SELECTED IN ADVANCED, IN THIS FUNCTION THE else BLOCK WILL RUN AND GENERATE SENTENCES IN BEGINNER
+    // SENTENCES RADIO DISABLED IN: beginnerShowButton.addEventListener("click", function () {}
     if (document.getElementById("sentences").checked === false) {
         for (let i = 0; i < numOfLines; i += 1) {
             let arr = [];
@@ -441,7 +433,6 @@ const buildWordArrays = (numOfLines) => {
         }
     } else {
         // SENTENCES DIFFICULTY LEVEL
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // CONVERT ARRAY OF STRINGS (sentences) TO ARRAY OF ARRAY OF WORDS
         for (let i = 0; i < numOfLines; i += 1) {
@@ -450,24 +441,6 @@ const buildWordArrays = (numOfLines) => {
             );
         }
     }
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // const addSpaceToWords = (arr) => {
-    //     let updatedArray = [];
-    //     for (let i = 0; i < arr.length; i += 1) {
-    //         updatedArray.push(arr[i] + " ");
-    //     }
-    //     return updatedArray;
-    // };
-
-    // console.log(addSpaceToWords(sentences[0]));
-    // for (let i = 0; i < numOfLines; i += 1) {
-    //     wordArrays.push(addSpaceToWords(getRandomFromArr(sentences)));
-    // }
-
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 };
 
 // CLEAR INDEX TRACKERS
@@ -589,8 +562,6 @@ const testCapsLock = (event) => {
 doc.addEventListener("keyup", testCapsLock);
 doc.addEventListener("keydown", testCapsLock);
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++
-
 const disableSentenceModifiers = () => {
     punctuationToggle.disabled = true;
     capitalToggle.disabled = true;
@@ -626,7 +597,6 @@ const setDifficultyLevel = () => {
                 // console.log("SENTENCES SELECTED, DISABLE MODIFIERS");
                 disableSentenceModifiers();
             }
-            // ++++++++++++++++++++++++++++++++++++++++++++++++++
 
             break;
         }
@@ -766,7 +736,6 @@ const handleBackspace = () => {
     orangeCounter += 1;
     prevChar();
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     if (nullValueSpanCounter > 0) {
         nullValueSpanCounter -= 1;
         // console.log("NULL COUNTER DECREMENTED:", nullValueSpanCounter);
@@ -819,8 +788,6 @@ const handleBackspace = () => {
             }, 210);
         }
     }
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     const currentCharacter = document.getElementById(`span-${strIdx}`);
     // console.log(currentCharacter);
@@ -1020,12 +987,11 @@ const spaceOnLastWord = () => {
     // ONLY RUN FUNCTION IF ALL NULL VALUE SPANS (BEYOND END OF LINE ERRORS) HAVE BEEN CORRECTED
     if (nullValueSpanCounter < 1) {
         // THIS IS NOT WORKING
-        console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
+        // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
 
         // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
 
         // RESET WRONGCOUNTER
-        // consecutiveErrorCounter += 1;
         consecutiveErrorCounter = 0;
         nextLine();
 
@@ -1051,7 +1017,6 @@ const spaceOnWord = () => {
     // TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
 
     // RESET WRONGCOUNTER
-    // consecutiveErrorCounter += 1;
     consecutiveErrorCounter = 0;
 
     // console.log("SRTING IDX:", strIdx);
@@ -1103,13 +1068,7 @@ const reloadSequence = () => {
     }, 5000);
 };
 
-const handleMaxErrors = () => {
-    // console.log(
-    //     "MAX NUMBER OF ERRORS REACHED",
-    //     consecutiveErrorCounter,
-    //     "/",
-    //     maxMistakes
-    // );
+const displayConsecErrors = () => {
     messageDiv.innerText = `${consecutiveErrorCounter} CONSECUTIVE ERRORS!`;
 };
 
@@ -1294,7 +1253,6 @@ startButton.addEventListener("click", (event) => {
     // console.log("HOL VAN A KURZOR HULYEGYEREK?");
 
     const firstCharacter = document.getElementById("span-0");
-    console.log(firstCharacter);
     firstCharacter.classList.add("background", "black-border");
 
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1335,7 +1293,7 @@ startButton.addEventListener("click", (event) => {
 
         // MORE THAN 5 MISTAKES: GOODBYE MESSAGE SEQUENCE
         if (consecutiveErrorCounter >= maxMistakes) {
-            handleMaxErrors();
+            displayConsecErrors();
 
             reloadSequence();
             textInput.removeEventListener("keydown", handleKeyEvent);
@@ -1414,9 +1372,7 @@ startButton.addEventListener("click", (event) => {
                 playSound("mixkit-single-key-press-in-a-laptop-2541.wav", 1);
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             countErrorsInCurrentWord();
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             consecutiveErrorCounter = 0;
 
@@ -1612,8 +1568,6 @@ startButton.addEventListener("click", (event) => {
                 }
             }
 
-            // console.log("WRONG COUNTER", consecutiveErrorCounter);
-
             // UPDATE PROBLEM KEY SET
             if (
                 wordArrays[lineIdx][wordIdx][charIdx] !== " " && // SPACE
@@ -1639,9 +1593,7 @@ startButton.addEventListener("click", (event) => {
                 currentCharacter.classList.add("red");
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             countErrorsInCurrentWord();
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // ONLY ACCESS NEXT CHAR IF IT IS NOT THE END OF LINE SPACE
             if (strIdx < stringWords.length - 1) {
@@ -1707,14 +1659,12 @@ startButton.addEventListener("click", (event) => {
                 clearTextInput();
             }
 
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             // HANDLE CONSECUTIVE SKOPPED WORDS (CURRENTLY MAX=5)
             skippedWordsCounter += 1;
             if (skippedWordsCounter >= maxSkippedWords) {
                 reloadSequence();
                 textInput.removeEventListener("keydown", handleKeyEvent);
             }
-            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             // ======= SPACE ON LAST WORD (WRONG CHAR AND SPACE) ==========
             if (wordIdx === wordArrays[lineIdx].length - 1) {
@@ -1732,7 +1682,7 @@ startButton.addEventListener("click", (event) => {
 
         // MORE THAN 20/16/12 MISTAKES: GOODBYE MESSAGE SEQUENCE
         if (consecutiveErrorCounter >= maxMistakes) {
-            handleMaxErrors();
+            displayConsecErrors();
 
             reloadSequence();
             textInput.removeEventListener("keydown", handleKeyEvent);
@@ -1769,8 +1719,8 @@ startButton.addEventListener("click", (event) => {
 
         createSpans(lineIdx + 1, textSpanContainerNextParagraph);
         textInput.placeholder = "Start typing or customise text";
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+        // TEMP FIX, TRY REMOVING COMPLETED LINES FROM DOM
         // ADD CURSOR TO FIRST SPAN AFTER RE-GENERATING TEXT
         // FIND ALL ACTIVE SPANS, SINGLE OUT FIRST THAT HAS NO OTHER CLASS AND ADD CURSOR TO IT
         const activeSpans = document.getElementsByClassName("active-txt-span");
@@ -1784,12 +1734,11 @@ startButton.addEventListener("click", (event) => {
                 !activeSpans[i].classList.contains("orange") &&
                 activeSpans[i].textContent !== " "
             ) {
-                console.log("SPAN FOUND", activeSpans[i]);
+                // console.log("SPAN FOUND", activeSpans[i]);
                 activeSpans[i].classList.add("background", "black-border");
                 break;
             }
         }
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 });
 
@@ -1900,7 +1849,7 @@ for (let i = 0; i < gramRadios.length; i++) {
 
         clearMessageDiv();
         clearDataAndDisplay();
-        textInput.placeholder = "                 Click Start ➡";
+        placeholderClickStart();
     });
 }
 
@@ -1938,7 +1887,7 @@ for (let i = 0, length = rowRadios.length; i < length; i++) {
 
         clearMessageDiv();
         clearDataAndDisplay();
-        textInput.placeholder = "                 Click Start ➡";
+        placeholderClickStart();
     });
 }
 
@@ -1955,22 +1904,20 @@ slider.onchange = function (event) {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 PUNCTUATION 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handlePunctuationToggle = () => {
-    // console.log("PUNCTUATION TOGGLE");
     toggleButtonStyle(punctuationToggle);
     toggleButtonState(punctuationToggle);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
     // clearArrAndString();
 };
 
 punctuationToggle.addEventListener("click", handlePunctuationToggle);
 
 const handlePunctuationToggleBeginner = () => {
-    // console.log("PUNCTUATION TOGGLE");
     toggleButtonStyle(punctuationToggleBeginner);
     toggleButtonState(punctuationToggleBeginner);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
     // clearArrAndString();
 };
 
@@ -1985,7 +1932,7 @@ const handleCapitalToggle = () => {
     toggleButtonStyle(capitalToggle);
     toggleButtonState(capitalToggle);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
     // clearArrAndString();
 };
 
@@ -1997,7 +1944,7 @@ const handleCapitalToggleBeginner = () => {
     toggleButtonStyle(capitalToggleBeginner);
     toggleButtonState(capitalToggleBeginner);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
     // clearArrAndString();
 };
 
@@ -2009,7 +1956,7 @@ const handleEnterToggle = () => {
     toggleButtonStyle(enterToggle);
     toggleButtonState(enterToggle);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
     // clearArrAndString();
 };
 
@@ -2021,7 +1968,7 @@ const handleEnterToggleBeginner = () => {
     toggleButtonStyle(enterToggleBeginner);
     toggleButtonState(enterToggleBeginner);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
     // clearArrAndString();
 };
 
@@ -2124,7 +2071,7 @@ const handleTimerToggle = () => {
     toggleButtonStyle(timerToggle);
     toggleButtonState(timerToggle);
     clearDataAndDisplay();
-    textInput.placeholder = "                 Click Start ➡";
+    placeholderClickStart();
 };
 
 timerToggle.addEventListener("click", handleTimerToggle);
@@ -2437,7 +2384,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
             displaySelectionWarning();
         } else {
             clearMessageDiv();
-            textInput.placeholder = "                 Click Start ➡";
+            placeholderClickStart();
         }
 
         // console.log(levelStateArray);
@@ -2472,13 +2419,13 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
         // 3. UPDATE TARGET ARRAY WITH randomKeyWordsArray
         targetArray = [...randomKeyWordsArray];
-
-        // textInput.placeholder = "                 Click Start ➡";
     });
 }
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
+    // !IMPORTANT: UNCHECK ADVANCED/SENTENCES, THIS IS TO PREVENT buildWordArrays() FROM GENERATING SENTENCES IN BEGINNER MODE
+    document.getElementById("sentences").checked = false;
     // RESET LEVEL BUTTONS, NO PRE-SELECTION OPTION !
     for (let i = 0; i < levelButtons.length; i += 1) {
         levelButtons[i].classList.remove("apply--active", "toggle-on");
@@ -2686,15 +2633,6 @@ CURRENT BRANCH:
     RESTORE DIFFICULTY LEVEL SETTING WHEN COMING BACK FROM BEGINNER ? (NOT WORKING)
     TRY RESETTING LEVEL TO COMMON100 - LINE 2317
 
-
-     !!! WRITE A FUNCTION FOR THESE !!! (placeholderClickStart()) !!!
-
-        textInput.placeholder = "                 Click Start ➡";
-
-    !!! WRITE A FUNCTION FOR THESE !!! (handleMaxErrors()) !!!
-
-        if ((consecutiveErrorCounter = maxMistakes)) {
-
     ADD COLOUR-THEME CLASS TO EVERY ELEMENT AFFECTED ???
 
     ACCURACY SPAN COLOUR CODES NOT WORKING WITH NEW SPAN COLOUR (CSS: .accuracy-span.dark-theme)
@@ -2735,11 +2673,9 @@ CURRENT BRANCH:
         ☑️ WRITE AND FORMAT INFO CARD
             ADD MORE CONTENT
         
-        MAKE ONE COMMON APPLY BUTTON FOR ALL CONTROLS?
         RESET TIMER IF START BUTTON IS CLICKED? 
         DISPLAY MESSAGE AS TEXT ELEMENT, NOT PLACEHOLDER OR CONTENT
             ☑️ CAPSLOCK WARNIING
-        ADD MOST COMMON SENTENCES TO DIFFICULTY
         ☑️ PROBLEM KEYS
         DYNAMICALLY GENERATE NEXT LINE + 1 ?
         SHOW ALL TEXT AS ONE BLOCK ?
@@ -2748,6 +2684,12 @@ CURRENT BRANCH:
        
             
     PROBLEMS:
+
+            AFTER SELECTING SENTENCES ON ADV. LEVEL SELECTORS WONT WORK ON BEGINNER (STILL GETTING SENTENCES)
+                REFACTOR buildWordArrays(), NOW IT HAS DUPLICATE CODE
+                ☑️ OR MAYBE DE-SELECT "SENTENCES" WHEN SHOWING BEGINNER LEVEL AS GENERATING SENTENCES IS BASED ON ITS RADIO'S STATUS ???!!!
+
+            LOOK INTO SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD, WORD IDX ONLY JUMPS ONE WITH SPACE SKIP !!!
 
             UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
 
