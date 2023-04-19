@@ -2426,6 +2426,13 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 beginnerShowButton.addEventListener("click", function () {
     // !IMPORTANT: UNCHECK ADVANCED/SENTENCES, THIS IS TO PREVENT buildWordArrays() FROM GENERATING SENTENCES IN BEGINNER MODE
     document.getElementById("sentences").checked = false;
+
+    // RESET SLIDER (IN CASE LAST SELECTED LEVEL WAS "SENTENCES" AND IT NEEDS RE-ACTIVATING)
+    slider.disabled = false;
+    slider.value = 30;
+    lengthDisplaySpan.textContent = slider.value;
+    sequenceLength = slider.value;
+
     // RESET LEVEL BUTTONS, NO PRE-SELECTION OPTION !
     for (let i = 0; i < levelButtons.length; i += 1) {
         levelButtons[i].classList.remove("apply--active", "toggle-on");
