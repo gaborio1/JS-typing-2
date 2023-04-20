@@ -35,6 +35,7 @@ const difficultyRadios = document.getElementsByClassName("difficulty-radio");
 // LINE LENGTH SLIDER
 const slider = document.getElementById("length");
 const lengthDisplaySpan = document.getElementById("length-display-span");
+const sliderWrap = document.getElementById("slider-wrap");
 // TOGGLES
 const punctuationToggle = document.getElementById("punctuation-toggle");
 const punctuationToggleBeginner = document.getElementById(
@@ -584,18 +585,23 @@ const setDifficultyLevel = () => {
                 targetArray = [...common100];
                 maxMistakes = 20;
                 enableSentenceModifiers();
+                sliderWrap.classList.remove("transparent-disabled");
             } else if (difficultyRadios[i].value === "medium") {
                 targetArray = [...common200, ...common100];
                 maxMistakes = 16;
                 enableSentenceModifiers();
+                sliderWrap.classList.remove("transparent-disabled");
             } else if (difficultyRadios[i].value === "hard") {
                 targetArray = [...jsReserved, ...jsObjPropMeth];
                 maxMistakes = 12;
                 enableSentenceModifiers();
+                sliderWrap.classList.remove("transparent-disabled");
                 // SENTENCES
             } else {
                 // console.log("SENTENCES SELECTED, DISABLE MODIFIERS");
                 disableSentenceModifiers();
+                // REDUCE OPACITY OF WRAP DIV WHEN SLIDER IS DISABLED
+                sliderWrap.classList.add("transparent-disabled");
             }
 
             break;
@@ -2531,6 +2537,9 @@ beginnerHideButton.addEventListener("click", function () {
         timerOn = true;
     }
 
+    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 SLIDER 🀰🀰🀰🀰🀰🀰🀰🀰🀰
+    sliderWrap.classList.remove("transparent-disabled");
+
     problemKeysSet.clear();
 
     startButton.disabled = false;
@@ -2647,6 +2656,8 @@ CURRENT BRANCH:
     
     FEATURES:
 
+        DISPLAY "CLICK START MSG WHEN SHOWING ADVANCED LEVEL"
+
         ☑️ INCLUDE END OF TEXT IN INFO CARD
 
         ☑️ COUNT RED CLASS IN WORD ON CORRECT SPACE AND DISPLAY MESSAGE "n ERRORS IN WORD"
@@ -2699,6 +2710,7 @@ CURRENT BRANCH:
             LOOK INTO SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD, WORD IDX ONLY JUMPS ONE WITH SPACE SKIP !!!
 
             UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
+                ☑️ ADD OPACITY: 0.5 TO ENTIRE WRAP DIV ?
 
             MAKE BEGINNER TOP ROW WORDS LOWERCASE
                 ☑️ WRITE FUNCTION
