@@ -14,6 +14,7 @@ import {
     homeRow,
     keyLevelsArray,
     sentences,
+    numbers,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -45,6 +46,7 @@ const capitalToggle = document.getElementById("capital-toggle");
 const capitalToggleBeginner = document.getElementById(
     "capital-toggle__beginner"
 );
+const numbersToggle = document.getElementById("numbers-toggle");
 const enterToggle = document.getElementById("enter-toggle");
 const enterToggleBeginner = document.getElementById("enter-toggle__beginner");
 const soundToggle = document.getElementById("sound-toggle");
@@ -152,6 +154,7 @@ let charIdx = 0;
 // DEFAULT CONTROL SETTINGS
 let punctuationOn = false;
 let capitalOn = false;
+let numbersOn = false;
 let enterOn = false;
 let timerOn = false;
 let timerRunning = false;
@@ -273,6 +276,9 @@ const toggleButtonState = (element) => {
             case capitalToggleBeginner:
                 capitalOn = true;
                 break;
+            // case numbersToggle:
+            //     numbersOn = true;
+            //     break;
             case soundToggle:
                 soundOn = true;
                 break;
@@ -302,6 +308,9 @@ const toggleButtonState = (element) => {
             case capitalToggleBeginner:
                 capitalOn = false;
                 break;
+            // case numbersToggle:
+            //     numbersOn = false;
+            //     break;
             case soundToggle:
                 soundOn = false;
                 break;
@@ -365,7 +374,6 @@ const addSpaceToWords = (arr) => {
     }
     return updatedArray;
 };
-
 
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
@@ -544,6 +552,7 @@ doc.addEventListener("keydown", testCapsLock);
 const disableSentenceModifiers = () => {
     punctuationToggle.disabled = true;
     capitalToggle.disabled = true;
+    // numbersToggle.disabled = true;
     enterToggle.disabled = true;
     slider.disabled = true;
 };
@@ -551,6 +560,7 @@ const disableSentenceModifiers = () => {
 const enableSentenceModifiers = () => {
     punctuationToggle.disabled = false;
     capitalToggle.disabled = false;
+    // numbersToggle.disabled = false;
     enterToggle.disabled = false;
     slider.disabled = false;
 };
@@ -563,6 +573,7 @@ const setDifficultyLevel = () => {
                 targetArray = [...common100];
                 maxMistakes = 20;
                 enableSentenceModifiers();
+                // numbersToggle.disabled = true;
                 // REDUCE OPACITY OF WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
             } else if (difficultyRadios[i].value === "medium") {
@@ -570,15 +581,18 @@ const setDifficultyLevel = () => {
                 maxMistakes = 16;
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
+                // numbersToggle.disabled = true;
             } else if (difficultyRadios[i].value === "hard") {
                 targetArray = [...jsReserved, ...jsObjPropMeth];
                 maxMistakes = 12;
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
+                // numbersToggle.disabled = false;
                 // SENTENCES
             } else {
                 disableSentenceModifiers();
                 sliderWrap.classList.add("transparent-disabled");
+                // numbersToggle.disabled = true;
             }
 
             break;
@@ -1091,6 +1105,18 @@ textInput.disabled = true;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.addEventListener("click", (event) => {
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++
+    // if (numbersOn) {
+    //     console.log("numbers on");
+    //     console.log(targetArray);
+    //     console.log(targetArray);
+    //     numbers.forEach((numStr) => {
+    //         targetArray.push(numStr);
+    //     });
+    // }
+    // console.log(targetArray);
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++
+
     // RESET WRONG COUNTER
     consecutiveErrorCounter = 0;
     // RESET ORANGE COUNTER
@@ -1201,7 +1227,6 @@ startButton.addEventListener("click", (event) => {
         // TRACK TYPED KEY ON KEYBOARD IN REAL TIME (100MS FLASH)
         const enterKey = document.getElementById("key--enter");
         for (let i = 0; i < letterKeys.length; i += 1) {
-
             if (typedKey.toUpperCase() === letterKeys[i].innerText) {
                 // CLASS COLOUR: rgba(0, 128, 0, 0.304)
                 letterKeys[i].classList.add("green-background__keyboard");
@@ -1401,7 +1426,6 @@ startButton.addEventListener("click", (event) => {
 
             if (typedKey === "Enter" && enterOn) {
                 if (strIdx === stringWords.length - 1) {
-
                     if (soundOn) {
                         playSound(
                             "mixkit-single-key-press-in-a-laptop-2541.wav",
@@ -1423,7 +1447,6 @@ startButton.addEventListener("click", (event) => {
                     ) {
                         correctSpaceNotLastWord();
                     }
-
 
                     if (strIdx === stringWords.length - 1) {
                         correctEndOfLineSpace();
@@ -1508,7 +1531,6 @@ startButton.addEventListener("click", (event) => {
             typedKey !== wordArrays[lineIdx][wordIdx][charIdx] &&
             typedKey === " "
         ) {
-
             if (soundOn) {
                 playSound("mixkit-message-pop-alert-2354.mp3", 0.25);
             }
@@ -1710,7 +1732,6 @@ const rowRadios = document.getElementsByClassName("row-radio");
 
 for (let i = 0, length = rowRadios.length; i < length; i++) {
     rowRadios[i].addEventListener("click", function () {
-
         enableStartButton();
 
         // DISABLE GRAMS
@@ -1793,6 +1814,17 @@ const handleCapitalToggleBeginner = () => {
 };
 
 capitalToggleBeginner.addEventListener("click", handleCapitalToggleBeginner);
+
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 NUMBERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+const handleNumbersToggle = () => {
+    toggleButtonStyle(numbersToggle);
+    toggleButtonState(numbersToggle);
+    clearDataAndDisplay();
+    placeholderClickStart();
+};
+
+// numbersToggle.addEventListener("click", handleNumbersToggle);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -2307,6 +2339,13 @@ beginnerHideButton.addEventListener("click", function () {
 
     capitalOn = capitalToggle.classList.contains("toggle-on") ? true : false;
 
+    // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 NUMBERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+    // numbersToggle.disabled = true;
+    // numbersOn = false;
+    // numbersToggle.textContent = "Off";
+    // numbersOn = numbersToggle.classList.contains("toggle-on") ? true : false;
+
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
     enterOn = enterToggle.classList.contains("toggle-on") ? true : false;
@@ -2338,6 +2377,7 @@ beginnerHideButton.addEventListener("click", function () {
     }
 
     clearMessageDiv();
+    placeholderClickStart();
 });
 
 // JS NOT IN USE, POSITION IS NOW STICKY IN CSS
@@ -2389,18 +2429,6 @@ CURRENT BRANCH:
 
  BRANCH: sentences-1
 
-    ☑️ STYLE DIFFICULTY RADIOS FOR 4 LEVELS
-
-    FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
-
-    DISABLE
-        ☑️ PUNCTUATION
-        ☑️ CAPITALS
-        ☑️ ENTER
-        ☑️ LENGTH
-
-    ☑️ INCLUDE SENTENCES IN INFO CARD
-
     ☑️ WRITE FUNCTION THAT EXTRACTS WORDS WITH PUNCTUATION MARKS FROM STRING
         FIND REGEX FOR EXTRACTING WORDS FROM STRING:
         THIS MATCHES WORD WITH PUNCTUATION MARK /\w+[\.?!:]/G
@@ -2412,14 +2440,6 @@ CURRENT BRANCH:
         charSpans
         endOfLineSpace
 
-
-    DECREMENT ORANGE COUNTER WITH BACKSPACE
-        USE NUMBER OF CONSECUTIVE ERRORS TO STYLE WARNING DYNAMICALLY
-            ☑️ DIV: RED BORDER AFTER 5 ERRORS AND RED BORDER/BACKGROUND AFTER 10 CONSECUTIVE ERRORS
-
-    ☑️ MAKE TIMER DISABLED BY DEFAULT???
-    ☑️ MAKE STYLE CHANGES BASED ON timerRunning INSTEAD OF timerOn
-    ☑️ BEGINNER: DO NOT ACTIVATE START BUTTON WITH PUNCT/CAPITAL/ENTER APPLY UNTIL LEVEL HAS BEEN SELECTED!
 
     CSS VARIABLES
         CONTAINER HEIGHT
@@ -2434,29 +2454,6 @@ CURRENT BRANCH:
 
     
     FEATURES:
-
-        DISPLAY "CLICK START MSG WHEN SHOWING ADVANCED LEVEL"
-
-        ☑️ INCLUDE END OF TEXT IN INFO CARD
-
-        ☑️ COUNT RED CLASS IN WORD ON CORRECT SPACE AND DISPLAY MESSAGE "n ERRORS IN WORD"
-        countSpanColours(), countSpanColoursLastWord()
-
-        ☑️ CHECK LAST WORD FOR ERRORS WHEN USER REACHED LAST SPACE AFTER CORRECTING BEYOND THE LINE ERRORS IN handleBackSpace()
-            KEEP MESSAGE UNTIL CURSOR REACHES FIRST ERROR IN LAST WORD ?
-
-        ☑️ HIGHLIGHT SLIDER RAIL ON HOVER?
-
-        ☑️ HIGHLIGHT INPUT TEXT WHEN CORRECTING WITH BACKSPACE?
-
-        CONNECT BEGINNER CONTROLS TO JAVASCRIPT
-            ☑️ PUNCTUATION
-            ☑️ CAPITAL
-            ☑️ ENTER
-        (DISABLED)ADD TOOLTIP TO CURSOR ON INSTRUCTIONS CARD ("CLICK ANYWHERE TO CLOSE")
-        DISPLAY MESSAGES IN MESSAGE DIV
-            ☑️ CHANGE MESSAGE DIV COLOR TO GREY OR ORANGE?
-            CAPSLOCK WARNING
 
         ADD NUMERIC CHARACTERS
 
@@ -2482,75 +2479,44 @@ CURRENT BRANCH:
             
     PROBLEMS:
 
-            AFTER SELECTING SENTENCES ON ADV. LEVEL SELECTORS WONT WORK ON BEGINNER (STILL GETTING SENTENCES)
-                REFACTOR buildWordArrays(), NOW IT HAS DUPLICATE CODE
-                ☑️ OR MAYBE DE-SELECT "SENTENCES" WHEN SHOWING BEGINNER LEVEL AS GENERATING SENTENCES IS BASED ON ITS RADIO'S STATUS ???!!!
+        FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
 
-            LOOK INTO SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD, WORD IDX ONLY JUMPS ONE WITH SPACE SKIP !!!
 
-            UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
-                ☑️ ADD OPACITY: 0.5 TO ENTIRE WRAP DIV ?
+        AFTER SELECTING SENTENCES ON ADV. LEVEL SELECTORS WONT WORK ON BEGINNER (STILL GETTING SENTENCES)
+            REFACTOR buildWordArrays(), NOW IT HAS DUPLICATE CODE
+            ☑️ OR MAYBE DE-SELECT "SENTENCES" WHEN SHOWING BEGINNER LEVEL AS GENERATING SENTENCES IS BASED ON ITS RADIO'S STATUS ???!!!
 
-            MAKE BEGINNER TOP ROW WORDS LOWERCASE
-                ☑️ WRITE FUNCTION
+        LOOK INTO SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD, WORD IDX ONLY JUMPS ONE WITH SPACE SKIP !!!
 
-            ☑️ RESET ORANGE COUNTER WITH START BUTTON
-                !!! TEMPORARY FIX, WRITE FUNCTION resetColourCounters() !!!
+        UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
+        ☑️ ADD OPACITY: 0.5 TO ENTIRE WRAP DIV ?
 
-            ADD CURSOR TO FIRST CHARACTER WHEN NEW TEXT IS GENERATED BY START
+
+        ☑️ RESET ORANGE COUNTER WITH START BUTTON
+            !!! TEMPORARY FIX, WRITE FUNCTION resetColourCounters() !!!
+
+        ADD CURSOR TO FIRST CHARACTER WHEN NEW TEXT IS GENERATED BY START
                 1. REMOVE ACTIVE SPANS FROM DOM ?
                 2. START BUTTON: CHECK IF FIRST SPAN HAS ANY CLASS APART FROM active-text-span IF NOT ADD border/background
                     FIND active-text-spans, AND SELECT THE FIRST THAT HAS NO OTHER CLASS
                     ☑️ if (startButtonCounter > 1)
 
-            CAPSLOCK MUST NOT ACTIVATE TIMER ? (DETECT CAPSLOCK CHANGE)
+        CAPSLOCK MUST NOT ACTIVATE TIMER ? (DETECT CAPSLOCK CHANGE)
 
-            STYLE DISABLED LEVEL SELECTORS AND SELECTION TYPE TOGGLE IN BEGINNER MODE DURING REFRESH SEQUENCE (MUST NOT HIGHLIGHT ON HOVER)
-
-            ☑️ DISABLE START BUTTON (AND OTHERS TOO) DURING RELOAD SEQUENCE
-
-            ☑️ ERROR ON ORANGE BORDER SPACE SHOULD GET RED BORDER (IT STAYS ORANGE)
-
-            ☑️ displayColourCounterValues() CALL THIS ON EVERY KEYPRESS (VALUES ARE ONLY UPDATED WITH SPACE!!)
-            COLOUR COUNTER DOESN'T UPDATE ON LAST SPACE, INSTEAD IT UPDATES AFTER IN NEXT LINE
-                LOOK INTO countSpanColoursInLastWord()
-
-            ☑️ LIMIT MAX NUMBER OF WORDS SKIPPED BY SPACE, AT THE MOMENT IT IS INFINITE
-                spaceOnWord() CONSECUTIVE ERRORS ARE BEING RESET TO 0 HERE !!!
-
-            BUG: SPACE WILL TAKE CURSOR TO NEXT LINE FROM LAST SPACE EVEN IF IT WAS MISTYPED AND NOT CORRECTED!!!
-                ☑️ 1. INCREMENT NUMBER OF NULL VALUES (NON EXISTING SPANS) WITH WRONG CHARACTER TYPED
-                ☑️ 2. DECREMENT NULL COUNT WITH BACKSPACE
-                ☑️ 3. ONLY NOW ALLOW spaceOnLastWord() TO RUN ON SPACE KEYPRESS
-            NOTE: STRIDX GETS INCREMENTED ANE wordArrays[lineIdx][wordIdx][charIdx] WILL BE UNDEFINED !!!
+        STYLE DISABLED LEVEL SELECTORS AND SELECTION TYPE TOGGLE IN BEGINNER MODE DURING REFRESH SEQUENCE (MUST NOT HIGHLIGHT ON HOVER)
 
 
-            TODO: INCREMENT REDCOUNTER BY LENGTH OF WORD SKIPPED !!!
-                ☑️ SPACEONLASTWORD
-                ☑️ SPACEONWORD
-                LOOK INTO: displayColourCounterValues() THIS F UPDATES COUNTER SPANS
+        RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER ???
+            SPACEONLASTWORD
+            SPACEONWORD
 
-            RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER ???
-                SPACEONLASTWORD
-                SPACEONWORD
 
-            DELETE UNUSED VARIABLES, FUNCTIONS
+        IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
 
-            KEEP TRACK OF NUMBER OF WRONG KEYS IF CURSOR GOES BEYOND END OF LINE
-                ☑️ DISPLAY "KEEP CORRECTING" MESSAGE WITH BACKSPACE
-
-            ☑️ ORANGE SPANS WILL NOT GO RED IF THEY GET WRONG AGAIN IN DARK-THEME 
-
-            ☑️ CLEAR TEXT INPUT WITH NEW LINE
-
-            ☑️ STOP CORRECT ENTER KEY PRESS TRIGGERING WRONG KEY WARNING
-
-            IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
-
-            ADD FOCUS TO TEXT INPUT DURING SESSION WHEN: (IF SESSION HASN'T STARTED TXT IPUT IS DISABLED SO IT WILL NOT FOCUS BY DEFAULT)
-                ☑️ SOUND TOGGLE
-                ☑️ THEME TOGGLE
-                ☑️ HIDE BEGINNER ?
+        ADD FOCUS TO TEXT INPUT DURING SESSION WHEN: (IF SESSION HASN'T STARTED TXT IPUT IS DISABLED SO IT WILL NOT FOCUS BY DEFAULT)
+            ☑️ SOUND TOGGLE
+            ☑️ THEME TOGGLE
+            ☑️ HIDE BEGINNER ?
 
         ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT?
             ☑️ ADDED 700MS SETTIMEOUT DELAY
@@ -2578,7 +2544,6 @@ CURRENT BRANCH:
             SOUND
 
         WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
-            ☑️ HIGHLIGHT APPLY BUTTON TO RE-SUBMIT ???
             OR RESET ALL SETTINGS ???
        
         DON'T HIGHLIGT RADIO LABELS AND TOGGLE BUTTONS WHILE TIMER IS ON (WHEN DISABLED)
