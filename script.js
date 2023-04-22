@@ -1206,10 +1206,12 @@ startButton.addEventListener("click", (event) => {
     // !!! TIMERON IS INDEPENDENT FROM CONTROL SETTING (BUTTON STATUS) !!!
 
     // INSTEAD OF TIMERON, CHECK IS BUTTON IS ACTIVE AND IF IT IS, SET TIMERON TO TRUE
-    // if (timerToggle.classList.contains("apply--active") && !beginnerOn) {
     if (timerOn && !beginnerOn) {
         textInput.addEventListener("keydown", startCountdown);
-        // console.log("EVENT LISTENER ADDED TEXT INPUT FOR TIMER");
+        // console.log("EVENT LISTENER ADDED TO TEXT INPUT FOR TIMER");
+    } else {
+        textInput.removeEventListener("keydown", startCountdown);
+        // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
     }
 
     // REMOVE HIGHLIGHT START BUTTON
