@@ -276,9 +276,10 @@ const toggleButtonState = (element) => {
             case capitalToggleBeginner:
                 capitalOn = true;
                 break;
-            // case numbersToggle:
-            //     numbersOn = true;
-            //     break;
+            case numbersToggle:
+                numbersOn = true;
+                console.log("NUMBERS ON");
+                break;
             case soundToggle:
                 soundOn = true;
                 break;
@@ -308,9 +309,10 @@ const toggleButtonState = (element) => {
             case capitalToggleBeginner:
                 capitalOn = false;
                 break;
-            // case numbersToggle:
-            //     numbersOn = false;
-            //     break;
+            case numbersToggle:
+                numbersOn = false;
+                console.log("NUMBERS OFF");
+                break;
             case soundToggle:
                 soundOn = false;
                 break;
@@ -565,7 +567,23 @@ const enableSentenceModifiers = () => {
     slider.disabled = false;
 };
 
+const disableNumbers = () => {
+    numbersOn = false;
+    numbersToggle.disabled = true;
+    numbersToggle.classList.remove("toggle-on");
+    numbersToggle.classList.add("toggle-off");
+    numbersToggle.textContent = "Off";
+}
+
 // SET DIFFICULTY LEVEL BASED ON RADIOS STATE
+/*
+THESE ARE DUPLICATES:
+numbersOn = false;
+numbersToggle.classList.remove("toggle-on");
+numbersToggle.classList.add("toggle-off");
+numbersToggle.textContent = "Off";
+*/
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const setDifficultyLevel = () => {
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         if (difficultyRadios[i].checked) {
@@ -573,7 +591,8 @@ const setDifficultyLevel = () => {
                 targetArray = [...common100];
                 maxMistakes = 20;
                 enableSentenceModifiers();
-                // numbersToggle.disabled = true;
+                disableNumbers();
+
                 // REDUCE OPACITY OF WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
             } else if (difficultyRadios[i].value === "medium") {
@@ -581,24 +600,30 @@ const setDifficultyLevel = () => {
                 maxMistakes = 16;
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
-                // numbersToggle.disabled = true;
+                disableNumbers();
             } else if (difficultyRadios[i].value === "hard") {
-                targetArray = [...jsReserved, ...jsObjPropMeth];
+                // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
+                if (numbersOn) {
+                    targetArray = [...jsReserved, ...jsObjPropMeth, ...numbers];
+                } else {
+                    targetArray = [...jsReserved, ...jsObjPropMeth];
+                }
+
                 maxMistakes = 12;
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
-                // numbersToggle.disabled = false;
+                numbersToggle.disabled = false;
                 // SENTENCES
             } else {
                 disableSentenceModifiers();
                 sliderWrap.classList.add("transparent-disabled");
-                // numbersToggle.disabled = true;
+                disableNumbers();
             }
-
             break;
         }
     }
 };
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 START BUTTON FUNCTIONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1816,16 +1841,17 @@ const handleCapitalToggleBeginner = () => {
 capitalToggleBeginner.addEventListener("click", handleCapitalToggleBeginner);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 NUMBERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const handleNumbersToggle = () => {
     toggleButtonStyle(numbersToggle);
     toggleButtonState(numbersToggle);
     clearDataAndDisplay();
     placeholderClickStart();
+    console.log(numbersOn);
 };
 
-// numbersToggle.addEventListener("click", handleNumbersToggle);
-
+numbersToggle.addEventListener("click", handleNumbersToggle);
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handleEnterToggle = () => {
@@ -2260,6 +2286,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
+
     // !IMPORTANT: UNCHECK ADVANCED/SENTENCES, THIS IS TO PREVENT buildWordArrays() FROM GENERATING SENTENCES IN BEGINNER MODE
     document.getElementById("sentences").checked = false;
 
@@ -2298,6 +2325,19 @@ beginnerShowButton.addEventListener("click", function () {
     capitalToggleBeginner.classList.add("toggle-off");
     capitalToggleBeginner.innerText = "Off";
 
+    // +++++++++++++++++++++++++++++++++++++++++++++++++
+
+    numbersOn = false;
+    // numbersToggle.classList.remove("toggle-on");
+    setTimeout(() => {
+        numbersToggle.classList.remove("toggle-on");
+        numbersToggle.innerText = "Off";
+        numbersToggle.disabled = true;
+    }, 300);
+    console.log("BEGINNER SHOW / NUMBERSON", numbersOn);
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++
+
     enterOn = false;
     enterToggleBeginner.classList.remove("toggle-on");
     enterToggleBeginner.classList.add("toggle-off");
@@ -2318,6 +2358,7 @@ beginnerShowButton.addEventListener("click", function () {
 
 // HIDE BEGINNER LEVELS
 beginnerHideButton.addEventListener("click", function () {
+
     beginnerOn = false;
 
     // RESTORE / ACTIVATE ADVACED LEVEL CONTROL SETTINGS
@@ -2343,8 +2384,7 @@ beginnerHideButton.addEventListener("click", function () {
 
     // numbersToggle.disabled = true;
     // numbersOn = false;
-    // numbersToggle.textContent = "Off";
-    // numbersOn = numbersToggle.classList.contains("toggle-on") ? true : false;
+    console.log("BEGINNER HIDE / NUMBERSON", numbersOn);
 
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -2423,7 +2463,17 @@ beginnerHideButton.addEventListener("click", function () {
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH:
+CURRENT BRANCH: numbers-1
+
+    ☑️ HARD DIFF LEVEL TO ENABLE NUMBERS
+
+    ☑️ STYLE TOGGLE
+    ☑️ STATE TOGGLE
+
+    ☑️ DISABLE STYLE TOGGLE WITH OTHER LEVELS (COLOUR AND TEXTCONTENT, RED/OFF)
+        (DUPLICATE CODE IN setDifficultyLevel())
+
+    ☑️ IMPLEMENT LOGIC
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
