@@ -2328,7 +2328,6 @@ beginnerShowButton.addEventListener("click", function () {
     // +++++++++++++++++++++++++++++++++++++++++++++++++
 
     numbersOn = false;
-    // numbersToggle.classList.remove("toggle-on");
     setTimeout(() => {
         numbersToggle.classList.remove("toggle-on");
         numbersToggle.innerText = "Off";
@@ -2463,7 +2462,11 @@ beginnerHideButton.addEventListener("click", function () {
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH: numbers-1
+CURRENT BRANCH:
+
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+BRANCH: numbers-1
 
     ☑️ HARD DIFF LEVEL TO ENABLE NUMBERS
 
