@@ -573,7 +573,7 @@ const disableNumbers = () => {
     numbersToggle.classList.remove("toggle-on");
     numbersToggle.classList.add("toggle-off");
     numbersToggle.textContent = "Off";
-}
+};
 
 // SET DIFFICULTY LEVEL BASED ON RADIOS STATE
 /*
@@ -2288,7 +2288,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
-
     // !IMPORTANT: UNCHECK ADVANCED/SENTENCES, THIS IS TO PREVENT buildWordArrays() FROM GENERATING SENTENCES IN BEGINNER MODE
     document.getElementById("sentences").checked = false;
 
@@ -2306,10 +2305,15 @@ beginnerShowButton.addEventListener("click", function () {
     beginnerOn = true;
     timerOn = false;
 
-    // MAKING SURE TIMERON IS FALSE IN BEGINNER
-    if (timerToggle.classList.contains("toggle-on") && beginnerOn) {
-        timerOn = false;
-    }
+    // MAKING SURE TIMERON IS FALSE IN BEGINNER AND RESET TO "OFF" FOR ADVANCED
+    // if (timerToggle.classList.contains("toggle-on") && beginnerOn) {
+    //     timerOn = false;
+    // }
+    textInput.removeEventListener("keydown", startCountdown);
+    setTimeout(() => {
+        timerToggle.classList.remove("toggle-on");
+        timerToggle.innerText = "Off";
+    }, 300);
 
     // DISABLE BEGINNER TOGGLES (PUNCTUATION, CAPITAL AND ENTER)
     for (let i = 0; i < beginnerToggles.length; i += 1) {
@@ -2359,7 +2363,6 @@ beginnerShowButton.addEventListener("click", function () {
 
 // HIDE BEGINNER LEVELS
 beginnerHideButton.addEventListener("click", function () {
-
     beginnerOn = false;
 
     // RESTORE / ACTIVATE ADVACED LEVEL CONTROL SETTINGS
@@ -2533,6 +2536,8 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        DISABLE TIMER AND TOGGLE WHEN CLOSING BEGINNER LEVEL
 
         FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
 
