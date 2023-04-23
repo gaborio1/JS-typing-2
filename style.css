@@ -270,8 +270,8 @@ button:disabled:hover {
 }
 
 /* +++++++++++++++++++++++++++++++++++++++++ */
-/* NUMBERS TOGGLE */
-.enter-buttons-container {
+/* THIS CONTAINER HAS 2 BUTTONS, HAVE TO SPACE THEM OUT */
+.enter-buttons-container__advanced {
     display: flex;
     width: 120px;
     justify-content: space-between;
@@ -2325,6 +2325,12 @@ button.btn--flip {
     border-width: 1px;
 }
 
+/* DURING RELOAD SEQUENCE */
+button.btn--flip:disabled:hover {
+    font-weight: 100;
+    border-width: 1px;
+}
+
 button.btn--flip.dark-theme {
     /* HAVE TO RESET BORDER WIDTH AS THEY ARE ALWAYS ACTIVE */
     border-width: 1px;
@@ -2334,7 +2340,6 @@ button.btn--flip.dark-theme {
 }
 
 button.btn--flip.dark-theme:hover {
-    /* HAVE TO RESET BORDER WIDTH AS THEY ARE ALWAYS ACTIVE */
     opacity: 1;
 }
 

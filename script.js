@@ -593,7 +593,7 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 disableNumbers();
 
-                // REDUCE OPACITY OF WRAP DIV WHEN SLIDER IS DISABLED (0.3)
+                // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
             } else if (difficultyRadios[i].value === "medium") {
                 targetArray = [...common200, ...common100];
@@ -1033,6 +1033,7 @@ const reloadSequence = () => {
 
     // THIS HAS TO STAY INSIDE KEY EVENTS AS handleKeyEvent WILL BE NOT RECOGNISED
     // document.removeEventListener("keydown", handleKeyEvent);
+    sliderWrap.classList.add("transparent-disabled");
     textInput.value = "     ❌   Don't play silly games!  ❌";
 
     setTimeout(function () {
@@ -2536,6 +2537,10 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        ☑️ STYLE DISABLED "HOW TO" AND "BEGINNER LEVEL" BUTTONS DURING RELOAD SEQUENCE
+
+        ☑️ FADE SLIDER DIV DURING RELOAD SEQUENCE
 
         ☑️ DISABLE TIMER AND TOGGLE WHEN CLOSING BEGINNER LEVEL
 
