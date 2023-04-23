@@ -2258,6 +2258,18 @@ button {
     border-width: 2px;
 }
 
+/* STYLES FOR DURING RELOAD SEQUENCE*/
+/* RED BUTTONS */
+.btn--level:disabled:hover {
+    font-weight: 100;
+    border-width: 1px;
+}
+
+/* BLUE BUTTONS */
+.btn--level.apply--active:disabled:hover {
+    font-weight: 500;
+}
+
 /* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 SELECTION TYPE BUTTON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰*/
 .btn--toggle__selection-type {
     width: 100px;
@@ -2275,6 +2287,11 @@ button {
 .btn--toggle__selection-type:hover {
     font-weight: 500;
     border-width: 2px;
+}
+/* STYLES FOR DURING RELOAD SEQUENCE*/
+.btn--toggle__selection-type:disabled:hover {
+    font-weight: 100;
+    border-width: 1px;
 }
 
 /* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ALL FLIP BUTTONS🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
