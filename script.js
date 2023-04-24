@@ -535,19 +535,27 @@ const capsLockWarningsOff = () => {
 };
 
 const doc = document.getElementById("container");
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+let capslockOnGlobal = false;
 const testCapsLock = (event) => {
     if (event.code === "CapsLock") {
         let isCapsLockOn = event.getModifierState("CapsLock");
         if (isCapsLockOn) {
-            // console.log("Caps Lock turned on");
+            console.log("Caps Lock turned on");
             capsLockWarningsOn();
+            capslockOnGlobal = true;
         } else {
-            // console.log("Caps Lock turned off");
+            console.log("Caps Lock turned off");
             capsLockWarningsOff();
+            capslockOnGlobal = false;
         }
     }
+    return capslockOnGlobal;
 };
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// !!! 2 SEPARATE LISTENERS FOR "UP" AND "DOWN" !!!
 doc.addEventListener("keyup", testCapsLock);
 doc.addEventListener("keydown", testCapsLock);
 
@@ -1207,13 +1215,16 @@ startButton.addEventListener("click", (event) => {
     // !!! TIMERON IS INDEPENDENT FROM CONTROL SETTING (BUTTON STATUS) !!!
 
     // INSTEAD OF TIMERON, CHECK IS BUTTON IS ACTIVE AND IF IT IS, SET TIMERON TO TRUE
-    if (timerOn && !beginnerOn) {
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    if (timerOn && !beginnerOn && !capslockOnGlobal) {
         textInput.addEventListener("keydown", startCountdown);
         // console.log("EVENT LISTENER ADDED TO TEXT INPUT FOR TIMER");
     } else {
         textInput.removeEventListener("keydown", startCountdown);
         // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
     }
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
     // REMOVE HIGHLIGHT START BUTTON
     startButton.classList.remove("apply--active");
@@ -1288,9 +1299,13 @@ startButton.addEventListener("click", (event) => {
         // ONLY KEEP TRACK OF KEYSTROKES WHILE CLOCK IS RUNNING (NOW DISABLED, KEYSTROKES ARE ALWAYS COUNTED)
         // if (timerOn) {
         // if (timerRunning) {
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // !!! THIS IS NOT RUNNING !!! DETECT CAPSLOCK CHANGE HERE !!!
         if (typedKey !== "CapsLock") {
             keyStrokeCounter += 1;
         }
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
         keystrokesSpan.textContent = keyStrokeCounter;
         // }
@@ -2520,10 +2535,11 @@ BRANCH: numbers-1
             HARD 500
             SENTENCES
 
-        INCLUDE NUMBERS IN DESCRIPTION
+        ☑️ INCLUDE NUMBERS IN DESCRIPTION
 
         ADD NUMERIC CHARACTERS
-            ☑️ HARD DIFFICULTY LEVEL
+            MEDIUM DIFF LEVEL
+            ☑️ HARD DIFF LEVEL
 
         GREEN WORDS COUNTER
         COMPLETE WORDS COUNTER
@@ -2554,6 +2570,7 @@ BRANCH: numbers-1
         ☑️ DISABLE TIMER AND TOGGLE WHEN CLOSING BEGINNER LEVEL
 
         FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
+            SPLIT ARRAY IN TWO?
 
 
         AFTER SELECTING SENTENCES ON ADV. LEVEL SELECTORS WONT WORK ON BEGINNER (STILL GETTING SENTENCES)
@@ -2575,7 +2592,7 @@ BRANCH: numbers-1
                     FIND active-text-spans, AND SELECT THE FIRST THAT HAS NO OTHER CLASS
                     ☑️ if (startButtonCounter > 1)
 
-        CAPSLOCK MUST NOT ACTIVATE TIMER ? (DETECT CAPSLOCK CHANGE)
+        CAPSLOCK MUST NOT ACTIVATE TIMER ? ONLY OFF->ON WILL TRIGGER TIMER (DETECT CAPSLOCK CHANGE)
 
         ☑️ STYLE DISABLED LEVEL SELECTORS AND SELECTION TYPE TOGGLE IN BEGINNER MODE DURING REFRESH SEQUENCE (MUST NOT HIGHLIGHT ON HOVER)
 
