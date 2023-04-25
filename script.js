@@ -535,14 +535,14 @@ const capsLockWarningsOff = () => {
 };
 
 const doc = document.getElementById("container");
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++NNN
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++CAPSLOCK
 
 let capslockOnGlobal = false;
 const testCapsLock = (event) => {
     if (event.code === "CapsLock") {
         let isCapsLockOn = event.getModifierState("CapsLock");
         if (isCapsLockOn) {
-            // console.log("Caps Lock turned on");
+            console.log("Caps Lock turned on");
             capsLockWarningsOn();
             capslockOnGlobal = true;
         } else {
@@ -1202,15 +1202,13 @@ startButton.addEventListener("click", (event) => {
     // !!! TIMERON IS INDEPENDENT FROM CONTROL SETTING (BUTTON STATUS) !!!
 
     // INSTEAD OF TIMERON, CHECK IS BUTTON IS ACTIVE AND IF IT IS, SET TIMERON TO TRUE
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++NNN
-    if (timerOn && !beginnerOn && !capslockOnGlobal) {
+    if (timerOn && !beginnerOn) {
         textInput.addEventListener("keydown", startCountdown);
         // console.log("EVENT LISTENER ADDED TO TEXT INPUT FOR TIMER");
     } else {
         textInput.removeEventListener("keydown", startCountdown);
         // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
     }
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // REMOVE HIGHLIGHT START BUTTON
     startButton.classList.remove("apply--active");
@@ -1243,19 +1241,28 @@ startButton.addEventListener("click", (event) => {
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 KEY EVENTS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+    let eventCounter = 0;
     const handleKeyEvent = (event) => {
         // const typedKey = event.key;
-
         typedKey = event.key;
-        // +++++++++++++++++++++++++++++++++++++++++++NNN
-        testCapsLock(event);
-        console.log("EVENT: KEYDOWN", event.key);
-        console.log(
-            "EVENT: KEYDOWN",
-            event.key,
-            "GLOBAL CAPSLOCK:",
-            capslockOnGlobal
-        );
+        // +++++++++++++++++++++++++++++++++++++++++++CAPLSLOCK
+        // if (event) {
+        //     eventCounter += 1;
+        // }
+        // console.log("EVENT COUNTER:", eventCounter);
+
+        // testCapsLock(event);
+        // console.log("EVENT: KEYDOWN", event.key);
+        // console.log(
+        //     "EVENT: KEYDOWN",
+        //     event.key,
+        //     "GLOBAL CAPSLOCK:",
+        //     capslockOnGlobal
+        // );
+
+        // if (typedKey === "CapsLock") {
+        //     console.log("---CAPSLOCK---");
+        // }
         // +++++++++++++++++++++++++++++++++++++++++++
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
@@ -1992,28 +1999,22 @@ const handleSoundToggle = () => {
 
 soundToggle.addEventListener("click", handleSoundToggle);
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++NNN
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++CAPSLOCK
 // ONE OFF FUNCTION RUNS ON FIRST KEYPRESS
 const startCountdown = () => {
-    console.log("START COUNTDOWN / CAPSLOCK GLOBAL:", capslockOnGlobal);
+    // console.log("START COUNTDOWN / CAPSLOCK GLOBAL:", capslockOnGlobal);
 
-    if (!capslockOnGlobal) {
-        countdown();
-        textInput.removeEventListener("keydown", startCountdown);
-        // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
+    // if (!capslockOnGlobal) {
+    // if (event.key !== "CapsLock") {
+    countdown();
+    // console.log("COUNTDOWN STARTED");
+    textInput.removeEventListener("keydown", startCountdown);
+    // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
 
-        // DISABLE CONTROL INPUTS/TOGGLES
-        for (let i = 0; i < disabledDuringTimer.length; i += 1) {
-            disabledDuringTimer[i].disabled = true;
-        }
+    // DISABLE CONTROL INPUTS/TOGGLES
+    for (let i = 0; i < disabledDuringTimer.length; i += 1) {
+        disabledDuringTimer[i].disabled = true;
     }
-    // countdown();
-    // textInput.removeEventListener("keydown", startCountdown);
-    // // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
-
-    // // DISABLE CONTROL INPUTS/TOGGLES
-    // for (let i = 0; i < disabledDuringTimer.length; i += 1) {
-    //     disabledDuringTimer[i].disabled = true;
     // }
 };
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
