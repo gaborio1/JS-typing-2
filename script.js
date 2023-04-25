@@ -535,14 +535,14 @@ const capsLockWarningsOff = () => {
 };
 
 const doc = document.getElementById("container");
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++NNN
 
 let capslockOnGlobal = false;
 const testCapsLock = (event) => {
     if (event.code === "CapsLock") {
         let isCapsLockOn = event.getModifierState("CapsLock");
         if (isCapsLockOn) {
-            console.log("Caps Lock turned on");
+            // console.log("Caps Lock turned on");
             capsLockWarningsOn();
             capslockOnGlobal = true;
         } else {
@@ -591,7 +591,7 @@ numbersToggle.classList.remove("toggle-on");
 numbersToggle.classList.add("toggle-off");
 numbersToggle.textContent = "Off";
 */
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 const setDifficultyLevel = () => {
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         if (difficultyRadios[i].checked) {
@@ -631,7 +631,6 @@ const setDifficultyLevel = () => {
         }
     }
 };
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 START BUTTON FUNCTIONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1139,18 +1138,6 @@ textInput.disabled = true;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.addEventListener("click", (event) => {
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++
-    // if (numbersOn) {
-    //     console.log("numbers on");
-    //     console.log(targetArray);
-    //     console.log(targetArray);
-    //     numbers.forEach((numStr) => {
-    //         targetArray.push(numStr);
-    //     });
-    // }
-    // console.log(targetArray);
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++
-
     // RESET WRONG COUNTER
     consecutiveErrorCounter = 0;
     // RESET ORANGE COUNTER
@@ -1215,7 +1202,7 @@ startButton.addEventListener("click", (event) => {
     // !!! TIMERON IS INDEPENDENT FROM CONTROL SETTING (BUTTON STATUS) !!!
 
     // INSTEAD OF TIMERON, CHECK IS BUTTON IS ACTIVE AND IF IT IS, SET TIMERON TO TRUE
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++NNN
     if (timerOn && !beginnerOn && !capslockOnGlobal) {
         textInput.addEventListener("keydown", startCountdown);
         // console.log("EVENT LISTENER ADDED TO TEXT INPUT FOR TIMER");
@@ -1224,7 +1211,6 @@ startButton.addEventListener("click", (event) => {
         // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
     }
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
     // REMOVE HIGHLIGHT START BUTTON
     startButton.classList.remove("apply--active");
@@ -1259,8 +1245,19 @@ startButton.addEventListener("click", (event) => {
 
     const handleKeyEvent = (event) => {
         // const typedKey = event.key;
+
         typedKey = event.key;
-        // console.log("EVENT: KEYDOWN", event.key);
+        // +++++++++++++++++++++++++++++++++++++++++++NNN
+        testCapsLock(event);
+        console.log("EVENT: KEYDOWN", event.key);
+        console.log(
+            "EVENT: KEYDOWN",
+            event.key,
+            "GLOBAL CAPSLOCK:",
+            capslockOnGlobal
+        );
+        // +++++++++++++++++++++++++++++++++++++++++++
+
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
         // TRACK TYPED KEY ON KEYBOARD IN REAL TIME (100MS FLASH)
@@ -1305,7 +1302,6 @@ startButton.addEventListener("click", (event) => {
             keyStrokeCounter += 1;
         }
         // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
         keystrokesSpan.textContent = keyStrokeCounter;
         // }
@@ -1859,7 +1855,6 @@ const handleCapitalToggleBeginner = () => {
 capitalToggleBeginner.addEventListener("click", handleCapitalToggleBeginner);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 NUMBERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const handleNumbersToggle = () => {
     toggleButtonStyle(numbersToggle);
     toggleButtonState(numbersToggle);
@@ -1869,7 +1864,6 @@ const handleNumbersToggle = () => {
 };
 
 numbersToggle.addEventListener("click", handleNumbersToggle);
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 const handleEnterToggle = () => {
@@ -1998,17 +1992,31 @@ const handleSoundToggle = () => {
 
 soundToggle.addEventListener("click", handleSoundToggle);
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++NNN
 // ONE OFF FUNCTION RUNS ON FIRST KEYPRESS
 const startCountdown = () => {
-    countdown();
-    textInput.removeEventListener("keydown", startCountdown);
-    // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
+    console.log("START COUNTDOWN / CAPSLOCK GLOBAL:", capslockOnGlobal);
 
-    // DISABLE CONTROL INPUTS/TOGGLES
-    for (let i = 0; i < disabledDuringTimer.length; i += 1) {
-        disabledDuringTimer[i].disabled = true;
+    if (!capslockOnGlobal) {
+        countdown();
+        textInput.removeEventListener("keydown", startCountdown);
+        // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
+
+        // DISABLE CONTROL INPUTS/TOGGLES
+        for (let i = 0; i < disabledDuringTimer.length; i += 1) {
+            disabledDuringTimer[i].disabled = true;
+        }
     }
+    // countdown();
+    // textInput.removeEventListener("keydown", startCountdown);
+    // // console.log("EVENT LISTENER REMOVED FROM TEXT INPUT FOR TIMER");
+
+    // // DISABLE CONTROL INPUTS/TOGGLES
+    // for (let i = 0; i < disabledDuringTimer.length; i += 1) {
+    //     disabledDuringTimer[i].disabled = true;
+    // }
 };
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // FLIP APP/INFO
 //SOURCE: https://codepen.io/desandro/pen/LmWoWe
