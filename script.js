@@ -1041,9 +1041,33 @@ const spaceOnWord = () => {
     // IF ABOVE 2 DONT MATCH, JUMP TO NEXT WORD (THIS ONLY WORKS WITH ONE WORD SKIPPED)
     if (stringWords[strIdx] !== wordArrays[lineIdx][wordIdx][0]) {
         console.log("_____WRONG CURSOR POSITION_____");
+        console.log("NEXT WORD INDEX:", findNextWordIndex());
+        // REMOVE BACKGROUND FROM CHAR BEFORE UPDATING STRIDX
+        let currentCharacter = document.getElementById(`span-${strIdx}`);
+        currentCharacter.classList.remove("background", "black-border");
+        strIdx = findNextWordIndex();
+        nextWord();
+        // UPDATE CURSOR POSITION
+        const nextCharacter = document.getElementById(`span-${strIdx}`);
+        nextCharacter.classList.add("background", "black-border");
+        // GET LENGTH OF ALL WORDS SKIPPED AND UPDATE COLOUR COUNTERS
+
+        // CLEAR TEXT INPUT
+        clearTextInput();
     }
 };
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
 
 // END MESSEAGE SEQUENCE (MESSAGES - RELOAD)
 const reloadSequence = () => {
