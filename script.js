@@ -974,7 +974,7 @@ const findNextWordIndex = () => {
             break;
         }
     }
-
+    console.log("NEXT WORD IDX:", nextWordIdx);
     return nextWordIdx;
 };
 
@@ -1005,7 +1005,10 @@ const spaceOnLastWord = () => {
 // SPACE ON WORD
 // APPLY BACKGROUND TO NEXT CHAR AND REMOVE BACKGROUND FROM CURRENT
 // ON ALL CHARACTERS BUT LAST
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++SPACE
 const spaceOnWord = () => {
+    console.log("WORD IDX:", wordIdx, "CHAR IDX:", charIdx, "STR:", strIdx);
+    console.log(wordArrays[lineIdx]);
     let currentCharacter = document.getElementById(`span-${strIdx - 1}`);
 
     // RESET WRONGCOUNTER
@@ -1027,7 +1030,20 @@ const spaceOnWord = () => {
     const nextCharacter = document.getElementById(`span-${strIdx}`);
     nextCharacter.classList.add("background", "black-border");
     nextWord();
+    console.log("WORD:", wordIdx, "CHAR:", charIdx, "STR:", strIdx);
+    // CHARACTER AT CURSOR
+    console.log(stringWords[strIdx]);
+    // FIRST CHARACTER
+    console.log(wordArrays[lineIdx][wordIdx][0]);
+    if (charIdx > 0) {
+        console.log("JUMP TO NEXT WORD");
+    }
+    // IF ABOVE 2 DONT MATCH, JUMP TO NEXT WORD (THIS ONLY WORKS WITH ONE WORD SKIPPED)
+    if (stringWords[strIdx] !== wordArrays[lineIdx][wordIdx][0]) {
+        console.log("_____WRONG CURSOR POSITION_____");
+    }
 };
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // END MESSEAGE SEQUENCE (MESSAGES - RELOAD)
 const reloadSequence = () => {
@@ -1602,7 +1618,7 @@ startButton.addEventListener("click", (event) => {
                 clearTextInput();
             }
 
-            // HANDLE CONSECUTIVE SKOPPED WORDS (CURRENTLY MAX=5)
+            // HANDLE CONSECUTIVE SKIPPED WORDS (CURRENTLY MAX=5)
             skippedWordsCounter += 1;
             if (skippedWordsCounter >= maxSkippedWords) {
                 reloadSequence();
@@ -2587,6 +2603,7 @@ BRANCH: numbers-1
             ☑️ OR MAYBE DE-SELECT "SENTENCES" WHEN SHOWING BEGINNER LEVEL AS GENERATING SENTENCES IS BASED ON ITS RADIO'S STATUS ???!!!
 
         LOOK INTO SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD, WORD IDX ONLY JUMPS ONE WITH SPACE SKIP !!!
+            ALWAYS FIND NEXT UNTYPED WORD AND JUMP TO IT
 
         UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
         ☑️ ADD OPACITY: 0.5 TO ENTIRE WRAP DIV ?
