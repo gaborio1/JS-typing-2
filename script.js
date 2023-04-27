@@ -1039,6 +1039,10 @@ const spaceOnWord = () => {
         console.log("JUMP TO NEXT WORD");
     }
     // IF ABOVE 2 DONT MATCH, JUMP TO NEXT WORD (THIS ONLY WORKS WITH ONE WORD SKIPPED)
+    // GET MAX NUMBER OF ITERATIONS NEEDED
+    let numWordsInLine = wordArrays[lineIdx].length;
+    // console.log("MAX NUMBER OF ITERATIONS:", numWordsInLine);
+    // while (i < numWordsInLine) {
     if (stringWords[strIdx] !== wordArrays[lineIdx][wordIdx][0]) {
         console.log("_____WRONG CURSOR POSITION_____");
         console.log("NEXT WORD INDEX:", findNextWordIndex());
@@ -1046,7 +1050,29 @@ const spaceOnWord = () => {
         let currentCharacter = document.getElementById(`span-${strIdx}`);
         currentCharacter.classList.remove("background", "black-border");
         strIdx = findNextWordIndex();
-        nextWord();
+        // nextWord();
+        // KEEP JUMPING WORDS UNTIL UNTYPED WORD IS REACHED
+        let i = 0;
+        while (i < numWordsInLine) {
+            // CHARACTER AT CURSOR
+            console.log(stringWords[strIdx]);
+            // GO TO NEXT LINE IF SPACE IS TYPED ON CONSECUTIVE ERRORS (STARTING IN PREV WORD) ON LAST WORD, spaceOnLastWord() WILL HANDLE NEW LINE
+            if (stringWords[strIdx] === undefined) {
+                // console.log("UNDEFINED, GO TO NEXT LINE");
+                spaceOnLastWord();
+            }
+
+            if (stringWords[strIdx] !== wordArrays[lineIdx][wordIdx][0]) {
+                // console.log("ITERATIONS:", i);
+                nextWord();
+            } else {
+                // console.log("BREAK");
+                break;
+            }
+            i += 1;
+        }
+
+        // nextWord();
         // UPDATE CURSOR POSITION
         const nextCharacter = document.getElementById(`span-${strIdx}`);
         nextCharacter.classList.add("background", "black-border");
@@ -1057,17 +1083,6 @@ const spaceOnWord = () => {
     }
 };
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-
-
-
-
-
-
-
-
 
 // END MESSEAGE SEQUENCE (MESSAGES - RELOAD)
 const reloadSequence = () => {
