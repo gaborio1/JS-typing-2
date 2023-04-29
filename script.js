@@ -15,6 +15,7 @@ import {
     keyLevelsArray,
     sentences,
     numbers,
+    digits,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -244,6 +245,24 @@ const getRandomFromArr = (arr) => {
 const getRandomIdxLessThanNum = (num) => {
     return Math.floor(Math.random() * num);
 };
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
+//
+// GENERATE RANDOM NUMBERS FOR HARD DIFFICULTY LEVEL
+let randomNumbers = [];
+const generateRandomNumbers = (numOfNumbers) => {
+    for (let i = 0; i < numOfNumbers; i += 1) {
+        // console.log(i);
+        let num = "";
+        let length = getRandomIdxLessThanNum(6);
+        while (num.length <= length) {
+            num += getRandomFromArr(digits);
+        }
+        randomNumbers.push(num);
+    }
+    // console.log(randomNumbers);
+    return randomNumbers;
+};
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // TOGGLE BUTTON STYLE (ON / OFF)
 const toggleButtonStyle = (element) => {
@@ -278,7 +297,6 @@ const toggleButtonState = (element) => {
                 break;
             case numbersToggle:
                 numbersOn = true;
-                console.log("NUMBERS ON");
                 break;
             case soundToggle:
                 soundOn = true;
@@ -311,7 +329,6 @@ const toggleButtonState = (element) => {
                 break;
             case numbersToggle:
                 numbersOn = false;
-                console.log("NUMBERS OFF");
                 break;
             case soundToggle:
                 soundOn = false;
@@ -612,7 +629,14 @@ const setDifficultyLevel = () => {
             } else if (difficultyRadios[i].value === "hard") {
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
-                    targetArray = [...jsReserved, ...jsObjPropMeth, ...numbers];
+                    targetArray = [
+                        ...jsReserved,
+                        ...jsObjPropMeth,
+                        ...numbers,
+                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
+                        ...generateRandomNumbers(20),
+                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    ];
                 } else {
                     targetArray = [...jsReserved, ...jsObjPropMeth];
                 }
@@ -1922,7 +1946,7 @@ const handleNumbersToggle = () => {
     toggleButtonState(numbersToggle);
     clearDataAndDisplay();
     placeholderClickStart();
-    console.log(numbersOn);
+    // console.log(numbersOn);
 };
 
 numbersToggle.addEventListener("click", handleNumbersToggle);
@@ -2595,12 +2619,15 @@ BRANCH: numbers-1
             MED  200
             HARD 500 (CURRENTLY JAVASCRIPT RESERVED WORDS)
                 NUMBERS
-                   ☑️  HARD CODED
-                    RANDOM
+                    ☑️  HARD CODED
+                    ☑️ RANDOM (WRITE FUNCTION TO POPULATE randomNumbers[])
             SENTENCES
                 ☑️ EMAIL PHRASES
                 SENTENCES
                     ☑️ PANGRAMS
+            DATE FORMATS?
+                DAYS
+                MONTHS
 
         ☑️ INCLUDE NUMBERS IN DESCRIPTION
 

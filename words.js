@@ -891,6 +891,8 @@ export const sentences = [
     // ""
 ];
 
+export const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 // export default common100;
 
 // BEGINNER KEY LEVELS
