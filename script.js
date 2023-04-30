@@ -248,8 +248,8 @@ const getRandomIdxLessThanNum = (num) => {
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
 //
 // GENERATE RANDOM NUMBERS FOR HARD DIFFICULTY LEVEL
-let randomNumbers = [];
 const generateRandomNumbers = (numOfNumbers) => {
+    let randomNumbers = [];
     for (let i = 0; i < numOfNumbers; i += 1) {
         // console.log(i);
         let num = "";
