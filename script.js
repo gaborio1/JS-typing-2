@@ -559,11 +559,11 @@ const testCapsLock = (event) => {
     if (event.code === "CapsLock") {
         let isCapsLockOn = event.getModifierState("CapsLock");
         if (isCapsLockOn) {
-            console.log("Caps Lock turned on");
+            // console.log("Caps Lock turned on");
             capsLockWarningsOn();
             capslockOnGlobal = true;
         } else {
-            console.log("Caps Lock turned off");
+            // console.log("Caps Lock turned off");
             capsLockWarningsOff();
             capslockOnGlobal = false;
         }
@@ -998,7 +998,7 @@ const findNextWordIndex = () => {
             break;
         }
     }
-    console.log("NEXT WORD IDX:", nextWordIdx);
+    // console.log("NEXT WORD IDX:", nextWordIdx);
     return nextWordIdx;
 };
 
@@ -1031,8 +1031,8 @@ const spaceOnLastWord = () => {
 // ON ALL CHARACTERS BUT LAST
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++SPACE
 const spaceOnWord = () => {
-    console.log("WORD IDX:", wordIdx, "CHAR IDX:", charIdx, "STR:", strIdx);
-    console.log(wordArrays[lineIdx]);
+    // console.log("WORD IDX:", wordIdx, "CHAR IDX:", charIdx, "STR:", strIdx);
+    // console.log(wordArrays[lineIdx]);
     let currentCharacter = document.getElementById(`span-${strIdx - 1}`);
 
     // RESET WRONGCOUNTER
@@ -1054,11 +1054,11 @@ const spaceOnWord = () => {
     const nextCharacter = document.getElementById(`span-${strIdx}`);
     nextCharacter.classList.add("background", "black-border");
     nextWord();
-    console.log("WORD:", wordIdx, "CHAR:", charIdx, "STR:", strIdx);
+    // console.log("WORD:", wordIdx, "CHAR:", charIdx, "STR:", strIdx);
     // CHARACTER AT CURSOR
-    console.log(stringWords[strIdx]);
+    // console.log(stringWords[strIdx]);
     // FIRST CHARACTER
-    console.log(wordArrays[lineIdx][wordIdx][0]);
+    // console.log(wordArrays[lineIdx][wordIdx][0]);
     if (charIdx > 0) {
         console.log("JUMP TO NEXT WORD");
     }
@@ -1068,8 +1068,8 @@ const spaceOnWord = () => {
     // console.log("MAX NUMBER OF ITERATIONS:", numWordsInLine);
     // while (i < numWordsInLine) {
     if (stringWords[strIdx] !== wordArrays[lineIdx][wordIdx][0]) {
-        console.log("_____WRONG CURSOR POSITION_____");
-        console.log("NEXT WORD INDEX:", findNextWordIndex());
+        // console.log("_____WRONG CURSOR POSITION_____");
+        // console.log("NEXT WORD INDEX:", findNextWordIndex());
         // REMOVE BACKGROUND FROM CHAR BEFORE UPDATING STRIDX
         let currentCharacter = document.getElementById(`span-${strIdx}`);
         currentCharacter.classList.remove("background", "black-border");
@@ -1079,7 +1079,7 @@ const spaceOnWord = () => {
         let i = 0;
         while (i < numWordsInLine) {
             // CHARACTER AT CURSOR
-            console.log(stringWords[strIdx]);
+            // console.log(stringWords[strIdx]);
             // GO TO NEXT LINE IF SPACE IS TYPED ON CONSECUTIVE ERRORS (STARTING IN PREV WORD) ON LAST WORD, spaceOnLastWord() WILL HANDLE NEW LINE
             if (stringWords[strIdx] === undefined) {
                 // console.log("UNDEFINED, GO TO NEXT LINE");
@@ -1088,6 +1088,9 @@ const spaceOnWord = () => {
 
             if (stringWords[strIdx] !== wordArrays[lineIdx][wordIdx][0]) {
                 // console.log("ITERATIONS:", i);
+
+                // INCREMENT RED COUNTER BY CURRENT SKIPPED WORDS LENGTH
+                redCounter += wordArrays[lineIdx][wordIdx].length;
                 nextWord();
             } else {
                 // console.log("BREAK");
@@ -2673,8 +2676,10 @@ BRANCH: numbers-1
             REFACTOR buildWordArrays(), NOW IT HAS DUPLICATE CODE
             ☑️ OR MAYBE DE-SELECT "SENTENCES" WHEN SHOWING BEGINNER LEVEL AS GENERATING SENTENCES IS BASED ON ITS RADIO'S STATUS ???!!!
 
-        LOOK INTO SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD, WORD IDX ONLY JUMPS ONE WITH SPACE SKIP !!!
-            ALWAYS FIND NEXT UNTYPED WORD AND JUMP TO IT
+        ☑️ SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD,
+            ☑️ ALWAYS FIND NEXT UNTYPED WORD AND JUMP TO IT
+
+        SPACE ON LAST WORD BEYOND END OF LINE SHOULD TRIGGER NEXTLINE()?
 
         UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
         ☑️ ADD OPACITY: 0.5 TO ENTIRE WRAP DIV ?
