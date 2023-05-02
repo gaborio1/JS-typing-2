@@ -245,8 +245,7 @@ const getRandomFromArr = (arr) => {
 const getRandomIdxLessThanNum = (num) => {
     return Math.floor(Math.random() * num);
 };
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
-//
+
 // GENERATE RANDOM NUMBERS FOR HARD DIFFICULTY LEVEL
 const generateRandomNumbers = (numOfNumbers) => {
     let randomNumbers = [];
@@ -262,7 +261,6 @@ const generateRandomNumbers = (numOfNumbers) => {
     // console.log(randomNumbers);
     return randomNumbers;
 };
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // TOGGLE BUTTON STYLE (ON / OFF)
 const toggleButtonStyle = (element) => {
@@ -552,7 +550,6 @@ const capsLockWarningsOff = () => {
 };
 
 const doc = document.getElementById("container");
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++CAPSLOCK
 
 let capslockOnGlobal = false;
 const testCapsLock = (event) => {
@@ -570,7 +567,6 @@ const testCapsLock = (event) => {
     }
     return capslockOnGlobal;
 };
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // !!! 2 SEPARATE LISTENERS FOR "UP" AND "DOWN" !!!
 doc.addEventListener("keyup", testCapsLock);
@@ -623,22 +619,13 @@ const setDifficultyLevel = () => {
                 sliderWrap.classList.remove("transparent-disabled");
                 // MEDIUM
             } else if (difficultyRadios[i].value === "medium") {
-                console.log("MEDIUM DIFFICULTY");
-                if (numbersToggle.classList.contains("toggle-on")) {
-                    console.log("CHANGE NUMBERS TOGGLES STYLE");
-                    // numbersToggle.classList.remove("toggle-on");
-                    // numbersToggle.classList.add("toggle-off");
-                    // numbersToggle.textContent = "Off";
-                }
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
                     targetArray = [
                         ...common200,
                         ...common100,
                         ...numbers,
-                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
                         ...generateRandomNumbers(10),
-                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++
                     ];
                 } else {
                     targetArray = [...common200, ...common100];
@@ -650,13 +637,6 @@ const setDifficultyLevel = () => {
                 numbersToggle.disabled = false;
                 // HARD
             } else if (difficultyRadios[i].value === "hard") {
-                console.log("HARD DIFFICULTY");
-                if (numbersToggle.classList.contains("toggle-on")) {
-                    console.log("CHANGE NUMBERS TOGGLES STYLE");
-                    // numbersToggle.classList.remove("toggle-on");
-                    // numbersToggle.classList.add("toggle-off");
-                    // numbersToggle.textContent = "Off";
-                }
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
                     targetArray = [
@@ -1058,7 +1038,6 @@ const spaceOnLastWord = () => {
 // SPACE ON WORD
 // APPLY BACKGROUND TO NEXT CHAR AND REMOVE BACKGROUND FROM CURRENT
 // ON ALL CHARACTERS BUT LAST
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++SPACE
 const spaceOnWord = () => {
     // console.log("WORD IDX:", wordIdx, "CHAR IDX:", charIdx, "STR:", strIdx);
     // console.log(wordArrays[lineIdx]);
@@ -1138,7 +1117,6 @@ const spaceOnWord = () => {
         clearTextInput();
     }
 };
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // END MESSEAGE SEQUENCE (MESSAGES - RELOAD)
 const reloadSequence = () => {
@@ -1356,25 +1334,6 @@ startButton.addEventListener("click", (event) => {
     const handleKeyEvent = (event) => {
         // const typedKey = event.key;
         typedKey = event.key;
-        // +++++++++++++++++++++++++++++++++++++++++++CAPLSLOCK
-        // if (event) {
-        //     eventCounter += 1;
-        // }
-        // console.log("EVENT COUNTER:", eventCounter);
-
-        // testCapsLock(event);
-        // console.log("EVENT: KEYDOWN", event.key);
-        // console.log(
-        //     "EVENT: KEYDOWN",
-        //     event.key,
-        //     "GLOBAL CAPSLOCK:",
-        //     capslockOnGlobal
-        // );
-
-        // if (typedKey === "CapsLock") {
-        //     console.log("---CAPSLOCK---");
-        // }
-        // +++++++++++++++++++++++++++++++++++++++++++
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
@@ -1827,11 +1786,13 @@ const clearMessageDiv = () => {
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
-        console.log("DIFFICULTY RADIOS SELECTED");
+        // console.log("DIFFICULTY RADIOS SELECTED");
 
         // console.log(this);
         // console.log(targetArray);
 
+        placeholderClickStart();
+        clearTextFields();
         // DISABLING NUMBERS TO RESET ITS TOGGLE WHEN SWITHCING BETWEEN MEDIUM AND HARD WITH TOGGLE ON
         disableNumbers();
         // THEN SET LEVEL BASED ON TOGGLE SELECTION
@@ -2116,7 +2077,6 @@ const handleSoundToggle = () => {
 
 soundToggle.addEventListener("click", handleSoundToggle);
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++CAPSLOCK
 // ONE OFF FUNCTION RUNS ON FIRST KEYPRESS
 const startCountdown = () => {
     // console.log("START COUNTDOWN / CAPSLOCK GLOBAL:", capslockOnGlobal);
@@ -2134,7 +2094,6 @@ const startCountdown = () => {
     }
     // }
 };
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // FLIP APP/INFO
 //SOURCE: https://codepen.io/desandro/pen/LmWoWe
@@ -2473,8 +2432,6 @@ beginnerShowButton.addEventListener("click", function () {
     capitalToggleBeginner.classList.add("toggle-off");
     capitalToggleBeginner.innerText = "Off";
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++
-
     numbersOn = false;
     setTimeout(() => {
         numbersToggle.classList.remove("toggle-on");
@@ -2482,8 +2439,6 @@ beginnerShowButton.addEventListener("click", function () {
         numbersToggle.disabled = true;
     }, 300);
     console.log("BEGINNER SHOW / NUMBERSON", numbersOn);
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++
 
     enterOn = false;
     enterToggleBeginner.classList.remove("toggle-on");
@@ -2654,6 +2609,8 @@ BRANCH: numbers-1
 
     
     FEATURES:
+
+        ☑️ CLEAR TEXT FIELDS / DISPLAY "CLICK START" WHEN LEVEL SELECTION IS MADE
 
         COMPLETE DIFFICULTY LEVEL TARGET ARRAYS
             EASY 100
