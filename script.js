@@ -612,6 +612,7 @@ numbersToggle.textContent = "Off";
 const setDifficultyLevel = () => {
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         if (difficultyRadios[i].checked) {
+            // EASY
             if (difficultyRadios[i].value === "easy") {
                 targetArray = [...common100];
                 maxMistakes = 20;
@@ -620,22 +621,49 @@ const setDifficultyLevel = () => {
 
                 // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
+                // MEDIUM
             } else if (difficultyRadios[i].value === "medium") {
-                targetArray = [...common200, ...common100];
+                console.log("MEDIUM DIFFICULTY");
+                if (numbersToggle.classList.contains("toggle-on")) {
+                    console.log("CHANGE NUMBERS TOGGLES STYLE");
+                    // numbersToggle.classList.remove("toggle-on");
+                    // numbersToggle.classList.add("toggle-off");
+                    // numbersToggle.textContent = "Off";
+                }
+                // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
+                if (numbersOn) {
+                    targetArray = [
+                        ...common200,
+                        ...common100,
+                        ...numbers,
+                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
+                        ...generateRandomNumbers(20),
+                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    ];
+                } else {
+                    targetArray = [...common200, ...common100];
+                }
+
                 maxMistakes = 16;
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
-                disableNumbers();
+                numbersToggle.disabled = false;
+                // HARD
             } else if (difficultyRadios[i].value === "hard") {
+                console.log("HARD DIFFICULTY");
+                if (numbersToggle.classList.contains("toggle-on")) {
+                    console.log("CHANGE NUMBERS TOGGLES STYLE");
+                    // numbersToggle.classList.remove("toggle-on");
+                    // numbersToggle.classList.add("toggle-off");
+                    // numbersToggle.textContent = "Off";
+                }
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
                     targetArray = [
                         ...jsReserved,
                         ...jsObjPropMeth,
                         ...numbers,
-                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
                         ...generateRandomNumbers(20),
-                        // ++++++++++++++++++++++++++++++++++++++++++++++++++++
                     ];
                 } else {
                     targetArray = [...jsReserved, ...jsObjPropMeth];
@@ -645,8 +673,9 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
-                // SENTENCES
-            } else {
+            }
+            // SENTENCES
+            else {
                 disableSentenceModifiers();
                 sliderWrap.classList.add("transparent-disabled");
                 disableNumbers();
