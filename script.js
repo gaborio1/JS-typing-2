@@ -637,7 +637,7 @@ const setDifficultyLevel = () => {
                         ...common100,
                         ...numbers,
                         // ++++++++++++++++++++++++++++++++++++++++++++++++++++RANDOM NUMBERS
-                        ...generateRandomNumbers(20),
+                        ...generateRandomNumbers(10),
                         // ++++++++++++++++++++++++++++++++++++++++++++++++++++
                     ];
                 } else {
@@ -1827,8 +1827,14 @@ const clearMessageDiv = () => {
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
+        console.log("DIFFICULTY RADIOS SELECTED");
+
         // console.log(this);
         // console.log(targetArray);
+
+        // DISABLING NUMBERS TO RESET ITS TOGGLE WHEN SWITHCING BETWEEN MEDIUM AND HARD WITH TOGGLE ON
+        disableNumbers();
+        // THEN SET LEVEL BASED ON TOGGLE SELECTION
         setDifficultyLevel();
         enableStartButton();
     });
