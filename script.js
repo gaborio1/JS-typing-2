@@ -121,7 +121,11 @@ const keystrokesSpan = document.getElementById("keystrokes-span");
 const accuracySpan = document.getElementById("accuracy-span");
 // KEYBOARD
 const keyboard = document.getElementById("keyboard");
-const letterKeys = document.getElementsByClassName("key--tracked");
+// THIS COLLECTION WILL CONTAIN ALL WRONG KEYS (INCLUDING NUMERIC CHARS)
+// NON ALHABETIC CHARS ARE FILTERED OUT FROM PROBKEYS[] WITH "NEW" BUTTON CLICK,
+// SO PROBLEMKEYWORDS CAN BE GENERATED ONLY BASED ON LETTER CHARACTERS
+const trackedKeys = document.getElementsByClassName("key--tracked");
+// console.log(letterKeys);
 const messageDiv = document.getElementById("message-div");
 const capsLockKey = document.getElementById("capslock-key");
 
@@ -698,8 +702,8 @@ const handleCapslockChange = () => {
 
 // REMOVE RED BACKGROUND FROM PROBLEM KEYS
 const removeProblemKeyHighlight = () => {
-    for (let i = 0; i < letterKeys.length; i += 1) {
-        letterKeys[i].classList.remove("red-background");
+    for (let i = 0; i < trackedKeys.length; i += 1) {
+        trackedKeys[i].classList.remove("red-background");
     }
 };
 
@@ -986,9 +990,9 @@ const highlightProblemKeys = () => {
     problemKeysSet.forEach((key) => {
         // !!! WITHOUT THIS CONDITION CURSOR WILL NOT MOVE FORWARD INTO NEXT WORD, IT WILL STAY ON SPACE !!!
         if (key !== undefined) {
-            for (let i = 0; i < letterKeys.length; i += 1) {
-                if (letterKeys[i].innerText === key.toUpperCase()) {
-                    letterKeys[i].classList.add("red-background");
+            for (let i = 0; i < trackedKeys.length; i += 1) {
+                if (trackedKeys[i].innerText === key.toUpperCase()) {
+                    trackedKeys[i].classList.add("red-background");
                 }
             }
         }
@@ -1227,6 +1231,15 @@ textInput.disabled = true;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.addEventListener("click", (event) => {
+    // console.log(problemKeysSet);
+
+    // !!! DELETE NUMERIC CHARACTERS FROM PROBLEM KEY SET AS WE GET UNDEFINED WITH NEXT START CLICK !!!
+    problemKeysSet.forEach((key) => {
+        // console.log(key);
+        if (key === "0" || key === "1" || key === "2" || key === "3" || key === "4" || key === "5" || key === "6" || key === "7" || key === "8" || key === "9") {
+            problemKeysSet.delete(key);
+        }
+    })
     // RESET WRONG COUNTER
     consecutiveErrorCounter = 0;
     // RESET ORANGE COUNTER
@@ -1339,17 +1352,18 @@ startButton.addEventListener("click", (event) => {
 
         // TRACK TYPED KEY ON KEYBOARD IN REAL TIME (100MS FLASH)
         const enterKey = document.getElementById("key--enter");
-        for (let i = 0; i < letterKeys.length; i += 1) {
-            if (typedKey.toUpperCase() === letterKeys[i].innerText) {
+        for (let i = 0; i < trackedKeys.length; i += 1) {
+            if (typedKey.toUpperCase() === trackedKeys[i].innerText) {
                 // CLASS COLOUR: rgba(0, 128, 0, 0.304)
-                letterKeys[i].classList.add("green-background__keyboard");
+                trackedKeys[i].classList.add("green-background__keyboard");
 
                 setTimeout(function () {
-                    letterKeys[i].classList.remove(
+                    trackedKeys[i].classList.remove(
                         "green-background__keyboard"
                     );
                 }, 100);
             }
+
         }
 
         // ENTER KEY IS HANDLED SEPARATELY AS ITS TEXT CONTENT IS "RETURN" VS "ENTER" !
@@ -1588,13 +1602,19 @@ startButton.addEventListener("click", (event) => {
                 }
             }
 
-            // UPDATE PROBLEM KEY SET
+            // UPDATE PROBLEM KEY SET (THIS WILL INCLUDE NUMERIC CHARACTERS TOO)
+            // NUMERIC KEYS WILL BE DELETED FROM SET WITH THE CLICK OF "NEW"
+            // THEREFORE PROBLEM KEY WORDS ARE GENERATED BASED ON LETTER KEYS ONLY
             if (
                 wordArrays[lineIdx][wordIdx][charIdx] !== " " && // SPACE
                 wordArrays[lineIdx][wordIdx][charIdx] !== undefined // CHARACTER IN NEXT WORD (WORD IDX HAS NOT BEEN INCREMENTED)
             ) {
+
                 problemKeysSet.add(wordArrays[lineIdx][wordIdx][charIdx]);
+                // console.log(problemKeysSet);
+
             }
+
 
             // IF PROBLEMKEYS SET HAS LENGTH LOOP OVER problemKeysSet AND FIND CORRESPONDING problem-key-span FOR EACH ELEMENT
             if (problemKeysSet.size > 0) {
@@ -2610,6 +2630,10 @@ BRANCH: numbers-1
     
     FEATURES:
 
+        INFO TEXT UPDATE
+
+        ADD "PROBLEM KEY WORDS, RESET WITH NEW" MESSAGE TO "NEW" BUTTON IF ERRORS WERE MADE IN PREVIOUS SESSION
+
         ☑️ CLEAR TEXT FIELDS / DISPLAY "CLICK START" WHEN LEVEL SELECTION IS MADE
 
         COMPLETE DIFFICULTY LEVEL TARGET ARRAYS
@@ -2630,15 +2654,16 @@ BRANCH: numbers-1
         ☑️ INCLUDE NUMBERS IN DESCRIPTION
 
         ADD NUMERIC CHARACTERS
-            MEDIUM DIFF LEVEL
+            ☑️ MEDIUM DIFF LEVEL
             ☑️ HARD DIFF LEVEL
 
         GREEN WORDS COUNTER
         COMPLETE WORDS COUNTER
+
         TRACK KEYS TYPED IN REAL TIME ON KEYBOARD?
             ☑️ LETTER KEYS
             ☑️ ENTER
-            NUMBERS
+            ☑️ NUMBERS
        
         ☑️ WRITE AND FORMAT INFO CARD
             ADD MORE CONTENT
@@ -2650,7 +2675,10 @@ BRANCH: numbers-1
         DYNAMICALLY GENERATE NEXT LINE + 1 ?
         SHOW ALL TEXT AS ONE BLOCK ?
 
-        ☑️ INCLUDE ENTER KEY IN REAL TIME HIGHLIGHT ?
+        REAL TIME HIGHLIGHT
+            ☑️ ENTER 
+            ☑️ NUMERIC
+                !!! NUMERIC CHARS ARE DELETED FROM PROBLEM KEY SET WITH "START" BUTTON
 
         ☑️ RESET DIFF LEVEL TO COMMON100 WHEN SWITCHING TO ADVANCED
        
