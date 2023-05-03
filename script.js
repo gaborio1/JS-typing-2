@@ -234,6 +234,11 @@ const clearTextInput = () => {
     textInput.placeholder = "";
 };
 
+// CLEAR MESSAGE DIV
+const clearMessageDiv = () => {
+    messageDiv.textContent = "";
+};
+
 // TEXT INPUT PLACEHOLDER
 const placeholderClickStart = () => {
     textInput.placeholder = "                 Click Start ➡";
@@ -550,7 +555,9 @@ const capsLockWarningsOn = () => {
 const capsLockWarningsOff = () => {
     capsLockKey.style.background = "none";
     capsLockKey.classList.remove("blink");
-    messageDiv.textContent = "";
+    const clearMessageDiv = () => {
+        clearMessageDiv();
+    };
 };
 
 const doc = document.getElementById("container");
@@ -794,7 +801,7 @@ const handleBackspace = () => {
     if (nullValueSpanCounter === 0) {
         nullValueSpanCounter = 0;
         // console.log("NULL COUNTER RESET TO 0", nullValueSpanCounter);
-        messageDiv.textContent = "";
+        clearMessageDiv();
 
         // REMOVE RED HIGHLIGHT FROM END OF LINE SPACE WHEN ALL BEYOND THE LINE ERRORS
         // HIGHLIGHT ADDED IN WRONG KEY: if (typedKey !== "Enter") BLOCK
@@ -807,7 +814,7 @@ const handleBackspace = () => {
     if (strIdx === stringWords.length - 1 && lastWordRedCounter < 1) {
         messageDiv.textContent = "END OF LINE SPACE";
         setTimeout(() => {
-            messageDiv.textContent = "";
+            clearMessageDiv();
         }, 200);
         // CHECK LAST WORD FOR ERRORS WHEN USER REACHED LAST SPACE AFTER CORRECTING BEYOND THE LINE ERRORS
         // 1. GET LENGTH OF LAST WORD
@@ -911,7 +918,7 @@ const correctEndOfLineSpace = () => {
     textSpanContainerNextParagraph.innerHTML = "";
     // APPEND TEXT AS SPANS !!!
     createSpans(lineIdx + 1, textSpanContainerNextParagraph);
-    messageDiv.textContent = "";
+    clearMessageDiv();
 };
 
 // ALL OTHER SPACES
@@ -925,8 +932,7 @@ const correctSpaceNotEndOfLine = () => {
     currentCharacter.classList.remove("background", "black-border");
     // }
 
-    messageDiv.textContent = "";
-
+    clearMessageDiv();
     nextWord();
     clearTextInput();
 };
@@ -1209,7 +1215,7 @@ const countErrorsInCurrentWord = () => {
                 // console.log("RED CLASS");
                 messageDiv.textContent = `${currentRedCounter} ERROR(S) IN WORD!`;
                 setTimeout(() => {
-                    messageDiv.textContent = "";
+                    clearMessageDiv();
                 }, 200);
             }
         }
@@ -1232,6 +1238,11 @@ textInput.disabled = true;
 
 startButton.addEventListener("click", (event) => {
     // console.log(problemKeysSet);
+    // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
+    // if (problemKeysSet.size > 0) {
+    //     messageDiv.textContent = "PRACTICE YOUR PROBLEM KEY WORDS";
+    // }
+    // +++++++++++++++++++++++++++++++++++++++
 
     // !!! DELETE NUMERIC CHARACTERS FROM PROBLEM KEY SET AS WE GET UNDEFINED WITH NEXT START CLICK !!!
     problemKeysSet.forEach((key) => {
@@ -1240,6 +1251,7 @@ startButton.addEventListener("click", (event) => {
             problemKeysSet.delete(key);
         }
     })
+
     // RESET WRONG COUNTER
     consecutiveErrorCounter = 0;
     // RESET ORANGE COUNTER
@@ -1345,6 +1357,10 @@ startButton.addEventListener("click", (event) => {
 
     let eventCounter = 0;
     const handleKeyEvent = (event) => {
+        // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
+        // clearMessageDiv();
+        // +++++++++++++++++++++++++++++++++++++++
+
         // const typedKey = event.key;
         typedKey = event.key;
 
@@ -1531,17 +1547,16 @@ startButton.addEventListener("click", (event) => {
                 }
 
                 setTimeout(() => {
-                    messageDiv.textContent = "";
+                    clearMessageDiv();
                 }, 200);
                 if (consecutiveErrorCounter === 0) {
-                    messageDiv.textContent = "";
+                    clearMessageDiv();
                 }
             }
 
             if (consecutiveErrorCounter > 4) {
                 textFieldsWrap.classList.add("red-border--thick");
                 setTimeout(() => {
-                    // messageDiv.textContent = "";
                     textFieldsWrap.classList.remove("red-border--thick");
                 }, 200);
             }
@@ -1549,7 +1564,6 @@ startButton.addEventListener("click", (event) => {
             if (consecutiveErrorCounter > 9) {
                 textFieldsWrap.classList.add("red-background");
                 setTimeout(() => {
-                    // messageDiv.textContent = "";
                     textFieldsWrap.classList.remove("red-background");
                 }, 200);
             }
@@ -1674,7 +1688,7 @@ startButton.addEventListener("click", (event) => {
             messageDiv.textContent = "SPACE ON WORD!";
             textFieldsWrap.classList.add("red-border--thick");
             setTimeout(() => {
-                messageDiv.textContent = "";
+                clearMessageDiv();
                 textFieldsWrap.classList.remove("red-border--thick");
             }, 200);
 
@@ -1796,10 +1810,6 @@ const disableBeginnerToggles = () => {
 
 const displaySelectionWarning = () => {
     messageDiv.textContent = "SELECT LEVEL, GRAMS OR ROWS";
-};
-
-const clearMessageDiv = () => {
-    messageDiv.textContent = "";
 };
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 DIFFICULTY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2684,6 +2694,8 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        USE clearMessageDiv()
 
         ☑️ STYLE DISABLED "HOW TO" AND "BEGINNER LEVEL" BUTTONS DURING RELOAD SEQUENCE
 
