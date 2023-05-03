@@ -236,6 +236,7 @@ const clearTextInput = () => {
 
 // CLEAR MESSAGE DIV
 const clearMessageDiv = () => {
+    // console.log("-----Message div cleared-----");
     messageDiv.textContent = "";
 };
 
@@ -1239,9 +1240,12 @@ textInput.disabled = true;
 startButton.addEventListener("click", (event) => {
     // console.log(problemKeysSet);
     // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
-    // if (problemKeysSet.size > 0) {
-    //     messageDiv.textContent = "PRACTICE YOUR PROBLEM KEY WORDS";
-    // }
+    if (messageDiv.textContent === "TYPE PROB. KEY WORDS OR CLICK NEW") {
+        clearMessageDiv();
+    }
+    if (problemKeysSet.size > 0) {
+        messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
+    }
     // +++++++++++++++++++++++++++++++++++++++
 
     // !!! DELETE NUMERIC CHARACTERS FROM PROBLEM KEY SET AS WE GET UNDEFINED WITH NEXT START CLICK !!!
@@ -1358,7 +1362,7 @@ startButton.addEventListener("click", (event) => {
     let eventCounter = 0;
     const handleKeyEvent = (event) => {
         // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
-        // clearMessageDiv();
+        clearMessageDiv();
         // +++++++++++++++++++++++++++++++++++++++
 
         // const typedKey = event.key;
@@ -2468,7 +2472,7 @@ beginnerShowButton.addEventListener("click", function () {
         numbersToggle.innerText = "Off";
         numbersToggle.disabled = true;
     }, 300);
-    console.log("BEGINNER SHOW / NUMBERSON", numbersOn);
+    // console.log("BEGINNER SHOW / NUMBERSON", numbersOn);
 
     enterOn = false;
     enterToggleBeginner.classList.remove("toggle-on");
@@ -2515,7 +2519,7 @@ beginnerHideButton.addEventListener("click", function () {
 
     // numbersToggle.disabled = true;
     // numbersOn = false;
-    console.log("BEGINNER HIDE / NUMBERSON", numbersOn);
+    // console.log("BEGINNER HIDE / NUMBERSON", numbersOn);
 
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 ENTER 🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
