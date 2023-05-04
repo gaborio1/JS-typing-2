@@ -4,11 +4,9 @@ import {
     common100,
     common200,
     common3000,
-    jsReserved,
     bigrams,
     trigrams,
     quadrigrams,
-    jsObjPropMeth,
     punctMarks,
     topRow,
     bottomRow,
@@ -16,7 +14,9 @@ import {
     keyLevelsArray,
     sentences,
     numbers,
-    digits,
+    digits
+    // jsReserved,
+    // jsObjPropMeth
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -385,6 +385,18 @@ const extractWords = (arr) => {
     return extractedWords;
 };
 
+// EXTRACT WORDS FROM COMMON3000[] OF STRING OF WORDS
+const extractWords3000 = (arr) => {
+    let arr3000 = [];
+    common3000.forEach((string) => {
+        const extractedArr = string.split(" ");
+        arr3000 = arr3000.concat(extractedArr);
+    })
+    return arr3000;
+}
+
+extractWords3000(common3000);
+
 // THIS IS TO TRANSFORM CAPITALISED WORDS INTO LOWERCASE (BEGINNER - TOP ROW WORDS ARRAY)
 const lowerCaseArrElements = (arr) => {
     let updatedArray = [];
@@ -652,14 +664,16 @@ const setDifficultyLevel = () => {
             } else if (difficultyRadios[i].value === "hard") {
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
-                    targetArray = [
-                        ...jsReserved,
-                        ...jsObjPropMeth,
-                        ...numbers,
-                        ...generateRandomNumbers(20),
-                    ];
+                    // targetArray = [
+                    //     ...jsReserved,
+                    //     ...jsObjPropMeth,
+                    //     ...numbers,
+                    //     ...generateRandomNumbers(20),
+                    // ];
+                    targetArray = [...extractWords3000(common3000), ...generateRandomNumbers(300), ...numbers];
                 } else {
-                    targetArray = [...jsReserved, ...jsObjPropMeth];
+                    // targetArray = [...jsReserved, ...jsObjPropMeth];
+                    targetArray = [...extractWords3000(common3000)];
                 }
 
                 maxMistakes = 12;
@@ -2652,7 +2666,19 @@ BRANCH: numbers-1
     
     FEATURES:
 
+        EASY - COMMON 200
+            MATCH WORDS WITH 10 FAST FINGERS
+
+        MEDIUM - COMMON 500
+            FUNCTION TO EXTRACT WORDS FROM []
+            CONNECT TO HARD DIFF LEVEL
+
+        HARD - COMMON 3000
+            ☑️ FUNCTION TO EXTRACT WORDS FROM []
+            ☑️ CONNECT TO HARD DIFF LEVEL
+
         INFO TEXT UPDATE
+            DIFFICULTY LEVELS
 
         MESSAGE DIV TO HANDLE MULTIPLE MESSAGES
             DIVIDE INTO 2?
