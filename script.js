@@ -1251,10 +1251,21 @@ startButton.addEventListener("click", (event) => {
     // !!! DELETE NUMERIC CHARACTERS FROM PROBLEM KEY SET AS WE GET UNDEFINED WITH NEXT START CLICK !!!
     problemKeysSet.forEach((key) => {
         // console.log(key);
-        if (key === "0" || key === "1" || key === "2" || key === "3" || key === "4" || key === "5" || key === "6" || key === "7" || key === "8" || key === "9") {
+        if (
+            key === "0" ||
+            key === "1" ||
+            key === "2" ||
+            key === "3" ||
+            key === "4" ||
+            key === "5" ||
+            key === "6" ||
+            key === "7" ||
+            key === "8" ||
+            key === "9"
+        ) {
             problemKeysSet.delete(key);
         }
-    })
+    });
 
     // RESET WRONG COUNTER
     consecutiveErrorCounter = 0;
@@ -1383,7 +1394,6 @@ startButton.addEventListener("click", (event) => {
                     );
                 }, 100);
             }
-
         }
 
         // ENTER KEY IS HANDLED SEPARATELY AS ITS TEXT CONTENT IS "RETURN" VS "ENTER" !
@@ -1627,12 +1637,9 @@ startButton.addEventListener("click", (event) => {
                 wordArrays[lineIdx][wordIdx][charIdx] !== " " && // SPACE
                 wordArrays[lineIdx][wordIdx][charIdx] !== undefined // CHARACTER IN NEXT WORD (WORD IDX HAS NOT BEEN INCREMENTED)
             ) {
-
                 problemKeysSet.add(wordArrays[lineIdx][wordIdx][charIdx]);
                 // console.log(problemKeysSet);
-
             }
-
 
             // IF PROBLEMKEYS SET HAS LENGTH LOOP OVER problemKeysSet AND FIND CORRESPONDING problem-key-span FOR EACH ELEMENT
             if (problemKeysSet.size > 0) {
@@ -2646,7 +2653,10 @@ BRANCH: numbers-1
 
         INFO TEXT UPDATE
 
-        ADD "PROBLEM KEY WORDS, RESET WITH NEW" MESSAGE TO "NEW" BUTTON IF ERRORS WERE MADE IN PREVIOUS SESSION
+        MESSAGE DIV TO HANDLE MULTIPLE MESSAGES
+            DIVIDE INTO 2?
+
+        ☑️ ADD "PROBLEM KEY WORDS, RESET WITH NEW" MESSAGE TO "NEW" BUTTON IF ERRORS WERE MADE IN PREVIOUS SESSION
 
         ☑️ CLEAR TEXT FIELDS / DISPLAY "CLICK START" WHEN LEVEL SELECTION IS MADE
 
