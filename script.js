@@ -3,6 +3,7 @@
 import {
     common100,
     common200,
+    common3000,
     jsReserved,
     bigrams,
     trigrams,
