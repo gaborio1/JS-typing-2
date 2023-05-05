@@ -2,6 +2,7 @@
 // import common100 from './words.js';
 import {
     common100,
+    tenFastFingers200,
     common200,
     common3000,
     bigrams,
@@ -386,16 +387,18 @@ const extractWords = (arr) => {
 };
 
 // EXTRACT WORDS FROM COMMON3000[] OF STRING OF WORDS
-const extractWords3000 = (arr) => {
-    let arr3000 = [];
-    common3000.forEach((string) => {
+const extractWordsFromString = (arr) => {
+    let extractedWords = [];
+    arr.forEach((string) => {
         const extractedArr = string.split(" ");
-        arr3000 = arr3000.concat(extractedArr);
+        extractedWords = extractedWords.concat(extractedArr);
+        // console.log(extractedWords.length);
     })
-    return arr3000;
+    // console.log(extractedWords.length);
+    return extractedWords;
 }
 
-extractWords3000(common3000);
+// extractWords3000(common3000);
 
 // THIS IS TO TRANSFORM CAPITALISED WORDS INTO LOWERCASE (BEGINNER - TOP ROW WORDS ARRAY)
 const lowerCaseArrElements = (arr) => {
@@ -635,7 +638,7 @@ const setDifficultyLevel = () => {
         if (difficultyRadios[i].checked) {
             // EASY
             if (difficultyRadios[i].value === "easy") {
-                targetArray = [...common100];
+                targetArray = [...extractWordsFromString(tenFastFingers200)];
                 maxMistakes = 20;
                 enableSentenceModifiers();
                 disableNumbers();
@@ -670,10 +673,10 @@ const setDifficultyLevel = () => {
                     //     ...numbers,
                     //     ...generateRandomNumbers(20),
                     // ];
-                    targetArray = [...extractWords3000(common3000), ...generateRandomNumbers(300), ...numbers];
+                    targetArray = [...extractWordsFromString(common3000), ...generateRandomNumbers(300), ...numbers];
                 } else {
                     // targetArray = [...jsReserved, ...jsObjPropMeth];
-                    targetArray = [...extractWords3000(common3000)];
+                    targetArray = [...extractWordsFromString(common3000)];
                 }
 
                 maxMistakes = 12;

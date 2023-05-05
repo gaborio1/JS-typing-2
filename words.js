@@ -88,6 +88,37 @@ export const jsObjPropMeth = [
     "valueOf",
 ];
 
+export const tenFastFingers200 = [
+    // "the be of and a to in he have it that for they I with as not on she at by this we you do but from or which one would all will there say who make when can more if no man out other so what time up go about than into could state only new year some take come these know see use get like then first any work now may such give over think most even find day also after way many must look before great back through long where much should well people down own just because good each those feel seem how high too place little world very still nation hand old life tell write become here show house both between need mean call develop under last right move thing",
+
+    "about above add after again air all almost always along and answer America and animal another answer are around as ask at away",
+    "back been because before below between began being big book both boy but by",
+    "can car carry change children city came close come could country cut",
+    "day did different do does don't",
+    "each earth eat enough even every example eye",
+    "face family far father feet few find first follow for form food from found four",
+    "girl give good got great group grow",
+    "had hand hard has have he head hear help her here high him his home house how",
+    "if important in Indian into is its it's",
+    "just",
+    "keep kind know",
+    "land large later learn leave left let letter light life line little live long look",
+    "made make man many may me men mean might mile miss most mother move mountain must my",
+    "near need never new next night no not now number",
+    "of off often oil on one once only open or other our out over own",
+    "page paper part people picture place plant play point put",
+    "question quick quickly quite",
+    "read really right river run",
+    "same say said saw see sea second see second set seem sentence she should show side small so soon some something sometimes song soon sound spell start still stop story study such",
+    "talk take tell that then the they these thing think this those thought through time three together too took tree try turn two",
+    "under until up use",
+    "very",
+    "was way walk want watch water well went were when where which while who why will with without would word work world write",
+    "year you young your"
+]
+
+
+
 export const common200 = [
     "over",
     "new",
@@ -937,3 +968,5 @@ export const common3000 = [
     "zone zed zing zipped zoning zone zonated zoons zoner zit zings zeal zonal zoo zooms zoon zoa zonate zones zooks zoos zero zins zymes zygoses zyme zooty zoic zips zees zaddik zoned zinced zincs zag zinc zin zags zips zee zenith zested zebra zebrawoods zettabyte zesty zeppelins zephyr zeilite zeniths zerks zestfully zester zeroth zeros zeroing zeroed "
 ];
 // */
+
+
