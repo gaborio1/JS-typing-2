@@ -2,21 +2,22 @@
 // import common100 from './words.js';
 import {
     common100,
-    tenFastFingers200,
     common200,
+    tenFastFingers200,
+    common500,
     common3000,
+    sentences,
+    punctMarks,
+    numbers,
+    digits,
     bigrams,
     trigrams,
     quadrigrams,
-    punctMarks,
     topRow,
     bottomRow,
     homeRow,
     keyLevelsArray,
-    sentences,
-    numbers,
-    digits,
-    common500,
+
     // jsReserved,
     // jsObjPropMeth
 } from "./words.js";
@@ -139,7 +140,7 @@ const capsLockKey = document.getElementById("capslock-key");
 // TRACK START CLICKS
 let startButtonCounter = 0;
 // DEFAULT COMMON 100 WORDS
-let targetArray = [...common100];
+let targetArray = [...tenFastFingers200];
 // DEFAULT LINE LENGTH
 let sequenceLength = 30;
 // DEFAULT HARD CODED ARRAY LENGTH (NUMBER OF LINES GENERATED WITH START BUTTON)
@@ -658,7 +659,8 @@ const setDifficultyLevel = () => {
                         ...generateRandomNumbers(10),
                     ];
                 } else {
-                    targetArray = [...common200, ...common100];
+                    // targetArray = [...common200, ...common100];
+                    targetArray = [...extractWordsFromString(common500)];
                 }
 
                 maxMistakes = 16;
@@ -2532,7 +2534,7 @@ beginnerHideButton.addEventListener("click", function () {
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 DIFFICULTY 🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
     difficultyRadios[0].checked = true;
-    targetArray = [...common100];
+    targetArray = [...tenFastFingers200];
     // !!! NOT WORKING WHEN OTHER RADIOS HAVE BEEN SET IN BEGINNER !!!
     // setDifficultyLevel();
 
@@ -2676,11 +2678,11 @@ BRANCH: numbers-1
     FEATURES:
 
         EASY - COMMON 200
-            MATCH WORDS WITH 10 FAST FINGERS
+            ☑️ MATCH WORDS TO 10 FAST FINGERS
 
         MEDIUM - COMMON 500
-            FUNCTION TO EXTRACT WORDS FROM []
-            CONNECT TO HARD DIFF LEVEL
+            ☑️ FUNCTION TO EXTRACT WORDS FROM []
+            ☑️ CONNECT TO HARD DIFF LEVEL
 
         HARD - COMMON 3000
             ☑️ FUNCTION TO EXTRACT WORDS FROM []
@@ -2744,6 +2746,8 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        findAndApplyProblemKeyWords() USES common100 TO FIND PROBLEM WORDS (CHANGE TARGET ARRAY BASED ON CURRENT LEVEL SELECTION)
 
         USE clearMessageDiv()
 
