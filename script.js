@@ -15,7 +15,8 @@ import {
     keyLevelsArray,
     sentences,
     numbers,
-    digits
+    digits,
+    common500,
     // jsReserved,
     // jsObjPropMeth
 } from "./words.js";
@@ -393,10 +394,10 @@ const extractWordsFromString = (arr) => {
         const extractedArr = string.split(" ");
         extractedWords = extractedWords.concat(extractedArr);
         // console.log(extractedWords.length);
-    })
+    });
     // console.log(extractedWords.length);
     return extractedWords;
-}
+};
 
 // extractWords3000(common3000);
 
@@ -650,8 +651,9 @@ const setDifficultyLevel = () => {
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
                     targetArray = [
-                        ...common200,
-                        ...common100,
+                        ...extractWordsFromString(common500),
+                        // ...common200,
+                        // ...common100,
                         ...numbers,
                         ...generateRandomNumbers(10),
                     ];
@@ -673,7 +675,11 @@ const setDifficultyLevel = () => {
                     //     ...numbers,
                     //     ...generateRandomNumbers(20),
                     // ];
-                    targetArray = [...extractWordsFromString(common3000), ...generateRandomNumbers(300), ...numbers];
+                    targetArray = [
+                        ...extractWordsFromString(common3000),
+                        ...generateRandomNumbers(300),
+                        ...numbers,
+                    ];
                 } else {
                     // targetArray = [...jsReserved, ...jsObjPropMeth];
                     targetArray = [...extractWordsFromString(common3000)];
