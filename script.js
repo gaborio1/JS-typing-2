@@ -82,16 +82,6 @@ const level_6 = document.getElementById("level-6");
 const level_7 = document.getElementById("level-7");
 const level_8 = document.getElementById("level-8");
 const level_9 = document.getElementById("level-9");
-// LEVEL BUTTON STATE BOOLEANS
-let level_1_On = false;
-let level_2_On = false;
-let level_3_On = false;
-let level_4_On = false;
-let level_5_On = false;
-let level_6_On = false;
-let level_7_On = false;
-let level_8_On = false;
-let level_9_On = false;
 
 const beginnerShowButton = document.getElementById(
     "beginner-control-show-button"
@@ -128,9 +118,10 @@ const keyboard = document.getElementById("keyboard");
 // NON ALHABETIC CHARS ARE FILTERED OUT FROM PROBKEYS[] WITH "NEW" BUTTON CLICK,
 // SO PROBLEMKEYWORDS CAN BE GENERATED ONLY BASED ON LETTER CHARACTERS
 const trackedKeys = document.getElementsByClassName("key--tracked");
-// console.log(letterKeys);
 const messageDiv = document.getElementById("message-div");
 const capsLockKey = document.getElementById("capslock-key");
+// THIS IS FOR REAL TIME CAPSLOCK DETECTING (doc.addEventListener())
+const doc = document.getElementById("container");
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 LOGIC VARIABLES 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -191,15 +182,74 @@ const maxSkippedWords = 6;
 let problemKeysSet = new Set();
 const problemKeySpans = document.getElementsByClassName("problem-key-span");
 const probKeyWordsArr = [];
-let tempProbWordsArr = []; // WORDS THAT CONTAIN BROBLEM KEYS FROM PREVIOUS SESSION
+// WORDS THAT CONTAIN BROBLEM KEYS FROM PREVIOUS SESSION
+let tempProbWordsArr = [];
 // BEGINNER STATUS
 let beginnerOn = false;
 // COLOUR THEME
 let darkThemeOn = false;
 
+// BEGINNER LEVEL BUTTON STATE BOOLEANS
+let level_1_On = false;
+let level_2_On = false;
+let level_3_On = false;
+let level_4_On = false;
+let level_5_On = false;
+let level_6_On = false;
+let level_7_On = false;
+let level_8_On = false;
+let level_9_On = false;
+
+// THIS IS FOR CAPSLOCK DETECTING testCapsLock()
+let capslockOnGlobal = false;
+
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 FUNCTIONS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+// KEY EVENT START LOGS
+const logKeyEventStart = () => {
+    console.log(
+        "🟩---EVENT START: ",
+        event.key,
+        " ---",
+        "line idx: ",
+        lineIdx,
+        "word idx: ",
+        wordIdx,
+        "/",
+        wordArrays[lineIdx].length - 1,
+        "char idx: ",
+        charIdx,
+        "/",
+        wordArrays[lineIdx][wordIdx].length - 1,
+        "string idx: ",
+        strIdx,
+        "/",
+        stringWords.length - 1
+    );
+};
+
+// KEY EVENT END LOGS
+const logKeyEventEnd = () => {
+    console.log(
+        "---------------------EVENT END---",
+        "line idx: ",
+        lineIdx,
+        "word idx: ",
+        wordIdx,
+        "/",
+        wordArrays[lineIdx].length - 1,
+        "char idx: ",
+        charIdx,
+        "/",
+        wordArrays[lineIdx][wordIdx].length - 1,
+        "string idx: ",
+        strIdx,
+        "/",
+        stringWords.length - 1
+    );
+};
 
 // CURSOR POSITION
 const nextChar = () => {
@@ -387,19 +437,16 @@ const extractWords = (arr) => {
     return extractedWords;
 };
 
-// EXTRACT WORDS FROM COMMON3000[] OF STRING OF WORDS
+// EXTRACT WORDS FROM COMMON200, COMMON500 AND COMMON3000[] (ARRAY OF STRINGS OF SPACE SEPARATED WORDS)
 const extractWordsFromString = (arr) => {
     let extractedWords = [];
     arr.forEach((string) => {
         const extractedArr = string.split(" ");
         extractedWords = extractedWords.concat(extractedArr);
-        // console.log(extractedWords.length);
     });
-    // console.log(extractedWords.length);
     return extractedWords;
 };
 
-// extractWords3000(common3000);
 
 // THIS IS TO TRANSFORM CAPITALISED WORDS INTO LOWERCASE (BEGINNER - TOP ROW WORDS ARRAY)
 const lowerCaseArrElements = (arr) => {
@@ -421,13 +468,14 @@ const addSpaceToWords = (arr) => {
 
 // BUILD STRING BY ADDING RANDOM WORDS ONE BY ONE UNTIL LENGTH IS REACHED
 // POPULATE wordArrays WITH ARRAYS OF WORDS (wordsArr), ONE FOR EACH TEXT LINE
-const buildWordArrays = (numOfLines) => {
-    // console.log(document.getElementById("sentences").checked);
-    // console.log("BUILD TARGET ARRAY", targetArray);
-    // console.log("TARGET ARRAY FROM BUILDARRAYS:", targetArray);
 
-    // !IMPORTANT: SENTENCES RADIO SHOULD BE DISABLED WHEN SHOWING BEGINNER LEVEL OTHERWISE IF SENTENCES WAS THE LAST RADIO SELECTED IN ADVANCED, IN THIS FUNCTION THE else BLOCK WILL RUN AND GENERATE SENTENCES IN BEGINNER
-    // SENTENCES RADIO DISABLED IN: beginnerShowButton.addEventListener("click", function () {}
+// !IMPORTANT: SENTENCES RADIO SHOULD BE DISABLED WHEN SHOWING BEGINNER LEVEL
+// OTHERWISE IF SENTENCES WAS THE LAST RADIO SELECTED IN ADVANCED,
+// IN THIS FUNCTION THE else BLOCK WILL RUN AND GENERATE SENTENCES IN BEGINNER
+// SENTENCES RADIO DISABLED IN: beginnerShowButton.addEventListener("click", function () {}
+
+const buildWordArrays = (numOfLines) => {
+
     if (document.getElementById("sentences").checked === false) {
         for (let i = 0; i < numOfLines; i += 1) {
             let arr = [];
@@ -462,8 +510,8 @@ const buildWordArrays = (numOfLines) => {
 
             wordArrays.push(arr);
         }
-    } else {
         // SENTENCES DIFFICULTY LEVEL
+    } else {
 
         // CONVERT ARRAY OF STRINGS (sentences) TO ARRAY OF ARRAY OF WORDS
         for (let i = 0; i < numOfLines; i += 1) {
@@ -472,6 +520,7 @@ const buildWordArrays = (numOfLines) => {
             );
         }
     }
+
 };
 
 // CLEAR INDEX TRACKERS
@@ -488,6 +537,7 @@ const clearArrAndString = () => {
     stringWords = "";
 };
 
+// CLEAR TEXT FIELDS
 const clearTextFields = () => {
     textSpanContainerActive.innerHTML = "";
     textSpanContainerNextParagraph.innerHTML = "";
@@ -501,16 +551,19 @@ const clearDataAndDisplay = () => {
     clearArrAndString();
 };
 
+// CALCULATE ACCURACY PERCENTAGE
 const calcAccuracy = () => {
     return (100 / (greenCounter + redCounter)) * greenCounter;
 };
 
+// RESET ACC. COUNTERS
 const resetAccuracyCounters = () => {
     greenCounter = 0;
     redCounter = 0;
     accuracy = 0;
 };
 
+// RESET ACC. DISPLAYS
 const resetAccuracyDisplays = () => {
     greenCounterSpan.textContent = "0";
     redCounterSpan.textContent = "0";
@@ -518,7 +571,8 @@ const resetAccuracyDisplays = () => {
     accuracySpan.textContent = "0";
 };
 
-// REMOVE ALL COLOUR CLASSES FROM ACCURACY
+// REMOVE ALL COLOUR CLASSES FROM ACCURACY FOR REAL TIME COLOUR CODES
+// (ONLY ONE COLOUR CLASS CAN BE ADDED AT ONCE)
 const resetAccSpanColours = () => {
     accuracySpan.classList.remove(
         "green",
@@ -553,6 +607,7 @@ const colourAccuracySpan = () => {
     }
 };
 
+// HANDLE SOUND FILES
 const playSound = (soundFile, volume) => {
     const sound = new Howl({
         src: [`sounds/${soundFile}`],
@@ -563,7 +618,8 @@ const playSound = (soundFile, volume) => {
 
 //  DETECT CAPSLOCK CHANGE
 // SOURCE: https://www.educative.io/answers/how-to-detect-the-caps-lock-status-in-javascript
-// The browser treats caps lock on as keydown and caps lock off as keyup, so we need to bind both keydown and keyup to detect a change in caps lock.
+// The browser treats caps lock on as keydown and caps lock off as keyup,
+// so we need to bind both keydown and keyup to detect a change in caps lock.
 const capsLockWarningsOn = () => {
     capsLockKey.style.background = "red";
     capsLockKey.classList.add("blink");
@@ -578,9 +634,6 @@ const capsLockWarningsOff = () => {
     };
 };
 
-const doc = document.getElementById("container");
-
-let capslockOnGlobal = false;
 const testCapsLock = (event) => {
     if (event.code === "CapsLock") {
         let isCapsLockOn = event.getModifierState("CapsLock");
@@ -601,6 +654,7 @@ const testCapsLock = (event) => {
 doc.addEventListener("keyup", testCapsLock);
 doc.addEventListener("keydown", testCapsLock);
 
+// TEXT MODIFIERS AND NUMBERS STATE
 const disableSentenceModifiers = () => {
     punctuationToggle.disabled = true;
     capitalToggle.disabled = true;
@@ -626,18 +680,10 @@ const disableNumbers = () => {
 };
 
 // SET DIFFICULTY LEVEL BASED ON RADIOS STATE
-/*
-THESE ARE DUPLICATES:
-numbersOn = false;
-numbersToggle.classList.remove("toggle-on");
-numbersToggle.classList.add("toggle-off");
-numbersToggle.textContent = "Off";
-*/
-
 const setDifficultyLevel = () => {
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         if (difficultyRadios[i].checked) {
-            // EASY
+            // --- EASY ---
             if (difficultyRadios[i].value === "easy") {
                 targetArray = [...extractWordsFromString(tenFastFingers200)];
                 maxMistakes = 20;
@@ -646,7 +692,7 @@ const setDifficultyLevel = () => {
 
                 // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
-                // MEDIUM
+                // --- MEDIUM ---
             } else if (difficultyRadios[i].value === "medium") {
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
@@ -666,9 +712,8 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
-                // HARD
+                // --- HARD ---
             } else if (difficultyRadios[i].value === "hard") {
-                // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
                     // targetArray = [
                     //     ...jsReserved,
@@ -691,7 +736,7 @@ const setDifficultyLevel = () => {
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
             }
-            // SENTENCES
+            // --- SENTENCES ---
             else {
                 disableSentenceModifiers();
                 sliderWrap.classList.add("transparent-disabled");
@@ -750,9 +795,9 @@ const createSpans = (lineIdx, location) => {
         .split("")
         .entries()) {
         const span = document.createElement("span"); // CREATE ELEMENT
-        // SET TEXT CONTENT / CLASS / ID
-        span.innerText = char;
+        span.innerText = char; // SET TEXT CONTENT / CLASS / ID
         span.className = "active-txt-span";
+
         // ADD ACTIVE CLASS TO ENTER TO FOR STYLING PURPOSES
         if (char === "⏎") {
             span.className = "active-txt-span active-txt-span--enter";
@@ -768,54 +813,10 @@ const createSpans = (lineIdx, location) => {
     }
 };
 
-// KEY EVENT START LOGS
-const logKeyEventStart = () => {
-    console.log(
-        "🟩---EVENT START: ",
-        event.key,
-        " ---",
-        "line idx: ",
-        lineIdx,
-        "word idx: ",
-        wordIdx,
-        "/",
-        wordArrays[lineIdx].length - 1,
-        "char idx: ",
-        charIdx,
-        "/",
-        wordArrays[lineIdx][wordIdx].length - 1,
-        "string idx: ",
-        strIdx,
-        "/",
-        stringWords.length - 1
-    );
-};
-
-// KEY EVENT END LOGS
-const logKeyEventEnd = () => {
-    console.log(
-        "---------------------EVENT END---",
-        "line idx: ",
-        lineIdx,
-        "word idx: ",
-        wordIdx,
-        "/",
-        wordArrays[lineIdx].length - 1,
-        "char idx: ",
-        charIdx,
-        "/",
-        wordArrays[lineIdx][wordIdx].length - 1,
-        "string idx: ",
-        strIdx,
-        "/",
-        stringWords.length - 1
-    );
-};
 
 // BACKSPACE
 const handleBackspace = () => {
     // console.log("BACKSPACE");
-
     orangeCounter += 1;
     prevChar();
 
@@ -834,6 +835,7 @@ const handleBackspace = () => {
         const charSpans = document.querySelectorAll(".active-txt-span");
         const endOfLineSpace = charSpans[stringWords.length - 1];
         endOfLineSpace.classList.remove("red-border", "red-background");
+
     }
 
     // DISPLAY END OF LINE SPACE WHEN USER CORRECTED ALL ERRORS BEYOND END OF LINE
@@ -1053,19 +1055,15 @@ const spaceOnLastWord = () => {
     if (nullValueSpanCounter < 1) {
         // THIS IS NOT WORKING
         // console.log("<<<<< SPACE ON LAST WORD, NEW LINE! >>>>>");
-
         // RESET WRONGCOUNTER
         consecutiveErrorCounter = 0;
         nextLine();
-
         textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
         createSpans(lineIdx, textSpanContainerActive); // APPEND SPANS CREATED FROM NEXT LINE
         // ADD CURSOR TO FIRST CHAR IN LINE
         const firstCharacter = document.getElementById("span-0");
         firstCharacter.classList.add("background", "black-border");
-
         stringWords = wordArrays[lineIdx].join(""); // UPDATE STRWORDS
-
         textSpanContainerNextParagraph.innerHTML = ""; // DELETE CONTENT
         createSpans(lineIdx + 1, textSpanContainerNextParagraph);
     }
@@ -1092,20 +1090,22 @@ const spaceOnWord = () => {
     }
 
     console.log("<<<<< UNCAUGHT TYPE ERROR spaceOnWord()>>>>>");
-    // ERROR: script.js:720 Uncaught TypeError: Cannot read properties of null (reading 'classList') at correctSpaceNotEndOfLine (script.js:720:22)
+    // ERROR: script.js:720 Uncaught TypeError: Cannot read properties of null
+    // (reading 'classList') at correctSpaceNotEndOfLine (script.js:720:22)
     // WITHOUT CURRENTCHARACTER AFTER NEXTLINE() IN NEW LINE RIGHT KEY WILL NOT BE RECOGNISED (WILL GO RED)
     currentCharacter.classList.remove("background", "black-border");
     const nextCharacter = document.getElementById(`span-${strIdx}`);
     nextCharacter.classList.add("background", "black-border");
+    // if (charIdx > 0) {
+    //     console.log("JUMP TO NEXT WORD");
+    // }
     nextWord();
     // console.log("WORD:", wordIdx, "CHAR:", charIdx, "STR:", strIdx);
     // CHARACTER AT CURSOR
     // console.log(stringWords[strIdx]);
     // FIRST CHARACTER
     // console.log(wordArrays[lineIdx][wordIdx][0]);
-    if (charIdx > 0) {
-        console.log("JUMP TO NEXT WORD");
-    }
+
     // IF ABOVE 2 DONT MATCH, JUMP TO NEXT WORD (THIS ONLY WORKS WITH ONE WORD SKIPPED)
     // GET MAX NUMBER OF ITERATIONS NEEDED
     let numWordsInLine = wordArrays[lineIdx].length;
@@ -1124,7 +1124,8 @@ const spaceOnWord = () => {
         while (i < numWordsInLine) {
             // CHARACTER AT CURSOR
             // console.log(stringWords[strIdx]);
-            // GO TO NEXT LINE IF SPACE IS TYPED ON CONSECUTIVE ERRORS (STARTING IN PREV WORD) ON LAST WORD, spaceOnLastWord() WILL HANDLE NEW LINE
+            // GO TO NEXT LINE IF SPACE IS TYPED ON CONSECUTIVE ERRORS
+            // (STARTING IN PREV WORD) ON LAST WORD, spaceOnLastWord() WILL HANDLE NEW LINE
             if (stringWords[strIdx] === undefined) {
                 // console.log("UNDEFINED, GO TO NEXT LINE");
                 spaceOnLastWord();
@@ -1149,12 +1150,11 @@ const spaceOnWord = () => {
         nextCharacter.classList.add("background", "black-border");
         // GET LENGTH OF ALL WORDS SKIPPED AND UPDATE COLOUR COUNTERS
 
-        // CLEAR TEXT INPUT
         clearTextInput();
     }
 };
 
-// END MESSEAGE SEQUENCE (MESSAGES - RELOAD)
+// RELOAD MESSEAGE SEQUENCE (MESSAGES - RELOAD)
 const reloadSequence = () => {
     textInput.readOnly = true;
 
@@ -1296,8 +1296,8 @@ startButton.addEventListener("click", (event) => {
     consecutiveErrorCounter = 0;
     // RESET ORANGE COUNTER
     orangeCounter = 0;
-
-    startButtonCounter += 1; // TRACK NUMBER OF START BUTTON CLICKS
+    // TRACK NUMBER OF START BUTTON CLICKS
+    startButtonCounter += 1;
 
     if (beginnerOn) {
         timerOn = false;
@@ -1575,15 +1575,15 @@ startButton.addEventListener("click", (event) => {
                 }
 
                 // ERROR ON LAST SPACE
-                if (
-                    strIdx === stringWords.length - 1 ||
-                    wordArrays[lineIdx][wordIdx][charIdx] === undefined
-                ) {
-                    // console.log("WRONG KEY ON LAST SPACE");
-                    // console.log("STR IDX:", strIdx);
-                    // nullValueSpanCounter += 1;
-                    // console.log("NULL COUNTER:", nullValueSpanCounter);
-                }
+                // if (
+                //     strIdx === stringWords.length - 1 ||
+                //     wordArrays[lineIdx][wordIdx][charIdx] === undefined
+                // ) {
+                //     console.log("WRONG KEY ON LAST SPACE");
+                //     console.log("STR IDX:", strIdx);
+                //     nullValueSpanCounter += 1;
+                //     console.log("NULL COUNTER:", nullValueSpanCounter);
+                // }
 
                 setTimeout(() => {
                     clearMessageDiv();
@@ -1647,7 +1647,7 @@ startButton.addEventListener("click", (event) => {
 
                     wordCounter += 1;
 
-                    // CALC AND DISPLAY ACCURACY  accuracy = (100 / (greenCounter + redCounter)) * greenCounter;
+                    // CALC AND DISPLAY ACCURACY  
                     accuracy = calcAccuracy();
                     resetAccSpanColours();
                     colourAccuracySpan();
@@ -2745,6 +2745,8 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        LOOK INTO THIS: GET LENGTH OF ALL WORDS SKIPPED AND UPDATE COLOUR COUNTERS, IN spaceOnWord()
 
         LOOK INTO common100, IT SHOULD NOT BE USED
 
