@@ -1,5 +1,4 @@
-// IMPORT WORDS ARRAYS
-// import common100 from './words.js';
+// IMPORT WORD ARRAYS
 import {
     common100,
     common200,
@@ -2746,6 +2745,11 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        LOOK INTO common100, IT SHOULD NOT BE USED
+
+        CAPSLOCK MESSAGE TO DISAPPEAR WHEN CAPSLOCK TURNED OFF (CAPSLOCK KEY HIGHLIGHT IS WORKING)
+
 
         findAndApplyProblemKeyWords() USES common100 TO FIND PROBLEM WORDS (CHANGE TARGET ARRAY BASED ON CURRENT LEVEL SELECTION)
 
