@@ -289,7 +289,7 @@ const clearTextInput = () => {
 
 // CLEAR MESSAGE DIV
 const clearMessageDiv = () => {
-    // console.log("-----Message div cleared-----");
+    console.log("-----Message div cleared-----");
     messageDiv.textContent = "";
 };
 
@@ -447,7 +447,6 @@ const extractWordsFromString = (arr) => {
     return extractedWords;
 };
 
-
 // THIS IS TO TRANSFORM CAPITALISED WORDS INTO LOWERCASE (BEGINNER - TOP ROW WORDS ARRAY)
 const lowerCaseArrElements = (arr) => {
     let updatedArray = [];
@@ -475,7 +474,6 @@ const addSpaceToWords = (arr) => {
 // SENTENCES RADIO DISABLED IN: beginnerShowButton.addEventListener("click", function () {}
 
 const buildWordArrays = (numOfLines) => {
-
     if (document.getElementById("sentences").checked === false) {
         for (let i = 0; i < numOfLines; i += 1) {
             let arr = [];
@@ -512,7 +510,6 @@ const buildWordArrays = (numOfLines) => {
         }
         // SENTENCES DIFFICULTY LEVEL
     } else {
-
         // CONVERT ARRAY OF STRINGS (sentences) TO ARRAY OF ARRAY OF WORDS
         for (let i = 0; i < numOfLines; i += 1) {
             wordArrays.push(
@@ -520,7 +517,6 @@ const buildWordArrays = (numOfLines) => {
             );
         }
     }
-
 };
 
 // CLEAR INDEX TRACKERS
@@ -629,9 +625,7 @@ const capsLockWarningsOn = () => {
 const capsLockWarningsOff = () => {
     capsLockKey.style.background = "none";
     capsLockKey.classList.remove("blink");
-    const clearMessageDiv = () => {
-        clearMessageDiv();
-    };
+    clearMessageDiv();
 };
 
 const testCapsLock = (event) => {
@@ -813,7 +807,6 @@ const createSpans = (lineIdx, location) => {
     }
 };
 
-
 // BACKSPACE
 const handleBackspace = () => {
     // console.log("BACKSPACE");
@@ -835,7 +828,6 @@ const handleBackspace = () => {
         const charSpans = document.querySelectorAll(".active-txt-span");
         const endOfLineSpace = charSpans[stringWords.length - 1];
         endOfLineSpace.classList.remove("red-border", "red-background");
-
     }
 
     // DISPLAY END OF LINE SPACE WHEN USER CORRECTED ALL ERRORS BEYOND END OF LINE
@@ -1269,7 +1261,11 @@ startButton.addEventListener("click", (event) => {
         clearMessageDiv();
     }
     if (problemKeysSet.size > 0) {
-        messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
+        console.log("PROB KEY WORDS MESSAGE");
+        setTimeout(() => {
+            messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
+        }, 50);
+        // messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
     }
     // +++++++++++++++++++++++++++++++++++++++
 
@@ -1647,7 +1643,7 @@ startButton.addEventListener("click", (event) => {
 
                     wordCounter += 1;
 
-                    // CALC AND DISPLAY ACCURACY  
+                    // CALC AND DISPLAY ACCURACY
                     accuracy = calcAccuracy();
                     resetAccSpanColours();
                     colourAccuracySpan();
@@ -2750,7 +2746,10 @@ BRANCH: numbers-1
 
         LOOK INTO common100, IT SHOULD NOT BE USED
 
-        CAPSLOCK MESSAGE TO DISAPPEAR WHEN CAPSLOCK TURNED OFF (CAPSLOCK KEY HIGHLIGHT IS WORKING)
+        ☑️ CAPSLOCK MESSAGE TO DISAPPEAR WHEN CAPSLOCK TURNED OFF (CAPSLOCK KEY HIGHLIGHT IS WORKING)
+            🟥 THIS CAUSES A BUG IN DISPLAYING PROBLEM KEY WORDS MESSAGE
+                !!! capsLockWarningsOff() {clearMessageDiv()} !!!
+                TEMP FIX: SETTIMEOOUT DELAY ADDED TO MESSAGE: if (problemKeysSet.size > 0)
 
 
         findAndApplyProblemKeyWords() USES common100 TO FIND PROBLEM WORDS (CHANGE TARGET ARRAY BASED ON CURRENT LEVEL SELECTION)
