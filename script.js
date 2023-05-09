@@ -37,6 +37,7 @@ const colourCodeContainer = document.getElementById("colour-code-container");
 
 // DIFFICULTY
 const difficultyRadios = document.getElementsByClassName("difficulty-radio");
+const sentencesRadio = document.getElementById("sentences");
 // LINE LENGTH SLIDER
 const slider = document.getElementById("length");
 const lengthDisplaySpan = document.getElementById("length-display-span");
@@ -474,7 +475,7 @@ const addSpaceToWords = (arr) => {
 // SENTENCES RADIO DISABLED IN: beginnerShowButton.addEventListener("click", function () {}
 
 const buildWordArrays = (numOfLines) => {
-    if (document.getElementById("sentences").checked === false) {
+    if (sentencesRadio.checked === false) {
         for (let i = 0; i < numOfLines; i += 1) {
             let arr = [];
             // ALLOW EXTRA SPACE FOR ENTER KEY AT THE END OF LINE
@@ -747,7 +748,8 @@ const setDifficultyLevel = () => {
 const findAndApplyProblemKeyWords = () => {
     if (problemKeysSet.size > 0) {
         problemKeysSet.forEach((key) => {
-            common100.forEach((word) => {
+            // common100.forEach((word) => {
+            targetArray.forEach((word) => {
                 if (word.indexOf(key) > -1) {
                     tempProbWordsArr.push(word);
                 }
@@ -1140,7 +1142,6 @@ const spaceOnWord = () => {
         // UPDATE CURSOR POSITION
         const nextCharacter = document.getElementById(`span-${strIdx}`);
         nextCharacter.classList.add("background", "black-border");
-        // GET LENGTH OF ALL WORDS SKIPPED AND UPDATE COLOUR COUNTERS
 
         clearTextInput();
     }
@@ -1257,16 +1258,21 @@ textInput.disabled = true;
 startButton.addEventListener("click", (event) => {
     // console.log(problemKeysSet);
     // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
-    if (messageDiv.textContent === "TYPE PROB. KEY WORDS OR CLICK NEW") {
-        clearMessageDiv();
+    // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
+    if (sentencesRadio.checked === false) {
+        console.log("SENTENCES NOT SELECTED");
+        if (messageDiv.textContent === "PRACTICE PROBLEM KEYS OR CLICK NEW") {
+            clearMessageDiv();
+        }
+        if (problemKeysSet.size > 0) {
+            console.log("PROB KEY WORDS MESSAGE");
+            setTimeout(() => {
+                messageDiv.textContent = "PRACTICE PROBLEM KEYS OR CLICK NEW";
+            }, 50);
+            // messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
+        }
     }
-    if (problemKeysSet.size > 0) {
-        console.log("PROB KEY WORDS MESSAGE");
-        setTimeout(() => {
-            messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
-        }, 50);
-        // messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
-    }
+
     // +++++++++++++++++++++++++++++++++++++++
 
     // !!! DELETE NUMERIC CHARACTERS FROM PROBLEM KEY SET AS WE GET UNDEFINED WITH NEXT START CLICK !!!
@@ -2452,7 +2458,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
     // !IMPORTANT: UNCHECK ADVANCED/SENTENCES, THIS IS TO PREVENT buildWordArrays() FROM GENERATING SENTENCES IN BEGINNER MODE
-    document.getElementById("sentences").checked = false;
+    sentencesRadio.checked = false;
 
     // RESET SLIDER (IN CASE LAST SELECTED LEVEL WAS "SENTENCES" AND IT NEEDS RE-ACTIVATING       )
     slider.disabled = false;
@@ -2690,6 +2696,8 @@ BRANCH: numbers-1
             DIVIDE INTO 2?
 
         ☑️ ADD "PROBLEM KEY WORDS, RESET WITH NEW" MESSAGE TO "NEW" BUTTON IF ERRORS WERE MADE IN PREVIOUS SESSION
+        
+        ☑️ DISABLE "PROBLEM KEY WORDS, RESET WITH NEW" MESSAGE IN "SENTENCES"
 
         ☑️ CLEAR TEXT FIELDS / DISPLAY "CLICK START" WHEN LEVEL SELECTION IS MADE
 
@@ -2742,17 +2750,13 @@ BRANCH: numbers-1
             
     PROBLEMS:
 
-        LOOK INTO THIS: GET LENGTH OF ALL WORDS SKIPPED AND UPDATE COLOUR COUNTERS, IN spaceOnWord()
-
-        LOOK INTO common100, IT SHOULD NOT BE USED
-
         ☑️ CAPSLOCK MESSAGE TO DISAPPEAR WHEN CAPSLOCK TURNED OFF (CAPSLOCK KEY HIGHLIGHT IS WORKING)
             🟥 THIS CAUSES A BUG IN DISPLAYING PROBLEM KEY WORDS MESSAGE
                 !!! capsLockWarningsOff() {clearMessageDiv()} !!!
                 TEMP FIX: SETTIMEOOUT DELAY ADDED TO MESSAGE: if (problemKeysSet.size > 0)
 
 
-        findAndApplyProblemKeyWords() USES common100 TO FIND PROBLEM WORDS (CHANGE TARGET ARRAY BASED ON CURRENT LEVEL SELECTION)
+        ☑️ findAndApplyProblemKeyWords() USES common100 TO FIND PROBLEM WORDS (CHANGE TARGET ARRAY BASED ON CURRENT LEVEL SELECTION)
 
         USE clearMessageDiv()
 
