@@ -290,7 +290,7 @@ const clearTextInput = () => {
 
 // CLEAR MESSAGE DIV
 const clearMessageDiv = () => {
-    console.log("-----Message div cleared-----");
+    // console.log("-----Message div cleared-----");
     messageDiv.textContent = "";
 };
 
@@ -1260,7 +1260,7 @@ startButton.addEventListener("click", (event) => {
     // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
     // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
     if (sentencesRadio.checked === false) {
-        console.log("SENTENCES NOT SELECTED");
+        // console.log("SENTENCES NOT SELECTED");
         if (messageDiv.textContent === "PRACTICE PROBLEM KEYS OR CLICK NEW") {
             clearMessageDiv();
         }
@@ -2678,6 +2678,23 @@ BRANCH: numbers-1
     
     FEATURES:
 
+        WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
+            OR RESET ALL SETTINGS ???
+
+        SPACE ON LAST WORD BEYOND END OF LINE SHOULD TRIGGER NEXTLINE()?
+
+        FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
+            SPLIT ARRAY IN TWO?
+
+        CAPSLOCK MUST NOT ACTIVATE TIMER ? ONLY OFF->ON WILL TRIGGER TIMER (DETECT CAPSLOCK CHANGE)
+
+        RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER ???
+            SPACEONLASTWORD
+            SPACEONWORD
+
+        
+        !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
+
         EASY - COMMON 200
             ☑️ MATCH WORDS TO 10 FAST FINGERS
 
@@ -2750,6 +2767,15 @@ BRANCH: numbers-1
             
     PROBLEMS:
 
+        ENTER AND SPACE KEYS TRIGGER CARD FLIP (ON ENTIRE CARD/APP) AFTER FLIP BUTTON IS CLICKED (FOCUS???)
+               
+        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of undefined (reading 'classList')
+                at countSpanColours (script.js:721:26)
+                at HTMLInputElement.handleKeyEvent (script.js:1092:17)
+        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of null (reading 'classList')at correctSpaceNotEndOfLine (script.js:693:22)at HTMLInputElement.handleKeyEvent (script.js:1081:21)
+
+        IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
+
         ☑️ CAPSLOCK MESSAGE TO DISAPPEAR WHEN CAPSLOCK TURNED OFF (CAPSLOCK KEY HIGHLIGHT IS WORKING)
             🟥 THIS CAUSES A BUG IN DISPLAYING PROBLEM KEY WORDS MESSAGE
                 !!! capsLockWarningsOff() {clearMessageDiv()} !!!
@@ -2758,16 +2784,13 @@ BRANCH: numbers-1
 
         ☑️ findAndApplyProblemKeyWords() USES common100 TO FIND PROBLEM WORDS (CHANGE TARGET ARRAY BASED ON CURRENT LEVEL SELECTION)
 
-        USE clearMessageDiv()
+        ☑️ USE clearMessageDiv()
 
         ☑️ STYLE DISABLED "HOW TO" AND "BEGINNER LEVEL" BUTTONS DURING RELOAD SEQUENCE
 
         ☑️ FADE SLIDER DIV DURING RELOAD SEQUENCE
 
         ☑️ DISABLE TIMER AND TOGGLE WHEN CLOSING BEGINNER LEVEL
-
-        FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
-            SPLIT ARRAY IN TWO?
 
 
         AFTER SELECTING SENTENCES ON ADV. LEVEL SELECTORS WONT WORK ON BEGINNER (STILL GETTING SENTENCES)
@@ -2777,7 +2800,6 @@ BRANCH: numbers-1
         ☑️ SPACE AFTER CONSECUTIVE ERRORS INTO NEXT WORD,
             ☑️ ALWAYS FIND NEXT UNTYPED WORD AND JUMP TO IT
 
-        SPACE ON LAST WORD BEYOND END OF LINE SHOULD TRIGGER NEXTLINE()?
 
         UN-HIGHLIGHT SLIDER RAIL ON HOVER WHEN SLIDER IS DISABLED (SENTENCES LEVEL)
         ☑️ ADD OPACITY: 0.5 TO ENTIRE WRAP DIV ?
@@ -2792,17 +2814,9 @@ BRANCH: numbers-1
                     FIND active-text-spans, AND SELECT THE FIRST THAT HAS NO OTHER CLASS
                     ☑️ if (startButtonCounter > 1)
 
-        CAPSLOCK MUST NOT ACTIVATE TIMER ? ONLY OFF->ON WILL TRIGGER TIMER (DETECT CAPSLOCK CHANGE)
 
         ☑️ STYLE DISABLED LEVEL SELECTORS AND SELECTION TYPE TOGGLE IN BEGINNER MODE DURING REFRESH SEQUENCE (MUST NOT HIGHLIGHT ON HOVER)
 
-
-        RESET WRONGCOUNTER WHEN WORD IS SKIPPED BY ENTER ???
-            SPACEONLASTWORD
-            SPACEONWORD
-
-
-        IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
 
         ADD FOCUS TO TEXT INPUT DURING SESSION WHEN: (IF SESSION HASN'T STARTED TXT IPUT IS DISABLED SO IT WILL NOT FOCUS BY DEFAULT)
             ☑️ SOUND TOGGLE
@@ -2812,13 +2826,6 @@ BRANCH: numbers-1
         ADD FADE IN/OUT ANIMATION TO MESSAGE DIV TEXT?
             ☑️ ADDED 700MS SETTIMEOUT DELAY
 
-
-        ENTER AND SPACE KEYS TRIGGER CARD FLIP AFTER FLIP BUTTON IS CLICKED (FOCUS???)
-               
-        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of undefined (reading 'classList')
-                at countSpanColours (script.js:721:26)
-                at HTMLInputElement.handleKeyEvent (script.js:1092:17)
-        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of null (reading 'classList')at correctSpaceNotEndOfLine (script.js:693:22)at HTMLInputElement.handleKeyEvent (script.js:1081:21)
           
         ☑️ RESET TARGET ARRAY AFTER CLEARING PROBLEMKEYSET BECAUSE IT WILL BE IN A FILTERED STATE (findAndApplyProblemKeyWords)
         LOOK INTO PROBLEMKEYWORDS AGAIN (AFTER COMPLETING PROBLEMKEYWORDS WITH NO ERROR, TARGET ARRAY SHOULD UPDATE TO DEFAULT)
@@ -2834,16 +2841,10 @@ BRANCH: numbers-1
             TIMER
             SOUND
 
-        WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
-            OR RESET ALL SETTINGS ???
-       
         DON'T HIGHLIGT RADIO LABELS AND TOGGLE BUTTONS WHILE TIMER IS ON (WHEN DISABLED)
             ☑️ TOGGLE BUTTONS (:disabled:hover {ORIGINAL FONTWEIGHT})
             ☑️ RADIO LABELS
             SLIDER
-      
-        NOTES:
-            !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
 
        
 */
