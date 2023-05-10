@@ -811,6 +811,7 @@ const createSpans = (lineIdx, location) => {
 
 // BACKSPACE
 const handleBackspace = () => {
+    let lastWordRedCounter = 0;
     // console.log("BACKSPACE");
     orangeCounter += 1;
     prevChar();
@@ -846,7 +847,8 @@ const handleBackspace = () => {
         // AND CHECK FOR RED CLASS, IF FOUND DISPLAY "MORE ERRORS TO CORRECT"
 
         const charSpans = document.querySelectorAll(".active-txt-span");
-        let lastWordRedCounter = 0;
+        // let lastWordRedCounter = 0;
+        lastWordRedCounter = 0;
 
         for (
             let i = strIdx;
