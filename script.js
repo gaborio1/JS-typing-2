@@ -269,11 +269,13 @@ const nextWord = () => {
 };
 
 const nextLine = () => {
-    // console.log("END OF LINE");
+    console.log("NEXT LINE");
     lineIdx += 1;
     wordIdx = 0;
     charIdx = 0;
     strIdx = 0;
+    // PREVENTING GOING INTO BEYOND END OF LINE ERRORS ON ALL WORDS BUT LAST
+    nullValueSpanCounter = 0;
     // DISPLAY MESSAGE WHEN BOTH TEXT FIELDS HAVE BEEN CLEARED
     if (lineIdx === wordArrays.length) {
         console.log("END OF TEXT");
@@ -929,6 +931,7 @@ const correctEndOfLineSpace = () => {
     // 1. HAVE TO COUNT COLOURS IN LAST WORD BEFORE NEXTLINE() TO BE ABLE TO CHECK CURRENT LINE SPANS
     countSpanColoursInLastWord();
     nextLine();
+    // console.table({ lineIdx: lineIdx, wordIdx: wordIdx, charIdx: charIdx, strIdx: strIdx });
     clearTextInput();
     wordCounter += 1;
     textSpanContainerActive.innerHTML = ""; // DELETE SPANS FROM ACTIVE DIV
@@ -1401,6 +1404,7 @@ startButton.addEventListener("click", (event) => {
 
     let eventCounter = 0;
     const handleKeyEvent = (event) => {
+        // console.table({ lineIdx: lineIdx, wordIdx: wordIdx, charIdx: charIdx, strIdx: strIdx });
         // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
         clearMessageDiv();
         // +++++++++++++++++++++++++++++++++++++++
@@ -1557,7 +1561,7 @@ startButton.addEventListener("click", (event) => {
             consecutiveErrorCounter += 1;
 
             if (strIdx >= stringWords.length - 1) {
-                // console.log("GONE BEYOND END OF LINE");
+                console.log("GONE BEYOND END OF LINE");
                 nullValueSpanCounter += 1;
                 // console.log("NULL COUNTER:", nullValueSpanCounter);
             }
