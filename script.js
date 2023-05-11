@@ -18,6 +18,7 @@ import {
     keyLevelsArray,
     jsReserved,
     jsObjPropMeth,
+    jsOther,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -740,7 +741,7 @@ const setDifficultyLevel = () => {
             }
             // --- JS ---
             else {
-                targetArray = [...jsObjPropMeth, ...jsReserved];
+                targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
                 maxMistakes = 20;
                 enableSentenceModifiers();
                 disableNumbers();
