@@ -269,12 +269,12 @@ const nextWord = () => {
 };
 
 const nextLine = () => {
-    console.log("NEXT LINE");
+    // console.log("NEXT LINE");
     lineIdx += 1;
     wordIdx = 0;
     charIdx = 0;
     strIdx = 0;
-    // PREVENTING GOING INTO BEYOND END OF LINE ERRORS ON ALL WORDS BUT LAST
+    // PREVENTING GOING INTO BEYOND END OF LINE ERRORS ON ALL WORDS BUT LAST WNEN ENTER IS ON
     nullValueSpanCounter = 0;
     // DISPLAY MESSAGE WHEN BOTH TEXT FIELDS HAVE BEEN CLEARED
     if (lineIdx === wordArrays.length) {
@@ -1262,7 +1262,7 @@ textInput.disabled = true;
 
 startButton.addEventListener("click", (event) => {
     // console.log(problemKeysSet);
-    // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
+    // +++ PROBLEM KEY WORDS
     // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
     if (sentencesRadio.checked === false) {
         // console.log("SENTENCES NOT SELECTED");
@@ -1270,15 +1270,13 @@ startButton.addEventListener("click", (event) => {
             clearMessageDiv();
         }
         if (problemKeysSet.size > 0) {
-            console.log("PROB KEY WORDS MESSAGE");
+            // console.log("PROB KEY WORDS MESSAGE");
             setTimeout(() => {
                 messageDiv.textContent = "PRACTICE PROBLEM KEYS OR CLICK NEW";
             }, 50);
             // messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
         }
     }
-
-    // +++++++++++++++++++++++++++++++++++++++
 
     // !!! DELETE NUMERIC CHARACTERS FROM PROBLEM KEY SET AS WE GET UNDEFINED WITH NEXT START CLICK !!!
     problemKeysSet.forEach((key) => {
@@ -1405,9 +1403,8 @@ startButton.addEventListener("click", (event) => {
     let eventCounter = 0;
     const handleKeyEvent = (event) => {
         // console.table({ lineIdx: lineIdx, wordIdx: wordIdx, charIdx: charIdx, strIdx: strIdx });
-        // +++++++++++++++++++++++++++++++++++++++PROBLEM KEY WORDS
+        // +++ PROBLEM KEY WORDS
         clearMessageDiv();
-        // +++++++++++++++++++++++++++++++++++++++
 
         // const typedKey = event.key;
         typedKey = event.key;
@@ -1450,12 +1447,10 @@ startButton.addEventListener("click", (event) => {
         // ONLY KEEP TRACK OF KEYSTROKES WHILE CLOCK IS RUNNING (NOW DISABLED, KEYSTROKES ARE ALWAYS COUNTED)
         // if (timerOn) {
         // if (timerRunning) {
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // !!! THIS IS NOT RUNNING !!! DETECT CAPSLOCK CHANGE HERE !!!
         if (typedKey !== "CapsLock") {
             keyStrokeCounter += 1;
         }
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         keystrokesSpan.textContent = keyStrokeCounter;
         // }
@@ -1561,7 +1556,7 @@ startButton.addEventListener("click", (event) => {
             consecutiveErrorCounter += 1;
 
             if (strIdx >= stringWords.length - 1) {
-                console.log("GONE BEYOND END OF LINE");
+                // console.log("GONE BEYOND END OF LINE");
                 nullValueSpanCounter += 1;
                 // console.log("NULL COUNTER:", nullValueSpanCounter);
             }
@@ -2773,12 +2768,16 @@ BRANCH: numbers-1
             
     PROBLEMS:
 
+        WHEN CORRECTING BEYOND END OF LINE ERRORS:
+        Uncaught TypeError: Cannot read properties of null (reading 'innerText')
+
         ENTER AND SPACE KEYS TRIGGER CARD FLIP (ON ENTIRE CARD/APP) AFTER FLIP BUTTON IS CLICKED (FOCUS???)
                
-        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of undefined (reading 'classList')
-                at countSpanColours (script.js:721:26)
-                at HTMLInputElement.handleKeyEvent (script.js:1092:17)
-        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of null (reading 'classList')at correctSpaceNotEndOfLine (script.js:693:22)at HTMLInputElement.handleKeyEvent (script.js:1081:21)
+        END OF LINE ERROR: Uncaught TypeError: Cannot read properties of null (reading 'classList')
+            at correctSpaceNotEndOfLine (script.js:959:22)
+            at HTMLInputElement.handleKeyEvent (script.js:1529:21)
+
+        WHEN ENTER IS ON, SPACE STILL WORKS ON ENTER KEY
 
         IF CONSECUTIVE ERRORS ARE MADE, KEYBOARD WILL ONLY TRACK PROBLEM KEYS IN FIRST WORD!! (NOT AN ACTUAL PROBLEM...)
 
