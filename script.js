@@ -16,9 +16,8 @@ import {
     bottomRow,
     homeRow,
     keyLevelsArray,
-
-    // jsReserved,
-    // jsObjPropMeth
+    jsReserved,
+    jsObjPropMeth,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -734,10 +733,20 @@ const setDifficultyLevel = () => {
                 numbersToggle.disabled = false;
             }
             // --- SENTENCES ---
-            else {
+            else if (difficultyRadios[i].value === "sentences") {
                 disableSentenceModifiers();
                 sliderWrap.classList.add("transparent-disabled");
                 disableNumbers();
+            }
+            // --- JS ---
+            else {
+                targetArray = [...jsObjPropMeth, ...jsReserved];
+                maxMistakes = 20;
+                enableSentenceModifiers();
+                disableNumbers();
+
+                // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
+                sliderWrap.classList.remove("transparent-disabled");
             }
             break;
         }
@@ -2706,6 +2715,11 @@ BRANCH: numbers-1
         HARD - COMMON 3000
             ☑️ FUNCTION TO EXTRACT WORDS FROM []
             ☑️ CONNECT TO HARD DIFF LEVEL
+
+        JS - JAVASCRIPT
+            ☑️ jsObjPropMeth
+            ☑️ jsReserved
+
 
         INFO TEXT UPDATE
             DIFFICULTY LEVELS
