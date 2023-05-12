@@ -486,7 +486,6 @@ const buildWordArrays = (numOfLines) => {
             }
 
             while (true) {
-                if (getStrLength(arr) >= sequenceLength) break;
 
                 let currWord = getRandomFromArr(targetArray); // GET RANDOM WORD
                 if (punctuationOn) {
@@ -498,6 +497,35 @@ const buildWordArrays = (numOfLines) => {
                 currWord += " ";
 
                 arr.push(currWord);
+
+                // BUG: THIS ALLOWS OVERFLOW IN TEXT FIELD
+                if (getStrLength(arr) > sequenceLength) {
+                    // +++ SEQUENCE LENGTH +++
+                    /*
+                    console.log("TOO LONG", getStrLength(arr), sequenceLength);
+                    arr.pop();
+                    console.log("TOO LONG", getStrLength(arr), sequenceLength);
+                    // FIND WORD TO FILL UP THE GAP
+                    console.log("FIND WORD WITH LENGTH:", sequenceLength - getStrLength(arr));
+                    // -1 TO ALLOW ROOM FOR TRAILING SPACE
+                    let fillerWordLengthMinusOne = sequenceLength - getStrLength(arr) - 1;
+                    // FILTER OUT WORDS WITH THAT EXACT LENGTH
+                    let fillerWordsArray = targetArray.filter((word) => {
+                        return word.length === fillerWordLengthMinusOne;
+                    });
+                    console.log("FILLER WORDS ARR:", fillerWordsArray);
+                    // IF GAP IS AT LEAST 3 CHARACTERS WIDE ADD FILLER WORD
+                    // !!! THIS WONT WORD WITH JS KEYWORDS !!!
+                    // !!! WITH JS KEYWORDS, JUST DELETE LAST WORD? !!!
+                    // !!! ALSO, DISABLE LINE LENGTH FOR JS KEYWORDS AND SET TO A CONSTANT !!!
+                    if (fillerWordLengthMinusOne > 1) {
+                        arr.push(getRandomFromArr(fillerWordsArray).concat("H"));
+                    }
+                    */
+                    // +++ SEQUENCE LENGTH +++
+                    break;
+                };
+
             }
 
             // REPLACE TRAILING SPACE WITH ENTER SIGN ON LAST WORD OF ARRAY
@@ -2688,6 +2716,8 @@ BRANCH: numbers-1
 
     
     FEATURES:
+
+        DISABLE AND RESET ENTER KEY OPTION WHEN CLOSING BEGINNER LEVEL
 
         WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
             OR RESET ALL SETTINGS ???
