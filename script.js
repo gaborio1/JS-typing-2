@@ -735,6 +735,8 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 disableNumbers();
                 sequenceLength = slider.value;
+                // sequenceLength = 30;
+                // slider.value = 30;
 
                 // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
@@ -759,6 +761,8 @@ const setDifficultyLevel = () => {
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
                 sequenceLength = slider.value;
+                // sequenceLength = 30;
+                // slider.value = 30;
                 // --- HARD ---
             } else if (difficultyRadios[i].value === "hard") {
                 if (numbersOn) {
@@ -783,6 +787,8 @@ const setDifficultyLevel = () => {
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
                 sequenceLength = slider.value;
+                // sequenceLength = 30;
+                // slider.value = 30;
             }
             // --- SENTENCES ---
             else if (difficultyRadios[i].value === "sentences") {
@@ -796,9 +802,7 @@ const setDifficultyLevel = () => {
                 maxMistakes = 20;
                 disableSentenceModifiers();
                 disableNumbers();
-
-                // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
-                sliderWrap.classList.remove("transparent-disabled");
+                sliderWrap.classList.add("transparent-disabled");
             }
             break;
         }
@@ -1916,10 +1920,16 @@ const displaySelectionWarning = () => {
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
-        // console.log("DIFFICULTY RADIOS SELECTED");
+        console.log("DIFFICULTY RADIOS SELECTED");
 
         // console.log(this);
         // console.log(targetArray);
+
+        // RESET "EASY, MEDIUM AND HARD" TO DEFAULT 30 SEQUENCE LENGTH
+        if (i <= 2) {
+            slider.value = 30;
+            lengthDisplaySpan.textContent = 30;
+        }
 
         placeholderClickStart();
         clearTextFields();
@@ -2740,13 +2750,6 @@ BRANCH: numbers-1
     
     FEATURES:
 
-        RESET SLIDER VALUE TO DEFAULT 30 WHEN  FIRST 3 LEVELS ARE SELECTED?
-
-        ☑️ DISABLE CONTROLS IN "JS" DIFFICULTY 
-            SLIDER (THEN RESET WITH OTHER LEVELS sequenceLength = slider.value;)
-            PUNCTUATION
-            CAPITALS
-            ENTER
 
         DISABLE AND RESET ENTER KEY OPTION WHEN CLOSING BEGINNER LEVEL
 
@@ -2766,6 +2769,17 @@ BRANCH: numbers-1
 
         
         !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
+
+        ☑️ FADE ENTIRE SLIDER DIV WITH "JS" LIKE "SENTENCES"
+
+        ☑️ RESET SLIDER VALUE TO DEFAULT 30 WHEN FIRST 3 LEVELS ARE SELECTED?
+            (difficultyRadios[i].addEventListener)
+
+        ☑️ DISABLE CONTROLS IN "JS" DIFFICULTY 
+            SLIDER (THEN RESET WITH OTHER LEVELS sequenceLength = slider.value;)
+            PUNCTUATION
+            CAPITALS
+            ENTER
 
         EASY - COMMON 200
             ☑️ MATCH WORDS TO 10 FAST FINGERS
