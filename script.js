@@ -38,6 +38,7 @@ const colourCodeContainer = document.getElementById("colour-code-container");
 // DIFFICULTY
 const difficultyRadios = document.getElementsByClassName("difficulty-radio");
 const sentencesRadio = document.getElementById("sentences");
+const jsRadio = document.getElementById("js");
 // LINE LENGTH SLIDER
 const slider = document.getElementById("length");
 const lengthDisplaySpan = document.getElementById("length-display-span");
@@ -477,6 +478,7 @@ const addSpaceToWords = (arr) => {
 // SENTENCES RADIO DISABLED IN: beginnerShowButton.addEventListener("click", function () {}
 
 const buildWordArrays = (numOfLines) => {
+    // ALL LEVELS EXCEPT "SENTENCES"
     if (sentencesRadio.checked === false) {
         for (let i = 0; i < numOfLines; i += 1) {
             let arr = [];
@@ -485,8 +487,14 @@ const buildWordArrays = (numOfLines) => {
                 sequenceLength = 44;
             }
 
-            while (true) {
+            // +++ SEQUENCE LENGTH +++
+            // SET LENGTH TO CONSTANT 40 WITH JS, IT WILL BE RESET TO SLIDER VALUE WITH FIRST 3 LEVELS
+            if (jsRadio.checked) {
+                sequenceLength = 40;
+            }
+            // +++ SEQUENCE LENGTH +++
 
+            while (true) {
                 let currWord = getRandomFromArr(targetArray); // GET RANDOM WORD
                 if (punctuationOn) {
                     currWord += getRandomFromArr(punctMarks); // CONCAT RANDOM PUNCT MARK
@@ -501,31 +509,41 @@ const buildWordArrays = (numOfLines) => {
                 // BUG: THIS ALLOWS OVERFLOW IN TEXT FIELD
                 if (getStrLength(arr) > sequenceLength) {
                     // +++ SEQUENCE LENGTH +++
-                    /*
-                    console.log("TOO LONG", getStrLength(arr), sequenceLength);
+
+                    // console.log("TOO LONG", getStrLength(arr), sequenceLength);
                     arr.pop();
-                    console.log("TOO LONG", getStrLength(arr), sequenceLength);
+                    // console.log("TOO LONG", getStrLength(arr), sequenceLength);
+
                     // FIND WORD TO FILL UP THE GAP
-                    console.log("FIND WORD WITH LENGTH:", sequenceLength - getStrLength(arr));
+                    // console.log(
+                    //     "FIND WORD WITH LENGTH:",
+                    //     sequenceLength - getStrLength(arr)
+                    // );
+
                     // -1 TO ALLOW ROOM FOR TRAILING SPACE
-                    let fillerWordLengthMinusOne = sequenceLength - getStrLength(arr) - 1;
+                    let fillerWordLengthMinusOne =
+                        sequenceLength - getStrLength(arr) - 1;
+
                     // FILTER OUT WORDS WITH THAT EXACT LENGTH
                     let fillerWordsArray = targetArray.filter((word) => {
                         return word.length === fillerWordLengthMinusOne;
                     });
-                    console.log("FILLER WORDS ARR:", fillerWordsArray);
+
+                    // console.log("FILLER WORDS ARR:", fillerWordsArray);
+
                     // IF GAP IS AT LEAST 3 CHARACTERS WIDE ADD FILLER WORD
-                    // !!! THIS WONT WORD WITH JS KEYWORDS !!!
                     // !!! WITH JS KEYWORDS, JUST DELETE LAST WORD? !!!
-                    // !!! ALSO, DISABLE LINE LENGTH FOR JS KEYWORDS AND SET TO A CONSTANT !!!
-                    if (fillerWordLengthMinusOne > 1) {
-                        arr.push(getRandomFromArr(fillerWordsArray).concat("H"));
+
+                    if (fillerWordLengthMinusOne > 1 && !jsRadio.checked) {
+                        const newFillerWord =
+                            getRandomFromArr(fillerWordsArray);
+                        // console.log("FILLER WORD: ", newFillerWord);
+
+                        arr.push(newFillerWord.concat(" "));
                     }
-                    */
                     // +++ SEQUENCE LENGTH +++
                     break;
-                };
-
+                }
             }
 
             // REPLACE TRAILING SPACE WITH ENTER SIGN ON LAST WORD OF ARRAY
@@ -706,6 +724,8 @@ const disableNumbers = () => {
 
 // SET DIFFICULTY LEVEL BASED ON RADIOS STATE
 const setDifficultyLevel = () => {
+    // SEQUENCE LENGTH RESET TO SLIDER VALUE IN "EASY/MED/HARD" LEVELS
+    // console.log(slider.value);
     for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         if (difficultyRadios[i].checked) {
             // --- EASY ---
@@ -714,6 +734,7 @@ const setDifficultyLevel = () => {
                 maxMistakes = 20;
                 enableSentenceModifiers();
                 disableNumbers();
+                sequenceLength = slider.value;
 
                 // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
@@ -737,6 +758,7 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
+                sequenceLength = slider.value;
                 // --- HARD ---
             } else if (difficultyRadios[i].value === "hard") {
                 if (numbersOn) {
@@ -760,6 +782,7 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
+                sequenceLength = slider.value;
             }
             // --- SENTENCES ---
             else if (difficultyRadios[i].value === "sentences") {
@@ -771,7 +794,7 @@ const setDifficultyLevel = () => {
             else {
                 targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
                 maxMistakes = 20;
-                enableSentenceModifiers();
+                disableSentenceModifiers();
                 disableNumbers();
 
                 // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
@@ -2717,6 +2740,14 @@ BRANCH: numbers-1
     
     FEATURES:
 
+        RESET SLIDER VALUE TO DEFAULT 30 WHEN  FIRST 3 LEVELS ARE SELECTED?
+
+        ☑️ DISABLE CONTROLS IN "JS" DIFFICULTY 
+            SLIDER (THEN RESET WITH OTHER LEVELS sequenceLength = slider.value;)
+            PUNCTUATION
+            CAPITALS
+            ENTER
+
         DISABLE AND RESET ENTER KEY OPTION WHEN CLOSING BEGINNER LEVEL
 
         WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
@@ -2812,6 +2843,8 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+
 
         WHEN CORRECTING BEYOND END OF LINE ERRORS:
         Uncaught TypeError: Cannot read properties of null (reading 'innerText')
