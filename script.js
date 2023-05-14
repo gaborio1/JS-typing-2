@@ -531,10 +531,14 @@ const buildWordArrays = (numOfLines) => {
 
                     // console.log("FILLER WORDS ARR:", fillerWordsArray);
 
-                    // IF GAP IS AT LEAST 3 CHARACTERS WIDE ADD FILLER WORD
+                    // ONLY ADVANCED LEVEL: IF GAP IS AT LEAST 3 CHARACTERS WIDE ADD FILLER WORD
                     // !!! WITH JS KEYWORDS, JUST DELETE LAST WORD? !!!
 
-                    if (fillerWordLengthMinusOne > 1 && !jsRadio.checked) {
+                    if (
+                        fillerWordLengthMinusOne > 1 &&
+                        !jsRadio.checked &&
+                        !beginnerOn
+                    ) {
                         const newFillerWord =
                             getRandomFromArr(fillerWordsArray);
                         // console.log("FILLER WORD: ", newFillerWord);
@@ -735,11 +739,9 @@ const setDifficultyLevel = () => {
                 enableSentenceModifiers();
                 disableNumbers();
                 sequenceLength = slider.value;
-                // sequenceLength = 30;
-                // slider.value = 30;
-
                 // FADE WRAP DIV WHEN SLIDER IS DISABLED (0.3)
                 sliderWrap.classList.remove("transparent-disabled");
+
                 // --- MEDIUM ---
             } else if (difficultyRadios[i].value === "medium") {
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
@@ -761,8 +763,7 @@ const setDifficultyLevel = () => {
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
                 sequenceLength = slider.value;
-                // sequenceLength = 30;
-                // slider.value = 30;
+
                 // --- HARD ---
             } else if (difficultyRadios[i].value === "hard") {
                 if (numbersOn) {
@@ -787,8 +788,6 @@ const setDifficultyLevel = () => {
                 sliderWrap.classList.remove("transparent-disabled");
                 numbersToggle.disabled = false;
                 sequenceLength = slider.value;
-                // sequenceLength = 30;
-                // slider.value = 30;
             }
             // --- SENTENCES ---
             else if (difficultyRadios[i].value === "sentences") {
@@ -1920,7 +1919,7 @@ const displaySelectionWarning = () => {
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
-        console.log("DIFFICULTY RADIOS SELECTED");
+        // console.log("DIFFICULTY RADIOS SELECTED");
 
         // console.log(this);
         // console.log(targetArray);
@@ -2750,8 +2749,16 @@ BRANCH: numbers-1
     
     FEATURES:
 
+        INFO TEXT UPDATE
+            DIFFICULTY LEVELS
 
-        DISABLE AND RESET ENTER KEY OPTION WHEN CLOSING BEGINNER LEVEL
+
+       WHEN CLOSING BEGINNER LEVEL, RESET ?
+            PUNCTUATION
+            CAPITAL
+            ENTER KEY
+        ☑️ APP REMEMBERS THESE SETTINGS IN beginnerHideButton.addEventListener()
+
 
         WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
             OR RESET ALL SETTINGS ???
@@ -2767,6 +2774,8 @@ BRANCH: numbers-1
             SPACEONLASTWORD
             SPACEONWORD
 
+        MESSAGE DIV TO HANDLE MULTIPLE MESSAGES
+            DIVIDE INTO 2?
         
         !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
 
@@ -2796,12 +2805,6 @@ BRANCH: numbers-1
             ☑️ jsObjPropMeth
             ☑️ jsReserved
 
-
-        INFO TEXT UPDATE
-            DIFFICULTY LEVELS
-
-        MESSAGE DIV TO HANDLE MULTIPLE MESSAGES
-            DIVIDE INTO 2?
 
         ☑️ ADD "PROBLEM KEY WORDS, RESET WITH NEW" MESSAGE TO "NEW" BUTTON IF ERRORS WERE MADE IN PREVIOUS SESSION
         

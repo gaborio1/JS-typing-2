@@ -727,6 +727,8 @@
                             word and even hitting the right keys in the next word will result in making more errors.
                             This will force you to go back to the first word after your last "Space" and correct your
                             mistakes from then on.
+                            Problem keys after trailing space will not count towards your problem key words as they are not an
+                            actual error in current word.
                         </li>
                         <li><span>6:</span>
                             CONSECUTIVE SKIPPED WORDS: You are allowed to skip (by "Space") a max number of 5 words in a
@@ -766,10 +768,11 @@
                     <ul>
                         <li>
                             <span>Difficulty levels:</span>
-                            <p>Easy - Most common 200 English words (Based on 10fastfingers.com).</p>
+                            <p>Easy - Most common 200 English words Based on 10fastfingers.com (Numeric characters disabled).</p>
                             <p>Medium - Most common 500 English words / Optional numeric characters.</p>
                             <p>Hard - Most common 3000+ English words / Optional numeric characters.</p>
-                            <p>Sentences - Email phrases and Pangrams (MODIFIERS DISABLED).</p>
+                            <p>Sentences - Email phrases and Pangrams (TEXT MODIFIERS DISABLED).</p>
+                            <P>JS - Javascript reserved keywords, code snippets (TEXT MODIFIERS DISABLED)</P>
                             
                         </li>
 
@@ -983,6 +986,8 @@
                         all the characters from selected groups.
                         You can only practice one of the three types at once. (Letter group(s), consecutive letters or
                         rows)
+                        <br>
+                        Optional text modifiers: Punctuation, Capital letters and Enter key.
 
                     </p>
 
