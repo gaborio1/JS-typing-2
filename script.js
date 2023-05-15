@@ -938,20 +938,36 @@ const handleBackspace = () => {
 
     const currentCharacter = document.getElementById(`span-${strIdx}`);
 
-    // ADD ORANGE BORDER TO BACKSPACE'D SPACE  !!! HAVE TO CHECK TEXTCONTENT !!!
-    if (currentCharacter.innerText === " ") {
-        currentCharacter.classList.add("orange-border");
+    // ADD ORANGE BORDER TO BACKSPACE'D SPACE IF: CHAR IS NOT BEYOND END OF LINE(NULL) AND CHAR IS "SPACE"
+    // BOTH CONDITIONS WORK!
+    // +++ BACKSPACE +++
+    // if (currentCharacter !== null) {
+    if (nullValueSpanCounter < 1) {
+        if (currentCharacter.innerText === " ") {
+            currentCharacter.classList.add("orange-border");
+        }
     }
 
     if (strIdx === stringWords.length - 1) {
         currentCharacter.classList.add("orange-border");
     }
 
-    currentCharacter.classList.add("orange", "background", "black-border");
-    currentCharacter.classList.remove("red", "green");
+    // ONLY ADD/REMOVE CLASSES IF ELEMENT EXIST (NOT NULL - BEYOND END OF LINE)
+    if (nullValueSpanCounter < 1) {
+        currentCharacter.classList.add("orange", "background", "black-border");
+        currentCharacter.classList.remove("red", "green");
+    }
 
-    const nextCharacter = document.getElementById(`span-${strIdx + 1}`);
-    nextCharacter.classList.remove("background", "black-border", "red-border");
+    // ONLY REMOVE CLASS IF IT IS NOT BEYOND END OF LINE
+    if (nullValueSpanCounter < 1 && strIdx < stringWords.length - 1) {
+        const nextCharacter = document.getElementById(`span-${strIdx + 1}`);
+        nextCharacter.classList.remove(
+            "background",
+            "black-border",
+            "red-border"
+        );
+    }
+    // +++ BACKSPACE +++
 };
 
 //🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CORRECT KEY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
