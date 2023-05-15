@@ -2615,6 +2615,7 @@ beginnerShowButton.addEventListener("click", function () {
     textInput.disabled = true;
     clearDataAndDisplay();
     clearArrAndString();
+    removeProblemKeyHighlight();
 
     setTimeout(() => {
         displaySelectionWarning();
@@ -2682,6 +2683,7 @@ beginnerHideButton.addEventListener("click", function () {
 
     clearMessageDiv();
     placeholderClickStart();
+    removeProblemKeyHighlight();
 });
 
 // JS NOT IN USE, POSITION IS NOW STICKY IN CSS
