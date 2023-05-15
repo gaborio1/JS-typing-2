@@ -2544,6 +2544,14 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
+    // RESET SELECTION TYPE TOGGLE TO "THROUGH"
+    if (!inclusiveSelected) {
+        // console.log("RESET SELECTION TYPE TOGGLE NOW");
+        inclusiveSelected = true;
+        selectInclusiveToggle.textContent = "Through";
+        selectInclusiveToggle.classList.remove("toggle-on");
+    }
+
     // !IMPORTANT: UNCHECK ADVANCED/SENTENCES, THIS IS TO PREVENT buildWordArrays() FROM GENERATING SENTENCES IN BEGINNER MODE
     sentencesRadio.checked = false;
 
@@ -2766,7 +2774,9 @@ BRANCH: numbers-1
     FEATURES:
 
         INFO TEXT UPDATE
-            DIFFICULTY LEVELS
+            ☑️ DIFFICULTY LEVELS
+
+        CLEAR PROBLEM KEY HIGHLIGHT ON KEYBOARD WHEN SWITCHING BETWEEN ADV/BEGINNER
 
 
        WHEN CLOSING BEGINNER LEVEL, RESET ?
@@ -2777,7 +2787,8 @@ BRANCH: numbers-1
 
 
         WHEN BEGINNER PANEL COMES ON, CHECK IF ANY LEVELS PRE-SELECTED FROM PREVIOUS SESSION (LINE 1614)
-            OR RESET ALL SETTINGS ???
+            ☑️  OR RESET ALL SETTINGS ???
+            ☑️ RESET SELECTION TYPE TOGGLE TOO ? beginnerShowButton.addEventListener()
 
         SPACE ON LAST WORD BEYOND END OF LINE SHOULD TRIGGER NEXTLINE()?
 
@@ -2793,7 +2804,6 @@ BRANCH: numbers-1
         MESSAGE DIV TO HANDLE MULTIPLE MESSAGES
             DIVIDE INTO 2?
         
-        !!! WHEN TIMER HAS ENDED FIRST START BUTTON PRESS WILL GENERATE POBLEM KEY WORDS ONLY, SECOND CLICK WILL USE COMMON100 !!!
 
         ☑️ FADE ENTIRE SLIDER DIV WITH "JS" LIKE "SENTENCES"
 
@@ -2879,8 +2889,9 @@ BRANCH: numbers-1
 
 
 
-        WHEN CORRECTING BEYOND END OF LINE ERRORS:
-        Uncaught TypeError: Cannot read properties of null (reading 'innerText')
+        ☑️ WHEN CORRECTING BEYOND END OF LINE ERRORS: 
+            Uncaught TypeError: Cannot read properties of null (reading 'innerText')
+            ☑️ REFACTOR handleBackspace() 
 
         ENTER AND SPACE KEYS TRIGGER CARD FLIP (ON ENTIRE CARD/APP) AFTER FLIP BUTTON IS CLICKED (FOCUS???)
                
