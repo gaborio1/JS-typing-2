@@ -797,7 +797,9 @@ const setDifficultyLevel = () => {
             }
             // --- JS ---
             else {
-                targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
+                // ERROR: jsOther[] IS DISABLED AS IT WILL CAUSE BUGS (STRINGS WITH SPACE)
+                // targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
+                targetArray = [...jsObjPropMeth, ...jsReserved];
                 maxMistakes = 20;
                 disableSentenceModifiers();
                 disableNumbers();
