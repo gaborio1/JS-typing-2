@@ -19,7 +19,7 @@ import {
     jsReserved,
     jsObjPropMeth,
     jsOther,
-    // testArray,
+    testArray,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -799,10 +799,11 @@ const setDifficultyLevel = () => {
             // --- JS ---
             else {
                 // ERROR: jsOther[] IS DISABLED AS IT WILL CAUSE BUGS (STRINGS WITH SPACE)
-                // targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
+                // !!! ALSO, HAVE TO LIMIT LENGTH OF STRING TO NOT EXCEED SEQUENCE LENGTH !!!
+                targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
                 // targetArray = [...jsObjPropMeth, ...jsReserved];
                 // targetArray = [...testArray];
-                targetArray = [...jsOther];
+                // targetArray = [...jsOther];
                 maxMistakes = 20;
                 disableSentenceModifiers();
                 disableNumbers();
@@ -1571,6 +1572,16 @@ startButton.addEventListener("click", (event) => {
             //     wordArrays[lineIdx][wordIdx][charIdx]
             // );
 
+            // +++ SPACE IN STRING +++
+            // DETECT SPACE IN STRING
+            // if (
+            //     charIdx < wordArrays[lineIdx][wordIdx].length - 1 &&
+            //     typedKey === " "
+            // ) {
+            //     console.log("___SPACE IN STRING___", "WORD IDX:", wordIdx);
+            // }
+            // +++ SPACE IN STRING +++
+
             if (soundOn) {
                 playSound("mixkit-single-key-press-in-a-laptop-2541.wav", 1);
             }
@@ -1590,7 +1601,11 @@ startButton.addEventListener("click", (event) => {
             }
 
             // REMOVE CURSOR FROM SPACE
-            if (typedKey === " ") {
+            // if (typedKey === " ") {
+            if (
+                typedKey === " " &&
+                charIdx < wordArrays[lineIdx][wordIdx].length - 1
+            ) {
                 // console.log("CORRECT KEY - SPACE");
 
                 // RESEET SKIPPED WORDS COUNTER
@@ -1610,6 +1625,7 @@ startButton.addEventListener("click", (event) => {
                 }
 
                 // COUNT COLOUR SPANS IN LAST WORD WHEN TRAILING SPACE IS TYPED CORRECTLY
+
                 countSpanColours();
 
                 wordCounter += 1;
@@ -1620,6 +1636,15 @@ startButton.addEventListener("click", (event) => {
                 colourAccuracySpan();
                 accuracySpan.textContent = `${Math.floor(accuracy)}`;
             }
+            // +++ SPACE IN STRING +++
+            // DETECT SPACE IN STRING
+            // if (
+            //     charIdx < wordArrays[lineIdx][wordIdx].length - 1 &&
+            //     typedKey === " "
+            // ) {
+            //     console.log("___SPACE IN STRING___", "WORD IDX:", wordIdx);
+            // }
+            // +++ SPACE IN STRING +++
         }
 
         // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 WRONG KEY OR SHIFT FOR CAPITAL LETTERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰
