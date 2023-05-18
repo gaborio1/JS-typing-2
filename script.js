@@ -19,6 +19,7 @@ import {
     jsReserved,
     jsObjPropMeth,
     jsOther,
+    // testArray,
 } from "./words.js";
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -799,7 +800,9 @@ const setDifficultyLevel = () => {
             else {
                 // ERROR: jsOther[] IS DISABLED AS IT WILL CAUSE BUGS (STRINGS WITH SPACE)
                 // targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
-                targetArray = [...jsObjPropMeth, ...jsReserved];
+                // targetArray = [...jsObjPropMeth, ...jsReserved];
+                // targetArray = [...testArray];
+                targetArray = [...jsOther];
                 maxMistakes = 20;
                 disableSentenceModifiers();
                 disableNumbers();
