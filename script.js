@@ -1601,11 +1601,11 @@ startButton.addEventListener("click", (event) => {
             }
 
             // REMOVE CURSOR FROM SPACE
-            // if (typedKey === " ") {
-            if (
-                typedKey === " " &&
-                charIdx < wordArrays[lineIdx][wordIdx].length - 1
-            ) {
+            if (typedKey === " ") {
+                // if (
+                //     typedKey === " " &&
+                //     charIdx < wordArrays[lineIdx][wordIdx].length - 1
+                // ) {
                 // console.log("CORRECT KEY - SPACE");
 
                 // RESEET SKIPPED WORDS COUNTER
