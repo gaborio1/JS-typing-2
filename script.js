@@ -1965,10 +1965,13 @@ const displaySelectionWarning = () => {
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
-        // console.log("DIFFICULTY RADIOS SELECTED");
+        console.log("DIFFICULTY RADIOS SELECTED");
 
         // console.log(this);
         // console.log(targetArray);
+
+        // RESET PROBLEM KEYS SET
+        problemKeysSet.clear();
 
         // RESET "EASY, MEDIUM AND HARD" TO DEFAULT 30 SEQUENCE LENGTH
         if (i <= 2) {
@@ -1976,8 +1979,11 @@ for (let i = 0, length = difficultyRadios.length; i < length; i++) {
             lengthDisplaySpan.textContent = 30;
         }
 
+        clearTextInput();
         placeholderClickStart();
+
         clearTextFields();
+        clearMessageDiv();
         // DISABLING NUMBERS TO RESET ITS TOGGLE WHEN SWITHCING BETWEEN MEDIUM AND HARD WITH TOGGLE ON
         disableNumbers();
         // THEN SET LEVEL BASED ON TOGGLE SELECTION
@@ -2530,7 +2536,7 @@ for (let i = 0; i < levelButtons.length; i += 1) {
         if (!selectionIsMade()) {
             // console.log("NO SELECTION IS MADE, DISABLE TOGGLES AND START");
             disableStartButton();
-            textInput.placeholder = "";
+            clearTextInput();
             disableBeginnerToggles();
             displaySelectionWarning();
         } else {
@@ -2574,6 +2580,10 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
+
+    // RESET PROBLEM KEY SET
+    problemKeysSet.clear();
+
     // RESET SELECTION TYPE TOGGLE TO "THROUGH"
     if (!inclusiveSelected) {
         // console.log("RESET SELECTION TYPE TOGGLE NOW");
@@ -2919,7 +2929,10 @@ BRANCH: numbers-1
             
     PROBLEMS:
 
+        ☑️ DO NOT DISPLAY "PRACTICE PROBLEM WORDS" MESSAGE WHEN SWITCHING TO BEGINNER
+            PROBLEM KEY SET IS RESET IN beginnerShowButton.addEventListener()
 
+        ☑️ RESET PROBLEM WORDS ARRAY WHEN SWITCHING LEVELS?
 
         ☑️ WHEN CORRECTING BEYOND END OF LINE ERRORS: 
             Uncaught TypeError: Cannot read properties of null (reading 'innerText')
