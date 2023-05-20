@@ -542,9 +542,10 @@ const buildWordArrays = (numOfLines) => {
                     ) {
                         const newFillerWord =
                             getRandomFromArr(fillerWordsArray);
-                        console.log("FILLER WORD: ", newFillerWord);
+                        // console.log("FILLER WORD: ", newFillerWord);
 
                         // +++ PROBLEM KEY WORDS +++
+                        // IF NOT UNDEFINED:
                         if (newFillerWord) {
                             // +++ PROBLEM KEY WORDS +++
                             arr.push(newFillerWord.concat(" "));
@@ -1353,7 +1354,7 @@ textInput.disabled = true;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.addEventListener("click", (event) => {
-    console.log(problemKeysSet);
+    // console.log(problemKeysSet);
     // +++ PROBLEM KEY WORDS
     // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
     if (sentencesRadio.checked === false) {
@@ -2823,7 +2824,7 @@ BRANCH: numbers-1
         INFO TEXT UPDATE
             ☑️ DIFFICULTY LEVELS
 
-        CLEAR PROBLEM KEY HIGHLIGHT ON KEYBOARD WHEN SWITCHING BETWEEN ADV/BEGINNER
+        ☑️ CLEAR PROBLEM KEY HIGHLIGHT ON KEYBOARD WHEN SWITCHING BETWEEN ADV/BEGINNER
 
 
        WHEN CLOSING BEGINNER LEVEL, RESET ?
@@ -2934,7 +2935,8 @@ BRANCH: numbers-1
             
     PROBLEMS:
 
-        PROBLEM KEY WORDS FUNCTIONALITY NOT WORKING WITH CERTAIN LETTERS (D, F, G, K, I, L, T, W)
+        ☑️ PROBLEM KEY WORDS FUNCTIONALITY NOT WORKING WITH CERTAIN LETTERS (D, F, G, K, I, L, T, W)
+                CHECK FOR UNDEFINED IN FILLER WORDS: if (newFillerWord)
 
         ☑️ DO NOT DISPLAY "PRACTICE PROBLEM WORDS" MESSAGE WHEN SWITCHING TO BEGINNER
             PROBLEM KEY SET IS RESET IN beginnerShowButton.addEventListener()
