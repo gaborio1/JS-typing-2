@@ -542,9 +542,15 @@ const buildWordArrays = (numOfLines) => {
                     ) {
                         const newFillerWord =
                             getRandomFromArr(fillerWordsArray);
-                        // console.log("FILLER WORD: ", newFillerWord);
+                        console.log("FILLER WORD: ", newFillerWord);
 
-                        arr.push(newFillerWord.concat(" "));
+                        // +++ PROBLEM KEY WORDS +++
+                        if (newFillerWord) {
+                            // +++ PROBLEM KEY WORDS +++
+                            arr.push(newFillerWord.concat(" "));
+                        }
+
+                        // arr.push(newFillerWord.concat(" "));
                     }
                     // +++ SEQUENCE LENGTH +++
                     break;
@@ -1347,7 +1353,7 @@ textInput.disabled = true;
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.addEventListener("click", (event) => {
-    // console.log(problemKeysSet);
+    console.log(problemKeysSet);
     // +++ PROBLEM KEY WORDS
     // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
     if (sentencesRadio.checked === false) {
@@ -1965,7 +1971,7 @@ const displaySelectionWarning = () => {
 
 for (let i = 0, length = difficultyRadios.length; i < length; i++) {
     difficultyRadios[i].addEventListener("click", function () {
-        console.log("DIFFICULTY RADIOS SELECTED");
+        // console.log("DIFFICULTY RADIOS SELECTED");
 
         // console.log(this);
         // console.log(targetArray);
@@ -2580,7 +2586,6 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
-
     // RESET PROBLEM KEY SET
     problemKeysSet.clear();
 
@@ -2928,6 +2933,8 @@ BRANCH: numbers-1
        
             
     PROBLEMS:
+
+        PROBLEM KEY WORDS FUNCTIONALITY NOT WORKING WITH CERTAIN LETTERS (D, F, G, K, I, L, T, W)
 
         ☑️ DO NOT DISPLAY "PRACTICE PROBLEM WORDS" MESSAGE WHEN SWITCHING TO BEGINNER
             PROBLEM KEY SET IS RESET IN beginnerShowButton.addEventListener()
