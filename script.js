@@ -2749,7 +2749,7 @@ beginnerHideButton.addEventListener("click", function () {
 
 /*
 
- MACBOOK 2/4/23 19:59 
+LEARNING2TYPE
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -2840,7 +2840,7 @@ BRANCH: numbers-1
 
         SPACE ON LAST WORD BEYOND END OF LINE SHOULD TRIGGER NEXTLINE()?
 
-        FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 50+ SPANS)
+        FIND SOLUTION TO LONG SENTENCES (TEXT FIELD OVERFLOW AT 40+ SPANS)
             SPLIT ARRAY IN TWO?
 
         CAPSLOCK MUST NOT ACTIVATE TIMER ? ONLY OFF->ON WILL TRIGGER TIMER (DETECT CAPSLOCK CHANGE)
@@ -2887,19 +2887,20 @@ BRANCH: numbers-1
         ☑️ CLEAR TEXT FIELDS / DISPLAY "CLICK START" WHEN LEVEL SELECTION IS MADE
 
         COMPLETE DIFFICULTY LEVEL TARGET ARRAYS
-            EASY 100
-            MED  200
-            HARD 500 (CURRENTLY JAVASCRIPT RESERVED WORDS)
+            EASY 200
+            MED  500
+            HARD 500 
                 NUMBERS
                     ☑️  HARD CODED
                     ☑️ RANDOM (WRITE FUNCTION TO POPULATE randomNumbers[])
             SENTENCES
                 ☑️ EMAIL PHRASES
-                SENTENCES
+                ☑️ SENTENCES
                     ☑️ PANGRAMS
             DATE FORMATS?
                 DAYS
                 MONTHS
+            JAVASCRIPT (CURRENTLY JAVASCRIPT RESERVED WORDS)
 
         ☑️ INCLUDE NUMBERS IN DESCRIPTION
 

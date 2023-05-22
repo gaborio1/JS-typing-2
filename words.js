@@ -560,6 +560,11 @@ export const numbers = [
     "1983",
 ];
 
+// export const timeRelated = [
+//     "Monday Tuesday Wednesday Thursday Friday Saturday Sunday",
+//     "January February March April May June July August September October November December"
+// ]
+
 export const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 export const punctMarks = [",", ".", "!", "?", ":", ";", "-", "'"];
