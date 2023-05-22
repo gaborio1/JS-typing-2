@@ -2749,7 +2749,7 @@ beginnerHideButton.addEventListener("click", function () {
 
 /*
 
-LEARNING2TYPE
+CENTER KEYBOARD
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
