@@ -827,7 +827,6 @@ p .active-txt-span.active-txt-span--enter {
 /* // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 MESSAGE DIV 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 
 .message-div {
-    z-index: 2;
     position: absolute;
     top: 475px;
     left: 250px;
@@ -842,7 +841,7 @@ p .active-txt-span.active-txt-span--enter {
     /* color: orange; */
 
     /* ADD BACKGROUND WHEN ENLARGING  */
-    /* background: var(--wrap-highlight--light); */
+    background: var(--wrap-highlight--light);
     /* background: var(--app-background--light); */
 
     padding: 10px;
@@ -852,6 +851,7 @@ p .active-txt-span.active-txt-span--enter {
     /* transition: background var(--background-transition); */
 }
 
+
 .message-div.dark-theme {
     color: rgb(222, 131, 13);
     color: red;
@@ -860,6 +860,22 @@ p .active-txt-span.active-txt-span--enter {
     background: rgba(48, 75, 92, 0.08);
 
     /* transition: background var(--background-transition); */
+}
+
+/* EXPANDED MESSAGE DIV */
+.message-div.expand,
+.message-div.dark-theme.expand {
+    z-index: 2;
+    height: 250px;
+    /* background: var(--wrap-highlight--light); */
+}
+
+.message-div.expand {
+    background: #ebebebca;
+}
+
+.message-div.dark-theme.expand {
+    background: rgba(19, 28, 33, 0.69);
 }
 
 /* // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 KEYBOARD 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */

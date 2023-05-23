@@ -608,6 +608,11 @@ const clearDataAndDisplay = () => {
     clearArrAndString();
 };
 
+// COLLAPSE MESSAGE DIV
+const collapseMessageDiv = () => {
+    messageDiv.classList.remove("expand");
+}
+
 // CALCULATE ACCURACY PERCENTAGE
 const calcAccuracy = () => {
     return (100 / (greenCounter + redCounter)) * greenCounter;
@@ -687,6 +692,7 @@ const capsLockWarningsOff = () => {
     capsLockKey.style.background = "none";
     capsLockKey.classList.remove("blink");
     clearMessageDiv();
+    collapseMessageDiv();
 };
 
 const testCapsLock = (event) => {
@@ -1359,15 +1365,18 @@ startButton.addEventListener("click", (event) => {
     // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
     if (sentencesRadio.checked === false) {
         // console.log("SENTENCES NOT SELECTED");
-        if (messageDiv.textContent === "PRACTICE PROBLEM KEYS OR CLICK NEW") {
+        if (messageDiv.textContent === "PRACTICE YOUR PROBLEM KEY WORDS OR SKIP THIS OPTION BY CLICKING NEW AGAIN") {
             clearMessageDiv();
         }
         if (problemKeysSet.size > 0) {
             // console.log("PROB KEY WORDS MESSAGE");
             setTimeout(() => {
-                messageDiv.textContent = "PRACTICE PROBLEM KEYS OR CLICK NEW";
+                messageDiv.classList.add("expand");
+                messageDiv.textContent = "PRACTICE YOUR PROBLEM KEY WORDS OR SKIP THIS OPTION BY CLICKING NEW AGAIN";
             }, 50);
             // messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
+        } else {
+            collapseMessageDiv();
         }
     }
 
@@ -1495,6 +1504,11 @@ startButton.addEventListener("click", (event) => {
 
     let eventCounter = 0;
     const handleKeyEvent = (event) => {
+
+        if (messageDiv.classList.contains("expand")) {
+            collapseMessageDiv();
+        }
+
         // console.table({ lineIdx: lineIdx, wordIdx: wordIdx, charIdx: charIdx, strIdx: strIdx });
         // +++ PROBLEM KEY WORDS
         clearMessageDiv();
@@ -2587,6 +2601,12 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
+
+    if (messageDiv.classList.contains("expand")) {
+        setTimeout(() => {
+            collapseMessageDiv();
+        }, 1000);
+    }
     // RESET PROBLEM KEY SET
     problemKeysSet.clear();
 
@@ -2823,6 +2843,10 @@ BRANCH: numbers-1
 
         INFO TEXT UPDATE
             ☑️ DIFFICULTY LEVELS
+
+        DISABLE PROBLEM KEY WORDS
+            ☑️ SENTENCES
+            JS
 
         ☑️ CLEAR PROBLEM KEY HIGHLIGHT ON KEYBOARD WHEN SWITCHING BETWEEN ADV/BEGINNER
 
