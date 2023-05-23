@@ -191,6 +191,9 @@ let tempProbWordsArr = [];
 let beginnerOn = false;
 // COLOUR THEME
 let darkThemeOn = false;
+// SENTENCES AND JS DIFFICULTY LEVELS
+let sentencesOn = false;
+let jsOn = false;
 
 // BEGINNER LEVEL BUTTON STATE BOOLEANS
 let level_1_On = false;
@@ -600,6 +603,11 @@ const clearTextFields = () => {
     textSpanContainerNextParagraph.innerHTML = "";
 };
 
+// CLEAR PROB KEYS SET
+const clearProblemKeysSet = () => {
+    problemKeysSet.clear();
+};
+
 // CLEAR TEXT FIELDS ACTIVE / NEXT, INPUT, AND INITIALISE WORDARRAYS
 const clearDataAndDisplay = () => {
     clearTextFields();
@@ -611,7 +619,7 @@ const clearDataAndDisplay = () => {
 // COLLAPSE MESSAGE DIV
 const collapseMessageDiv = () => {
     messageDiv.classList.remove("expand");
-}
+};
 
 // CALCULATE ACCURACY PERCENTAGE
 const calcAccuracy = () => {
@@ -748,6 +756,8 @@ const setDifficultyLevel = () => {
         if (difficultyRadios[i].checked) {
             // --- EASY ---
             if (difficultyRadios[i].value === "easy") {
+                sentencesOn = false;
+                jsOn = false;
                 targetArray = [...extractWordsFromString(tenFastFingers200)];
                 maxMistakes = 20;
                 enableSentenceModifiers();
@@ -758,6 +768,8 @@ const setDifficultyLevel = () => {
 
                 // --- MEDIUM ---
             } else if (difficultyRadios[i].value === "medium") {
+                sentencesOn = false;
+                jsOn = false;
                 // CONSTRUCT TARGET ARRAY BASED ON NUMBERS TOGGLE STATE
                 if (numbersOn) {
                     targetArray = [
@@ -780,6 +792,8 @@ const setDifficultyLevel = () => {
 
                 // --- HARD ---
             } else if (difficultyRadios[i].value === "hard") {
+                sentencesOn = false;
+                jsOn = false;
                 if (numbersOn) {
                     // targetArray = [
                     //     ...jsReserved,
@@ -805,6 +819,8 @@ const setDifficultyLevel = () => {
             }
             // --- SENTENCES ---
             else if (difficultyRadios[i].value === "sentences") {
+                sentencesOn = true;
+                jsOn = false;
                 disableSentenceModifiers();
                 sliderWrap.classList.add("transparent-disabled");
                 disableNumbers();
@@ -813,6 +829,8 @@ const setDifficultyLevel = () => {
             else {
                 // ERROR: jsOther[] IS DISABLED AS IT WILL CAUSE BUGS (STRINGS WITH SPACE)
                 // !!! ALSO, HAVE TO LIMIT LENGTH OF STRING TO NOT EXCEED SEQUENCE LENGTH !!!
+                jsOn = true;
+                sentencesOn = false;
                 targetArray = [...jsObjPropMeth, ...jsReserved, ...jsOther];
                 // targetArray = [...jsObjPropMeth, ...jsReserved];
                 // targetArray = [...testArray];
@@ -1365,14 +1383,18 @@ startButton.addEventListener("click", (event) => {
     // DO NOT DISPLAY PROB WORDS MESSAGE IN "SENTENCES"
     if (sentencesRadio.checked === false) {
         // console.log("SENTENCES NOT SELECTED");
-        if (messageDiv.textContent === "PRACTICE YOUR PROBLEM KEY WORDS OR SKIP THIS OPTION BY CLICKING NEW AGAIN") {
+        if (
+            messageDiv.textContent ===
+            "PRACTICE YOUR PROBLEM KEY WORDS OR SKIP THIS OPTION BY CLICKING NEW AGAIN"
+        ) {
             clearMessageDiv();
         }
         if (problemKeysSet.size > 0) {
             // console.log("PROB KEY WORDS MESSAGE");
             setTimeout(() => {
                 messageDiv.classList.add("expand");
-                messageDiv.textContent = "PRACTICE YOUR PROBLEM KEY WORDS OR SKIP THIS OPTION BY CLICKING NEW AGAIN";
+                messageDiv.textContent =
+                    "PRACTICE YOUR PROBLEM KEY WORDS OR SKIP THIS OPTION BY CLICKING NEW AGAIN";
             }, 50);
             // messageDiv.textContent = "TYPE PROB. KEY WORDS OR CLICK NEW";
         } else {
@@ -1423,13 +1445,19 @@ startButton.addEventListener("click", (event) => {
     if (!beginnerOn) {
         // IF THERE IS ANY PROBLEM KEY,  FILL tempProbWordsArr WITH WORDS THAT CONTAIN PROBLEM KEYS
         findAndApplyProblemKeyWords();
-        problemKeysSet.clear(); // RESET PROBLEM KEYS SET AFTER PROBLEM KEYS HAVE BEEN USED FOR NEW SET OF WORDS
+        clearProblemKeysSet(); // RESET PROBLEM KEYS SET AFTER PROBLEM KEYS HAVE BEEN USED FOR NEW SET OF WORDS
 
         tempProbWordsArr = []; // RESET TEMPORARY ARRAY
         // targetArray = [...common100];
         removeProblemKeyHighlight();
     }
-    problemKeysSet.clear();
+
+    if (jsRadio.checked) {
+        // console.log("JS LEVEL ON");
+        clearProblemKeysSet();
+    }
+
+    clearProblemKeysSet();
     removeProblemKeyHighlight();
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CONTROL PANEL 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
@@ -1504,7 +1532,6 @@ startButton.addEventListener("click", (event) => {
 
     let eventCounter = 0;
     const handleKeyEvent = (event) => {
-
         if (messageDiv.classList.contains("expand")) {
             collapseMessageDiv();
         }
@@ -1796,13 +1823,21 @@ startButton.addEventListener("click", (event) => {
                 wordArrays[lineIdx][wordIdx][charIdx] !== " " && // SPACE
                 wordArrays[lineIdx][wordIdx][charIdx] !== undefined // CHARACTER IN NEXT WORD (WORD IDX HAS NOT BEEN INCREMENTED)
             ) {
+                // if (!sentencesOn || !jsOn) {
                 problemKeysSet.add(wordArrays[lineIdx][wordIdx][charIdx]);
+                // }
+
                 // console.log(problemKeysSet);
             }
 
             // IF PROBLEMKEYS SET HAS LENGTH LOOP OVER problemKeysSet AND FIND CORRESPONDING problem-key-span FOR EACH ELEMENT
             if (problemKeysSet.size > 0) {
                 highlightProblemKeys();
+            }
+
+            // DISABLE PROB KEY WORDS OPTION BUT STILL ALLOW PROB KEY HIGHLIGHT ON KEYBOARD
+            if (sentencesOn || jsOn) {
+                clearProblemKeysSet();
             }
 
             if (soundOn) {
@@ -1992,7 +2027,7 @@ for (let i = 0, length = difficultyRadios.length; i < length; i++) {
         // console.log(targetArray);
 
         // RESET PROBLEM KEYS SET
-        problemKeysSet.clear();
+        clearProblemKeysSet();
 
         // RESET "EASY, MEDIUM AND HARD" TO DEFAULT 30 SEQUENCE LENGTH
         if (i <= 2) {
@@ -2601,14 +2636,13 @@ for (let i = 0; i < levelButtons.length; i += 1) {
 
 // SHOW BEGINNER LEVELS
 beginnerShowButton.addEventListener("click", function () {
-
     if (messageDiv.classList.contains("expand")) {
         setTimeout(() => {
             collapseMessageDiv();
         }, 1000);
     }
     // RESET PROBLEM KEY SET
-    problemKeysSet.clear();
+    clearProblemKeysSet();
 
     // RESET SELECTION TYPE TOGGLE TO "THROUGH"
     if (!inclusiveSelected) {
@@ -2729,7 +2763,7 @@ beginnerHideButton.addEventListener("click", function () {
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰 SLIDER 🀰🀰🀰🀰🀰🀰🀰🀰🀰
     sliderWrap.classList.remove("transparent-disabled");
 
-    problemKeysSet.clear();
+    clearProblemKeysSet();
 
     startButton.disabled = false;
 
@@ -2844,9 +2878,9 @@ BRANCH: numbers-1
         INFO TEXT UPDATE
             ☑️ DIFFICULTY LEVELS
 
-        DISABLE PROBLEM KEY WORDS
+        DISABLE PROBLEM KEY WORDS - if (sentencesOn || jsOn)
             ☑️ SENTENCES
-            JS
+            ☑️ JS
 
         ☑️ CLEAR PROBLEM KEY HIGHLIGHT ON KEYBOARD WHEN SWITCHING BETWEEN ADV/BEGINNER
 
