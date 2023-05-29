@@ -2875,6 +2875,14 @@ BRANCH: numbers-1
     
     FEATURES:
 
+        MAKE APP WORK ON TABLETS WITH KEYBOARD CONNECTED
+
+        RESPONSIVENESS
+            PHONES
+                ☑️ IPHONE - DISABLED
+            TABLETS
+                IPAD - DISABLED
+
         INFO TEXT UPDATE
             ☑️ DIFFICULTY LEVELS
 
