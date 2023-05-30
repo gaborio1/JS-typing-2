@@ -1,0 +1,44 @@
+/* 
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TABLET SIZE 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+/* @media only screen and (max-width: 767px) { */
+@media only screen and (max-width: 1000px) {
+    .container {
+        /* background: rgb(227, 224, 200); */
+        background: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0px;
+    }
+
+    .stat-wrap,
+    .colour-code-wrap,
+    .controls-container,
+    .counter-div,
+    .message-div {
+        /* WRAP HIGHLIGHT LIGHT */
+        background: #ebebeb;
+        background: #ebebeb3b;
+    }
+}
+
+/* @media only screen and (max-height: 767px) { */
+@media only screen and (max-height: 1023px) {
+    /* .body {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        } */
+
+    .container {
+        /* background: rgb(200, 227, 201); */
+        /* background: none; */
+        /* margin-top: 0px !important; */
+        margin-top: 0% !important;
+    }
+
+    /* .colour-code-container {
+            display: none;
+        } */
+}
