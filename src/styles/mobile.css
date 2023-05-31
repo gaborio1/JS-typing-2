@@ -47,6 +47,7 @@
     width: 280px;
     width: 250px;
     margin: 1px;
+    border-radius: 3px;
 }
 
 /* .small-container__text-wrap,
@@ -63,6 +64,7 @@
 /* IPHONE X WIDTH */
 /* @media only screen and (max-width: 896px) { */
 @media only screen and (max-width: 767px) {
+
     /* @media only screen and (max-width: 1024px) { */
     * {
         margin: 0;
@@ -173,10 +175,12 @@
     .small-container {
         height: fit-content;
     }
+
     .small-container h1 {
         margin-bottom: 20px;
         font-size: 24px;
     }
+
     .small-container h2 {
         font-size: 18px;
     }

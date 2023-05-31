@@ -10,6 +10,7 @@
         border-left: none;
         border-right: none;
         border-radius: 0px;
+        /* border: 5px solid teal; */
     }
 
     .stat-wrap,
@@ -35,7 +36,26 @@
         /* background: rgb(200, 227, 201); */
         /* background: none; */
         /* margin-top: 0px !important; */
+        /* border: 5px solid cornflowerblue; */
         margin-top: 0% !important;
+    }
+
+    /* HIDE COLOUR CODES */
+    .colour-code-container {
+        display: none;
+    }
+
+    .scene--main {
+        width: var(--app-width);
+        height: 750px;
+        margin: 0px auto;
+        /* perspective: 2000px; */
+        perspective: 800px;
+    }
+
+    .card-main.flipped {
+        margin: 0px auto;
+        height: 750px;
     }
 
     /* .colour-code-container {
