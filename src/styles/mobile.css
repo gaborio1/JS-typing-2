@@ -44,8 +44,10 @@
     }
 } */
 .small-container img {
-    width: 280px;
-    width: 250px;
+    /* width: 280px; */
+    /* width: 250px; */
+    /* width: 76vw; */
+    width: 66.6vw;
     margin: 1px;
     border-radius: 3px;
 }
@@ -59,6 +61,23 @@
 .dark-wrap {
     margin: 20px auto;
     /* border: 1px solid red; */
+}
+
+.spacer-div--mobile {
+    width: 79.8vw;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid var(--border-grey);
+}
+
+h1 {
+    /* margin-bottom: -10px; */
+    /* --BORDER-BLUE */
+    color: #529de1;
+}
+
+h2 {
+    margin: 10px auto;
 }
 
 /* IPHONE X WIDTH */
@@ -77,6 +96,7 @@
         /* height: 100vh; */
         align-items: center;
         justify-content: center;
+        /* text-align: center; */
         background: #f0efeb;
         /* border: 10px solid green; */
     }
@@ -94,7 +114,7 @@
         width: 80vw;
         height: fit-content;
         /* height: 1000px; */
-        padding: 10px 15px 10px 15px;
+        padding: 10px 0px 10px 0px;
         background: var(--body-background--light);
         border: 1px solid black;
         border: 1px solid var(--border-grey);
@@ -103,8 +123,8 @@
 
     .small-container h1 {
         font-weight: 500;
-        margin-bottom: 20px;
-        border-bottom: 1px solid black;
+        /* margin-bottom: 10px; */
+        /* border-bottom: 1px solid black; */
     }
 
     .small-container p {
@@ -152,7 +172,7 @@
         width: 80%;
         height: fit-content;
         /* height: 1000px; */
-        padding: 10px 15px 10px 15px;
+        padding: 10px 0px 10px 0px;
         background: var(--body-background--light);
         border: 1px solid black;
         border: 1px solid var(--border-grey);
@@ -161,8 +181,8 @@
 
     .small-container h1 {
         font-weight: 500;
-        margin-bottom: 20px;
-        border-bottom: 1px solid black;
+        /* margin-bottom: 10px; */
+        /* border-bottom: 1px solid black; */
     }
 
     .small-container p {
@@ -177,7 +197,7 @@
     }
 
     .small-container h1 {
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
         font-size: 24px;
     }
 
@@ -186,7 +206,8 @@
     }
 
     .small-container img {
-        width: 200px;
+        /* width: 200px; */
+        width: 66vw;
         /* margin: 1px; */
     }
 }
