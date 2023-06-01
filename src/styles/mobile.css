@@ -70,13 +70,13 @@
     border-bottom: 1px solid var(--border-grey);
 }
 
-h1 {
+.small-container h1 {
     /* margin-bottom: -10px; */
     /* --BORDER-BLUE */
     color: #529de1;
 }
 
-h2 {
+.small-container h2 {
     margin: 10px auto;
 }
 

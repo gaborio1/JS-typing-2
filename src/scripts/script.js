@@ -26,6 +26,7 @@ import {
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ELEMENT VARIABLES 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const mainScene = document.getElementById("scene--main");
 const card = document.getElementById("card--main"); // CARD CONTAINED WITHIN SCENE
 
 const container = document.getElementById("container");
@@ -1330,6 +1331,7 @@ const setMarginTop = function () {
         marginTop = calcMarginTop();
         // console.log("MARGIN TOP:", marginTop);
         // BOTH CARD SIDES
+        // mainScene.style.marginTop = `${marginTop}px`;
         container.style.marginTop = `${marginTop}px`;
         instructionsContainer.style.marginTop = `${marginTop}px`;
     }
