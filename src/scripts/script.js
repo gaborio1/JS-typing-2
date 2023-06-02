@@ -2256,7 +2256,7 @@ const countdown = () => {
         }
 
         // FADE IN CONTROLS AT 2 SECOND MARK
-        if (seconds === 2) {
+        if (seconds === 1) {
             for (let i = 0; i < fadeWithTimerElements.length; i += 1) {
                 fadeWithTimerElements[i].classList.add("fadeIn");
                 fadeWithTimerElements[i].classList.remove("fadeOut");
@@ -2835,17 +2835,8 @@ CURRENT BRANCH:
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-BRANCH: numbers-1
-
-    ☑️ HARD DIFF LEVEL TO ENABLE NUMBERS
-
-    ☑️ STYLE TOGGLE
-    ☑️ STATE TOGGLE
-
-    ☑️ DISABLE STYLE TOGGLE WITH OTHER LEVELS (COLOUR AND TEXTCONTENT, RED/OFF)
-        (DUPLICATE CODE IN setDifficultyLevel())
-
-    ☑️ IMPLEMENT LOGIC
+TABLET SIZE
+    RE-POSITION MESSAGE DIV (LANDSCAPE ORIENTATION DISPLACES IT)
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
