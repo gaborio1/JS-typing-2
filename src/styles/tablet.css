@@ -22,13 +22,32 @@
 
     .stat-wrap,
     .colour-code-wrap,
-    .controls-container,
     .counter-div,
     .message-div {
         /* WRAP HIGHLIGHT LIGHT */
         background: #ebebeb;
         background: #ebebeb3b;
     }
+
+    /* BEGINNER CONTROLS */
+    .controls-container,
+    .card__face--back--controls {
+
+        background: var(--wrap-highlight--light);
+        /* background: #ebebeb3b; */
+        border: 1px solid var(--border-grey);
+
+    }
+
+    /* TEMP FIX */
+    .message-div {
+        left: 247px;
+    }
+
+    .message-div.dark-theme {
+        left: 250px;
+    }
+
 }
 
 /* LANDSCAPE */
@@ -40,28 +59,43 @@
                 align-items: center !important;
                 justify-content: center !important;
             } */
+
     .scene--main {
-        width: var(--app-width);
+        /* width: var(--app-width); */
         width: 100%;
-        height: 750px;
+        /* height: 750px; */
         /* !!! NOTICE HEIGHT IS NOW THE DEFAULT (PORTRAIT) WIDTH !!! */
         height: 100vh;
         margin: 0px auto;
-        /* margin-top: 0% !important; */
-        /* perspective: 2000px; */
         perspective: 800px;
         /* border: 5px solid red; */
     }
 
     .container {
-        /* background: rgb(200, 227, 201); */
-        /* background: none; */
         background: none;
         border-left: none;
         border-right: none;
         border-radius: 0px;
         border: 5px solid cornflowerblue;
         margin-top: 0% !important;
+    }
+
+    .stat-wrap,
+    .colour-code-wrap,
+    .counter-div,
+    .message-div {
+        /* WRAP HIGHLIGHT LIGHT */
+        background: #ebebeb;
+        background: #ebebeb3b;
+    }
+
+    /* BEGINNER CONTROLS */
+    .controls-container,
+    .card__face--back--controls {
+        background: var(--wrap-highlight--light);
+        /* background: #ebebeb3b; */
+        border: 1px solid var(--border-grey);
+
     }
 
     /* HIDE COLOUR CODES */
@@ -77,5 +111,14 @@
         /* !!! NOTICE HEIGHT IS NOW THE DEFAULT (PORTRAIT) WIDTH !!! */
         height: 100vh;
         margin-top: 0% !important;
+    }
+
+    /* TEMP FIX */
+    .message-div {
+        left: 259px;
+    }
+
+    .message-div.dark-theme {
+        left: 263px;
     }
 }
