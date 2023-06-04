@@ -1312,9 +1312,10 @@ const displayConsecErrors = () => {
 
 // APP CONTAINER HEIGHT
 const appHeight = document.getElementById("container").clientHeight;
-// console.log("CONTAINER HEIGHT", appHeight);
+console.log("CONTAINER HEIGHT", appHeight);
 // GET WINDOW HEIGHT
 let viewportHeight = window.innerHeight;
+console.log("VIEWPORT HEIGHT", viewportHeight);
 // INITIALISE MARGIN TOP
 let marginTop = 0;
 
@@ -1325,8 +1326,9 @@ const calcMarginTop = () => {
 
 // SET MARGIN TOP IF APP HEIGHT IS SMALLER THAN WINDOW HEIGHT
 const setMarginTop = function () {
-    viewportHeight = window.innerHeight;
-    // console.log(viewportHeight);
+    // EXCLUDE HEADER FROM VIEWPORT HEIGHT (-75)
+    viewportHeight = window.innerHeight - 75;
+    console.log(viewportHeight);
     if (viewportHeight > appHeight) {
         marginTop = calcMarginTop();
         // console.log("MARGIN TOP:", marginTop);

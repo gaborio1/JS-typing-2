@@ -3,21 +3,27 @@
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TABLET SIZE 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 
+
 /* PORTRAIT */
 /* @media only screen and (max-width: 767px) { */
 /* @media only screen and (max-width: 767px) { */
 @media only screen and (max-width: 1000px) {
+    .site-header {
+        display: none;
+    }
+
     /* .scene--main {
         border: 5px solid red;
     } */
 
+    /* CONTAINER BORDER WILL DISPLACE MESSAGE DIV */
     .container {
         /* background: rgb(227, 224, 200); */
         background: none;
         border-left: none;
         border-right: none;
         border-radius: 0px;
-        border: 5px solid teal;
+        /* border: 5px solid teal; */
     }
 
     .stat-wrap,
@@ -41,7 +47,7 @@
 
     /* TEMP FIX */
     .message-div {
-        left: 247px;
+        left: 252px;
     }
 
     .message-div.dark-theme {
@@ -53,6 +59,11 @@
 /* LANDSCAPE */
 /* @media only screen and (max-height: 767px) { */
 @media only screen and (max-height: 1023px) {
+
+    .site-header {
+        display: none;
+    }
+
 
     /* .body {
                 display: flex !important;
@@ -71,12 +82,14 @@
         /* border: 5px solid red; */
     }
 
+    /* CONTAINER BORDER WILL DISPLACE MESSAGE DIV */
+
     .container {
         background: none;
         border-left: none;
         border-right: none;
         border-radius: 0px;
-        border: 5px solid cornflowerblue;
+        /* border: 5px solid cornflowerblue; */
         margin-top: 0% !important;
     }
 
@@ -115,7 +128,7 @@
 
     /* TEMP FIX */
     .message-div {
-        left: 259px;
+        left: 264px;
     }
 
     .message-div.dark-theme {
