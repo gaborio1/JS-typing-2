@@ -40,16 +40,16 @@
     --body-background--dark: #000000;
 
     /* APP BACKGROUND*/
-    /* --app-background--light: #f0efeb; */
-    --app-background--light: ##f3f3f3;
-    --app-background--light: rgb(244, 244, 244);
+    --app-background--light: #f0efeb;
+    /* --app-background--light: ##f3f3f3; */
+    /* --app-background--light: rgb(244, 244, 244); */
 
     --app-background--dark: rgb(28, 28, 28);
 
     /* WRAP BACKGROUND */
-    /* --wrap-highlight--light: rgba(251, 239, 214, 0.521); */
-    --wrap-highlight--light: #e1e1e1;
-    --wrap-highlight--light: #ebebeb;
+    --wrap-highlight--light: rgba(251, 239, 214, 0.521);
+    /* --wrap-highlight--light: #e1e1e1; */
+    /* --wrap-highlight--light: #ebebeb; */
 
     --wrap-highlight--dark: rgb(25, 25, 25);
     /*  USE THIS WITH DARK GREEN */
@@ -292,6 +292,7 @@ q:after {
 
 .wrapper--nav {
     max-width: 1140px;
+    max-width: 1000px;
     padding-left: 1rem;
     padding-right: 1rem;
     margin-left: auto;
@@ -466,10 +467,11 @@ html {
     justify-content: center;
     width: var(--app-width);
     height: 100px;
-    background: var(--app-background--light);
+    /* background: var(--app-background--light); */
+    background: rgba(251, 239, 214, 0.434);
     font-weight: 100;
     /* margin: 50px auto; */
-    border: 1px solid var(--border-grey);
+    /* border: 1px solid var(--border-grey); */
     border-radius: var(--wrap-border-radius);
     /* THIS WILL AFFECT BORDER COLOUR CHANGE WHEN SWITCHING TO DARK MODE */
     /* transition: border-color 1s; */
@@ -1152,6 +1154,7 @@ p .active-txt-span.active-txt-span--enter {
 
     /* ADD BACKGROUND WHEN ENLARGING  */
     background: var(--wrap-highlight--light);
+    background: rgba(251, 239, 214, 0.324);
     /* background: var(--app-background--light); */
 
     padding: 10px;
