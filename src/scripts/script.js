@@ -28,6 +28,7 @@ import {
 
 const mainScene = document.getElementById("scene--main");
 const card = document.getElementById("card--main"); // CARD CONTAINED WITHIN SCENE
+const cardMain = document.getElementById("card--main");
 
 const container = document.getElementById("container");
 const controlsContainer = document.getElementById("controls-container");
@@ -1306,6 +1307,7 @@ const displayConsecErrors = () => {
     messageDiv.innerText = `${consecutiveErrorCounter} CONSECUTIVE ERRORS!`;
 };
 
+/*
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 ALWAYS CENTER APP VERTICALLY 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 // SOURCE: https://stackoverflow.com/questions/15615552/get-div-height-with-plain-javascript
@@ -1327,17 +1329,21 @@ const calcMarginTop = () => {
 // SET MARGIN TOP IF APP HEIGHT IS SMALLER THAN WINDOW HEIGHT
 const setMarginTop = function () {
     // EXCLUDE HEADER FROM VIEWPORT HEIGHT (-75)
-    viewportHeight = window.innerHeight - 75;
+    viewportHeight = window.innerHeight - 65;
     console.log(viewportHeight);
     if (viewportHeight > appHeight) {
         marginTop = calcMarginTop();
-        // console.log("MARGIN TOP:", marginTop);
+        console.log("MARGIN TOP:", marginTop);
         // BOTH CARD SIDES
         // mainScene.style.marginTop = `${marginTop}px`;
+        // cardMain.style.marginTop = `${marginTop}px`;
         container.style.marginTop = `${marginTop}px`;
         instructionsContainer.style.marginTop = `${marginTop}px`;
     }
 };
+
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰             END              🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+*/
 
 // COUNT AND DISPLAY REDS IN CURRENT WORD WHEN REACHING TRAILING SPACE
 const countErrorsInCurrentWord = () => {
@@ -1368,10 +1374,11 @@ const countErrorsInCurrentWord = () => {
     }
 };
 
+/*
 // LISTENER EVENTS
 window.addEventListener("resize", setMarginTop);
 window.addEventListener("load", setMarginTop);
-
+*/
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 PAGE LOAD 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.classList.add("apply--active");

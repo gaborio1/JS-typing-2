@@ -87,10 +87,15 @@ Please notice that removing outline from input is an accessibility bad practice.
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
     font-family: "Roboto", sans-serif;
     /* THIS AFFECTS SPANS IN TEXT FIELDS */
     text-align: center;
     background: var(--body-background--light);
+    /* background: rgba(255, 166, 0, 0.546); */
     /* background-color: rgba(251, 239, 214, 0.521) */
     filter: grayscale(0.2);
     /* filter: grayscale(1); */
@@ -292,7 +297,7 @@ q:after {
     margin-left: auto;
     margin-right: auto;
     /* +++ */
-    height: 75px;
+    height: 50px;
 }
 
 /* *,
@@ -436,6 +441,19 @@ html {
         top: 1rem;
     }
 }
+
+.footer {
+    position: relative;
+    bottom: 0px;
+    height: 25px;
+    background-color: var(--border-blue);
+}
+
+/* .keyboard-container {
+    z-index: 345;
+    height: 30px;
+    background: red;
+} */
 
 /* 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -1483,7 +1501,7 @@ p .active-txt-span.active-txt-span--enter {
     width: var(--app-width);
     height: fit-content;
 
-    margin: 50px auto;
+    /* margin: 50px auto; */
     padding: 25px 0px 50px 50px;
 
     background: #f0efeb;

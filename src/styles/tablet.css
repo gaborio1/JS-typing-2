@@ -7,7 +7,15 @@
 /* @media only screen and (max-width: 767px) { */
 /* @media only screen and (max-width: 767px) { */
 @media only screen and (max-width: 1000px) {
-    .site-header {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .site-header,
+    footer {
         display: none;
     }
 
@@ -56,7 +64,15 @@
 /* @media only screen and (max-height: 1023px) { */
 /* MACBOOK 13 BROWSER WINDOW HEIGHT: 913 */
 @media only screen and (max-height: 912px) {
-    .site-header {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .site-header,
+    footer {
         display: none;
     }
 

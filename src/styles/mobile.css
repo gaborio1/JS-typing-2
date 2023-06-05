@@ -84,6 +84,10 @@
 /* @media only screen and (max-width: 896px) { */
 @media only screen and (max-width: 767px) {
 
+    .body {
+        height: fit-content;
+    }
+
     .site-header {
         display: none;
     }
@@ -147,6 +151,10 @@
 /* IPAD MINI HEIGHT */
 /* @media only screen and (max-height: 896px) { */
 @media only screen and (max-height: 767px) {
+
+    .body {
+        height: fit-content;
+    }
 
     .site-header {
         display: none;
