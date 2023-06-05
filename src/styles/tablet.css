@@ -3,7 +3,6 @@
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 TABLET SIZE 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 
-
 /* PORTRAIT */
 /* @media only screen and (max-width: 767px) { */
 /* @media only screen and (max-width: 767px) { */
@@ -38,11 +37,9 @@
     /* BEGINNER CONTROLS */
     .controls-container,
     .card__face--back--controls {
-
         background: var(--wrap-highlight--light);
         /* background: #ebebeb3b; */
         border: 1px solid var(--border-grey);
-
     }
 
     /* TEMP FIX */
@@ -53,17 +50,15 @@
     .message-div.dark-theme {
         left: 250px;
     }
-
 }
 
 /* LANDSCAPE */
-/* @media only screen and (max-height: 767px) { */
-@media only screen and (max-height: 1023px) {
-
+/* @media only screen and (max-height: 1023px) { */
+/* MACBOOK 13 BROWSER WINDOW HEIGHT: 913 */
+@media only screen and (max-height: 912px) {
     .site-header {
         display: none;
     }
-
 
     /* .body {
                 display: flex !important;
@@ -108,15 +103,12 @@
         background: var(--wrap-highlight--light);
         /* background: #ebebeb3b; */
         border: 1px solid var(--border-grey);
-
     }
 
     /* HIDE COLOUR CODES */
     .colour-code-container {
         display: none;
     }
-
-
 
     .instructions-container {
         /* margin: 0px auto; */
