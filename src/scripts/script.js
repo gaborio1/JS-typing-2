@@ -1317,6 +1317,7 @@ const appHeight = document.getElementById("container").clientHeight;
 console.log("CONTAINER HEIGHT", appHeight);
 // GET WINDOW HEIGHT
 let viewportHeight = window.innerHeight;
+// let viewportWidth = window.innerWidth;
 console.log("VIEWPORT HEIGHT", viewportHeight);
 // INITIALISE MARGIN TOP
 let marginTop = 0;
@@ -1329,8 +1330,11 @@ const calcMarginTop = () => {
 // SET MARGIN TOP IF APP HEIGHT IS SMALLER THAN WINDOW HEIGHT
 const setMarginTop = function () {
     // EXCLUDE HEADER FROM VIEWPORT HEIGHT (-75)
-    viewportHeight = window.innerHeight - 65;
+    // let viewportWidth = window.innerWidth;
+    // console.log("VIEWPORT WIDTH", viewportWidth);
+    viewportHeight = window.innerHeight;
     console.log(viewportHeight);
+    // if (viewportHeight > appHeight && viewportHeight < 819 && viewportWidth > 700) {
     if (viewportHeight > appHeight) {
         marginTop = calcMarginTop();
         console.log("MARGIN TOP:", marginTop);
@@ -1341,6 +1345,10 @@ const setMarginTop = function () {
         instructionsContainer.style.marginTop = `${marginTop}px`;
     }
 };
+
+// LISTENER EVENTS
+window.addEventListener("resize", setMarginTop);
+window.addEventListener("load", setMarginTop);
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰             END              🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 */
@@ -1374,15 +1382,28 @@ const countErrorsInCurrentWord = () => {
     }
 };
 
-/*
-// LISTENER EVENTS
-window.addEventListener("resize", setMarginTop);
-window.addEventListener("load", setMarginTop);
-*/
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 PAGE LOAD 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 startButton.classList.add("apply--active");
 textInput.disabled = true;
+
+
+// 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 HEADER 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+
+
+let navToggle = document.querySelector(".nav__toggle");
+let navWrapper = document.querySelector(".nav__wrapper");
+navToggle.addEventListener("click", function () {
+    if (navWrapper.classList.contains("active")) {
+        this.setAttribute("aria-expanded", "false");
+        this.setAttribute("aria-label", "menu");
+        navWrapper.classList.remove("active");
+    } else {
+        navWrapper.classList.add("active");
+        this.setAttribute("aria-label", "close menu");
+        this.setAttribute("aria-expanded", "true");
+    }
+});
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 START BUTTON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

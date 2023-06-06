@@ -88,7 +88,8 @@
         height: fit-content;
     }
 
-    .site-header {
+    .site-header,
+    .footer {
         display: none;
     }
 
@@ -156,7 +157,8 @@
         height: fit-content;
     }
 
-    .site-header {
+    .site-header,
+    .footer {
         display: none;
     }
 
