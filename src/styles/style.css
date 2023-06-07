@@ -103,6 +103,23 @@ body {
     /* transition: background 2s; */
 }
 
+/* IPAD MINI DIMENSIONS */
+/* @media only screen and (min-width: 768px) and (min-height: 1024px) {
+    body {
+        background: orange;
+    }
+} */
+
+/* LANDSCAPE */
+/* @media only screen and (min-width: 1024px) and (min-height: 768px) and (orientation: landscape) { */
+/* @media only screen and (min-width: 1024px) and (min-height: 768px) {
+    body {
+        background: orange;
+    }
+} */
+
+
+
 body.dark-theme {
     background: var(--body-background--dark);
     filter: grayscale(0.45);
@@ -149,6 +166,7 @@ h3 {
     background: yellow;
     border: 2px solid black;
 } */
+
 
 /* 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰

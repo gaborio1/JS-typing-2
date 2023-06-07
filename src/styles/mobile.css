@@ -80,13 +80,18 @@
     margin: 10px auto;
 }
 
-/* IPHONE X WIDTH */
-/* @media only screen and (max-width: 896px) { */
-@media only screen and (max-width: 767px) {
+
+/* IPHONE XR PORTRAIT */
+/* @media only screen and (max-width: 414px) and (max-height: 896px) { */
+/* IPAD MINI PORTRAIT */
+@media only screen and (max-width: 767px) and (max-height: 1023px) {
 
     .body {
         height: fit-content;
+        background: orange !important;
     }
+
+
 
     .site-header,
     .footer {
@@ -149,12 +154,14 @@
     } */
 }
 
-/* IPAD MINI HEIGHT */
-/* @media only screen and (max-height: 896px) { */
-@media only screen and (max-height: 767px) {
+/* IPHONE XR LANDSCAPE */
+/* @media only screen and (max-width: 896px) and (max-height: 414px) { */
+/* IPAD MINI LANDSCAPE */
+@media only screen and (max-width: 1023px) and (max-height: 767px) {
 
     .body {
         height: fit-content;
+        background: orange !important;
     }
 
     .site-header,
@@ -230,3 +237,17 @@
         /* margin: 1px; */
     }
 }
+
+
+/* IPHONE XR */
+/* @media only screen and (max-width: 414px) and (max-height: 896px) {
+    body {
+        background: orange !important;
+    }
+}
+
+@media only screen and (max-width: 896px) and (max-height: 414px) {
+    body {
+        background: orange !important;
+    }
+} */
