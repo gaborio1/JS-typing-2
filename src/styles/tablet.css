@@ -4,10 +4,6 @@
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 
 /* PORTRAIT */
-/* @media only screen and (max-width: 767px) { */
-/* @media only screen and (max-width: 767px) { */
-/* @media only screen and (max-width: 1000px) and (orientation: portrait) { */
-/* @media only screen and (max-width: 1000px) { */
 @media only screen and (min-width: 768px) and (min-height: 1024px) and (max-width: 1023px) and (max-height: 1366px) {
 
 
@@ -20,15 +16,14 @@
 
 
     body {
-        height: 100%;
-        width: 100%;
+        height: 100vw;
+        width: 100vh;
         display: flex;
         flex-direction: column;
         /* THIS DISPLACES HEADER AND FOOTER */
         align-items: center;
-        /* justify-content: space-around; */
-        /* justify-content: center; */
-        /* border: 3px solid orange; */
+
+        border: 3px solid orange;
     }
 
 
@@ -108,13 +103,16 @@
     .message-div.dark-theme {
         left: 250px;
     }
+
 }
 
+
+
+
 /* LANDSCAPE */
-/* @media only screen and (max-height: 1023px) { */
-/* MACBOOK 13 BROWSER WINDOW HEIGHT: 913 */
-/* @media only screen and (max-height: 912px) { */
 @media only screen and (min-width: 1024px) and (min-height: 768px) and (max-width: 1366px) and (max-height: 1024px) {
+
+
 
     /* body {
         display: flex;
@@ -145,9 +143,9 @@
 
     /* CONTAINER BORDER WILL DISPLACE MESSAGE DIV */
 
-    .container {
-        /* border: 3px solid rgb(26, 106, 255); */
-    }
+    /* .container {
+        border: 3px solid rgb(26, 106, 255);
+    } */
 
     .stat-wrap,
     .colour-code-wrap,
@@ -170,4 +168,80 @@
     /* .colour-code-container {
         display: none;
     } */
+
+
+
+}
+
+/* IPAD AIR */
+/* @media only screen and (min-device-width: 820px) and (max-device-width: 820px) {
+    body {
+        background: orange;
+    }
+}
+
+@media only screen and (min-device-height: 820px) and (max-device-height: 820px) {
+    body {
+        background: orange;
+    }
+} */
+
+@media only screen and (min-width: 768px) and (max-width: 1050px) and (max-height: 2000px) {
+
+    /* @media only screen and (min-width: 768px) and (max-width: 999px) { */
+    /* body {
+        background: teal;
+        border: 3px solid tomato;
+    } */
+
+
+    /* .container, */
+    /* .instructions-container, */
+    .scene--main {
+        zoom: 90%;
+        /* width: 600px; */
+        /* border: 3px solid rgb(128, 0, 49); */
+    }
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 950px) and (max-height: 2000px) {
+
+    /* @media only screen and (min-width: 768px) and (max-width: 999px) { */
+    /* body {
+        background: teal;
+        border: 3px solid tomato;
+    } */
+
+
+    /* .container, */
+    /* .instructions-container, */
+    .scene--main {
+        zoom: 80%;
+        /* width: 600px; */
+        /* border: 3px solid rgb(128, 0, 49); */
+    }
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 850px) and (max-height: 2000px) {
+
+    /* @media only screen and (min-width: 768px) and (max-width: 999px) { */
+    /* body {
+        background: teal;
+        border: 3px solid tomato;
+    } */
+
+
+    /* .container, */
+    /* .instructions-container, */
+    .scene--main {
+        zoom: 75%;
+        /* width: 600px; */
+        /* border: 3px solid rgb(128, 0, 49); */
+    }
+
+
 }
