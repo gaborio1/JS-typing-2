@@ -332,7 +332,8 @@ q:after {
 
 a {
     text-decoration: none;
-    color: #222;
+    /* color: #222; */
+    color: #dadada;
 }
 
 html {
@@ -364,6 +365,16 @@ html {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     text-align: center;
+}
+
+button.nav__toggle {
+    width: 45px;
+    height: 25px;
+    font-family: "Roboto", sans-serif;
+    background: none;
+    border-style: none;
+    border: 1px solid black;
+    border-radius: var(--button-border-radius);
 }
 
 .button svg {
@@ -398,6 +409,7 @@ html {
 .brand {
     font-weight: bold;
     font-size: 20px;
+    color: black;
 }
 
 .site-header {
@@ -427,6 +439,7 @@ html {
     }
 }
 
+/* DROPDOWN */
 @media (max-width: 599px) {
     .nav__wrapper {
         position: absolute;
@@ -435,6 +448,8 @@ html {
         left: 0;
         z-index: -1;
         background-color: #d9f0f7;
+        background-color: #529ce1;
+        background-color: #0b121ae8;
         visibility: hidden;
         opacity: 0;
         transform: translateY(-100%);
