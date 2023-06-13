@@ -2818,6 +2818,8 @@ beginnerHideButton.addEventListener("click", function () {
     removeProblemKeyHighlight();
 });
 
+
+
 // JS NOT IN USE, POSITION IS NOW STICKY IN CSS
 
 // INSTRUCTIONS CONTAINER HOVER : CURSOR TOOLTIP
