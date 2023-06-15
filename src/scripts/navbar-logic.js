@@ -1,12 +1,7 @@
-// ========== ACTIVE NAVLINKS HIGHLIGHT/BORDER BOTTOM ==========
+// ========== ACTIVE NAVLINKS HIGHLIGHT ==========
 
 const linkArray = document.getElementsByClassName("nav-link");
 
-// const addClass = (elementsArr, classname) => {
-//     for (el of elementsArr) {
-//         el.classList.add(classname);
-//     }
-// }
 
 // GET CURRENT URL OF PAGE
 const currentUrl = window.location.href;
@@ -31,3 +26,19 @@ const addActiveClassToCurrrent = () => {
 };
 
 addActiveClassToCurrrent();
+
+
+// MOBILE SIZE MENU EXPAND/COLLAPSE
+let navToggle = document.querySelector(".nav__toggle");
+let navWrapper = document.querySelector(".nav__wrapper");
+navToggle.addEventListener("click", function () {
+    if (navWrapper.classList.contains("active")) {
+        this.setAttribute("aria-expanded", "false");
+        this.setAttribute("aria-label", "menu");
+        navWrapper.classList.remove("active");
+    } else {
+        navWrapper.classList.add("active");
+        this.setAttribute("aria-label", "close menu");
+        this.setAttribute("aria-expanded", "true");
+    }
+});
