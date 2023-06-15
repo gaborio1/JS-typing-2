@@ -171,141 +171,16 @@ h3 {
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  HEADER  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 
-/* html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline
-} */
+/* .active-link {
+    color: black;
+}
 
-/* article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block
-} */
 
-/* body {
-    line-height: 1
-} */
 
 ol,
 ul {
     list-style: none;
 }
-
-/* blockquote,
-q {
-    quotes: none
-} */
-
-/* blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none
-} */
-
-/* table {
-    border-collapse: collapse;
-    border-spacing: 0
-} */
-
-/* _____________________________________________ */
-
-/* html {
-    border: 5px solid rgb(243, 56, 56);
-} */
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
@@ -316,24 +191,20 @@ q:after {
     padding-right: 1rem;
     margin-left: auto;
     margin-right: auto;
-    /* +++ */
     height: 50px;
 }
 
-/* *,
-*:before,
-*:after {
-    box-sizing: border-box;
-} */
-
 a {
     text-decoration: none;
-    /* color: #222; */
     color: #dadada;
 }
 
+a.brand {
+    color: #222;
+}
+
 a:hover {
-    color: #363636;
+    color: black;
 }
 
 html {
@@ -341,9 +212,6 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* body {
-    font-family: "Roboto", sans-serif;
-} */
 
 .sr-only {
     position: absolute;
@@ -400,20 +268,15 @@ button.nav__toggle {
     padding: 0.5rem;
 }
 
-/* _______________________________________________________ */
-/* 
-** The Header Media Queries **
-** Tweak as per your needs **
-*/
+
 .brand {
     font-weight: 400;
     font-size: 20px;
-    /* color: black; */
+    color: black;
 }
 
 .site-header {
     position: relative;
-    /* background-color: #def7ff; */
     background-color: var(--border-blue);
 }
 
@@ -438,7 +301,6 @@ button.nav__toggle {
     }
 }
 
-/* DROPDOWN */
 @media (max-width: 599px) {
     .nav__wrapper {
         position: absolute;
@@ -485,12 +347,6 @@ button.nav__toggle {
     bottom: 0px;
     height: 25px;
     background-color: var(--border-blue);
-}
-
-/* .keyboard-container {
-    z-index: 345;
-    height: 30px;
-    background: red;
 } */
 
 /* 
@@ -1545,6 +1401,7 @@ p .active-txt-span.active-txt-span--enter {
     padding: 25px 0px 50px 50px;
 
     background: #f0efeb;
+    background: rgba(251, 239, 214, 0.434);
 
     /* padding: 20px 12px 0px 20px; */
 
@@ -2880,4 +2737,8 @@ button.btn--flip:hover {
 
 .codewars-link:hover {
     opacity: 1;
+}
+
+.text-wrap li {
+    margin: 10px;
 }
