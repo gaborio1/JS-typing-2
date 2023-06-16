@@ -2742,3 +2742,13 @@ button.btn--flip:hover {
 .text-wrap li {
     margin: 10px;
 }
+
+.container--pages a {
+    color: #2796ff;
+    color: #2797ffda;
+    /* color: #558bbd; */
+}
+
+/* .container--pages p {
+    text-decoration: underline;
+} */

@@ -173,8 +173,13 @@ a {
 }
 
 a.brand {
-    font-weight: 900;
+    font-weight: 400;
+    font-size: 25px;
     color: #000000;
+}
+
+a.brand:hover {
+    color: #dadada;
 }
 
 a:hover {
@@ -250,11 +255,7 @@ button.nav__toggle {
 ** The Header Media Queries **
 ** Tweak as per your needs **
 */
-.brand {
-    font-weight: 400;
-    font-size: 20px;
-    color: black;
-}
+
 
 .site-header {
     position: relative;
