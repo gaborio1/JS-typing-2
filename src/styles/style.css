@@ -2740,33 +2740,49 @@ button.btn--flip:hover {
 .links-wrap {
     display: flex;
     flex-direction: row;
+
+    /* MAKE IT COLUMN WHEN WIDTH IS NOT WIDE ENOUGH */
+    /* flex-direction: column; */
     align-items: center;
     justify-content: space-around;
     /* border: 1px solid teal; */
 }
 
-/* .single-link-wrap {
-    border: 1px solid tomato;
-} */
+.single-link-wrap {
+    text-align: left;
+    /* border: 1px solid tomato; */
+}
+
+.links-title {
+    text-decoration: underline;
+}
 
 /* CONTACT PAGE CODEWARS */
 .codewars-logo {
     width: 20px;
+
     border-radius: 2px;
+    margin-right: 2px;
     margin-bottom: -3px;
 }
 
 .codewars-link {
-    opacity: 0.8;
+    /* opacity: 0.8; */
+    margin-right: 3px;
     margin-bottom: -3px;
 }
 
-.codewars-link:hover {
-    opacity: 1;
+i {
+    margin-right: 3px;
 }
+
+/* .codewars-link:hover {
+    opacity: 1;
+} */
 
 .text-wrap li {
     margin: 10px;
+    margin-left: 10px;
 }
 
 .container--pages a {
