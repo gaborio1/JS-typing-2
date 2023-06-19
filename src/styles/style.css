@@ -2718,6 +2718,7 @@ button.btn--flip:hover {
 
 .spacer-div--pages {
     border-bottom: 1px solid var(--border-grey);
+    border-bottom: 1px solid orange;
 }
 
 .text-wrap {
@@ -2774,13 +2775,25 @@ button.btn--flip:hover {
 /* +++++++++++++++++++++++++++++ */
 
 .single-link-wrap {
+    width: 150px;
     text-align: left;
+    padding-left: 10px;
+    /* text-align: center; */
     /* border: 1px solid tomato; */
+    border-left: 1px solid rgba(255, 166, 0, 0.801);
+    /* border: 1px solid rgba(255, 166, 0, 0.801);
+    padding: 10px;
+    border-radius: 5px; */
+    /* border-left: 1px solid rgba(128, 128, 128, 0.424); */
 }
 
-.links-title {
-    text-decoration: underline;
+.single-link-wrap p {
+    margin: 10px auto;
 }
+
+/* .links-title {
+    text-decoration: underline;
+} */
 
 /* CONTACT PAGE CODEWARS */
 .codewars-logo {
