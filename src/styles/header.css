@@ -220,18 +220,9 @@ html {
 button.nav__toggle {
     width: 45px;
     height: 25px;
-    font-family: "Roboto", sans-serif;
-    color: black;
-    font-weight: 400;
-    background: none;
     border-style: none;
-    border: 1px solid black;
-    border-radius: var(--button-border-radius);
-}
-
-i.fa-solid {
-    border: 2px solis red;
-    color: red;
+    /* border: 1px solid black; */
+    /* border-radius: var(--button-border-radius); */
 }
 
 .button svg {
@@ -329,6 +320,12 @@ i.fa-solid {
         position: absolute;
         right: 1rem;
         top: 1rem;
+    }
+
+    i.fa-solid.fa-bars {
+        display: block;
+        /* height: 15px; */
+        /* border: 1px solid green; */
     }
 }
 
