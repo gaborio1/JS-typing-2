@@ -221,10 +221,17 @@ button.nav__toggle {
     width: 45px;
     height: 25px;
     font-family: "Roboto", sans-serif;
+    color: black;
+    font-weight: 400;
     background: none;
     border-style: none;
     border: 1px solid black;
     border-radius: var(--button-border-radius);
+}
+
+i.fa-solid {
+    border: 2px solis red;
+    color: red;
 }
 
 .button svg {
@@ -255,7 +262,6 @@ button.nav__toggle {
 ** The Header Media Queries **
 ** Tweak as per your needs **
 */
-
 
 .site-header {
     position: relative;
