@@ -302,6 +302,7 @@ button.nav__toggle {
     }
 
     /* SLIDE UP */
+    /* !!! BUG: TRANSITION IS TRIGGERED WITH RESIZE AND ORIENTATION CHANGE !!! */
     .nav__wrapper {
         position: absolute;
         top: 100%;
@@ -314,7 +315,8 @@ button.nav__toggle {
         /* visibility: hidden; */
         opacity: 0;
         transform: translateY(-100%);
-        transition: transform 0.4s ease-out, opacity 0.5s ease-out;
+        /* DISABLED DUE TO BUG */
+        /* transition: transform 0.4s ease-out, opacity 0.5s ease-out; */
     }
 
     /* SLIDE DOWN */
