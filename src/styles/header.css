@@ -6,144 +6,24 @@
 /* SOURCE: https://www.cssscript.com/demo/header-navbar-templates/header-1.html#
 https://www.cssscript.com/header-navbar-templates/ */
 
-/* html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline
-} */
 
-/* article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block
-} */
-
-/* body {
-    line-height: 1
-} */
 
 ol,
 ul {
     list-style: none;
 }
 
-/* blockquote,
-q {
-    quotes: none
-} */
-
-/* blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none
-} */
-
-/* table {
-    border-collapse: collapse;
-    border-spacing: 0
-} */
-
-/* _____________________________________________ */
 
 /* html {
     border: 5px solid rgb(243, 56, 56);
 } */
 
 .active-link {
+    /* height: 58.5px; */
     color: black;
+    color: orange;
+    /* border-bottom: 2px solid rgb(253, 186, 62); */
+    font-weight: 600;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
@@ -168,6 +48,7 @@ q:after {
 } */
 
 a {
+    /* letter-spacing: 1px; */
     text-decoration: none;
     font-weight: 400;
     /* color: #222; */
@@ -185,7 +66,9 @@ a.brand:hover {
 }
 
 a:hover {
+    /* font-weight: 700; */
     color: #000000;
+    color: orange;
 }
 
 html {
@@ -309,8 +192,9 @@ button.nav__toggle {
         right: 0;
         left: 0;
         z-index: -1;
-        background-color: #d9f0f7;
-        background-color: #529ce1;
+        /* background-color: #d9f0f7; */
+        /* background-color: #529ce1; */
+        /* background-color: #529ce1d9; */
         background-color: #0b121ae8;
         /* visibility: hidden; */
         opacity: 0;
