@@ -6,23 +6,21 @@
 /* SOURCE: https://www.cssscript.com/demo/header-navbar-templates/header-1.html#
 https://www.cssscript.com/header-navbar-templates/ */
 
-
-
 ol,
 ul {
     list-style: none;
 }
-
 
 /* html {
     border: 5px solid rgb(243, 56, 56);
 } */
 
 .active-link {
-    /* height: 58.5px; */
+    height: 58.5px;
     color: black;
-    color: orange;
+    /* color: orange; */
     /* border-bottom: 2px solid rgb(253, 186, 62); */
+    border-bottom: 2px solid black;
     /* font-weight: 600; */
 }
 
@@ -67,9 +65,14 @@ a.brand:hover {
 
 a:hover {
     /* font-weight: 700; */
-    color: #000000;
+    /* color: #000000; */
     color: orange;
 }
+
+/* a.nav-link {
+    width: 75px;
+    border: 1px solid black;
+} */
 
 html {
     -webkit-font-smoothing: antialiased;
