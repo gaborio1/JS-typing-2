@@ -2,7 +2,6 @@
 
 const linkArray = document.getElementsByClassName("nav-link");
 
-
 // GET CURRENT URL OF PAGE
 const currentUrl = window.location.href;
 console.log(currentUrl);
@@ -14,6 +13,11 @@ const contact = document.getElementById("navbar__contact");
 
 // ADD active-link CLASS TO CURRENT PAGE'S LINK
 const addActiveClassToCurrrent = () => {
+    // REMOVE ACTIVE CLASS FROM ALL
+    for (let i = 0; i < linkArray.length; i += 1) {
+        linkArray[i].classList.remove("active-link");
+    }
+    // ADD ACTIVE CLASS TO CURRENT
     if (currentUrl.includes("index")) {
         home.classList.add("active-link");
     } else if (currentUrl.includes("about")) {
@@ -26,7 +30,6 @@ const addActiveClassToCurrrent = () => {
 };
 
 addActiveClassToCurrrent();
-
 
 // MOBILE SIZE MENU EXPAND/COLLAPSE
 let navToggle = document.querySelector(".nav__toggle");
