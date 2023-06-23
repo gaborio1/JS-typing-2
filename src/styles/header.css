@@ -20,7 +20,7 @@ ul {
     color: black;
     /* color: orange; */
     /* border-bottom: 2px solid rgb(253, 186, 62); */
-    border-bottom: 2px solid black;
+    /* border-bottom: 2px solid black; */
     /* font-weight: 600; */
 }
 
@@ -185,6 +185,7 @@ button.nav__toggle {
     /* HAMBURGER */
     i.fa-solid {
         margin-bottom: 6px;
+        color: black;
     }
 
     /* SLIDE UP */
