@@ -80,18 +80,14 @@
     margin: 10px auto;
 }
 
-
 /* IPHONE XR PORTRAIT */
 /* @media only screen and (max-width: 414px) and (max-height: 896px) { */
 /* IPAD MINI PORTRAIT */
 @media only screen and (max-width: 767px) and (max-height: 1023px) {
-
     .body {
         height: fit-content;
         /* background: orange; */
     }
-
-
 
     .site-header,
     .footer {
@@ -114,7 +110,7 @@
         align-items: center;
         justify-content: center;
         /* text-align: center; */
-        background: #f0efeb;
+        /* background: #f0efeb; */
         /* border: 10px solid green; */
     }
 
@@ -132,8 +128,7 @@
         height: fit-content;
         /* height: 1000px; */
         padding: 10px 0px 10px 0px;
-        background: var(--body-background--light);
-        border: 1px solid black;
+        background: rgba(251, 239, 214, 0.434);
         border: 1px solid var(--border-grey);
         border-radius: 7px;
     }
@@ -155,13 +150,16 @@
     .small-container__img-wrap {
         border: 1px solid black;
     } */
+    .container--pages {
+        margin: 50px auto;
+        /* border: 1px solid var(--border-grey); */
+    }
 }
 
 /* IPHONE XR LANDSCAPE */
 /* @media only screen and (max-width: 896px) and (max-height: 414px) { */
 /* IPAD MINI LANDSCAPE */
 @media only screen and (max-width: 1023px) and (max-height: 767px) {
-
     .body {
         height: fit-content;
         /* background: orange; */
@@ -185,7 +183,7 @@
 
         align-items: center;
         justify-content: center;
-        background: #f0efeb;
+        /* background: #f0efeb; */
         /* border: 10px solid teal; */
     }
 
@@ -203,9 +201,8 @@
         height: fit-content;
         /* height: 1000px; */
         padding: 10px 0px 10px 0px;
-        background: var(--body-background--light);
-        border: 1px solid black;
-        border: 1px solid var(--border-grey);
+        background: rgba(251, 239, 214, 0.434);
+        /* border: 1px solid var(--border-grey); */
         border-radius: 7px;
     }
 
@@ -241,7 +238,6 @@
         /* margin: 1px; */
     }
 }
-
 
 /* IPHONE XR */
 /* @media only screen and (max-width: 414px) and (max-height: 896px) {

@@ -200,19 +200,19 @@
 }
 
 /* HEIGHT */
-@media only screen and (min-height: 768px) and (max-height: 913px) {
-    /* @media only screen and (min-width: 768px) and (max-width: 999px) { */
-    /* body {
-        background: teal;
-        border: 3px solid tomato;
-    } */
 
-    /* .container, */
-    /* .instructions-container, */
+/* THIS IS MACBOOK 13 SIZE */
+@media only screen and (min-height: 768px) and (max-height: 913px) {
+    /* HIDE COLOUR CODES AND KEEP APP SIZE */
     .scene--main {
-        zoom: 90%;
+        /* zoom: 90%; */
         /* width: 600px; */
+        height: 750px;
         /* border: 3px solid rgb(128, 0, 49); */
+    }
+    /* HIDE COLOUR CODES */
+    .colour-code-container {
+        display: none;
     }
 }
 
@@ -262,7 +262,6 @@
 
 /* SWITCH TO MOBILE UNDER 700 */
 @media only screen and (max-height: 670px) {
-
     /* THIS IS FROM MOBILE-LANDSCAPE */
     .body {
         height: fit-content;
@@ -288,7 +287,7 @@
         align-items: center;
         justify-content: center;
         /* justify-content: space-around; */
-        background: #f0efeb;
+        /* background: #f0efeb; */
         /* border: 10px solid teal; */
     }
 
@@ -307,8 +306,8 @@
         /* height: 1000px; */
         padding: 10px 0px 10px 0px;
         background: var(--body-background--light);
-        border: 1px solid black;
-        border: 1px solid var(--border-grey);
+        background: rgba(251, 239, 214, 0.434);
+        /* border: 1px solid var(--border-grey); */
         border-radius: 7px;
     }
 
@@ -320,5 +319,8 @@
 
     .small-container p {
         padding: 10px;
+    }
+    .container--pages {
+        margin: 50px auto;
     }
 }

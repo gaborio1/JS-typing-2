@@ -1387,8 +1387,6 @@ const countErrorsInCurrentWord = () => {
 startButton.classList.add("apply--active");
 textInput.disabled = true;
 
-
-
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 START BUTTON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2802,8 +2800,6 @@ beginnerHideButton.addEventListener("click", function () {
     removeProblemKeyHighlight();
 });
 
-
-
 // JS NOT IN USE, POSITION IS NOW STICKY IN CSS
 
 // INSTRUCTIONS CONTAINER HOVER : CURSOR TOOLTIP
@@ -2848,6 +2844,10 @@ CENTER KEYBOARD
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 CURRENT BRANCH:
+
+PAGES LAYOUT:
+    PUT SMALL-CONTAINER / HEADER / FOOTER IN COLOUR-THEME BODY (FLEX COLOUMN)
+    IT ONLY WORKS IN MOBILE SIZE, OTHERWISE MAIN CONTENT WILL BE HIDDEN !!!
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
