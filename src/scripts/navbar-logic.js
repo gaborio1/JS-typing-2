@@ -1,7 +1,7 @@
 // ========== ACTIVE NAVLINKS HIGHLIGHT ==========
 
 const linkArray = document.getElementsByClassName("nav-link");
-console.log(linkArray);
+// console.log(linkArray);
 
 // GET CURRENT URL OF PAGE
 const currentUrl = window.location.href;
@@ -26,18 +26,21 @@ const contact = document.getElementById("navbar__contact");
 
 // ADD active-link CLASS TO CURRENT PAGE'S LINK
 const addActiveClassToCurrrent = () => {
+    console.log(currentUrl);
     // ADD ACTIVE CLASS TO CURRENT
     if (currentUrl.includes("index")) {
         home.classList.add("active-link");
     }
-    if (currentUrl.includes("about")) {
+    else if (currentUrl.includes("about")) {
         about.classList.add("active-link");
     }
-    if (currentUrl.includes("links")) {
+    else if (currentUrl.includes("links")) {
         links.classList.add("active-link");
     }
-    if (currentUrl.includes("contact")) {
+    else if (currentUrl.includes("contact")) {
         contact.classList.add("active-link");
+    } else {
+        home.classList.add("active-link");
     }
 
 };
