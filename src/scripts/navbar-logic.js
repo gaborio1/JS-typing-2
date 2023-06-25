@@ -29,13 +29,17 @@ const addActiveClassToCurrrent = () => {
     // ADD ACTIVE CLASS TO CURRENT
     if (currentUrl.includes("index")) {
         home.classList.add("active-link");
-    } else if (currentUrl.includes("about")) {
+    }
+    if (currentUrl.includes("about")) {
         about.classList.add("active-link");
-    } else if (currentUrl.includes("links")) {
+    }
+    if (currentUrl.includes("links")) {
         links.classList.add("active-link");
-    } else {
+    }
+    if (currentUrl.includes("contact")) {
         contact.classList.add("active-link");
     }
+
 };
 
 addActiveClassToCurrrent();
