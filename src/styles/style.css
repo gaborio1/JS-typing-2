@@ -2527,9 +2527,8 @@ button.btn--flip:hover {
 .container--pages {
     width: 80%;
     max-width: var(--app-width);
-    height: 80%;
-    /* height: 100vh; */
-    margin: auto;
+    min-height: 80%;
+    margin: 50px auto;
     /* border: 1px solid var(--border-grey); */
     border-radius: var(--wrap-border-radius);
     /* background: var(--app-background--light); */
@@ -2575,7 +2574,8 @@ button.btn--flip:hover {
 }
 
 /* +++++++++++++++++++++++++++++ */
-@media (max-width: 1023px) {
+/* @media (max-width: 1023px) { */
+@media (max-width: 767px) {
     .text-wrap--links-page {
         justify-content: center;
     }
