@@ -69,6 +69,16 @@ a:hover {
     color: orange;
 }
 
+/* .digit-2 {
+    color: orange;
+} */
+
+.span--dot-com {
+    font-size: 16px;
+    font-weight: 100;
+    /* color: rgb(234, 216, 182); */
+}
+
 /* a.nav-link {
     width: 75px;
     border: 1px solid black;
