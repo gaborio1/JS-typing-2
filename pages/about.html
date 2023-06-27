@@ -1,113 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/2ef8295658.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://kit.fontawesome.com/5b05473718.js"
+            crossorigin="anonymous"
+        ></script>
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+        <!-- STYLES -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../src/styles/style.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../src/styles/header.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../src/styles/mobile.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../src/styles/tablet.css"
+        />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/2ef8295658.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/5b05473718.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
-    <!-- STYLES -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="../src/styles/style.css" />
-    <link rel="stylesheet" type="text/css" href="../src/styles/header.css" />
-    <link rel="stylesheet" type="text/css" href="../src/styles/mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../src/styles/tablet.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="iphone.css" /> -->
+        <!-- <link rel="stylesheet" type="text/css" href="ipad.css" /> -->
+        <!-- HOWLER JS -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"
+            integrity="sha512-dMiBqqEV5i3KqpAdsgQSSZ72DnNib7otY0X+b/Tnn1EmLym1dxuZ19csdZqBnfDniKd9bmNtzStQzuMrIa5Ngw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+    </head>
 
-    <!-- <link rel="stylesheet" type="text/css" href="iphone.css" /> -->
-    <!-- <link rel="stylesheet" type="text/css" href="ipad.css" /> -->
-    <!-- HOWLER JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"
-        integrity="sha512-dMiBqqEV5i3KqpAdsgQSSZ72DnNib7otY0X+b/Tnn1EmLym1dxuZ19csdZqBnfDniKd9bmNtzStQzuMrIa5Ngw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+    <body class="colour-theme body">
+        <header class="site-header">
+            <div class="wrapper--nav site-header__wrapper">
+                <a href="../index.html" class="brand"
+                    >learning<span class="digit-2">2</span>type<span
+                        class="span--dot-com"
+                        >.com</span
+                    ></a
+                >
+                <nav class="nav">
+                    <button
+                        class="nav__toggle"
+                        aria-expanded="false"
+                        type="button"
+                    >
+                        <!-- menu -->
+                        <i class="fa-solid fa-bars fa-2xl"></i>
+                    </button>
+                    <ul class="nav__wrapper">
+                        <li class="nav__item">
+                            <a
+                                id="navbar__home"
+                                class="nav-link"
+                                href="../index.html"
+                                >Home</a
+                            >
+                        </li>
+                        <li class="nav__item">
+                            <a
+                                id="navbar__about"
+                                class="nav-link"
+                                href="about.html"
+                                >About</a
+                            >
+                        </li>
+                        <li class="nav__item">
+                            <a
+                                id="navbar__links"
+                                class="nav-link"
+                                href="links.html"
+                                >Links</a
+                            >
+                        </li>
+                        <li class="nav__item">
+                            <a
+                                id="navbar__contact"
+                                class="nav-link"
+                                href="contact.html"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-<body class="colour-theme body">
-    <header class="site-header">
-        <div class="wrapper--nav site-header__wrapper">
-            <a href="../index.html" class="brand">learning2type.com</a>
-            <nav class="nav">
-                <button class="nav__toggle" aria-expanded="false" type="button">
-                    <!-- menu -->
-                    <i class="fa-solid fa-bars fa-2xl"></i>
-                </button>
-                <ul class="nav__wrapper">
-                    <li class="nav__item">
-                        <a id="navbar__home" class="nav-link" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav__item">
-                        <a id="navbar__about" class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a id="navbar__links" class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav__item">
-                        <a id="navbar__contact" class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+        <!-- <h1>About</h1> -->
+
+        <div class="container--pages">
+            <h1>How this app came about</h1>
+            <div class="spacer-div--pages"></div>
+            <div class="text-wrap">
+                <p>
+                    Touch typing is the ability to type using all your fingers -
+                    ideally with correct finger placement - without looking at
+                    the keyboard.
+                    <br />
+                    <br />
+                    I have always thought that typing is an impressive and
+                    useful skill to have. Inspired by my mum and a good friend
+                    of mine, I finally decided to give it a go in 2019. As you
+                    would expect, it was a struggle initially. I was hoping that
+                    25 years of guitar playing would help with finger
+                    independence but it did not. I’d given up many times and
+                    started again in the first two years. Then I started to
+                    practice daily and I got noticeably better by the day. One
+                    thing that I would recommend you should do is to aim for
+                    100% accuracy, it will pay off in the long term. I got to
+                    know the basics with typing.com, did more advanced stuff
+                    using keybr.com and regularly tested my speed on
+                    tenfastfingers.com. You will find links to these sites on
+                    the links page.
+                    <br />
+                    <br />
+                    Learning2type.com is my own typing practice app that I
+                    designed and built in 2023 (still developing...), most
+                    features are based on other similar apps and I also
+                    implemented some of my own ideas. The most annoying thing to
+                    me is advertisements on websites...you won't see them on
+                    here and you don't need an ad blocker. Initially it was only
+                    a text input and a text field with no controls, timer or
+                    beginner level. I added all the features one by one, without
+                    having a clear idea what functionality and options/controls
+                    I wanted to implement next. I want to re-build this whole
+                    thing with React / Typescript at some point and make it a
+                    full stack app with user login and all that. Design wise,
+                    just trying to make it look the way I think is halfway
+                    decent, thats all…maybe I’ll get a designer involved to
+                    further improve the look and user experience. Going forward,
+                    the next step is to implement more features such as text
+                    editing keyboard shortcuts to delete the previous word or
+                    line to the left of the cursor.
+                </p>
+            </div>
+            <!-- <div class="text-wrap"></div> -->
         </div>
-    </header>
 
-    <!-- <h1>About</h1> -->
+        <footer class="footer"></footer>
 
-    <div class="container--pages">
-        <h1>How this app came about</h1>
-        <div class="spacer-div--pages"></div>
-        <div class="text-wrap">
-            <p>
-                Touch typing is the ability to type using all your fingers -
-                ideally with correct finger placement - without looking at
-                the keyboard.
-                <br />
-                <br />
-                I have always thought that typing is an impressive and
-                useful skill to have. Inspired by my mum and a good friend
-                of mine, I finally decided to give it a go in 2019. As you
-                would expect, it was a struggle initially. I was hoping that
-                25 years of guitar playing would help with finger
-                independence but it did not. I’d given up many times and
-                started again in the first two years. Then I started to
-                practice daily and I got noticeably better by the day. One
-                thing that I would recommend you should do is to aim for
-                100% accuracy, it will pay off in the long term. I got to
-                know the basics with typing.com, did more advanced stuff
-                using keybr.com and regularly tested my speed on
-                tenfastfingers.com. You will find links to these sites on
-                the links page.
-                <br />
-                <br />
-                Learning2type.com is my own typing practice app that I
-                designed and built in 2023 (still developing...), most
-                features are based on other similar apps and I also
-                implemented some of my own ideas. The most annoying thing to
-                me is advertisements on websites...you won't see them on
-                here and you don't need an ad blocker. Initially it was only
-                a text input and a text field with no controls, timer or
-                beginner level. I added all the features one by one, without
-                having a clear idea what functionality and options/controls
-                I wanted to implement next. I want to re-build this whole
-                thing with React / Typescript at some point and make it a
-                full stack app with user login and all that. Design wise,
-                just trying to make it look the way I think is halfway
-                decent, thats all…maybe I’ll get a designer involved to
-                further improve the look and user experience. Going forward,
-                the next step is to implement more features such as text
-                editing keyboard shortcuts to delete the previous word or
-                line to the left of the cursor.
-            </p>
-        </div>
-        <!-- <div class="text-wrap"></div> -->
-    </div>
-
-    <footer class="footer"></footer>
-
-    <!-- <script type="module" src="src/scripts/script.js" type="text/javascript"></script> -->
-    <script type="module" src="../src/scripts/navbar-logic.js" type="text/javascript"></script>
-</body>
-
+        <!-- <script type="module" src="src/scripts/script.js" type="text/javascript"></script> -->
+        <script
+            type="module"
+            src="../src/scripts/navbar-logic.js"
+            type="text/javascript"
+        ></script>
+    </body>
 </html>

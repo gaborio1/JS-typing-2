@@ -53,6 +53,12 @@ a {
     color: #dadada;
 }
 
+a.nav-link {
+    /* width: 75px; */
+    height: 50px;
+    /* border: 1px solid black; */
+}
+
 a.brand {
     font-weight: 400;
     font-size: 25px;
@@ -69,20 +75,36 @@ a:hover {
     color: orange;
 }
 
-/* .digit-2 {
+.digit-2 {
+    font-weight: 600;
+    font-size: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
     color: orange;
+    color: rgba(255, 166, 0, 0.816);
+}
+
+/* .digit-2:hover {
+    color: #dadada;
 } */
+
+/* ALING NAV ITEMS WITH BRAND HORIZONTALLY */
+.nav__item a {
+    display: block;
+    padding: 1.15rem 1rem;
+}
+
+.nav__toggle {
+    display: none;
+}
 
 .span--dot-com {
     font-size: 16px;
     font-weight: 100;
+    margin-left: 1px;
+
     /* color: rgb(234, 216, 182); */
 }
-
-/* a.nav-link {
-    width: 75px;
-    border: 1px solid black;
-} */
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -225,15 +247,6 @@ button.nav__toggle {
         transform: translateY(0);
         transition: transform 0.4s ease-out, opacity 0.6s ease-out;
     }
-}
-
-.nav__item a {
-    display: block;
-    padding: 1.5rem 1rem;
-}
-
-.nav__toggle {
-    display: none;
 }
 
 @media (max-width: 599px) {
