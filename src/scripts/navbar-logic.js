@@ -26,7 +26,7 @@ const contact = document.getElementById("navbar__contact");
 
 // ADD active-link CLASS TO CURRENT PAGE'S LINK
 const addActiveClassToCurrrent = () => {
-    console.log(currentUrl);
+    // console.log(currentUrl);
     // ADD ACTIVE CLASS TO CURRENT
     if (currentUrl.includes("index")) {
         home.classList.add("active-link");
