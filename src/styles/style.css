@@ -37,7 +37,8 @@
 
     /* BODY BACKGROUND */
     /* --body-background--light: whitesmoke; */
-    --body-background--light: #ffffff;
+    /* --body-background--light: rgba(251, 239, 214, 0.812); */
+    /* --body-background--light: #ffffff; */
 
     --body-background--dark: #000000;
 
@@ -2534,6 +2535,8 @@ i.fa-triangle-exclamation {
 .container--pages {
     width: 80%;
     max-width: var(--app-width);
+    /* !!! */
+    /* THIS CAUSES HALF EMPTY DIV, MAYBE ADD MORE CONTENT */
     min-height: 80%;
     margin: 50px auto;
     /* border: 1px solid var(--border-grey); */
@@ -2551,11 +2554,16 @@ i.fa-triangle-exclamation {
     /* border-bottom: 1px solid orange; */
 }
 
+/* ALL TEXT WRAPS */
 .text-wrap {
     display: flex;
     flex-direction: column;
+    /* CONTACT LINKS */
+    align-items: start;
+
     width: 90%;
-    margin: 25px auto;
+    /* (0px auto) */
+    margin: auto auto;
     padding: 25px;
     /* border: 1px solid black; */
 }
@@ -2564,12 +2572,15 @@ i.fa-triangle-exclamation {
 .text-wrap--links-page {
     display: flex;
     flex-direction: column;
+    width: 90%;
+    /* align-items: center; */
     justify-content: space-around;
     min-height: 80%;
     /* border: 2px solid orange; */
 }
 
 .links-wrap {
+    width: 100%;
     display: flex;
     flex-direction: row;
 
@@ -2577,6 +2588,7 @@ i.fa-triangle-exclamation {
     /* flex-direction: column; */
     align-items: center;
     justify-content: space-around;
+    margin: 10px auto;
     /* border: 1px solid teal; */
 }
 
@@ -2602,13 +2614,19 @@ i.fa-triangle-exclamation {
     }
 }
 
-@media (max-width: 550px) {
+/* @media (max-width: 550px) { */
+@media (max-width: 719px) {
     a.contact-link--full {
+        display: none;
+    }
+
+    .codewars-link {
         display: none;
     }
 }
 
-@media (min-width: 551px) {
+/* @media (min-width: 551px) { */
+@media (min-width: 720px) {
     a.contact-link--small {
         display: none;
     }
