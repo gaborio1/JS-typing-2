@@ -58,8 +58,19 @@ navToggle.addEventListener("click", function () {
     }
 });
 
+// SCROLL EVENTS (STICKY NAVBAR AND HIDE/SHOW UP ARROW)
+const upArrow = document.getElementById("top-arrow");
+// let aboutSectionRect = document.getElementById("about-section").getBoundingClientRect().top;
 // When the user scrolls the page, execute myFunction
 window.onscroll = function () {
+    // USE ABOUT SECTION AS TRIGGER
+    let aboutSectionRect = document.getElementById("about-section").getBoundingClientRect().top;
+    // ONLY MAKE UP ARROW VISIBLE IF USER SCROLLED PAST APP SECTION
+    if (aboutSectionRect < 200) {
+        upArrow.classList.remove("hidden");
+    } else {
+        upArrow.classList.add("hidden");
+    }
     myFunction();
 };
 
@@ -71,6 +82,7 @@ var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
+
     // console.log(window.pageYOffset);
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
@@ -78,3 +90,41 @@ function myFunction() {
         navbar.classList.remove("sticky");
     }
 }
+
+// SMOOTH SCROLL INTO VIEW:
+// SOURCE: https://codepen.io/ekfuhrmann/pen/pVvpqM
+// To Section
+const navLinks = document.querySelectorAll(
+    '.nav-link'
+);
+
+Array.from(navLinks).forEach(navLink => {
+    const href = navLink.getAttribute('href');
+    const section = document.querySelector(href);
+    const offset = 50 + 50; // nav and offset
+
+    navLink.onclick = e => {
+        // console.log("navlink clicked", navLink);
+        // get body position
+        const bodyRect = document.body.getBoundingClientRect().top;
+        // get section position relative
+        const sectionRect = section.getBoundingClientRect().top;
+        // subtract the section from body
+        const sectionPosition = sectionRect - bodyRect;
+        // subtract offset
+        const offsetPosition = sectionPosition - offset;
+
+        e.preventDefault();
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+})
+
+// To Top
+document.querySelector('#top').onclick = e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+

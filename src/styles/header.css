@@ -23,6 +23,7 @@ ul {
     top: 0px;
     z-index: 2;
     opacity: 0.97;
+    /* margin-bottom: 100px; */
     /* width: 100%; */
 }
 
@@ -30,11 +31,6 @@ ul {
 /* #navbar.sticky + .content {
     padding-top: 100px;
 } */
-
-.app-section-trigger {
-    width: 100%;
-    /* border: 1px solid red; */
-}
 
 .active-link {
     /* height: 58.5px; */
@@ -321,3 +317,40 @@ footer {
     height: 30px;
     background: red;
 } */
+
+
+/* TO TOP ARROW */
+/* SOURCE: https://codepen.io/ekfuhrmann/pen/pVvpqM */
+a#top-arrow {
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 800;
+    color: #333;
+    font-size: 30px;
+    background-color: #ededed;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--button-border-radius);
+    position: sticky;
+    left: 94%;
+    bottom: 10%;
+    /* box-shadow: 0 0px 0px rgba(#000, 0.2), inset 0 0 0 1px rgba(#000, 0.1); */
+    transition: 200ms;
+}
+
+a#top-arrow.hidden {
+    display: none;
+}
+
+a#top-arrow:hover {
+    /* background-color: var(--border-blue); */
+    /* box-shadow: 0 4px 8px rgba(#000, 0.2), inset 0 0 0 1px rgba(#000, 0.15); */
+    box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502);
+}
+
+button:hover {
+    box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502);
+}
