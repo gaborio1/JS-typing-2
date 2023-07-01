@@ -15,7 +15,26 @@ ul {
     border: 5px solid rgb(243, 56, 56);
 } */
 
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+#navbar.sticky {
+    /* !!! FIXED NOT WORKING, REPLACED BY STICKY !!! */
+    /* position: fixed; */
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    opacity: 0.97;
+    /* width: 100%; */
+}
 
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+/* #navbar.sticky + .content {
+    padding-top: 100px;
+} */
+
+.app-section-trigger {
+    width: 100%;
+    /* border: 1px solid red; */
+}
 
 .active-link {
     /* height: 58.5px; */
@@ -88,7 +107,6 @@ a.brand {
     /* color: rgb(234, 216, 182); */
 }
 
-
 /* BRAND HOVER */
 a.brand:hover {
     font-weight: 400;
@@ -125,8 +143,6 @@ a.nav-link:hover {
 .nav__toggle {
     display: none;
 }
-
-
 
 html {
     -webkit-font-smoothing: antialiased;

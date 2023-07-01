@@ -2843,7 +2843,27 @@ CENTER KEYBOARD
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH:
+CURRENT BRANCH: COLOUMN LAYOUT
+
+    NAVBAR
+        STICKY
+        ACTIVE LINK HIGHLIGHT 
+        
+    DROPDOWN
+        COLLAPSE AFTER SECTION SELECTD
+
+    PAGE LAYOUT
+        DIVIDERS?
+        STYLE
+
+    FOOTER
+        DESIGN
+        INCLUDE SOCIAL MEDIA LINKS
+
+    TIMER
+        HIDE ALL CONTENT
+
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 KEYBOARD SHORTCUSTS
     Option+Delete: Delete the previous word.
