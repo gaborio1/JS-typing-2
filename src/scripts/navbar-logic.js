@@ -64,7 +64,9 @@ const upArrow = document.getElementById("top-arrow");
 // When the user scrolls the page, execute myFunction
 window.onscroll = function () {
     // USE ABOUT SECTION AS TRIGGER
-    let aboutSectionRect = document.getElementById("about-section").getBoundingClientRect().top;
+    let aboutSectionRect = document
+        .getElementById("about-section")
+        .getBoundingClientRect().top;
     // ONLY MAKE UP ARROW VISIBLE IF USER SCROLLED PAST APP SECTION
     if (aboutSectionRect < 200) {
         upArrow.classList.remove("hidden");
@@ -82,7 +84,6 @@ var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
-
     // console.log(window.pageYOffset);
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
@@ -94,16 +95,14 @@ function myFunction() {
 // SMOOTH SCROLL INTO VIEW:
 // SOURCE: https://codepen.io/ekfuhrmann/pen/pVvpqM
 // To Section
-const navLinks = document.querySelectorAll(
-    '.nav-link'
-);
+const navLinks = document.querySelectorAll(".nav-link");
 
-Array.from(navLinks).forEach(navLink => {
-    const href = navLink.getAttribute('href');
+Array.from(navLinks).forEach((navLink) => {
+    const href = navLink.getAttribute("href");
     const section = document.querySelector(href);
-    const offset = 50 + 50; // nav and offset
+    const offset = 50 + 100; // nav and offset
 
-    navLink.onclick = e => {
+    navLink.onclick = (e) => {
         // console.log("navlink clicked", navLink);
         // get body position
         const bodyRect = document.body.getBoundingClientRect().top;
@@ -117,14 +116,13 @@ Array.from(navLinks).forEach(navLink => {
         e.preventDefault();
         window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth'
+            behavior: "smooth",
         });
-    }
-})
+    };
+});
 
 // To Top
-document.querySelector('#top').onclick = e => {
+document.querySelector("#top").onclick = (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};

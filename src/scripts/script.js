@@ -2846,8 +2846,13 @@ CENTER KEYBOARD
 CURRENT BRANCH: COLOUMN LAYOUT
 
     NAVBAR
-        STICKY
+        ☑️ STICKY
         ACTIVE LINK HIGHLIGHT 
+            FONT COLOUR
+            FONT WEIGHT
+            ASSIGN EQUAL WIDTH?
+            BORDER BOTTOM
+            ELEMENT BACKGROUND
         
     DROPDOWN
         COLLAPSE AFTER SECTION SELECTD
@@ -2855,6 +2860,13 @@ CURRENT BRANCH: COLOUMN LAYOUT
     PAGE LAYOUT
         DIVIDERS?
         STYLE
+            BOX SHADOW
+                ACTIVE BUTTONS
+                DIFFICULTY TITLES
+                SLIDER
+
+    CONTENT
+        HIDE LINKS, ONLY DISPLAY ICONS
 
     FOOTER
         DESIGN
@@ -2862,6 +2874,16 @@ CURRENT BRANCH: COLOUMN LAYOUT
 
     TIMER
         HIDE ALL CONTENT
+
+    JS
+        NAVBAR SCROLL REFACTOR
+        STICKY REFACTOR
+
+    HTML
+        DELETE UNUSED PAGES
+
+    CSS
+        NAVBAR REFACTOR
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
