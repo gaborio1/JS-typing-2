@@ -1,28 +1,19 @@
-// ========== ACTIVE NAVLINKS HIGHLIGHT ==========
-
 const linkArray = document.getElementsByClassName("nav-link");
 // console.log(linkArray);
 
 // GET CURRENT URL OF PAGE
 const currentUrl = window.location.href;
 // console.log(currentUrl);
+const navbar = document.getElementById("navbar");
 // GRAB NAVBAR LINKS
 const home = document.getElementById("navbar__home");
 const about = document.getElementById("navbar__about");
 const links = document.getElementById("navbar__links");
 const contact = document.getElementById("navbar__contact");
 
-// REMOVE ACTIVE CLASS FROM ALL
-// for (let i = 0; i < linkArray.length; i += 1) {
-//     // linkArray[i].classList.remove("active-link");
-//     linkArray[i].addEventListener("click", function () {
-//         // console.log("link clicked");
-//         console.log(linkArray[i]);
-//         // console.log(this);
-//         linkArray[i].classList.remove("active-link");
-//         // document.querySelector(".site-header").style.background = "red";
-//     });
-// }
+const upArrow = document.getElementById("top-arrow");
+
+// ========== ACTIVE NAVLINKS HIGHLIGHT ==========
 
 // ADD active-link CLASS TO CURRENT PAGE'S LINK
 const addActiveClassToCurrrent = () => {
@@ -58,11 +49,8 @@ navToggle.addEventListener("click", function () {
     }
 });
 
-// SCROLL EVENTS (STICKY NAVBAR AND HIDE/SHOW UP ARROW)
-const upArrow = document.getElementById("top-arrow");
-// let aboutSectionRect = document.getElementById("about-section").getBoundingClientRect().top;
-// When the user scrolls the page, execute myFunction
-window.onscroll = function () {
+// HIDE/SHOW UP ARROW
+const handleUpArrow = () => {
     // USE ABOUT SECTION AS TRIGGER
     let aboutSectionRect = document
         .getElementById("about-section")
@@ -73,24 +61,28 @@ window.onscroll = function () {
     } else {
         upArrow.classList.add("hidden");
     }
-    myFunction();
 };
 
-// Get the navbar
-var navbar = document.getElementById("navbar");
+// ADD STICKY CLASS TO NAVBAR WHEN ITS SCROLL POSITION IS REACHED AND REMOVE WHEN IT LEAVES POSITION
 
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+// GET NAVBAR OFFSET
+const sticky = navbar.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-    // console.log(window.pageYOffset);
+const makeNavbarSticky = () => {
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
     } else {
         navbar.classList.remove("sticky");
     }
-}
+};
+
+// SCROLL EVENTS (STICKY NAVBAR AND HIDE/SHOW UP ARROW)
+
+// PAGE SCROLL
+window.onscroll = function () {
+    makeNavbarSticky();
+    handleUpArrow();
+};
 
 // SMOOTH SCROLL INTO VIEW:
 // SOURCE: https://codepen.io/ekfuhrmann/pen/pVvpqM
@@ -104,13 +96,13 @@ Array.from(navLinks).forEach((navLink) => {
 
     navLink.onclick = (e) => {
         // console.log("navlink clicked", navLink);
-        // get body position
+        // BODY POSITION
         const bodyRect = document.body.getBoundingClientRect().top;
-        // get section position relative
+        // SECTION POSITION RELATIVE
         const sectionRect = section.getBoundingClientRect().top;
-        // subtract the section from body
+        // SUBTRACT SECTION FROM BODY
         const sectionPosition = sectionRect - bodyRect;
-        // subtract offset
+        // SUBTRACT OFFSET
         const offsetPosition = sectionPosition - offset;
 
         e.preventDefault();
@@ -121,8 +113,8 @@ Array.from(navLinks).forEach((navLink) => {
     };
 });
 
-// To Top
-document.querySelector("#top").onclick = (e) => {
+// UP ARROW
+upArrow.onclick = (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
 };
