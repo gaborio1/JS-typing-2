@@ -35,10 +35,13 @@ ul {
 .active-link {
     /* height: 58.5px; */
     color: black;
+    background: tomato;
+    background: orange;
+    /* background: #1584d8; */
     /* color: orange; */
     /* border-bottom: 2px solid rgb(253, 186, 62); */
     /* border-bottom: 2px solid black; */
-    /* font-weight: 600; */
+    font-weight: 600;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
@@ -72,7 +75,7 @@ a {
 }
 
 a.nav-link {
-    /* width: 75px; */
+    width: 100px;
     height: 50px;
     /* border: 1px solid black; */
 }
@@ -121,9 +124,10 @@ a.brand:hover .digit-2 {
 
 /* NAV LINKS HOVER */
 a.nav-link:hover {
-    /* font-weight: 700; */
+    font-weight: 700;
+    background: rgba(255, 99, 71, 0.615);
     /* color: #000000; */
-    color: orange;
+    /* color: orange; */
 }
 
 /* .digit-2:hover {
@@ -301,8 +305,13 @@ footer {
         /* border: 1px solid green; */
     }
 
+    a.nav-link {
+        width: 100%;
+    }
+
     .nav-link.active-link {
-        color: orange;
+        /* color: orange; */
+        background: tomato;
     }
 }
 
@@ -317,7 +326,6 @@ footer {
     height: 30px;
     background: red;
 } */
-
 
 /* TO TOP ARROW */
 /* SOURCE: https://codepen.io/ekfuhrmann/pen/pVvpqM */
