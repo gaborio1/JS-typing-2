@@ -6,6 +6,7 @@ const navLinks = document.querySelectorAll(".nav-link");
 const currentUrl = window.location.href;
 // console.log(currentUrl);
 const navbar = document.getElementById("navbar");
+const dropdown = document.getElementById("nav__wrapper");
 // GRAB NAVBAR LINKS
 const home = document.getElementById("navbar__home");
 const about = document.getElementById("navbar__about");
@@ -180,6 +181,10 @@ Array.from(navLinks).forEach((navLink) => {
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
+
+        // HIDE DROPDOWN (nav__wrapper)
+        dropdown.classList.remove("active");
+
         // navLink.classList.add("active-link");
 
         // console.log("navlink clicked", navLink);
