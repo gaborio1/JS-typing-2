@@ -32,6 +32,24 @@ ul {
     padding-top: 100px;
 } */
 
+/* HEADER/FOOTER BACKGROUND */
+.site-header,
+footer {
+    position: relative;
+
+    background-color: #def7ff;
+    /* background-color: #004d88d2; */
+    /* background-color: #10161b; */
+}
+
+.site-header.dark-theme,
+.footer.dark-theme {
+    /* background-color: #def7ff; */
+    /* background-color: #004d88d2; */
+    background-color: #10161b;
+}
+
+/* ACTIVE NAV LINK */
 .nav-link.active-link {
     /* height: 58.5px; */
     /* color: black; */
@@ -70,29 +88,49 @@ ul {
     box-sizing: border-box;
 } */
 
+/* NAV LINKS */
 a {
     /* letter-spacing: 1px; */
     text-decoration: none;
     font-weight: 400;
-    /* color: #222; */
+    color: #222;
+    /* color: #dadada; */
+}
+
+.site-header.dark-theme a {
     color: #dadada;
 }
 
 a.nav-link {
+    display: block;
     width: 100px;
     height: 50px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-weight: 100;
+    padding: 1.15rem 1rem;
     /* border: 1px solid black; */
 }
 
+.site-header.dark-theme a.nav-link {
+    color: #dadada;
+    /* border: 1px solid white; */
+}
+
+/* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BRAND 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰*/
 a.brand {
     opacity: 0.9;
-    /* letter-spacing: 0.014rem; */
     font-weight: 500;
-    /* font-weight: 600; */
     font-size: 25px;
+    /* letter-spacing: 0.5px; */
     color: #000000;
-    color: #c5c5c5;
+    /* color: #dbdbdb; */
+}
+
+.site-header.dark-theme a.brand {
+    opacity: 0.9;
+    font-weight: 500;
+    font-size: 25px;
+    /* color: #000000; */
     color: #dbdbdb;
 }
 
@@ -135,6 +173,15 @@ a.brand:hover .digit-2 {
 /* NAV LINKS HOVER */
 a.nav-link:hover {
     font-weight: 500;
+    /* background: rgb(8, 8, 8); */
+    /* background: rgba(255, 99, 71, 0.392); */
+    background: #eaf0f1;
+    /* background: var(--wrap-highlight--light); */
+    /* color: #000000; */
+    /* color: orange; */
+}
+
+.site-header.dark-theme a.nav-link:hover {
     background: rgb(8, 8, 8);
     /* background: rgba(255, 99, 71, 0.615); */
     /* color: #000000; */
@@ -146,11 +193,11 @@ a.nav-link:hover {
 } */
 
 /* ALING NAV ITEMS WITH BRAND HORIZONTALLY */
-.nav__item a {
+/* .nav__item a {
     display: block;
     font-weight: 100;
     padding: 1.15rem 1rem;
-}
+} */
 
 .nav__toggle {
     display: none;
@@ -223,17 +270,6 @@ button.nav__toggle {
 ** The Header Media Queries **
 ** Tweak as per your needs **
 */
-
-/* HEADER/FOOTER BACKGROUND */
-.site-header,
-footer {
-    position: relative;
-
-    /* background-color: #def7ff; */
-    background-color: #004d88d2;
-    background-color: #10161b;
-    /* background-color: var(--border-blue); */
-}
 
 .site-header__wrapper {
     padding-top: 1rem;
