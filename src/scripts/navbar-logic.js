@@ -182,8 +182,11 @@ Array.from(navLinks).forEach((navLink) => {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
 
-        // HIDE DROPDOWN (nav__wrapper)
-        dropdown.classList.remove("active");
+        // HIDE DROPDOWN (nav__wrapper) AFTER SCROLL
+        setTimeout(() => {
+            dropdown.classList.remove("active");
+        }, 450);
+
 
         // navLink.classList.add("active-link");
 

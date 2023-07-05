@@ -2849,17 +2849,17 @@ CURRENT BRANCH: COLOUMN LAYOUT
         ☑️ STICKY
         ACTIVE LINK HIGHLIGHT 
             FONT COLOUR
-            FONT WEIGHT
-            ASSIGN EQUAL WIDTH?
-            BORDER BOTTOM
-            ELEMENT BACKGROUND
+            ☑️ FONT WEIGHT
+            ☑️ ASSIGN EQUAL WIDTH?
+            ☑️ BORDER BOTTOM
+            ☑️ ELEMENT HOVER BACKGROUND
 
     HAMBURGER
         REMOVE TEXT SHADOW
-        CHANGE COLOUR
+        ☑️ CHANGE COLOUR
         
     DROPDOWN
-        COLLAPSE AFTER SECTION SELECTED
+        ☑️ COLLAPSE AFTER SECTION SELECTED
 
     UP ARROW
         ANIMATE
@@ -2875,9 +2875,21 @@ CURRENT BRANCH: COLOUMN LAYOUT
     CONTENT
         HIDE LINKS, ONLY DISPLAY ICONS
 
+    IMAGES
+        https://www.shutterstock.com/search/keyboard
+
     FOOTER
         DESIGN
+            https://webflow.com/blog/website-footer-design-examples?utm_source=google&utm_medium=search&utm_campaign=SS-GoogleSearch-Nonbrand-DynamicSearchAds-Core&utm_term=aud-520743545921:dsa-1637784841628___585305490218__&gclid=CjwKCAjwqZSlBhBwEiwAfoZUIDWHUO5kcid8EdZ0b_lZ8urV4IB3cZJ7bP6C9fVnosvOtl3z5dWRhBoCzhoQAvD_BwE
         INCLUDE SOCIAL MEDIA LINKS
+        CONTENT
+            COPYRIGHT NOTICE
+                Copyright © 2023, learning2type.com. All rights reserved.
+            PRIVACY POLICY
+            SITEMAP
+            LOGO
+            SOCIAL MEDIA ICONS
+            EMAIL
 
     TIMER
         HIDE ALL CONTENT
