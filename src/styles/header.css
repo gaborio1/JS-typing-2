@@ -11,9 +11,11 @@ ul {
     list-style: none;
 }
 
-/* html {
-    border: 5px solid rgb(243, 56, 56);
-} */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 #navbar.sticky {
@@ -28,25 +30,24 @@ ul {
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-/* #navbar.sticky + .content {
+#navbar.sticky+.content {
     padding-top: 100px;
-} */
+}
 
 /* HEADER/FOOTER BACKGROUND */
 .site-header,
 footer {
     position: relative;
 
-    background-color: #def7ff;
-    /* background-color: #004d88d2; */
-    /* background-color: #10161b; */
+    /* background-color: #def7ff; */
+    background-color: #10161b;
 }
 
 .site-header.dark-theme,
 .footer.dark-theme {
-    /* background-color: #def7ff; */
-    /* background-color: #004d88d2; */
-    background-color: #10161b;
+    background-color: #004d88d2;
+    background-color: #07487af6;
+    /* background-color: #10161b; */
 }
 
 /* ACTIVE NAV LINK */
@@ -60,7 +61,7 @@ footer {
     /* background: orange; */
     /* background: #1584d8; */
     /* color: orange; */
-    border-bottom: 3px solid rgb(255, 167, 4);
+    border-bottom: 2px solid rgb(255, 167, 4);
     /* border-bottom: 5px solid red; */
     /* border-bottom: 2px solid black; */
     font-weight: 500;
@@ -70,7 +71,6 @@ footer {
 
 .wrapper--nav {
     display: flex;
-    /* justify-content: space-between; */
     /* !!! */
     /* width: 90%; */
     max-width: 1000px;
@@ -78,28 +78,21 @@ footer {
     padding-right: 1rem;
     margin-left: auto;
     margin-right: auto;
-    /* +++ */
     height: 50px;
 }
-
-/* *,
-*:before,
-*:after {
-    box-sizing: border-box;
-} */
 
 /* NAV LINKS */
 a {
     /* letter-spacing: 1px; */
     text-decoration: none;
     font-weight: 400;
-    color: #222;
-    /* color: #dadada; */
-}
-
-.site-header.dark-theme a {
+    /* color: #222; */
     color: #dadada;
 }
+
+/* .site-header.dark-theme a {
+    color: #dadada;
+} */
 
 a.nav-link {
     display: block;
@@ -111,10 +104,9 @@ a.nav-link {
     /* border: 1px solid black; */
 }
 
-.site-header.dark-theme a.nav-link {
+/* .site-header.dark-theme a.nav-link {
     color: #dadada;
-    /* border: 1px solid white; */
-}
+} */
 
 /* 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 BRAND 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰*/
 a.brand {
@@ -122,17 +114,16 @@ a.brand {
     font-weight: 500;
     font-size: 25px;
     /* letter-spacing: 0.5px; */
-    color: #000000;
-    /* color: #dbdbdb; */
-}
-
-.site-header.dark-theme a.brand {
-    opacity: 0.9;
-    font-weight: 500;
-    font-size: 25px;
     /* color: #000000; */
     color: #dbdbdb;
 }
+
+/* .site-header.dark-theme a.brand {
+    opacity: 0.9;
+    font-weight: 500;
+    font-size: 25px;
+    color: #dbdbdb;
+} */
 
 /* BRAND SPANS */
 .digit-2 {
@@ -173,24 +164,20 @@ a.brand:hover .digit-2 {
 /* NAV LINKS HOVER */
 a.nav-link:hover {
     font-weight: 500;
-    /* background: rgb(8, 8, 8); */
+    background: rgb(8, 8, 8);
     /* background: rgba(255, 99, 71, 0.392); */
-    background: #eaf0f1;
-    /* background: var(--wrap-highlight--light); */
     /* color: #000000; */
     /* color: orange; */
 }
 
 .site-header.dark-theme a.nav-link:hover {
-    background: rgb(8, 8, 8);
+    /* background: rgb(8, 8, 8); */
+    background: #004d88d2;
+    background: #004d88;
     /* background: rgba(255, 99, 71, 0.615); */
     /* color: #000000; */
     /* color: orange; */
 }
-
-/* .digit-2:hover {
-    color: #dadada;
-} */
 
 /* ALING NAV ITEMS WITH BRAND HORIZONTALLY */
 /* .nav__item a {
@@ -208,10 +195,6 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* body {
-    font-family: "Roboto", sans-serif;
-} */
-
 .sr-only {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
@@ -222,6 +205,7 @@ html {
     overflow: hidden;
 }
 
+/* HAMBURGER */
 .button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -240,29 +224,6 @@ button.nav__toggle {
     border-style: none;
     /* border: 1px solid black; */
     /* border-radius: var(--button-border-radius); */
-}
-
-.button svg {
-    display: inline-block;
-    vertical-align: middle;
-    width: 24px;
-    height: 24px;
-    fill: #fff;
-}
-
-.button span {
-    display: none;
-}
-
-@media (min-width: 600px) {
-    .button span {
-        display: initial;
-    }
-}
-
-.button--icon {
-    min-width: initial;
-    padding: 0.5rem;
 }
 
 /* _______________________________________________________ */
@@ -294,9 +255,6 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
-    /* .site-header {
-        z-index: 19;
-    } */
 
     /* BRAND LINK */
     .wrapper--nav {

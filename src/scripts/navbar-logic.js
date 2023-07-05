@@ -99,28 +99,28 @@ const highlightActiveLink = () => {
     // }, 500);
 
     if (homeSectionRect < 200 && homeSectionRect > -1) {
-        console.log("home");
+        // console.log("home");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
         home.classList.add("active-link");
     }
     if (aboutSectionRect < 200 && aboutSectionRect > -1) {
-        console.log("about");
+        // console.log("about");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
         about.classList.add("active-link");
     }
     if (linksSectionRect < 200 && linksSectionRect > -1) {
-        console.log("links");
+        // console.log("links");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
         links.classList.add("active-link");
     }
     if (contactSectionRect < 500 && contactSectionRect > -1) {
-        console.log("contact");
+        // console.log("contact");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
