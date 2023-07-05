@@ -67,6 +67,37 @@ const highlightActiveLink = () => {
         .getElementById("contact-section")
         .getBoundingClientRect().top;
 
+    // setTimeout(() => {
+    //     if (homeSectionRect < 200 && homeSectionRect > -1) {
+    //         console.log("home");
+    //         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
+    //             Array.from(navLinks)[i].classList.remove("active-link");
+    //         }
+    //         home.classList.add("active-link");
+    //     }
+    //     if (aboutSectionRect < 200 && aboutSectionRect > -1) {
+    //         console.log("about");
+    //         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
+    //             Array.from(navLinks)[i].classList.remove("active-link");
+    //         }
+    //         about.classList.add("active-link");
+    //     }
+    //     if (linksSectionRect < 200 && linksSectionRect > -1) {
+    //         console.log("links");
+    //         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
+    //             Array.from(navLinks)[i].classList.remove("active-link");
+    //         }
+    //         links.classList.add("active-link");
+    //     }
+    //     if (contactSectionRect < 500 && contactSectionRect > -1) {
+    //         console.log("contact");
+    //         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
+    //             Array.from(navLinks)[i].classList.remove("active-link");
+    //         }
+    //         contact.classList.add("active-link");
+    //     }
+    // }, 500);
+
     if (homeSectionRect < 200 && homeSectionRect > -1) {
         console.log("home");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
@@ -151,7 +182,7 @@ Array.from(navLinks).forEach((navLink) => {
         }
         // navLink.classList.add("active-link");
 
-        console.log("navlink clicked", navLink);
+        // console.log("navlink clicked", navLink);
         // BODY POSITION
         const bodyRect = document.body.getBoundingClientRect().top;
         // SECTION POSITION RELATIVE
@@ -164,7 +195,7 @@ Array.from(navLinks).forEach((navLink) => {
         e.preventDefault();
         window.scrollTo({
             top: offsetPosition,
-            behavior: "smooth",
+            // behavior: "smooth",
         });
     };
 });

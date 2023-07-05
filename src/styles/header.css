@@ -32,16 +32,20 @@ ul {
     padding-top: 100px;
 } */
 
-.active-link {
+.nav-link.active-link {
     /* height: 58.5px; */
-    color: black;
-    background: tomato;
-    background: orange;
+    /* color: black; */
+    /* color: orange; */
+    /* color: rgb(0, 0, 0); */
+    /* color: white; */
+    /* background: tomato; */
+    /* background: orange; */
     /* background: #1584d8; */
     /* color: orange; */
-    /* border-bottom: 2px solid rgb(253, 186, 62); */
+    border-bottom: 2px solid rgb(255, 167, 4);
+    /* border-bottom: 5px solid red; */
     /* border-bottom: 2px solid black; */
-    font-weight: 600;
+    font-weight: 500;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
@@ -77,25 +81,29 @@ a {
 a.nav-link {
     width: 100px;
     height: 50px;
+    letter-spacing: 1px;
     /* border: 1px solid black; */
 }
 
 a.brand {
     opacity: 0.9;
-    font-weight: 400;
-    font-weight: 600;
+    /* letter-spacing: 0.014rem; */
+    font-weight: 500;
+    /* font-weight: 600; */
     font-size: 25px;
     color: #000000;
+    color: #c5c5c5;
+    color: #dbdbdb;
 }
 
 /* BRAND SPANS */
 .digit-2 {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 30px;
     margin-left: 2px;
     margin-right: 2px;
     color: orange;
-    color: rgba(255, 166, 0, 0.886);
+    /* color: rgba(255, 166, 0, 0.886); */
 }
 
 .span--dot-com {
@@ -108,9 +116,11 @@ a.brand {
 
 /* BRAND HOVER */
 a.brand:hover {
-    font-weight: 400;
-    opacity: 0.8;
-    letter-spacing: 0.011rem;
+    /* font-weight: 500; */
+    opacity: 1;
+    /* MATCHES 600 FONT WEIGHT */
+    /* letter-spacing: 0.011rem; */
+    /* letter-spacing: 0.004rem; */
 }
 
 a.brand:hover .span--dot-com {
@@ -119,13 +129,14 @@ a.brand:hover .span--dot-com {
 }
 
 a.brand:hover .digit-2 {
-    font-weight: 400;
+    font-weight: 500;
 }
 
 /* NAV LINKS HOVER */
 a.nav-link:hover {
-    font-weight: 700;
-    background: rgba(255, 99, 71, 0.615);
+    font-weight: 500;
+    background: rgb(8, 8, 8);
+    /* background: rgba(255, 99, 71, 0.615); */
     /* color: #000000; */
     /* color: orange; */
 }
@@ -137,6 +148,7 @@ a.nav-link:hover {
 /* ALING NAV ITEMS WITH BRAND HORIZONTALLY */
 .nav__item a {
     display: block;
+    font-weight: 100;
     padding: 1.15rem 1rem;
 }
 
@@ -218,8 +230,9 @@ footer {
     position: relative;
 
     /* background-color: #def7ff; */
-    /* background-color: #004d88d2; */
-    background-color: var(--border-blue);
+    background-color: #004d88d2;
+    background-color: #10161b;
+    /* background-color: var(--border-blue); */
 }
 
 .site-header__wrapper {
