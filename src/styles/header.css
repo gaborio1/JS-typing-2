@@ -42,7 +42,7 @@ ul {
     /* background: orange; */
     /* background: #1584d8; */
     /* color: orange; */
-    border-bottom: 2px solid rgb(255, 167, 4);
+    border-bottom: 3px solid rgb(255, 167, 4);
     /* border-bottom: 5px solid red; */
     /* border-bottom: 2px solid black; */
     font-weight: 500;
@@ -272,7 +272,8 @@ footer {
     /* HAMBURGER */
     i.fa-solid {
         margin-bottom: 6px;
-        color: black;
+        /* color: black; */
+        color: rgb(194, 194, 194);
     }
 
     /* SLIDE UP */
@@ -324,7 +325,22 @@ footer {
 
     .nav-link.active-link {
         /* color: orange; */
-        background: tomato;
+        /* color: black; */
+        /* NOT WORKING, MAKES TEXT DISABPPEAR */
+        font-weight: 500;
+        border-bottom-width: 1px;
+
+        /* background: tomato; */
+        /* background: rgba(255, 166, 0, 0.513); */
+        /* background: rgba(63, 63, 63, 0.576); */
+    }
+
+    a.nav-link:hover {
+        font-weight: 500;
+        background: rgba(34, 34, 34, 0.458);
+        /* background: rgba(255, 99, 71, 0.615); */
+        /* color: #000000; */
+        /* color: orange; */
     }
 }
 
