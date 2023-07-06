@@ -8,6 +8,7 @@ const currentUrl = window.location.href;
 const navbar = document.getElementById("navbar");
 const dropdown = document.getElementById("nav__wrapper");
 // GRAB NAVBAR LINKS
+const getStarted = document.getElementById("btn--get-started");
 const home = document.getElementById("navbar__home");
 const about = document.getElementById("navbar__about");
 const links = document.getElementById("navbar__links");
@@ -54,6 +55,16 @@ navToggle.addEventListener("click", function () {
 
 // !!! REFACTOR THIS !!!
 // HIGHLIGHT ACTIVE LINK BASED ON CURRENT SCROLL POSITION
+
+getStarted.onclick = () => {
+    // console.log("clicked");
+    let homeSectionRect = document
+        .getElementById("app-section-trigger")
+        .getBoundingClientRect().top;
+    // console.log(homeSectionRect);
+    window.scrollTo({ top: homeSectionRect - 50, behavior: "smooth" });
+}
+
 const highlightActiveLink = () => {
     let homeSectionRect = document
         .getElementById("app-section-trigger")
