@@ -10,6 +10,9 @@ const dropdown = document.getElementById("nav__wrapper");
 // GRAB NAVBAR LINKS
 const getStarted = document.getElementById("btn--get-started");
 const home = document.getElementById("navbar__home");
+// +++
+const app = document.getElementById("navbar__app");
+// +++
 const about = document.getElementById("navbar__about");
 const links = document.getElementById("navbar__links");
 const contact = document.getElementById("navbar__contact");
@@ -53,20 +56,25 @@ navToggle.addEventListener("click", function () {
     }
 });
 
-// !!! REFACTOR THIS !!!
-// HIGHLIGHT ACTIVE LINK BASED ON CURRENT SCROLL POSITION
+
 
 getStarted.onclick = () => {
     // console.log("clicked");
-    let homeSectionRect = document
+    let appSectionRect = document
         .getElementById("app-section-trigger")
         .getBoundingClientRect().top;
     // console.log(homeSectionRect);
-    window.scrollTo({ top: homeSectionRect - 50, behavior: "smooth" });
+    window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
 }
 
+// !!! REFACTOR THIS !!!
+// HIGHLIGHT ACTIVE LINK BASED ON CURRENT SCROLL POSITION
 const highlightActiveLink = () => {
+
     let homeSectionRect = document
+        .getElementById("image-container")
+        .getBoundingClientRect().top;
+    let appSectionRect = document
         .getElementById("app-section-trigger")
         .getBoundingClientRect().top;
     let aboutSectionRect = document
@@ -117,6 +125,19 @@ const highlightActiveLink = () => {
         }
         home.classList.add("active-link");
     }
+
+    if (appSectionRect < 200 && appSectionRect > -1) {
+        // console.log("home");
+        for (let i = 0; i < Array.from(navLinks).length; i += 1) {
+            Array.from(navLinks)[i].classList.remove("active-link");
+        }
+        app.classList.add("active-link");
+    }
+
+
+
+
+
     if (aboutSectionRect < 200 && aboutSectionRect > -1) {
         // console.log("about");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {

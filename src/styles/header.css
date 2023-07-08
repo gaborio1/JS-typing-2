@@ -30,7 +30,7 @@ ul {
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-#navbar.sticky + .content {
+#navbar.sticky+.content {
     padding-top: 100px;
 }
 
@@ -116,8 +116,11 @@ a.brand {
     font-weight: 500;
     font-size: 25px;
     /* letter-spacing: 0.5px; */
-    /* color: #000000; */
     color: #dbdbdb;
+
+    /* padding-top: 6px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid orange; */
 }
 
 /* .site-header.dark-theme a.brand {
@@ -257,6 +260,7 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
+
     /* BRAND LINK */
     .wrapper--nav {
         padding-top: 10px;
