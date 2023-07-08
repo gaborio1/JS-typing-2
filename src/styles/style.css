@@ -108,7 +108,10 @@ body {
     text-align: center;
     background: var(--body-background--light);
     /* background: rgba(255, 166, 0, 0.546); */
-    /* background-color: rgba(251, 239, 214, 0.521) */
+
+    /* MATCHES COVER IMAGE BACKGROUND */
+    /* background: rgba(248, 241, 221, 0.861); */
+
     filter: grayscale(0.2);
     /* filter: grayscale(1); */
 
