@@ -2843,7 +2843,7 @@ CENTER KEYBOARD
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-CURRENT BRANCH: COLOUMN LAYOUT
+CURRENT BRANCH: APP-LINK
 
     NAVBAR
         ☑️ STICKY
@@ -2853,6 +2853,13 @@ CURRENT BRANCH: COLOUMN LAYOUT
             ☑️ ASSIGN EQUAL WIDTH?
             ☑️ BORDER BOTTOM
             ☑️ ELEMENT HOVER BACKGROUND
+        NAW WRAPPER
+            a.nav-link TO SHRINK HORIZONTALLY 100PX -> 75PX ON WINDOW RESIZE AT AROUND 1100PX
+
+
+
+    HOME
+        FIND IMAGE FOR MOBIL SIZE
 
     HAMBURGER
         REMOVE TEXT SHADOW
@@ -2879,6 +2886,8 @@ CURRENT BRANCH: COLOUMN LAYOUT
         https://www.shutterstock.com/search/keyboard
 
     FOOTER
+        CONTENT WIDTH
+            SAME AS NAVBAR, 90% / MAX 1600
         DESIGN
             https://webflow.com/blog/website-footer-design-examples?utm_source=google&utm_medium=search&utm_campaign=SS-GoogleSearch-Nonbrand-DynamicSearchAds-Core&utm_term=aud-520743545921:dsa-1637784841628___585305490218__&gclid=CjwKCAjwqZSlBhBwEiwAfoZUIDWHUO5kcid8EdZ0b_lZ8urV4IB3cZJ7bP6C9fVnosvOtl3z5dWRhBoCzhoQAvD_BwE
         INCLUDE SOCIAL MEDIA LINKS

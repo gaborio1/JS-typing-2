@@ -56,8 +56,6 @@ navToggle.addEventListener("click", function () {
     }
 });
 
-
-
 getStarted.onclick = () => {
     // console.log("clicked");
     let appSectionRect = document
@@ -65,12 +63,11 @@ getStarted.onclick = () => {
         .getBoundingClientRect().top;
     // console.log(homeSectionRect);
     window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
-}
+};
 
 // !!! REFACTOR THIS !!!
 // HIGHLIGHT ACTIVE LINK BASED ON CURRENT SCROLL POSITION
 const highlightActiveLink = () => {
-
     let homeSectionRect = document
         .getElementById("image-container")
         .getBoundingClientRect().top;
@@ -133,10 +130,6 @@ const highlightActiveLink = () => {
         }
         app.classList.add("active-link");
     }
-
-
-
-
 
     if (aboutSectionRect < 200 && aboutSectionRect > -1) {
         // console.log("about");
@@ -219,7 +212,6 @@ Array.from(navLinks).forEach((navLink) => {
             dropdown.classList.remove("active");
         }, 450);
 
-
         // navLink.classList.add("active-link");
 
         // console.log("navlink clicked", navLink);
@@ -230,12 +222,19 @@ Array.from(navLinks).forEach((navLink) => {
         // SUBTRACT SECTION FROM BODY
         const sectionPosition = sectionRect - bodyRect;
         // SUBTRACT OFFSET
-        const offsetPosition = sectionPosition - offset;
+        let offsetPosition = sectionPosition - offset;
+
+        // ADJUST OFFSET FOR APP
+        // console.log(navLink.id);
+        if (navLink === app) {
+            // console.log("adjust offset for app");
+            offsetPosition += 100;
+        }
 
         e.preventDefault();
         window.scrollTo({
             top: offsetPosition,
-            // behavior: "smooth",
+            behavior: "smooth",
         });
     };
 });
