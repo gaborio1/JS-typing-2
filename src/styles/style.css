@@ -39,23 +39,30 @@
     /* BODY BACKGROUND */
     /* --body-background--light: whitesmoke; */
     /* --body-background--light: rgba(251, 239, 214, 0.812); */
+    /* MATCHING COVER IMG BACKROUND */
+    --body-background--light: #f4ead0;
+    --body-background--light: #f9eed6f1;
+    --body-background--light: #fcf4e3;
     /* --body-background--light: #ffffff; */
+    /* --body-background--light: #d3d7e85b; */
 
     --body-background--dark: #000000;
     --body-background--dark: rgb(14, 14, 14);
     /* --body-background--dark: #36454f; */
 
     /* APP BACKGROUND*/
-    --app-background--light: #f0efeb;
+    /* --app-background--light: #f0efeb; */
     /* --app-background--light: ##f3f3f3; */
     /* --app-background--light: rgb(244, 244, 244); */
+    --app-background--light: rgba(251, 239, 214, 0.296);
 
     --app-background--dark: rgb(28, 28, 28);
 
     /* WRAP BACKGROUND */
-    --wrap-highlight--light: rgba(251, 239, 214, 0.521);
-    /* --wrap-highlight--light: #e1e1e1; */
-    /* --wrap-highlight--light: #ebebeb; */
+    /* --wrap-highlight--light: rgba(251, 239, 214, 0.521); */
+    /* --wrap-highlight--light: rgb(251, 239, 214); */
+    --wrap-highlight--light: #fbfbfb;
+    --wrap-highlight--light: #ffffff;
 
     --wrap-highlight--dark: rgb(25, 25, 25);
     /*  USE THIS WITH DARK GREEN */
@@ -106,14 +113,13 @@ body {
     font-family: "Roboto", sans-serif;
     /* THIS AFFECTS SPANS IN TEXT FIELDS */
     text-align: center;
-    background: var(--body-background--light);
-    /* background: rgba(255, 166, 0, 0.546); */
+    /* background: var(--body-background--light); */
+    /* background: rgba(255, 237, 202, 0.537); */
 
     /* MATCHES COVER IMAGE BACKGROUND */
     /* background: rgba(248, 241, 221, 0.861); */
 
-    filter: grayscale(0.2);
-    /* filter: grayscale(1); */
+    /* filter: grayscale(0.2); */
 
     /* transition: background 2s; */
 }
@@ -245,7 +251,10 @@ h3 {
     width: 100%;
     height: 50px;
     /* height: 100vh; */
-    background: black;
+    /* background: black; */
+    /* background: rgb(223, 192, 192); */
+    /* background: #C3C8DC; */
+    /* background: #d3d7e84c; */
 }
 
 /* 
@@ -259,7 +268,7 @@ h3 {
     justify-content: center;
     width: var(--app-width);
     height: 100px;
-    /* background: var(--app-background--light); */
+    background: var(--app-background--light);
     background: rgba(251, 239, 214, 0.434);
     font-weight: 100;
     /* margin: 50px auto; */
@@ -946,8 +955,8 @@ p .active-txt-span.active-txt-span--enter {
     /* color: orange; */
 
     /* ADD BACKGROUND WHEN ENLARGING  */
-    background: var(--wrap-highlight--light);
-    background: rgba(251, 239, 214, 0.324);
+    /* background: var(--wrap-highlight--light); */
+    /* background: rgba(251, 239, 214, 0.324); */
     /* background: var(--app-background--light); */
 
     padding: 10px;
@@ -1022,7 +1031,7 @@ p .active-txt-span.active-txt-span--enter {
     height: 3.3em;
 }
 
-.keyboard__row > * {
+.keyboard__row>* {
     position: relative;
     text-align: center;
     float: left;
@@ -1031,13 +1040,15 @@ p .active-txt-span.active-txt-span--enter {
     padding: 0.2em;
     width: 3.3em;
     height: 100%;
+    background: white;
+    color: #3a3d45;
     box-sizing: border-box;
     cursor: pointer;
     /* color: var(--border-gold); */
     -webkit-user-select: none;
 
     border: 1px solid var(--border-grey);
-    border: 1px solid rgb(177, 177, 177);
+    border: 1px solid rgb(113, 113, 113);
 
     /* BLACK KEYS STYLE */
 
@@ -1051,7 +1062,7 @@ p .active-txt-span.active-txt-span--enter {
     /* transition: background var(--background-transition); */
 }
 
-.keyboard.dark-theme .keyboard__row > * {
+.keyboard.dark-theme .keyboard__row>* {
     color: var(--border-gold);
     -webkit-user-select: none;
     /* border: 1px solid #444; */
@@ -1070,13 +1081,13 @@ p .active-txt-span.active-txt-span--enter {
     /* transition: background var(--background-transition); */
 }
 
-.keyboard__row--h1 > div {
+.keyboard__row--h1>div {
     width: 3.5em;
 }
 
 /* KEY PRESSED ON KEYBOARD */
-.keyboard__row > div[data-pressed],
-.keyboard__row > div:active {
+.keyboard__row>div[data-pressed],
+.keyboard__row>div:active {
     /* background: #2a2a2a; */
     background: var(--wrap-highlight--light);
     /* background: rgba(255, 166, 0, 0.474); */
@@ -1092,8 +1103,8 @@ p .active-txt-span.active-txt-span--enter {
     /* box-shadow: 0 0 0 0.05em black; */
 }
 
-.keyboard.dark-theme .keyboard__row > div[data-pressed],
-.keyboard.dark-theme .keyboard__row > div:active {
+.keyboard.dark-theme .keyboard__row>div[data-pressed],
+.keyboard.dark-theme .keyboard__row>div:active {
     background: rgba(0, 128, 0, 0.304);
     background: #529ce180;
 }
@@ -1118,7 +1129,7 @@ p .active-txt-span.active-txt-span--enter {
     width: 18em;
 }
 
-.key--double > * {
+.key--double>* {
     padding-top: 0.1em;
 }
 
@@ -1126,21 +1137,21 @@ p .active-txt-span.active-txt-span--enter {
     line-height: 2.8em;
 }
 
-.key--bottom-left > * {
+.key--bottom-left>* {
     position: absolute;
     text-align: left;
     bottom: 0.4em;
     left: 0.4em;
 }
 
-.key--bottom-right > * {
+.key--bottom-right>* {
     position: absolute;
     text-align: right;
     bottom: 0.4em;
     right: 0.4em;
 }
 
-.key--fn > * {
+.key--fn>* {
     font-size: 0.6em;
     line-height: 1em;
     padding-top: 1.2em;
@@ -1149,12 +1160,12 @@ p .active-txt-span.active-txt-span--enter {
     float: right;
 }
 
-.key--word > * {
+.key--word>* {
     font-size: 0.8em;
 }
 
-.key--arrow--tall > *,
-.key--arrow > * {
+.key--arrow--tall>*,
+.key--arrow>* {
     font-size: 0.5em;
     line-height: 3em;
 }
@@ -1165,11 +1176,11 @@ p .active-txt-span.active-txt-span--enter {
     line-height: 0.5em;
 }
 
-.key--arrow--tall > * {
+.key--arrow--tall>* {
     padding-top: 0.2em;
 }
 
-.keyboard > .keyboard__row {
+.keyboard>.keyboard__row {
     text-align: center;
 }
 
@@ -1736,8 +1747,7 @@ input[type="range"]::-webkit-slider-runnable-track:hover {
 }
 
 /* DARK THEME TRACK HOVER */
-.control-wrap.dark-theme
-    input[type="range"]::-webkit-slider-runnable-track:hover {
+.control-wrap.dark-theme input[type="range"]::-webkit-slider-runnable-track:hover {
     background: #4e545b;
 }
 
@@ -1851,8 +1861,8 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* RADIO LABEL TEXT */
-[type="radio"]:checked + label,
-[type="radio"]:not(:checked) + label {
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
     position: relative;
     width: 75px;
     height: 14px;
@@ -1870,8 +1880,8 @@ input[type="range"]:focus::-ms-fill-upper {
     color: #666;
 }
 
-.control-wrap.dark-theme [type="radio"]:checked + label,
-.control-wrap.dark-theme [type="radio"]:not(:checked) + label {
+.control-wrap.dark-theme [type="radio"]:checked+label,
+.control-wrap.dark-theme [type="radio"]:not(:checked)+label {
     color: darkgoldenrod;
 }
 
@@ -1885,7 +1895,7 @@ input[type="range"]:focus::-ms-fill-upper {
 /* RADIO HOVER BACKGROUND HIGHLIGHT */
 /* TRY TO ADJUST WIDTH */
 /* [type="radio"]:checked + label, */
-[type="radio"]:not(:checked) + label:hover {
+[type="radio"]:not(:checked)+label:hover {
     /* BACKGROUND ONLY */
     /* background: lightgreen;
     border-top-left-radius: 10px;
@@ -1899,7 +1909,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* DISABLED: HOVER */
-[type="radio"]:not(:checked):disabled + label:hover {
+[type="radio"]:not(:checked):disabled+label:hover {
     cursor: default;
     font-weight: 300;
 
@@ -1907,7 +1917,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* :CHECKED: DISABLED: HOVER */
-[type="radio"]:checked:disabled + label:hover {
+[type="radio"]:checked:disabled+label:hover {
     cursor: default;
     font-weight: 300;
 
@@ -1915,8 +1925,8 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* OUTER CIRCLE */
-[type="radio"]:checked + label:before,
-[type="radio"]:not(:checked) + label:before {
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -1928,8 +1938,8 @@ input[type="range"]:focus::-ms-fill-upper {
     background: #fff;
 }
 
-.control-wrap.dark-theme [type="radio"]:checked + label:before,
-.control-wrap.dark-theme [type="radio"]:not(:checked) + label:before {
+.control-wrap.dark-theme [type="radio"]:checked+label:before,
+.control-wrap.dark-theme [type="radio"]:not(:checked)+label:before {
     border: 1px solid darkgoldenrod;
     border-radius: 100%;
     background: #4d4d4d91;
@@ -1941,8 +1951,8 @@ input[type="range"]:focus::-ms-fill-upper {
 } */
 
 /* INNER CIRCLE */
-[type="radio"]:checked + label:after,
-[type="radio"]:not(:checked) + label:after {
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
     content: "";
     width: 10px;
     height: 10px;
@@ -1971,13 +1981,13 @@ input[type="range"]:focus::-ms-fill-upper {
     background: red;
 } */
 
-[type="radio"]:not(:checked) + label:after {
+[type="radio"]:not(:checked)+label:after {
     opacity: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
 }
 
-[type="radio"]:checked + label:after {
+[type="radio"]:checked+label:after {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -2612,6 +2622,7 @@ i.fa-triangle-exclamation {
 .container--pages {
     width: 80%;
     /* max-width: var(--app-width); */
+    max-width: 1200px;
     /* !!! */
     /* THIS CAUSES HALF EMPTY DIV, MAYBE ADD MORE CONTENT */
     min-height: 80%;
@@ -2620,7 +2631,9 @@ i.fa-triangle-exclamation {
     border-radius: var(--wrap-border-radius);
     /* background: var(--app-background--light); */
     background: rgba(251, 239, 214, 0.434);
-    /* background: rgba(251, 239, 214, 0.296); */
+    background: white;
+    /* background: var(--wrap-highlight--light); */
+    background: rgba(251, 239, 214, 0.296);
 }
 
 .container--pages.dark-theme p,
