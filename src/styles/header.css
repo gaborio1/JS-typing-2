@@ -45,11 +45,12 @@ footer {
 
 .site-header.dark-theme,
 .footer.dark-theme {
-    background-color: #004d88d2;
+    /* background-color: #004d88d2; */
     background-color: #07487af6;
-    background-color: #042138f6;
+    /* background-color: #042138f6; */
     /* background-color: #02111df6; */
-    /* background-color: #10161b; */
+    background-color: #10161b;
+    /* background-color: black; */
 }
 
 /* ACTIVE NAV LINK */
