@@ -2882,8 +2882,9 @@ CURRENT BRANCH: APP-LINK
     CONTENT
         HIDE LINKS, ONLY DISPLAY ICONS
 
-    IMAGES
-        https://www.shutterstock.com/search/keyboard
+    HOME IMAGES (!!! REFACTOR IMAGE TOGGLE !!!)
+        ☑️ LIGHT
+        ☑️ DARK
 
     FOOTER
         CONTENT WIDTH
