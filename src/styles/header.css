@@ -17,6 +17,11 @@ ul {
     box-sizing: border-box;
 }
 
+
+/* #navbar {
+    z-index: 10 !important;
+} */
+
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 #navbar.sticky {
     /* !!! FIXED NOT WORKING, REPLACED BY STICKY !!! */
@@ -406,6 +411,16 @@ a#top-arrow {
     /* transform: opacity(100);
     transition: opacity 0.6s ease-out; */
     transition: opacity 2s;
+}
+
+.body.dark-theme a#top-arrow {
+    opacity: 100%;
+
+    background: #013b71;
+    background: #a9a9a9;
+    color: #333;
+    /* background-color: #666666; */
+
 }
 
 a#top-arrow.hidden {
