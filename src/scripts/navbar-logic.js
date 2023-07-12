@@ -17,6 +17,8 @@ const about = document.getElementById("navbar__about");
 const links = document.getElementById("navbar__links");
 const contact = document.getElementById("navbar__contact");
 
+const imageContainer = document.getElementById("image-container");
+
 const upArrow = document.getElementById("top-arrow");
 
 // ========== ACTIVE NAVLINKS HIGHLIGHT ==========
@@ -115,7 +117,17 @@ const highlightActiveLink = () => {
     //     }
     // }, 500);
 
-    if (homeSectionRect < 200 && homeSectionRect > -1) {
+    // THIS IS NOT TRACKING HOME PROPERLY WITH STICKY HOMEPAGE IMAGE
+    // if (homeSectionRect < 200 && homeSectionRect > -1) {
+    //     console.log("home");
+    //     for (let i = 0; i < Array.from(navLinks).length; i += 1) {
+    //         Array.from(navLinks)[i].classList.remove("active-link");
+    //     }
+    //     home.classList.add("active-link");
+    // }
+
+    // THIS IS TO TRACK HOME BASED ON APP POSITION
+    if (appSectionRect > 199) {
         // console.log("home");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
@@ -123,8 +135,9 @@ const highlightActiveLink = () => {
         home.classList.add("active-link");
     }
 
+
     if (appSectionRect < 200 && appSectionRect > -1) {
-        // console.log("home");
+        // console.log("app");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }
@@ -163,7 +176,7 @@ const handleUpArrow = () => {
     // console.log(aboutSectionRect);
 
     // ONLY MAKE UP ARROW VISIBLE IF USER SCROLLED PAST APP SECTION
-    if (aboutSectionRect < 200) {
+    if (aboutSectionRect < 500) {
         upArrow.classList.remove("hidden");
     } else {
         upArrow.classList.add("hidden");
@@ -183,6 +196,17 @@ const makeNavbarSticky = () => {
     }
 };
 
+const sticky2 = imageContainer.offsetTop;
+
+const makeImageSticky = () => {
+    if (window.pageYOffset >= sticky) {
+        imageContainer.classList.add("sticky");
+    } else {
+        imageContainer.classList.remove("sticky");
+    }
+};
+
+
 // SCROLL EVENTS (STICKY NAVBAR AND HIDE/SHOW UP ARROW)
 
 // PAGE SCROLL
@@ -190,6 +214,8 @@ window.onscroll = function () {
     makeNavbarSticky();
     handleUpArrow();
     highlightActiveLink();
+    // STICKY HOMEPAGE IMAGE:
+    makeImageSticky();
 };
 
 // SMOOTH SCROLL INTO VIEW:
@@ -229,6 +255,14 @@ Array.from(navLinks).forEach((navLink) => {
         if (navLink === app) {
             // console.log("adjust offset for app");
             offsetPosition += 100;
+        }
+
+        // !!! TEMP FIX !!!
+        // PREVENTING SLIDING CONTENT FROM SLIDING UP IN STEPS !!!
+        if (navLink === home) {
+            // console.log("home");
+            offsetPosition -= 4000;
+            // window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
         e.preventDefault();

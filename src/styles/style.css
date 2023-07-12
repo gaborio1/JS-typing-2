@@ -2,8 +2,10 @@
     /* BORDERS */
     /* --border-gold: darkgoldenrod; */
     --border-gold: rgba(184, 135, 11, 0.454);
+    --border-gold: rgba(184, 135, 11, 0.232);
+    /* --border-gold: rgb(208, 208, 208); */
     /* --border-gold: rgb(129, 92, 0); */
-    /* --border-gold: rgb(82, 82, 82); */
+    /* --border-gold: #30363d; */
 
     --border-grey: rgb(208, 208, 208);
     /* --border-grey: rgb(87, 97, 105); */
@@ -64,7 +66,9 @@
     --wrap-highlight--light: #fbfbfb;
     --wrap-highlight--light: #ffffff;
 
-    --wrap-highlight--dark: rgb(25, 25, 25);
+    --wrap-highlight--dark: rgb(4, 4, 4);
+    --wrap-highlight--dark: rgb(37, 10, 10);
+    --wrap-highlight--dark: rgb(5, 5, 5);
     /*  USE THIS WITH DARK GREEN */
     /* --wrap-highlight--dark: rgba(25, 25, 25, 0); */
 
@@ -117,8 +121,10 @@ body {
     /* background: rgba(255, 237, 202, 0.537); */
 
     /* MATCHES COVER IMAGE BACKGROUND */
-    background: #fff1cca0;
-    background: #feefc56f;
+    /* background: #fff1cca0; */
+    /* background: #feefc56f; */
+    /* !!! 110% !!! */
+    /* background-image: linear-gradient(180deg, #feefc52c 15%, #ffffff 80%, #feefc5 120%); */
 
     /* filter: grayscale(0.2); */
 
@@ -143,6 +149,7 @@ body {
 body.dark-theme {
     background: var(--body-background--dark);
     background: black;
+    /* background-image: linear-gradient(179deg, #000000 45%, #01257a 50%, #000000 80%); */
     /* filter: grayscale(0.3); */
 
     /* transition: background 2s; */
@@ -181,6 +188,7 @@ h3 {
 .container.dark-theme .wrap-title {
     font-weight: 100;
     color: darkgoldenrod;
+    /* color: rgb(163, 163, 163); */
 }
 
 /* #span-0.active-txt-span {
@@ -203,7 +211,9 @@ h3 {
     overflow: hidden;
     width: 100%;
     height: 100vh; */
-    position: relative;
+    /* position: fixed; */
+    top: 50px;
+    /* left: 100px; */
     width: 100%;
     height: 100vh;
     overflow: hidden;
@@ -229,14 +239,15 @@ h3 {
 /* LIGHT THEME IS ON TOP BY DEFAULT */
 /* WHEN DARK CLASS ADDED TO IT, IT WILL HAVE A SMALLER Z-INDEX */
 .img__home--light-theme.dark-theme {
-    z-index: -4;
+    z-index: -1;
 }
 
 .img__home--dark-theme {
-    z-index: -3;
+    z-index: -1;
 }
 
 .btn--get-started {
+    /* z-index: 5; */
     position: absolute;
     top: 35%;
     left: 50%;
@@ -267,19 +278,36 @@ h3 {
 
 .divider {
     width: 100%;
-    height: 50px;
+    height: 10px;
     /* height: 100vh; */
-    /* background: black; */
-    background: rgb(223, 192, 192);
-    background: rgb(166, 155, 167);
+    background: rgba(55, 55, 55, 0.411);
+    /* background: rgb(223, 192, 192); */
+    /* background: rgb(166, 155, 167); */
+    /* background: var(--border-grey); */
     /* background: #C3C8DC; */
     /* background: #d3d7e84c; */
+}
+
+.body.dark-theme .divider {
+    /* background: black; */
+    /* background: rgb(170, 170, 170); */
+    background: #30363d;
 }
 
 /* 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  MAIN APP  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
+
+.sliding-content {
+    background: rgba(255, 255, 255, 0.656);
+    background: rgba(135, 135, 135, 0.502);
+    /* background: rgba(249, 244, 217, 0.554); */
+}
+
+.sliding-content.dark-theme {
+    background: rgba(0, 0, 0, 0.47);
+}
 
 .container {
     display: flex;
@@ -288,11 +316,17 @@ h3 {
     width: var(--app-width);
     height: 100px;
     /* background: var(--app-background--light); */
-    /* background: rgba(251, 239, 214, 0.434); */
+    background: rgba(251, 239, 214, 0.434);
+    background: rgb(249, 244, 217);
+    /* background: rgb(166, 155, 167); */
     font-weight: 100;
     /* margin: 50px auto; */
-    /* border: 1px solid var(--border-grey); */
+    border: 1px solid var(--border-grey);
     border-radius: var(--wrap-border-radius);
+
+    background: rgb(247, 242, 232);
+
+    /* background: rgba(184, 135, 11, 0.08); */
     /* THIS WILL AFFECT BORDER COLOUR CHANGE WHEN SWITCHING TO DARK MODE */
     /* transition: border-color 1s; */
 
@@ -313,7 +347,8 @@ h3 {
     background-color: rgb(20, 20, 20);
     background-color: rgb(1, 1, 1);
     /* GH */
-    background-color: #0d1117;
+    /* background-color: #0d1117; */
+    /* background-color: #0d11179c; */
     /* USE THIS WTH TRANSPARENT WRAP HIGHLIGHT DARK */
     /* background-color: rgb(5, 31, 39); */
     /* transition: border-color 1s; */
@@ -365,6 +400,8 @@ button:disabled:hover {
     justify-content: space-between;
     margin: 25px 0px 0px 0px;
     height: 150px;
+
+    background: rgba(184, 135, 11, 0.08);
 
     /* transition: background var(--background-transition); */
 }
@@ -488,7 +525,8 @@ button:disabled:hover {
     /* background: rgba(0, 76, 163, 0.658); */
     /* border: 1px solid var(--border-gold); */
 
-    background: var(--wrap-highlight--light);
+    /* background: var(--wrap-highlight--light); */
+    background: rgba(184, 135, 11, 0.08);
     border: 1px solid var(--border-grey);
 
     border-radius: var(--wrap-border-radius);
@@ -940,6 +978,8 @@ p .active-txt-span.active-txt-span--enter {
     border: 1px solid var(--border-grey);
     border-radius: var(--wrap-border-radius);
 
+    background: rgba(184, 135, 11, 0.08);
+
     /* background: rgba(184, 135, 11, 0.199); */
     /* background: var(--wrap-highlight--light); */
 
@@ -949,6 +989,7 @@ p .active-txt-span.active-txt-span--enter {
 .stat-wrap.dark-theme {
     /* SLIGTHLY LIGHTER THAN KEYBOARD KEYS */
     background: var(--wrap-highlight--dark);
+
     border: 1px solid var(--border-gold);
 
     /* transition: background var(--background-transition); */
@@ -1056,7 +1097,7 @@ p .active-txt-span.active-txt-span--enter {
     height: 3.3em;
 }
 
-.keyboard__row > * {
+.keyboard__row>* {
     position: relative;
     text-align: center;
     float: left;
@@ -1087,7 +1128,7 @@ p .active-txt-span.active-txt-span--enter {
     /* transition: background var(--background-transition); */
 }
 
-.keyboard.dark-theme .keyboard__row > * {
+.keyboard.dark-theme .keyboard__row>* {
     color: var(--border-gold);
     -webkit-user-select: none;
     /* border: 1px solid #444; */
@@ -1106,13 +1147,13 @@ p .active-txt-span.active-txt-span--enter {
     /* transition: background var(--background-transition); */
 }
 
-.keyboard__row--h1 > div {
+.keyboard__row--h1>div {
     width: 3.5em;
 }
 
 /* KEY PRESSED ON KEYBOARD */
-.keyboard__row > div[data-pressed],
-.keyboard__row > div:active {
+.keyboard__row>div[data-pressed],
+.keyboard__row>div:active {
     /* background: #2a2a2a; */
     background: var(--wrap-highlight--light);
     /* background: rgba(255, 166, 0, 0.474); */
@@ -1128,8 +1169,8 @@ p .active-txt-span.active-txt-span--enter {
     /* box-shadow: 0 0 0 0.05em black; */
 }
 
-.keyboard.dark-theme .keyboard__row > div[data-pressed],
-.keyboard.dark-theme .keyboard__row > div:active {
+.keyboard.dark-theme .keyboard__row>div[data-pressed],
+.keyboard.dark-theme .keyboard__row>div:active {
     background: rgba(0, 128, 0, 0.304);
     background: #529ce180;
 }
@@ -1154,7 +1195,7 @@ p .active-txt-span.active-txt-span--enter {
     width: 18em;
 }
 
-.key--double > * {
+.key--double>* {
     padding-top: 0.1em;
 }
 
@@ -1162,21 +1203,21 @@ p .active-txt-span.active-txt-span--enter {
     line-height: 2.8em;
 }
 
-.key--bottom-left > * {
+.key--bottom-left>* {
     position: absolute;
     text-align: left;
     bottom: 0.4em;
     left: 0.4em;
 }
 
-.key--bottom-right > * {
+.key--bottom-right>* {
     position: absolute;
     text-align: right;
     bottom: 0.4em;
     right: 0.4em;
 }
 
-.key--fn > * {
+.key--fn>* {
     font-size: 0.6em;
     line-height: 1em;
     padding-top: 1.2em;
@@ -1185,12 +1226,12 @@ p .active-txt-span.active-txt-span--enter {
     float: right;
 }
 
-.key--word > * {
+.key--word>* {
     font-size: 0.8em;
 }
 
-.key--arrow--tall > *,
-.key--arrow > * {
+.key--arrow--tall>*,
+.key--arrow>* {
     font-size: 0.5em;
     line-height: 3em;
 }
@@ -1201,11 +1242,11 @@ p .active-txt-span.active-txt-span--enter {
     line-height: 0.5em;
 }
 
-.key--arrow--tall > * {
+.key--arrow--tall>* {
     padding-top: 0.2em;
 }
 
-.keyboard > .keyboard__row {
+.keyboard>.keyboard__row {
     text-align: center;
 }
 
@@ -1227,8 +1268,8 @@ p .active-txt-span.active-txt-span--enter {
     border: 1px solid var(--border-grey);
     border-radius: var(--wrap-border-radius);
     line-height: 1.6rem;
-    /* background: rgba(184, 135, 11, 0.199); */
-    background: var(--wrap-highlight--light);
+    background: rgba(184, 135, 11, 0.08);
+    /* background: var(--wrap-highlight--light); */
 
     /* transition: background var(--background-transition); */
 }
@@ -1772,8 +1813,7 @@ input[type="range"]::-webkit-slider-runnable-track:hover {
 }
 
 /* DARK THEME TRACK HOVER */
-.control-wrap.dark-theme
-    input[type="range"]::-webkit-slider-runnable-track:hover {
+.control-wrap.dark-theme input[type="range"]::-webkit-slider-runnable-track:hover {
     background: #4e545b;
 }
 
@@ -1887,8 +1927,8 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* RADIO LABEL TEXT */
-[type="radio"]:checked + label,
-[type="radio"]:not(:checked) + label {
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
     position: relative;
     width: 75px;
     height: 14px;
@@ -1906,8 +1946,8 @@ input[type="range"]:focus::-ms-fill-upper {
     color: #666;
 }
 
-.control-wrap.dark-theme [type="radio"]:checked + label,
-.control-wrap.dark-theme [type="radio"]:not(:checked) + label {
+.control-wrap.dark-theme [type="radio"]:checked+label,
+.control-wrap.dark-theme [type="radio"]:not(:checked)+label {
     color: darkgoldenrod;
 }
 
@@ -1921,7 +1961,7 @@ input[type="range"]:focus::-ms-fill-upper {
 /* RADIO HOVER BACKGROUND HIGHLIGHT */
 /* TRY TO ADJUST WIDTH */
 /* [type="radio"]:checked + label, */
-[type="radio"]:not(:checked) + label:hover {
+[type="radio"]:not(:checked)+label:hover {
     /* BACKGROUND ONLY */
     /* background: lightgreen;
     border-top-left-radius: 10px;
@@ -1935,7 +1975,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* DISABLED: HOVER */
-[type="radio"]:not(:checked):disabled + label:hover {
+[type="radio"]:not(:checked):disabled+label:hover {
     cursor: default;
     font-weight: 300;
 
@@ -1943,7 +1983,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* :CHECKED: DISABLED: HOVER */
-[type="radio"]:checked:disabled + label:hover {
+[type="radio"]:checked:disabled+label:hover {
     cursor: default;
     font-weight: 300;
 
@@ -1951,8 +1991,8 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 /* OUTER CIRCLE */
-[type="radio"]:checked + label:before,
-[type="radio"]:not(:checked) + label:before {
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -1964,8 +2004,8 @@ input[type="range"]:focus::-ms-fill-upper {
     background: #fff;
 }
 
-.control-wrap.dark-theme [type="radio"]:checked + label:before,
-.control-wrap.dark-theme [type="radio"]:not(:checked) + label:before {
+.control-wrap.dark-theme [type="radio"]:checked+label:before,
+.control-wrap.dark-theme [type="radio"]:not(:checked)+label:before {
     border: 1px solid darkgoldenrod;
     border-radius: 100%;
     background: #4d4d4d91;
@@ -1977,8 +2017,8 @@ input[type="range"]:focus::-ms-fill-upper {
 } */
 
 /* INNER CIRCLE */
-[type="radio"]:checked + label:after,
-[type="radio"]:not(:checked) + label:after {
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
     content: "";
     width: 10px;
     height: 10px;
@@ -2007,13 +2047,13 @@ input[type="range"]:focus::-ms-fill-upper {
     background: red;
 } */
 
-[type="radio"]:not(:checked) + label:after {
+[type="radio"]:not(:checked)+label:after {
     opacity: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
 }
 
-[type="radio"]:checked + label:after {
+[type="radio"]:checked+label:after {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -2648,15 +2688,19 @@ i.fa-triangle-exclamation {
 .container--pages {
     width: 80%;
     /* max-width: var(--app-width); */
-    max-width: 1200px;
+    max-width: 1000px;
     /* !!! */
     /* THIS CAUSES HALF EMPTY DIV, MAYBE ADD MORE CONTENT */
     min-height: 80%;
-    margin: 50px auto;
-    /* border: 1px solid var(--border-grey); */
+    margin: 75px auto;
+    border: 1px solid var(--border-grey);
     border-radius: var(--wrap-border-radius);
+
+    background: rgba(184, 135, 11, 0.08);
+    background: #ebebeb3b;
+
     /* background: var(--app-background--light); */
-    /* background: rgba(251, 239, 214, 0.434); */
+    background: rgb(247, 242, 232);
     /* background: rgba(247, 248, 253, 0.29); */
 
     /* background: var(--text-field-white); */
@@ -2673,12 +2717,18 @@ i.fa-triangle-exclamation {
 
 /* SECTION TITLE H1 */
 .container--pages h1 {
+    font-weight: 400;
+    color: rgb(19, 139, 214);
+    /* color: rgb(0, 0, 0); */
     margin: 10px;
+    /* background: rgba(223, 174, 76, 0.432); */
 }
 
 .container--pages.dark-theme h1 {
     color: darkgoldenrod;
-    color: orange;
+    /* color: orange; */
+    /* color: rgb(19, 139, 214); */
+    /* color: rgb(14, 176, 36); */
 }
 
 .spacer-div--pages {
@@ -2689,6 +2739,7 @@ i.fa-triangle-exclamation {
 .spacer-div--pages.dark-theme {
     /* border-bottom: 1px solid darkgoldenrod; */
     border-bottom: 1px solid var(--border-gold);
+    border-bottom: 1px solid #30363d;
     /* border-bottom: 1px solid orange; */
 }
 

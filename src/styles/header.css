@@ -29,8 +29,24 @@ ul {
     /* width: 100%; */
 }
 
+#image-container {
+    z-index: 1;
+}
+
+#image-container.sticky {
+    /* !!! FIXED NOT WORKING, REPLACED BY STICKY !!! */
+    /* position: fixed; */
+    position: sticky;
+    /* position: fixed; */
+    /* top: 50px; */
+    z-index: -1;
+    opacity: 1;
+    /* margin-bottom: 100px; */
+    /* width: 100%; */
+}
+
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-#navbar.sticky + .content {
+#navbar.sticky+.content {
     padding-top: 100px;
 }
 
@@ -182,9 +198,9 @@ a.nav-link:hover {
 }
 
 .site-header.dark-theme a.nav-link:hover {
-    /* background: rgb(8, 8, 8); */
-    background: #004d88d2;
-    background: #004d88;
+    background: rgb(8, 8, 8);
+    /* background: #004d88d2; */
+    /* background: #004d88; */
     /* background: rgba(255, 99, 71, 0.615); */
     /* color: #000000; */
     /* color: orange; */
@@ -261,6 +277,7 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
+
     /* BRAND LINK */
     .wrapper--nav {
         padding-top: 10px;
@@ -434,13 +451,20 @@ button:hover {
     background: rgb(166, 155, 167);
 }
 
+.body.dark-theme .footer-top {
+    background: rgba(82, 209, 82, 0.763);
+    background: rgba(82, 209, 82, 0.763);
+    background: #013b71;
+}
+
 .footer-content {
     width: 80%;
-    max-width: 1200px;
+    max-width: 1600px;
     /* height: 80%; */
     height: 275px;
     margin: 50px auto;
     border: 1px solid var(--border-grey);
+    border: 1px solid rgb(76, 76, 76);
     border-radius: var(--wrap-border-radius);
 }
 
