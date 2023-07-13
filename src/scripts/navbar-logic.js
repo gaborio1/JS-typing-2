@@ -136,13 +136,19 @@ const highlightActiveLink = () => {
         home.classList.add("active-link");
     }
 
+    // BLUR HOMEPAGE COVER IMAGE
+    if (appSectionRect < 50) {
+        imageContainer.classList.add("blurred");
+    } else {
+        imageContainer.classList.remove("blurred");
+    }
+
     // HIDE SCROLL DOWN BUTTON WHEN NOT IN HOMEPAGE
     if (appSectionRect < 200) {
         scrollButton.classList.add("hidden");
     } else {
         scrollButton.classList.remove("hidden");
     }
-
 
     if (appSectionRect < 200 && appSectionRect > -1) {
         // console.log("app");
@@ -214,7 +220,6 @@ const makeImageSticky = () => {
     }
 };
 
-
 // SCROLL EVENTS (STICKY NAVBAR AND HIDE/SHOW UP ARROW)
 
 // PAGE SCROLL
@@ -269,7 +274,7 @@ Array.from(navLinks).forEach((navLink) => {
         // PREVENTING SLIDING CONTENT FROM SLIDING UP IN STEPS !!!
         if (navLink === home) {
             // console.log("home");
-            offsetPosition -= 4000;
+            offsetPosition -= 6000;
             // window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
