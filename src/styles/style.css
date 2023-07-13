@@ -93,8 +93,14 @@
 .blurred {
     /* filter: saturate(50%); */
     filter: brightness(75%);
-    filter: blur(1px);
+    /* !!! BLUR CAUSES GREY BORDER ON BODY */
+    /* filter: blur(1px); */
     /* filter: hue-rotate(90deg); */
+    /* transform: brightness(75%); */
+
+    -webkit-transition: all 3s ease;
+    transition: all 3s ease;
+    /* transition: transform 2s ease-out; */
 }
 
 /* NAVIGATION BAR SCROLL WHEN CLICKED */
@@ -231,6 +237,7 @@ h3 {
 /* TWO IMAGES STACKED ON TOP OF EACH OTHER */
 .img__home--light-theme,
 .img__home--dark-theme {
+    /* z-index: 1; */
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -244,6 +251,10 @@ h3 {
     /* border-bottom: 50px solid rgba(27, 131, 250, 0.872); */
 }
 
+/* .img__home--light-theme {
+    z-index: 5;
+} */
+
 /* LIGHT THEME IS ON TOP BY DEFAULT */
 /* WHEN DARK CLASS ADDED TO IT, IT WILL HAVE A SMALLER Z-INDEX */
 .img__home--light-theme.dark-theme {
@@ -255,7 +266,7 @@ h3 {
 }
 
 .btn--get-started {
-    /* z-index: 5; */
+    /* z-index: 6; */
     position: absolute;
     top: 35%;
     left: 50%;
