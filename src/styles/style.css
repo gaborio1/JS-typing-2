@@ -124,6 +124,7 @@ Please notice that removing outline from input is an accessibility bad practice.
 }
 
 body {
+    /* z-index: 9; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -140,7 +141,8 @@ body {
     /* !!! 110% !!! */
     /* background-image: linear-gradient(180deg, #feefc52c 15%, #ffffff 80%, #feefc5 120%); */
 
-    /* filter: grayscale(0.2); */
+    /* !!!  */
+    filter: grayscale(0.05);
 
     /* transition: background 2s; */
 }
@@ -164,7 +166,7 @@ body.dark-theme {
     background: var(--body-background--dark);
     background: black;
     /* background-image: linear-gradient(179deg, #000000 45%, #01257a 50%, #000000 80%); */
-    filter: grayscale(0.2);
+    /* filter: grayscale(0.2); */
 
     /* transition: background 2s; */
 }
@@ -216,6 +218,7 @@ h3 {
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 */
 
 .image-container {
+    z-index: 10;
     /* position: relative;
     margin-bottom: 50px;
     background-image: url(../../images/amy-hirschi-szrJ3wjzOMg-unsplash.jpg);
@@ -237,7 +240,7 @@ h3 {
 /* TWO IMAGES STACKED ON TOP OF EACH OTHER */
 .img__home--light-theme,
 .img__home--dark-theme {
-    /* z-index: 1; */
+    z-index: 10;
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -246,27 +249,13 @@ h3 {
     top: 0px;
     left: 0px;
     /* background-position: center 0; */
-    filter: grayscale(30%) blur(0px) contrast(130%);
+    /* filter: grayscale(30%) blur(0px) contrast(130%); */
     /* border-bottom: 50px solid black; */
     /* border-bottom: 50px solid rgba(27, 131, 250, 0.872); */
 }
 
-/* .img__home--light-theme {
-    z-index: 5;
-} */
-
-/* LIGHT THEME IS ON TOP BY DEFAULT */
-/* WHEN DARK CLASS ADDED TO IT, IT WILL HAVE A SMALLER Z-INDEX */
-.img__home--light-theme.dark-theme {
-    z-index: -1;
-}
-
-.img__home--dark-theme {
-    z-index: -1;
-}
-
 .btn--get-started {
-    /* z-index: 6; */
+    z-index: 11;
     position: absolute;
     top: 35%;
     left: 50%;
@@ -280,6 +269,7 @@ h3 {
     color: white;
     color: black;
     /* color: orange; */
+    /* letter-spacing: 0.05rem; */
     font-size: 32px;
     padding: 0px 24px;
     border: none;
@@ -291,7 +281,8 @@ h3 {
 }
 
 .btn--get-started:hover {
-    font-weight: 400;
+    /* letter-spacing: 0.065rem; */
+    /* font-weight: 400; */
     border: 1px solid rgb(156, 156, 156);
 }
 

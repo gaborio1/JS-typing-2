@@ -2386,14 +2386,21 @@ for (let i = 0; i < controlFlipButtons.length; i += 1) {
 
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 COLOUR THEME 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
+const coverImageLight = document.getElementById("img__home--light-theme");
+const coverImageDark = document.getElementById("img__home--dark-theme");
+
 const handleThemeToggle = () => {
     toggleButtonStyle(themeToggle);
     toggleButtonState(themeToggle);
     for (let i = 0; i < colourThemeElements.length; i += 1) {
         if (darkThemeOn) {
             colourThemeElements[i].classList.add("dark-theme");
+            coverImageLight.classList.add("hidden");
+            coverImageDark.classList.remove("hidden");
         } else {
             colourThemeElements[i].classList.remove("dark-theme");
+            coverImageLight.classList.remove("hidden");
+            coverImageDark.classList.add("hidden");
         }
     }
     textInput.focus();
