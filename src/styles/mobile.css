@@ -40,11 +40,39 @@
     margin: 10px auto;
 }
 
+/* +++++ */
+
+/* MOBILE SIZE PORTRAIT IMAGE */
+@media (max-width: 599px) {
+    /* BRAND LINK */
+    .image-container {
+        /* border: 20px solid red; */
+    }
+
+    .img__home--light-theme,
+    .img__home--dark-theme {
+        display: none;
+    }
+
+    /* DARK DISABLED IN HTML */
+    .img__portrait--light-theme,
+    .img__portrait--dark-theme {
+        z-index: 10;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        opacity: 100%;
+        top: 0px;
+        left: 0px;
+    }
+}
+/* +++++ */
+
 /* IPHONE XR PORTRAIT */
 /* @media only screen and (max-width: 414px) and (max-height: 896px) { */
 /* IPAD MINI PORTRAIT */
 @media only screen and (max-width: 767px) and (max-height: 1023px) {
-
     /* @media only screen and (max-width: 414px) { */
     .body {
         height: fit-content;
@@ -123,7 +151,6 @@
 /* @media only screen and (max-width: 896px) and (max-height: 414px) { */
 /* IPAD MINI LANDSCAPE */
 @media only screen and (max-width: 1023px) and (max-height: 767px) {
-
     /* @media only screen and (max-width: 896px) { */
     .body {
         height: fit-content;
