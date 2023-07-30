@@ -18,7 +18,7 @@ const links = document.getElementById("navbar__links");
 const contact = document.getElementById("navbar__contact");
 
 const imageContainer = document.getElementById("image-container");
-const scrollButton = document.getElementById("btn--get-started");
+// const scrollButton = document.getElementById("btn--get-started");
 
 const upArrow = document.getElementById("top-arrow");
 
@@ -145,9 +145,9 @@ const highlightActiveLink = () => {
 
     // HIDE SCROLL DOWN BUTTON WHEN NOT IN HOMEPAGE
     if (appSectionRect < 200) {
-        scrollButton.classList.add("hidden");
+        getStarted.classList.add("hidden");
     } else {
-        scrollButton.classList.remove("hidden");
+        getStarted.classList.remove("hidden");
     }
 
     if (appSectionRect < 200 && appSectionRect > -1) {

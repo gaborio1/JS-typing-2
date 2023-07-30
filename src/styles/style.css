@@ -327,15 +327,13 @@ h3 {
     width: var(--app-width);
     height: 100px;
     /* background: var(--app-background--light); */
-    background: rgba(251, 239, 214, 0.434);
-    background: rgb(249, 244, 217);
-    /* background: rgb(166, 155, 167); */
     font-weight: 100;
     /* margin: 50px auto; */
     border: 1px solid var(--border-grey);
     border-radius: var(--wrap-border-radius);
 
     background: rgb(247, 242, 232);
+    background: rgba(247, 242, 232, 0.955);
 
     /* background: rgba(184, 135, 11, 0.08); */
     /* THIS WILL AFFECT BORDER COLOUR CHANGE WHEN SWITCHING TO DARK MODE */
@@ -2713,6 +2711,7 @@ i.fa-triangle-exclamation {
 
     /* background: var(--app-background--light); */
     background: rgb(247, 242, 232);
+    background: rgba(247, 242, 232, 0.899);
     /* background: rgba(247, 248, 253, 0.29); */
 
     /* background: var(--text-field-white); */
