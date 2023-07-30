@@ -2798,6 +2798,15 @@ i.fa-triangle-exclamation {
     /* border: 1px solid tomato; */
 }
 
+/* ALL ICONS EXCEPT CODEEWARS */
+.contact-icon {
+    color: black !important;
+}
+
+.contact-section.dark-theme .contact-icon {
+    color: #b2b2b2 !important;
+}
+
 /* +++++++++++++++++++++++++++++ */
 /* @media (max-width: 1023px) { */
 @media (max-width: 767px) {
