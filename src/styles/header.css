@@ -16,18 +16,20 @@ ul {
 *:after {
     box-sizing: border-box;
 }
-
-/* #navbar {
-    z-index: 10 !important;
+/* 
+#navbar {
+    z-index: 11;
 } */
 
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-#navbar.sticky {
+/* DISABLED: The sticky class is added to the navbar with JS when it reaches its scroll position */
+/* NAVBAR IS PERMANENTLY STICKY */
+/* #navbar.sticky { */
+#navbar {
     /* !!! FIXED NOT WORKING, REPLACED BY STICKY !!! */
     /* position: fixed; */
     position: sticky;
     top: 0px;
-    z-index: 2;
+    z-index: 11;
     opacity: 0.97;
     /* margin-bottom: 100px; */
     /* width: 100%; */
@@ -37,7 +39,8 @@ ul {
     z-index: 1;
 }
 
-#image-container.sticky {
+/* MAKE CONTAINER PERMANENTLY STICKY TO PREVENT NAVBAR FROM DISAPPEARING WHEN REFRESHING PAGE */
+#image-container {
     /* !!! FIXED NOT WORKING, REPLACED BY STICKY !!! */
     /* position: fixed; */
     position: sticky;

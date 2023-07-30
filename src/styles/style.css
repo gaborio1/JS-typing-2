@@ -247,6 +247,7 @@ h3 {
     object-fit: cover;
     opacity: 100%;
     top: 0px;
+    /* top: 50px; */
     left: 0px;
     /* background-position: center 0; */
     /* filter: grayscale(30%) blur(0px) contrast(130%); */

@@ -45,9 +45,9 @@
 /* MOBILE SIZE PORTRAIT IMAGE */
 @media (max-width: 599px) {
     /* BRAND LINK */
-    .image-container {
-        /* border: 20px solid red; */
-    }
+    /* .image-container {
+        border: 20px solid red;
+    } */
 
     .img__home--light-theme,
     .img__home--dark-theme {
