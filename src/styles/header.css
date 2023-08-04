@@ -16,6 +16,7 @@ ul {
 *:after {
     box-sizing: border-box;
 }
+
 /* 
 #navbar {
     z-index: 11;
@@ -31,7 +32,7 @@ ul {
     top: 0px;
     z-index: 11;
     opacity: 0.97;
-    /* margin-bottom: 100px; */
+    /* margin-top: 100px; */
     /* width: 100%; */
 }
 
@@ -53,9 +54,14 @@ ul {
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-#navbar.sticky + .content {
+#navbar.sticky+.content {
     padding-top: 100px;
 }
+
+/* #navbar.sticky {
+    top: 0px;
+    z-index: 1000;
+} */
 
 /* HEADER/FOOTER BACKGROUND */
 .site-header,
@@ -294,6 +300,7 @@ button.nav__toggle {
         width: 80px;
     }
 }
+
 @media (min-width: 600px) and (max-width: 950px) {
     .wrapper--nav {
         width: 95%;
@@ -309,6 +316,7 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
+
     /* BRAND LINK */
     .wrapper--nav {
         padding-top: 10px;
