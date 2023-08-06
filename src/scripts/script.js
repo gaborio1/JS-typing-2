@@ -1545,6 +1545,12 @@ startButton.addEventListener("click", (event) => {
     // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
     let eventCounter = 0;
+
+    // +++ START +++
+    // OPTION+DELETE COUNTER
+    let testCounter = 0;
+    // +++ END +++
+
     const handleKeyEvent = (event) => {
         if (messageDiv.classList.contains("expand")) {
             collapseMessageDiv();
@@ -1556,6 +1562,51 @@ startButton.addEventListener("click", (event) => {
 
         // const typedKey = event.key;
         typedKey = event.key;
+
+        // +++ START +++
+
+        // DETECT KEY SHORTCUT OPTION+BACKSPACE
+
+        // console.log("TYPED KEY: ", typedKey);
+        if (typedKey === "Alt") {
+            console.log("ALT");
+            document.body.addEventListener("keydown", (event) => {
+                // console.log("DOWN");
+                if (typedKey === "Backspace") {
+                    console.log("OPTION+DELETE DOWN");
+                }
+            });
+
+            // OPTION KEY IS BEING HELD + BACKSPACE KEYUP
+            document.body.addEventListener("keyup", (event) => {
+                // document.body.addEventListener("keypress", (event) => {
+                // console.log("UP");
+                if (typedKey === "Backspace") {
+                    console.log(
+                        "OPTION+DELETE UP - DELETE CURRENT/LAST WORD NOOW"
+                    );
+                    messageDiv.style.background = "red";
+                    testCounter += 1;
+                }
+            });
+            console.log("COUNTER: ", testCounter);
+        }
+
+        if (typedKey === "Backspace") {
+            console.log("DELETE");
+        }
+
+        // +++ END +++
+
+        // document.body.addEventListener("keydown", (event) => {
+        //     // character.classList.add('crouch');
+        //     console.log("DOWN");
+        // });
+
+        // document.body.addEventListener("keyup", (event) => {
+        //     // character.classList.remove('crouch');
+        //     console.log("UP");
+        // });
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
@@ -2938,7 +2989,7 @@ CURRENT BRANCH: APP-LINK
             EMAIL
 
     TIMER
-        HIDE ALL CONTENT
+        HIDE ALL CONTENT?
 
     JS
         NAVBAR SCROLL REFACTOR
