@@ -1546,9 +1546,12 @@ startButton.addEventListener("click", (event) => {
 
     let eventCounter = 0;
 
-    // +++ START +++
-    // OPTION+DELETE COUNTER
-    let testCounter = 0;
+    //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
+    // document.onkeyup = function (e) {
+    //     if (e.altKey && e.which === 8) {
+    //         console.log("alt + backspace shortcut combination was pressed");
+    //     }
+    // };
     // +++ END +++
 
     const handleKeyEvent = (event) => {
@@ -1557,56 +1560,10 @@ startButton.addEventListener("click", (event) => {
         }
 
         // console.table({ lineIdx: lineIdx, wordIdx: wordIdx, charIdx: charIdx, strIdx: strIdx });
-        // +++ PROBLEM KEY WORDS
         clearMessageDiv();
 
-        // const typedKey = event.key;
         typedKey = event.key;
 
-        // +++ START +++
-
-        // DETECT KEY SHORTCUT OPTION+BACKSPACE
-
-        // console.log("TYPED KEY: ", typedKey);
-        if (typedKey === "Alt") {
-            console.log("ALT");
-            document.body.addEventListener("keydown", (event) => {
-                // console.log("DOWN");
-                if (typedKey === "Backspace") {
-                    console.log("OPTION+DELETE DOWN");
-                }
-            });
-
-            // OPTION KEY IS BEING HELD + BACKSPACE KEYUP
-            document.body.addEventListener("keyup", (event) => {
-                // document.body.addEventListener("keypress", (event) => {
-                // console.log("UP");
-                if (typedKey === "Backspace") {
-                    console.log(
-                        "OPTION+DELETE UP - DELETE CURRENT/LAST WORD NOOW"
-                    );
-                    messageDiv.style.background = "red";
-                    testCounter += 1;
-                }
-            });
-            console.log("COUNTER: ", testCounter);
-        }
-
-        if (typedKey === "Backspace") {
-            console.log("DELETE");
-        }
-
-        // +++ END +++
-
-        // document.body.addEventListener("keydown", (event) => {
-        //     // character.classList.add('crouch');
-        //     console.log("DOWN");
-        // });
-
-        // document.body.addEventListener("keyup", (event) => {
-        //     // character.classList.remove('crouch');
-        //     console.log("UP");
-        // });
 
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
@@ -1775,6 +1732,24 @@ startButton.addEventListener("click", (event) => {
             //     "actual:",
             //     wordArrays[lineIdx][wordIdx][charIdx]
             // );
+
+            //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
+            // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
+            document.onkeyup = function (e) {
+                if (e.altKey && e.which === 8) {
+                    console.log("alt + backspace shortcut combination was pressed");
+
+                    console.log(wordArrays[lineIdx][wordIdx][charIdx]);
+                    console.log(wordArrays[lineIdx][wordIdx]);
+
+                    // ALT: DECREMENT STRIDX BY ONE (KEEP CURSOR IN CURRENT POSITION)
+
+                    // ALT+BACKSPACE: FIND PREVIOUS WORD
+
+                }
+            };
+            // +++ END +++
+
 
             consecutiveErrorCounter += 1;
 
