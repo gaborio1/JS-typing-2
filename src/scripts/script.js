@@ -1741,44 +1741,98 @@ startButton.addEventListener("click", (event) => {
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
             document.onkeyup = function (e) {
-                console.log("TYPED KEY: ", typedKey);
+                // console.log("TYPED KEY: ", typedKey);
                 if (e.altKey && e.which === 8) {
-                    console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
+                    // console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
 
-                    console.log(wordArrays[lineIdx][wordIdx][charIdx]);
-                    console.log(wordArrays[lineIdx][wordIdx]);
-                    console.log("CHAR IDX: ", charIdx);
+                    // console.log(wordArrays[lineIdx][wordIdx][charIdx]);
+                    // console.log(wordArrays[lineIdx][wordIdx]);
+                    // console.log("CHAR IDX: ", charIdx);
 
                     // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
-                    console.log(stringWords);
+                    // console.log(stringWords);
                     // GET LENGTH OF BACKWARDS LOOP
                     let length = charIdx + 1;
                     // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
                     for (let i = strIdx; i > strIdx - length; i -= 1) {
-                        console.log(stringWords[i]);
+                        // let currentCharacter = stringWords[i];
+                        let currentCharacter = document.getElementById(`span-${i}`);
+                        // console.log(currentCharacter);
+                        if (currentCharacter.classList.contains("red")) {
+                            currentCharacter.classList.remove("red");
+                            redCounter -= 1;
+                        }
+                        if (currentCharacter.classList.contains("orange")) {
+                            currentCharacter.classList.remove("orange");
+                            orangeCounter -= 1;
+                        }
+                        if (currentCharacter.classList.contains("background")) {
+                            currentCharacter.classList.remove("background");
+                        }
+                        if (currentCharacter.classList.contains("black-border")) {
+                            currentCharacter.classList.remove("black-border");
+                        }
+                        if (currentCharacter.classList.contains("red-border")) {
+                            currentCharacter.classList.remove("red-border");
+                        }
+                        if (currentCharacter.classList.contains("orange-border")) {
+                            currentCharacter.classList.remove("orange-border");
+                        }
+                        if (currentCharacter.classList.contains("green")) {
+                            currentCharacter.classList.remove("green");
+                            greenCounter -= 1;
+                        }
+
                     }
+
+                    // document.getElementById(`span-${strIdx}`).classList.add("background", "black-border");
+                    // document.getElementById(`span-${}`).clayossList.add("background", "black-border");
 
                     // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
                     // GET CHARIDX AND SUBTRACT IT FROM STRIDX
                     strIdx -= charIdx;
 
+                    // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
+                    document.getElementById(`span-${strIdx}`).classList.add("background", "black-border");
+
                     // RESET CHARIDX (STAY ON WORDIDX)
                     charIdx = 0;
 
-                    console.table({
-                        charIdx: charIdx,
-                        strIdx: strIdx,
-                        firstChar: wordArrays[lineIdx][wordIdx][charIdx],
-                    });
+                    // console.table({
+                    //     charIdx: charIdx,
+                    //     strIdx: strIdx,
+                    //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
+                    // });
 
-                    // ALT: DECREMENT STRIDX BY ONE (KEEP CURSOR IN CURRENT POSITION)
-                    // if (typedKey === "Alt") {
-                    //     charIdx -= 1;
-                    //     strIdx -= 1;
-                    // }
                 }
             };
             // +++ END +++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             consecutiveErrorCounter += 1;
 
