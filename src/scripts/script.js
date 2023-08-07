@@ -1718,7 +1718,9 @@ startButton.addEventListener("click", (event) => {
 
         // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 WRONG KEY OR SHIFT FOR CAPITAL LETTERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
-        // IGNORE ALT (OPTION) KEY (FOR ALT+DELETE)
+        // KEYBOAARD SHORTCUTS
+
+        // ALT+DELETE - IGNORE ALT (OPTION) KEY
         else if (typedKey === "Alt") {
             console.log("ALT KEY");
         } else if (
@@ -1745,12 +1747,35 @@ startButton.addEventListener("click", (event) => {
 
                     console.log(wordArrays[lineIdx][wordIdx][charIdx]);
                     console.log(wordArrays[lineIdx][wordIdx]);
+                    console.log("CHAR IDX: ", charIdx);
+
+                    // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
+                    console.log(stringWords);
+                    // GET LENGTH OF BACKWARDS LOOP
+                    let length = charIdx + 1;
+                    // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
+                    for (let i = strIdx; i > strIdx - length; i -= 1) {
+                        console.log(stringWords[i]);
+                    }
+
+                    // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
+                    // GET CHARIDX AND SUBTRACT IT FROM STRIDX
+                    strIdx -= charIdx;
+
+                    // RESET CHARIDX (STAY ON WORDIDX)
+                    charIdx = 0;
+
+                    console.table({
+                        charIdx: charIdx,
+                        strIdx: strIdx,
+                        firstChar: wordArrays[lineIdx][wordIdx][charIdx],
+                    });
 
                     // ALT: DECREMENT STRIDX BY ONE (KEEP CURSOR IN CURRENT POSITION)
-                    if (typedKey === "Alt") {
-                        charIdx -= 1;
-                        strIdx -= 1;
-                    }
+                    // if (typedKey === "Alt") {
+                    //     charIdx -= 1;
+                    //     strIdx -= 1;
+                    // }
                 }
             };
             // +++ END +++
