@@ -1564,7 +1564,6 @@ startButton.addEventListener("click", (event) => {
 
         typedKey = event.key;
 
-
         // console.log("WRONG COUNTER KEY EVENTS", consecutiveErrorCounter);
 
         // TRACK TYPED KEY ON KEYBOARD IN REAL TIME (100MS FLASH)
@@ -1718,7 +1717,11 @@ startButton.addEventListener("click", (event) => {
         }
 
         // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 WRONG KEY OR SHIFT FOR CAPITAL LETTERS 🀰🀰🀰🀰🀰🀰🀰🀰🀰
-        else if (
+
+        // IGNORE ALT (OPTION) KEY (FOR ALT+DELETE)
+        else if (typedKey === "Alt") {
+            console.log("ALT KEY");
+        } else if (
             typedKey !== wordArrays[lineIdx][wordIdx][charIdx] &&
             typedKey !== " " &&
             typedKey !== "Shift" &&
@@ -1736,20 +1739,21 @@ startButton.addEventListener("click", (event) => {
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
             document.onkeyup = function (e) {
+                console.log("TYPED KEY: ", typedKey);
                 if (e.altKey && e.which === 8) {
-                    console.log("alt + backspace shortcut combination was pressed");
+                    console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
 
                     console.log(wordArrays[lineIdx][wordIdx][charIdx]);
                     console.log(wordArrays[lineIdx][wordIdx]);
 
                     // ALT: DECREMENT STRIDX BY ONE (KEEP CURSOR IN CURRENT POSITION)
-
-                    // ALT+BACKSPACE: FIND PREVIOUS WORD
-
+                    if (typedKey === "Alt") {
+                        charIdx -= 1;
+                        strIdx -= 1;
+                    }
                 }
             };
             // +++ END +++
-
 
             consecutiveErrorCounter += 1;
 
