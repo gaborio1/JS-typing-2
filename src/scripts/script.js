@@ -1825,6 +1825,64 @@ startButton.addEventListener("click", (event) => {
             const deleteLine = (event) => {
                 if (event.metaKey && event.which === 8) {
                     console.log("DELETE LINE NOW");
+
+
+                    let length = charIdx + 1;
+                    // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
+                    for (let i = strIdx; i > -1; i -= 1) {
+                        // let currentCharacter = stringWords[i];
+                        let currentCharacter = document.getElementById(
+                            `span-${i}`
+                        );
+                        // console.log(currentCharacter);
+                        if (currentCharacter.classList.contains("red")) {
+                            currentCharacter.classList.remove("red");
+                            if (redCounter > 0) {
+                                redCounter -= 1;
+                            }
+                        }
+                        if (currentCharacter.classList.contains("orange")) {
+                            currentCharacter.classList.remove("orange");
+                            if (orangeCounter > 0) {
+                                orangeCounter -= 1;
+                            }
+                            // orangeCounter += 1;
+                        }
+                        if (currentCharacter.classList.contains("background")) {
+                            currentCharacter.classList.remove("background");
+                        }
+                        if (
+                            currentCharacter.classList.contains("black-border")
+                        ) {
+                            currentCharacter.classList.remove("black-border");
+                        }
+                        if (currentCharacter.classList.contains("red-border")) {
+                            currentCharacter.classList.remove("red-border");
+                        }
+                        if (
+                            currentCharacter.classList.contains("orange-border")
+                        ) {
+                            currentCharacter.classList.remove("orange-border");
+                        }
+                        if (currentCharacter.classList.contains("green")) {
+                            currentCharacter.classList.remove("green");
+                            if (greenCounter > 0) {
+                                greenCounter -= 1;
+                            }
+                        }
+                    }
+
+                    strIdx = 0;
+                    // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
+                    document
+                        .getElementById(`span-${strIdx}`)
+                        .classList.add("background", "black-border");
+
+                    // RESET CHARIDX (STAY ON WORDIDX)
+                    charIdx = 0;
+
+                    wordIdx = 0;
+
                 }
                 textInput.removeEventListener("keydown", deleteLine);
             };
@@ -3063,9 +3121,16 @@ CURRENT BRANCH: APP-LINK
 KEYBOARD SHORTCUSTS
    ☑️ Option+Delete: Delete the previous word.
         BUGS:
+            REFACTOR CODE
             NOT WORKING ON BEYOND END OF LINE
             HOW TO HANDLE ORANGE COUNTER?
-    Command+Delete: Delete the line to the left of the cursor.
+            HANDLE MESSAGES
+    ☑️ Command+Delete: Delete the line to the left of the cursor.
+        BUGS:
+            REFACTOR CODE
+            NOT WORKING ON BEYOND END OF LINE
+            HOW TO HANDLE ORANGE COUNTER?
+            HANDLE MESSAGES
 
 
 ☑️ (TEMP FIX: ADDED MARGIN TO TEXT CONTAINER DIV)PAGES LAYOUT:
