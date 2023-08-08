@@ -1741,6 +1741,7 @@ startButton.addEventListener("click", (event) => {
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
             document.onkeyup = function (e) {
+                // console.log(e);
                 // console.log("TYPED KEY: ", typedKey);
                 if (e.altKey && e.which === 8) {
                     // console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
@@ -1756,33 +1757,45 @@ startButton.addEventListener("click", (event) => {
                     // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
                     for (let i = strIdx; i > strIdx - length; i -= 1) {
                         // let currentCharacter = stringWords[i];
-                        let currentCharacter = document.getElementById(`span-${i}`);
+                        let currentCharacter = document.getElementById(
+                            `span-${i}`
+                        );
                         // console.log(currentCharacter);
                         if (currentCharacter.classList.contains("red")) {
                             currentCharacter.classList.remove("red");
-                            redCounter -= 1;
+                            if (redCounter > 0) {
+                                redCounter -= 1;
+                            }
                         }
                         if (currentCharacter.classList.contains("orange")) {
                             currentCharacter.classList.remove("orange");
-                            orangeCounter -= 1;
+                            if (orangeCounter > 0) {
+                                orangeCounter -= 1;
+                            }
+                            // orangeCounter += 1;
                         }
                         if (currentCharacter.classList.contains("background")) {
                             currentCharacter.classList.remove("background");
                         }
-                        if (currentCharacter.classList.contains("black-border")) {
+                        if (
+                            currentCharacter.classList.contains("black-border")
+                        ) {
                             currentCharacter.classList.remove("black-border");
                         }
                         if (currentCharacter.classList.contains("red-border")) {
                             currentCharacter.classList.remove("red-border");
                         }
-                        if (currentCharacter.classList.contains("orange-border")) {
+                        if (
+                            currentCharacter.classList.contains("orange-border")
+                        ) {
                             currentCharacter.classList.remove("orange-border");
                         }
                         if (currentCharacter.classList.contains("green")) {
                             currentCharacter.classList.remove("green");
-                            greenCounter -= 1;
+                            if (greenCounter > 0) {
+                                greenCounter -= 1;
+                            }
                         }
-
                     }
 
                     // document.getElementById(`span-${strIdx}`).classList.add("background", "black-border");
@@ -1793,7 +1806,9 @@ startButton.addEventListener("click", (event) => {
                     strIdx -= charIdx;
 
                     // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
-                    document.getElementById(`span-${strIdx}`).classList.add("background", "black-border");
+                    document
+                        .getElementById(`span-${strIdx}`)
+                        .classList.add("background", "black-border");
 
                     // RESET CHARIDX (STAY ON WORDIDX)
                     charIdx = 0;
@@ -1803,36 +1818,20 @@ startButton.addEventListener("click", (event) => {
                     //     strIdx: strIdx,
                     //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
                     // });
-
                 }
             };
+
+            // Command+Delete SHORTCUT
+            const deleteLine = (event) => {
+                if (event.metaKey && event.which === 8) {
+                    console.log("DELETE LINE NOW");
+                }
+                textInput.removeEventListener("keydown", deleteLine);
+            };
+
+            textInput.addEventListener("keydown", deleteLine);
+
             // +++ END +++
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             consecutiveErrorCounter += 1;
 
@@ -3062,7 +3061,10 @@ CURRENT BRANCH: APP-LINK
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
 KEYBOARD SHORTCUSTS
-    Option+Delete: Delete the previous word.
+   ☑️ Option+Delete: Delete the previous word.
+        BUGS:
+            NOT WORKING ON BEYOND END OF LINE
+            HOW TO HANDLE ORANGE COUNTER?
     Command+Delete: Delete the line to the left of the cursor.
 
 
