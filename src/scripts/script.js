@@ -1720,6 +1720,7 @@ startButton.addEventListener("click", (event) => {
 
         // KEYBOAARD SHORTCUTS
 
+        // DELETE CURRENT (LAST) WORD
         // ALT+DELETE - IGNORE ALT (OPTION) KEY
         else if (typedKey === "Alt") {
             console.log("ALT KEY");
@@ -1813,6 +1814,8 @@ startButton.addEventListener("click", (event) => {
                     // RESET CHARIDX (STAY ON WORDIDX)
                     charIdx = 0;
 
+                    clearTextInput();
+
                     // console.table({
                     //     charIdx: charIdx,
                     //     strIdx: strIdx,
@@ -1821,11 +1824,11 @@ startButton.addEventListener("click", (event) => {
                 }
             };
 
+            // DELETE ACTIVE LINE
             // Command+Delete SHORTCUT
             const deleteLine = (event) => {
                 if (event.metaKey && event.which === 8) {
                     console.log("DELETE LINE NOW");
-
 
                     let length = charIdx + 1;
                     // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
@@ -1883,6 +1886,8 @@ startButton.addEventListener("click", (event) => {
 
                     wordIdx = 0;
 
+                    clearMessageDiv();
+                    clearTextInput();
                 }
                 textInput.removeEventListener("keydown", deleteLine);
             };
