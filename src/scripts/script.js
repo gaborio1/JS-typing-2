@@ -1722,9 +1722,10 @@ startButton.addEventListener("click", (event) => {
 
         // DELETE CURRENT (LAST) WORD
         // ALT+DELETE - IGNORE ALT (OPTION) KEY
-        else if (typedKey === "Alt") {
-            console.log("ALT KEY");
-        } else if (
+        // else if (typedKey === "Alt") {
+        //     console.log("ALT KEY");
+        // }
+        else if (
             typedKey !== wordArrays[lineIdx][wordIdx][charIdx] &&
             typedKey !== " " &&
             typedKey !== "Shift" &&
@@ -1741,27 +1742,61 @@ startButton.addEventListener("click", (event) => {
 
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
-            document.onkeyup = function (e) {
+            document.onkeyup = (event) => {
+                // const removeCharStyles = () => {
+                //     let currentCharacter = document.getElementById(
+                //         `span-${i}`
+                //     );
+                //     if (currentCharacter.classList.contains("red")) {
+                //         currentCharacter.classList.remove("red");
+                //         if (redCounter > 0) {
+                //             redCounter -= 1;
+                //         }
+                //     }
+                //     if (currentCharacter.classList.contains("orange")) {
+                //         currentCharacter.classList.remove("orange");
+                //         if (orangeCounter > 0) {
+                //             orangeCounter -= 1;
+                //         }
+                //     }
+                //     if (currentCharacter.classList.contains("background")) {
+                //         currentCharacter.classList.remove("background");
+                //     }
+                //     if (
+                //         currentCharacter.classList.contains("black-border")
+                //     ) {
+                //         currentCharacter.classList.remove("black-border");
+                //     }
+                //     if (currentCharacter.classList.contains("red-border")) {
+                //         currentCharacter.classList.remove("red-border");
+                //     }
+                //     if (
+                //         currentCharacter.classList.contains("orange-border")
+                //     ) {
+                //         currentCharacter.classList.remove("orange-border");
+                //     }
+                //     if (currentCharacter.classList.contains("green")) {
+                //         currentCharacter.classList.remove("green");
+                //         if (greenCounter > 0) {
+                //             greenCounter -= 1;
+                //         }
+                //     }
+                // }
+
                 // console.log(e);
                 // console.log("TYPED KEY: ", typedKey);
-                if (e.altKey && e.which === 8) {
+                if (event.altKey && event.which === 8) {
                     // console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
 
-                    // console.log(wordArrays[lineIdx][wordIdx][charIdx]);
-                    // console.log(wordArrays[lineIdx][wordIdx]);
-                    // console.log("CHAR IDX: ", charIdx);
 
                     // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
-                    // console.log(stringWords);
                     // GET LENGTH OF BACKWARDS LOOP
                     let length = charIdx + 1;
                     // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
                     for (let i = strIdx; i > strIdx - length; i -= 1) {
-                        // let currentCharacter = stringWords[i];
                         let currentCharacter = document.getElementById(
                             `span-${i}`
                         );
-                        // console.log(currentCharacter);
                         if (currentCharacter.classList.contains("red")) {
                             currentCharacter.classList.remove("red");
                             if (redCounter > 0) {
@@ -1773,7 +1808,6 @@ startButton.addEventListener("click", (event) => {
                             if (orangeCounter > 0) {
                                 orangeCounter -= 1;
                             }
-                            // orangeCounter += 1;
                         }
                         if (currentCharacter.classList.contains("background")) {
                             currentCharacter.classList.remove("background");
@@ -1799,8 +1833,6 @@ startButton.addEventListener("click", (event) => {
                         }
                     }
 
-                    // document.getElementById(`span-${strIdx}`).classList.add("background", "black-border");
-                    // document.getElementById(`span-${}`).clayossList.add("background", "black-border");
 
                     // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
                     // GET CHARIDX AND SUBTRACT IT FROM STRIDX
@@ -1828,16 +1860,13 @@ startButton.addEventListener("click", (event) => {
             // Command+Delete SHORTCUT
             const deleteLine = (event) => {
                 if (event.metaKey && event.which === 8) {
-                    console.log("DELETE LINE NOW");
+                    // console.log("DELETE LINE NOW");
 
-                    let length = charIdx + 1;
                     // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
                     for (let i = strIdx; i > -1; i -= 1) {
-                        // let currentCharacter = stringWords[i];
                         let currentCharacter = document.getElementById(
                             `span-${i}`
                         );
-                        // console.log(currentCharacter);
                         if (currentCharacter.classList.contains("red")) {
                             currentCharacter.classList.remove("red");
                             if (redCounter > 0) {
@@ -1849,7 +1878,6 @@ startButton.addEventListener("click", (event) => {
                             if (orangeCounter > 0) {
                                 orangeCounter -= 1;
                             }
-                            // orangeCounter += 1;
                         }
                         if (currentCharacter.classList.contains("background")) {
                             currentCharacter.classList.remove("background");
