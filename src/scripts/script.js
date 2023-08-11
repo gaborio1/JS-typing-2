@@ -1788,71 +1788,191 @@ startButton.addEventListener("click", (event) => {
                 if (event.altKey && event.which === 8) {
                     // console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
 
+                    // CURSOR BEYOND END OF LINE
+                    if (!currentCharacter) {
+                        console.log("BEYOND END OF LINE - NULL");
+                        // SET STRIDX TO FIRST CHAR OF LAST WORD
+                        console.log(strIdx);
+                        // strIdx = 
+                        // RESET CHAR IDX
 
-                    // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
-                    // GET LENGTH OF BACKWARDS LOOP
-                    let length = charIdx + 1;
-                    // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
-                    for (let i = strIdx; i > strIdx - length; i -= 1) {
-                        let currentCharacter = document.getElementById(
-                            `span-${i}`
-                        );
-                        if (currentCharacter.classList.contains("red")) {
-                            currentCharacter.classList.remove("red");
-                            if (redCounter > 0) {
-                                redCounter -= 1;
+                    }
+                    // CURSOR AT VALID INDEX
+                    else {
+                        // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
+                        // GET LENGTH OF BACKWARDS LOOP
+                        let length = charIdx + 1;
+                        // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
+
+                        // if (strIdx > stringWords.length - 1) {
+                        //     console.log("PAST END OF LINE");
+                        //     strIdx = stringWords.length - 1;
+                        // }
+
+                        for (let i = strIdx; i > strIdx - length; i -= 1) {
+
+                            let currentCharacter = document.getElementById(
+                                `span-${i}`
+                            );
+
+                            // if (!currentCharacter) {
+                            //     currentCharacter = document.getElementById(
+                            //         `span-${stringWords.length}`);
+                            //     console.log(currentCharacter);
+                            // }
+
+                            // console.log(!currentCharacter);
+
+                            // if (strIdx > stringWords.length - 1) {
+                            //     console.log("PAST END OF LINE");
+                            // }
+
+                            if (currentCharacter.classList.contains("red")) {
+                                currentCharacter.classList.remove("red");
+                                if (redCounter > 0) {
+                                    redCounter -= 1;
+                                }
+                            }
+                            if (currentCharacter.classList.contains("orange")) {
+                                currentCharacter.classList.remove("orange");
+                                if (orangeCounter > 0) {
+                                    orangeCounter -= 1;
+                                }
+                            }
+                            if (currentCharacter.classList.contains("background")) {
+                                currentCharacter.classList.remove("background");
+                            }
+                            if (
+                                currentCharacter.classList.contains("black-border")
+                            ) {
+                                currentCharacter.classList.remove("black-border");
+                            }
+                            if (currentCharacter.classList.contains("red-border")) {
+                                currentCharacter.classList.remove("red-border");
+                            }
+                            if (
+                                currentCharacter.classList.contains("orange-border")
+                            ) {
+                                currentCharacter.classList.remove("orange-border");
+                            }
+                            if (currentCharacter.classList.contains("green")) {
+                                currentCharacter.classList.remove("green");
+                                if (greenCounter > 0) {
+                                    greenCounter -= 1;
+                                }
                             }
                         }
-                        if (currentCharacter.classList.contains("orange")) {
-                            currentCharacter.classList.remove("orange");
-                            if (orangeCounter > 0) {
-                                orangeCounter -= 1;
-                            }
-                        }
-                        if (currentCharacter.classList.contains("background")) {
-                            currentCharacter.classList.remove("background");
-                        }
-                        if (
-                            currentCharacter.classList.contains("black-border")
-                        ) {
-                            currentCharacter.classList.remove("black-border");
-                        }
-                        if (currentCharacter.classList.contains("red-border")) {
-                            currentCharacter.classList.remove("red-border");
-                        }
-                        if (
-                            currentCharacter.classList.contains("orange-border")
-                        ) {
-                            currentCharacter.classList.remove("orange-border");
-                        }
-                        if (currentCharacter.classList.contains("green")) {
-                            currentCharacter.classList.remove("green");
-                            if (greenCounter > 0) {
-                                greenCounter -= 1;
-                            }
-                        }
+
+
+                        // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
+                        // GET CHARIDX AND SUBTRACT IT FROM STRIDX
+                        strIdx -= charIdx;
+
+                        // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
+                        document
+                            .getElementById(`span-${strIdx}`)
+                            .classList.add("background", "black-border");
+
+                        // RESET CHARIDX (STAY ON WORDIDX)
+                        charIdx = 0;
+
+                        clearTextInput();
+
+                        // console.table({
+                        //     charIdx: charIdx,
+                        //     strIdx: strIdx,
+                        //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
+                        // });
                     }
 
+                    // &&&
 
-                    // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
-                    // GET CHARIDX AND SUBTRACT IT FROM STRIDX
-                    strIdx -= charIdx;
+                    // // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
+                    // // GET LENGTH OF BACKWARDS LOOP
+                    // let length = charIdx + 1;
+                    // // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
 
-                    // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
-                    document
-                        .getElementById(`span-${strIdx}`)
-                        .classList.add("background", "black-border");
+                    // // if (strIdx > stringWords.length - 1) {
+                    // //     console.log("PAST END OF LINE");
+                    // //     strIdx = stringWords.length - 1;
+                    // // }
 
-                    // RESET CHARIDX (STAY ON WORDIDX)
-                    charIdx = 0;
+                    // for (let i = strIdx; i > strIdx - length; i -= 1) {
 
-                    clearTextInput();
+                    //     let currentCharacter = document.getElementById(
+                    //         `span-${i}`
+                    //     );
 
-                    // console.table({
-                    //     charIdx: charIdx,
-                    //     strIdx: strIdx,
-                    //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
-                    // });
+                    //     // if (!currentCharacter) {
+                    //     //     currentCharacter = document.getElementById(
+                    //     //         `span-${stringWords.length}`);
+                    //     //     console.log(currentCharacter);
+                    //     // }
+
+                    //     // console.log(!currentCharacter);
+
+                    //     // if (strIdx > stringWords.length - 1) {
+                    //     //     console.log("PAST END OF LINE");
+                    //     // }
+
+                    //     if (currentCharacter.classList.contains("red")) {
+                    //         currentCharacter.classList.remove("red");
+                    //         if (redCounter > 0) {
+                    //             redCounter -= 1;
+                    //         }
+                    //     }
+                    //     if (currentCharacter.classList.contains("orange")) {
+                    //         currentCharacter.classList.remove("orange");
+                    //         if (orangeCounter > 0) {
+                    //             orangeCounter -= 1;
+                    //         }
+                    //     }
+                    //     if (currentCharacter.classList.contains("background")) {
+                    //         currentCharacter.classList.remove("background");
+                    //     }
+                    //     if (
+                    //         currentCharacter.classList.contains("black-border")
+                    //     ) {
+                    //         currentCharacter.classList.remove("black-border");
+                    //     }
+                    //     if (currentCharacter.classList.contains("red-border")) {
+                    //         currentCharacter.classList.remove("red-border");
+                    //     }
+                    //     if (
+                    //         currentCharacter.classList.contains("orange-border")
+                    //     ) {
+                    //         currentCharacter.classList.remove("orange-border");
+                    //     }
+                    //     if (currentCharacter.classList.contains("green")) {
+                    //         currentCharacter.classList.remove("green");
+                    //         if (greenCounter > 0) {
+                    //             greenCounter -= 1;
+                    //         }
+                    //     }
+                    // }
+
+
+                    // // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
+                    // // GET CHARIDX AND SUBTRACT IT FROM STRIDX
+                    // strIdx -= charIdx;
+
+                    // // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
+                    // document
+                    //     .getElementById(`span-${strIdx}`)
+                    //     .classList.add("background", "black-border");
+
+                    // // RESET CHARIDX (STAY ON WORDIDX)
+                    // charIdx = 0;
+
+                    // clearTextInput();
+
+                    // // console.table({
+                    // //     charIdx: charIdx,
+                    // //     strIdx: strIdx,
+                    // //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
+                    // // });
+
+                    // &&&
                 }
             };
 
