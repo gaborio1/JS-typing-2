@@ -173,6 +173,7 @@ let redCounter = 0;
 let orangeCounter = 0;
 let accuracy = 0;
 
+let lastWordRedCounter = 0;
 // NON EXISTING (NULL VALUE) SPANS BEYOND END OF LINE SPACE
 let nullValueSpanCounter = 0;
 // TRACK CONSECUTIVE WRONG KEYS
@@ -916,7 +917,7 @@ const createSpans = (lineIdx, location) => {
 
 // BACKSPACE
 const handleBackspace = () => {
-    let lastWordRedCounter = 0;
+    // let lastWordRedCounter = 0;
     // console.log("BACKSPACE");
     orangeCounter += 1;
     prevChar();
@@ -1743,46 +1744,6 @@ startButton.addEventListener("click", (event) => {
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
             document.onkeyup = (event) => {
-                // const removeCharStyles = () => {
-                //     let currentCharacter = document.getElementById(
-                //         `span-${i}`
-                //     );
-                //     if (currentCharacter.classList.contains("red")) {
-                //         currentCharacter.classList.remove("red");
-                //         if (redCounter > 0) {
-                //             redCounter -= 1;
-                //         }
-                //     }
-                //     if (currentCharacter.classList.contains("orange")) {
-                //         currentCharacter.classList.remove("orange");
-                //         if (orangeCounter > 0) {
-                //             orangeCounter -= 1;
-                //         }
-                //     }
-                //     if (currentCharacter.classList.contains("background")) {
-                //         currentCharacter.classList.remove("background");
-                //     }
-                //     if (
-                //         currentCharacter.classList.contains("black-border")
-                //     ) {
-                //         currentCharacter.classList.remove("black-border");
-                //     }
-                //     if (currentCharacter.classList.contains("red-border")) {
-                //         currentCharacter.classList.remove("red-border");
-                //     }
-                //     if (
-                //         currentCharacter.classList.contains("orange-border")
-                //     ) {
-                //         currentCharacter.classList.remove("orange-border");
-                //     }
-                //     if (currentCharacter.classList.contains("green")) {
-                //         currentCharacter.classList.remove("green");
-                //         if (greenCounter > 0) {
-                //             greenCounter -= 1;
-                //         }
-                //     }
-                // }
-
                 // console.log(e);
                 // console.log("TYPED KEY: ", typedKey);
                 if (event.altKey && event.which === 8) {
@@ -1792,10 +1753,99 @@ startButton.addEventListener("click", (event) => {
                     if (!currentCharacter) {
                         console.log("BEYOND END OF LINE - NULL");
                         // SET STRIDX TO FIRST CHAR OF LAST WORD
-                        console.log(strIdx);
-                        // strIdx = 
-                        // RESET CHAR IDX
+                        // console.log(wordArrays[lineIdx][wordIdx]);
 
+                        // REMOVE ALL STYLES FROM LAST WORD
+                        const lastWordLength =
+                            wordArrays[lineIdx][wordIdx].length;
+
+                        for (
+                            let i = stringWords.length - 1;
+                            i >= strIdx - lastWordLength - 1;
+                            i -= 1
+                        ) {
+                            let currentCharacter = document.getElementById(
+                                `span-${i}`
+                            );
+                            console.log("CURRENT CHAR: ", currentCharacter);
+
+                            if (currentCharacter.classList.contains("red")) {
+                                currentCharacter.classList.remove("red");
+                                if (redCounter > 0) {
+                                    redCounter -= 1;
+                                }
+                            }
+                            if (
+                                currentCharacter.classList.contains(
+                                    "red-background"
+                                )
+                            ) {
+                                currentCharacter.classList.remove(
+                                    "red-background"
+                                );
+                            }
+                            if (currentCharacter.classList.contains("orange")) {
+                                currentCharacter.classList.remove("orange");
+                                if (orangeCounter > 0) {
+                                    orangeCounter -= 1;
+                                }
+                            }
+                            if (
+                                currentCharacter.classList.contains(
+                                    "background"
+                                )
+                            ) {
+                                currentCharacter.classList.remove("background");
+                            }
+                            if (
+                                currentCharacter.classList.contains(
+                                    "black-border"
+                                )
+                            ) {
+                                currentCharacter.classList.remove(
+                                    "black-border"
+                                );
+                            }
+                            if (
+                                currentCharacter.classList.contains(
+                                    "red-border"
+                                )
+                            ) {
+                                currentCharacter.classList.remove("red-border");
+                            }
+                            if (
+                                currentCharacter.classList.contains(
+                                    "orange-border"
+                                )
+                            ) {
+                                currentCharacter.classList.remove(
+                                    "orange-border"
+                                );
+                            }
+                            if (currentCharacter.classList.contains("green")) {
+                                currentCharacter.classList.remove("green");
+                                if (greenCounter > 0) {
+                                    greenCounter -= 1;
+                                }
+                            }
+                        }
+
+                        strIdx = stringWords.length - lastWordLength;
+                        console.log(strIdx);
+
+                        nullValueSpanCounter = 0;
+                        lastWordRedCounter = 0;
+                        // RESET CHAR IDX
+                        charIdx = 0;
+                        console.log(wordArrays[lineIdx][wordIdx][charIdx]);
+
+                        // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
+                        document
+                            .getElementById(`span-${strIdx}`)
+                            .classList.add("background", "black-border");
+
+                        // RESET CHARIDX (STAY ON WORDIDX)
+                        charIdx = 0;
                     }
                     // CURSOR AT VALID INDEX
                     else {
@@ -1810,22 +1860,9 @@ startButton.addEventListener("click", (event) => {
                         // }
 
                         for (let i = strIdx; i > strIdx - length; i -= 1) {
-
                             let currentCharacter = document.getElementById(
                                 `span-${i}`
                             );
-
-                            // if (!currentCharacter) {
-                            //     currentCharacter = document.getElementById(
-                            //         `span-${stringWords.length}`);
-                            //     console.log(currentCharacter);
-                            // }
-
-                            // console.log(!currentCharacter);
-
-                            // if (strIdx > stringWords.length - 1) {
-                            //     console.log("PAST END OF LINE");
-                            // }
 
                             if (currentCharacter.classList.contains("red")) {
                                 currentCharacter.classList.remove("red");
@@ -1833,27 +1870,52 @@ startButton.addEventListener("click", (event) => {
                                     redCounter -= 1;
                                 }
                             }
+                            if (
+                                currentCharacter.classList.contains(
+                                    "red-background"
+                                )
+                            ) {
+                                currentCharacter.classList.remove(
+                                    "red-background"
+                                );
+                            }
                             if (currentCharacter.classList.contains("orange")) {
                                 currentCharacter.classList.remove("orange");
                                 if (orangeCounter > 0) {
                                     orangeCounter -= 1;
                                 }
                             }
-                            if (currentCharacter.classList.contains("background")) {
+                            if (
+                                currentCharacter.classList.contains(
+                                    "background"
+                                )
+                            ) {
                                 currentCharacter.classList.remove("background");
                             }
                             if (
-                                currentCharacter.classList.contains("black-border")
+                                currentCharacter.classList.contains(
+                                    "black-border"
+                                )
                             ) {
-                                currentCharacter.classList.remove("black-border");
+                                currentCharacter.classList.remove(
+                                    "black-border"
+                                );
                             }
-                            if (currentCharacter.classList.contains("red-border")) {
+                            if (
+                                currentCharacter.classList.contains(
+                                    "red-border"
+                                )
+                            ) {
                                 currentCharacter.classList.remove("red-border");
                             }
                             if (
-                                currentCharacter.classList.contains("orange-border")
+                                currentCharacter.classList.contains(
+                                    "orange-border"
+                                )
                             ) {
-                                currentCharacter.classList.remove("orange-border");
+                                currentCharacter.classList.remove(
+                                    "orange-border"
+                                );
                             }
                             if (currentCharacter.classList.contains("green")) {
                                 currentCharacter.classList.remove("green");
@@ -1863,10 +1925,12 @@ startButton.addEventListener("click", (event) => {
                             }
                         }
 
-
                         // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
                         // GET CHARIDX AND SUBTRACT IT FROM STRIDX
                         strIdx -= charIdx;
+
+                        nullValueSpanCounter = 0;
+                        lastWordRedCounter = 0;
 
                         // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
                         document
@@ -1884,95 +1948,6 @@ startButton.addEventListener("click", (event) => {
                         //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
                         // });
                     }
-
-                    // &&&
-
-                    // // REMOVE ALL COLOUR CODES FROM CURRENT WORD (REMOVE STYLES FROM CHARACTERS IN STRINGWORDS ARRAY)
-                    // // GET LENGTH OF BACKWARDS LOOP
-                    // let length = charIdx + 1;
-                    // // REMOVE STYLES ONE BY ONE UNTIL FIRST CHAR IS REACHED
-
-                    // // if (strIdx > stringWords.length - 1) {
-                    // //     console.log("PAST END OF LINE");
-                    // //     strIdx = stringWords.length - 1;
-                    // // }
-
-                    // for (let i = strIdx; i > strIdx - length; i -= 1) {
-
-                    //     let currentCharacter = document.getElementById(
-                    //         `span-${i}`
-                    //     );
-
-                    //     // if (!currentCharacter) {
-                    //     //     currentCharacter = document.getElementById(
-                    //     //         `span-${stringWords.length}`);
-                    //     //     console.log(currentCharacter);
-                    //     // }
-
-                    //     // console.log(!currentCharacter);
-
-                    //     // if (strIdx > stringWords.length - 1) {
-                    //     //     console.log("PAST END OF LINE");
-                    //     // }
-
-                    //     if (currentCharacter.classList.contains("red")) {
-                    //         currentCharacter.classList.remove("red");
-                    //         if (redCounter > 0) {
-                    //             redCounter -= 1;
-                    //         }
-                    //     }
-                    //     if (currentCharacter.classList.contains("orange")) {
-                    //         currentCharacter.classList.remove("orange");
-                    //         if (orangeCounter > 0) {
-                    //             orangeCounter -= 1;
-                    //         }
-                    //     }
-                    //     if (currentCharacter.classList.contains("background")) {
-                    //         currentCharacter.classList.remove("background");
-                    //     }
-                    //     if (
-                    //         currentCharacter.classList.contains("black-border")
-                    //     ) {
-                    //         currentCharacter.classList.remove("black-border");
-                    //     }
-                    //     if (currentCharacter.classList.contains("red-border")) {
-                    //         currentCharacter.classList.remove("red-border");
-                    //     }
-                    //     if (
-                    //         currentCharacter.classList.contains("orange-border")
-                    //     ) {
-                    //         currentCharacter.classList.remove("orange-border");
-                    //     }
-                    //     if (currentCharacter.classList.contains("green")) {
-                    //         currentCharacter.classList.remove("green");
-                    //         if (greenCounter > 0) {
-                    //             greenCounter -= 1;
-                    //         }
-                    //     }
-                    // }
-
-
-                    // // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
-                    // // GET CHARIDX AND SUBTRACT IT FROM STRIDX
-                    // strIdx -= charIdx;
-
-                    // // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
-                    // document
-                    //     .getElementById(`span-${strIdx}`)
-                    //     .classList.add("background", "black-border");
-
-                    // // RESET CHARIDX (STAY ON WORDIDX)
-                    // charIdx = 0;
-
-                    // clearTextInput();
-
-                    // // console.table({
-                    // //     charIdx: charIdx,
-                    // //     strIdx: strIdx,
-                    // //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
-                    // // });
-
-                    // &&&
                 }
             };
 
@@ -1992,6 +1967,13 @@ startButton.addEventListener("click", (event) => {
                             if (redCounter > 0) {
                                 redCounter -= 1;
                             }
+                        }
+                        if (
+                            currentCharacter.classList.contains(
+                                "red-background"
+                            )
+                        ) {
+                            currentCharacter.classList.remove("red-background");
                         }
                         if (currentCharacter.classList.contains("orange")) {
                             currentCharacter.classList.remove("orange");
@@ -2033,6 +2015,9 @@ startButton.addEventListener("click", (event) => {
                     charIdx = 0;
 
                     wordIdx = 0;
+
+                    nullValueSpanCounter = 0;
+                    lastWordRedCounter = 0;
 
                     clearMessageDiv();
                     clearTextInput();
