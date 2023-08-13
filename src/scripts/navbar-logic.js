@@ -8,7 +8,8 @@ const currentUrl = window.location.href;
 const navbar = document.getElementById("navbar");
 const dropdown = document.getElementById("nav__wrapper");
 // GRAB NAVBAR LINKS
-const getStarted = document.getElementById("btn--get-started");
+const getStartedHome = document.getElementById("btn--get-started__home");
+const getStartedFooter = document.getElementById("btn--get-started__footer");
 const home = document.getElementById("navbar__home");
 // +++
 const app = document.getElementById("navbar__app");
@@ -59,7 +60,7 @@ navToggle.addEventListener("click", function () {
     }
 });
 
-getStarted.onclick = () => {
+getStartedHome.onclick = () => {
     // console.log("clicked");
     let appSectionRect = document
         .getElementById("app-section-trigger")
@@ -67,6 +68,19 @@ getStarted.onclick = () => {
     // console.log(homeSectionRect);
     window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
 };
+
+// getStartedFooter.onclick = () => {
+//     console.log("clicked");
+//     let appSectionRect = document
+//         .getElementById("app-section-trigger")
+//         .getBoundingClientRect().top;
+//     console.log(appSectionRect);
+//     // THIS IS NOT WORKING, SCROLLS PAGE CONTENT ALL THE WAY TO HOMW
+//     window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
+
+//     // NEED TO CALCULATE POSITION
+//     // window.scrollTo({ top: 925, behavior: "smooth" });
+// };
 
 // !!! REFACTOR THIS !!!
 // HIGHLIGHT ACTIVE LINK BASED ON CURRENT SCROLL POSITION
@@ -145,9 +159,9 @@ const highlightActiveLink = () => {
 
     // HIDE SCROLL DOWN BUTTON WHEN NOT IN HOMEPAGE
     if (appSectionRect < 200) {
-        getStarted.classList.add("hidden");
+        getStartedHome.classList.add("hidden");
     } else {
-        getStarted.classList.remove("hidden");
+        getStartedHome.classList.remove("hidden");
     }
 
     if (appSectionRect < 200 && appSectionRect > -1) {
