@@ -65,22 +65,34 @@ getStartedHome.onclick = () => {
     let appSectionRect = document
         .getElementById("app-section-trigger")
         .getBoundingClientRect().top;
-    // console.log(homeSectionRect);
+    // console.log(appSectionRect);
     window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
 };
 
-// getStartedFooter.onclick = () => {
-//     console.log("clicked");
-//     let appSectionRect = document
-//         .getElementById("app-section-trigger")
-//         .getBoundingClientRect().top;
-//     console.log(appSectionRect);
-//     // THIS IS NOT WORKING, SCROLLS PAGE CONTENT ALL THE WAY TO HOMW
-//     window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
+// const scrollContent = document.getElementById("sliding-content");
+getStartedFooter.onclick = () => {
+    console.log("clicked");
+    let appSectionRect = document
+        .getElementById("app-section-trigger")
+        .getBoundingClientRect().top;
+    // console.log(appSectionRect);
+    // THIS IS NOT WORKING, SCROLLS PAGE CONTENT ALL THE WAY TO HOMW
+    window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
+    // window.scrollTo({ top: appSectionRect - 50, lerp: 1, getSpeed: true, behavior: "smooth" });
 
-//     // NEED TO CALCULATE POSITION
-//     // window.scrollTo({ top: 925, behavior: "smooth" });
-// };
+    // NEED TO CALCULATE POSITION
+    // window.scrollTo({ top: 925, behavior: "smooth" });
+
+    // TEMP FIX FOR SCROLLING APP INTO VIEW
+    setTimeout(() => {
+        appSectionRect = document
+            .getElementById("app-section-trigger")
+            .getBoundingClientRect().top;
+        // console.log(appSectionRect);
+        window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
+    }, 750);
+
+};
 
 // !!! REFACTOR THIS !!!
 // HIGHLIGHT ACTIVE LINK BASED ON CURRENT SCROLL POSITION
@@ -256,6 +268,7 @@ Array.from(navLinks).forEach((navLink) => {
 
     // ADD active-link CLASS TO CURRENT PAGE'S LINK
     navLink.onclick = (e) => {
+        // console.log("NAVLINK CLICKED");
         for (let i = 0; i < Array.from(navLinks).length; i += 1) {
             Array.from(navLinks)[i].classList.remove("active-link");
         }

@@ -259,9 +259,6 @@ h3 {
 
 .btn--get-started {
     z-index: 11;
-    position: absolute;
-    top: 35%;
-    left: 50%;
     transform: translate(-40%, -50%);
     -ms-transform: translate(-40%, -50%);
     height: 50px;
@@ -287,6 +284,12 @@ h3 {
     /* letter-spacing: 0.065rem; */
     /* font-weight: 400; */
     border: 1px solid rgb(156, 156, 156);
+}
+
+.btn--get-started__home {
+    position: absolute;
+    top: 35%;
+    left: 50%;
 }
 
 .divider {
