@@ -514,14 +514,28 @@ button:hover {
 }
 
 .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     width: 80%;
     max-width: 1600px;
     /* height: 80%; */
     height: 360px;
     margin: 50px auto;
+    padding: 5px;
     border: 1px solid var(--border-grey);
     border: 1px solid rgb(76, 76, 76);
     border-radius: var(--wrap-border-radius);
+}
+
+.footer-content__row-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid black;
 }
 
 .footer-section-container {
@@ -536,16 +550,21 @@ button:hover {
 .slogan-container {
     width: fit-content;
     height: fit-content;
-    margin: 50px;
+    /* margin: 50px; */
     padding: 25px;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     border-radius: var(--wrap-border-radius);
 }
 
+.container-3 {
+    width: 30%;
+}
+
 .social-media-container {
-    margin: 50px;
+    /* margin: 50px; */
     padding: 0px;
-    border: none;
+    border: 1px solid red;
+    /* border: none; */
 }
 
 /* CODEWARS LOGO DOESN'T HAVE .contact-icon  */
