@@ -54,7 +54,7 @@ ul {
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-#navbar.sticky + .content {
+#navbar.sticky+.content {
     padding-top: 100px;
 }
 
@@ -314,6 +314,7 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
+
     /* BRAND LINK */
     .wrapper--nav {
         padding-top: 10px;
@@ -543,12 +544,12 @@ button:hover {
     height: fit-content;
     /* margin: 50px;
     padding: 25px; */
-    border: 1px solid rgb(99, 20, 20);
+    /* border: 1px solid rgb(99, 20, 20); */
     border-radius: var(--wrap-border-radius);
 }
 
 .slogan-container {
-    width: fit-content;
+    width: 50%;
     height: fit-content;
     /* margin: 50px; */
     padding: 25px;
@@ -562,8 +563,10 @@ button:hover {
 
 .social-media-container {
     /* margin: 50px; */
-    padding: 0px;
-    border: 1px solid red;
+    width: 100%;
+    text-align: right;
+    padding-right: 20px;
+    /* border: 1px solid red; */
     /* border: none; */
 }
 
@@ -579,7 +582,7 @@ footer .contact-icon {
 }
 
 footer .contact-icon.dark-theme {
-    margin: 3px;
+    /* margin: 3px; */
     font-size: 25px;
     border: 1px solid rgb(177, 19, 19);
     border-radius: var(--button-border-radius);
@@ -590,9 +593,10 @@ footer .contact-icon.dark-theme {
 
 /* PUT THIS IN A WRAP AND ADD MATCHING BACKGROUND AND BORDER TO WRAP */
 footer .codewars-logo {
-    width: 32px;
+    width: 25px;
     /* margin-top: 10px; */
-    margin-bottom: -9.5px;
+    margin-bottom: -5px;
+    margin-left: 3px;
     /* border: 1px solid rgb(177, 19, 19); */
     border-radius: var(--button-border-radius);
     /* background: rgb(170, 53, 53); */
