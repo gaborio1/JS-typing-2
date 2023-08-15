@@ -54,7 +54,7 @@ ul {
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-#navbar.sticky+.content {
+#navbar.sticky + .content {
     padding-top: 100px;
 }
 
@@ -64,12 +64,10 @@ ul {
 } */
 
 /* HEADER/FOOTER BACKGROUND */
-.site-header,
-footer {
+.site-header {
     position: relative;
 
-    /* background-color: #def7ff; */
-    background-color: #10161b;
+    background: #10161b;
 }
 
 .site-header.dark-theme,
@@ -316,7 +314,6 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
-
     /* BRAND LINK */
     .wrapper--nav {
         padding-top: 10px;
@@ -482,10 +479,18 @@ button:hover {
     height: 550px;
     height: fit-content;
     margin-top: 50px;
-    /* background: black; */
-    /* background: rgba(248, 241, 221, 0.861); */
+
+    /* background: #10161b; */
+    background: rgba(247, 242, 232, 0.904);
+    /* background: rgba(240, 231, 211, 0.87); */
+
     /* border: 2px solid red; */
     /* border-top: 50px solid rgba(55, 55, 55, 0.411); */
+}
+
+.footer.dark-theme {
+    background: #10161b;
+    /* background: rgba(247, 242, 232, 0.904); */
 }
 
 .footer-top {
@@ -502,7 +507,7 @@ button:hover {
     background: rgba(142, 142, 142, 0.411);
 }
 
-.body.dark-theme .footer-top {
+.footer-top.dark-theme {
     background: rgba(82, 209, 82, 0.763);
     background: rgba(82, 209, 82, 0.763);
     background: #013b71;
@@ -543,9 +548,18 @@ button:hover {
     border: none;
 }
 
-
 /* CODEWARS LOGO DOESN'T HAVE .contact-icon  */
 footer .contact-icon {
+    margin: 2px;
+    font-size: 25px;
+    /* border: 1px solid rgb(177, 19, 19); */
+    border-radius: var(--button-border-radius);
+    padding: 5px;
+    /* background: rgb(170, 53, 53); */
+    /* color: black !important; */
+}
+
+footer .contact-icon.dark-theme {
     margin: 3px;
     font-size: 25px;
     border: 1px solid rgb(177, 19, 19);
@@ -560,12 +574,19 @@ footer .codewars-logo {
     width: 32px;
     /* margin-top: 10px; */
     margin-bottom: -9.5px;
-    border: 1px solid rgb(177, 19, 19);
+    /* border: 1px solid rgb(177, 19, 19); */
     border-radius: var(--button-border-radius);
     /* background: rgb(170, 53, 53); */
 }
 
-
+footer .codewars-logo.dark-theme {
+    width: 32px;
+    /* margin-top: 10px; */
+    margin-bottom: -9.5px;
+    border: 1px solid rgb(177, 19, 19);
+    border-radius: var(--button-border-radius);
+    /* background: rgb(170, 53, 53); */
+}
 
 .footer-bottom {
     width: 100%;
@@ -590,8 +611,6 @@ footer .codewars-logo {
     /* border: 2px solid red; */
 }
 
-
-
 .footer-bottom a {
     margin: 10px;
     color: orange;
@@ -599,7 +618,13 @@ footer .codewars-logo {
 
 footer h1 {
     font-size: 50px;
-    font-weight: 400;
-    color: rgb(196, 196, 196);
+
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: black;
     margin-bottom: 50px;
+}
+
+footer h1.dark-theme {
+    color: rgb(196, 196, 196);
 }
