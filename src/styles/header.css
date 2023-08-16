@@ -54,7 +54,7 @@ ul {
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-#navbar.sticky+.content {
+#navbar.sticky + .content {
     padding-top: 100px;
 }
 
@@ -314,7 +314,6 @@ button.nav__toggle {
 
 /* HAMBURGER SIZE */
 @media (max-width: 599px) {
-
     /* BRAND LINK */
     .wrapper--nav {
         padding-top: 10px;
@@ -525,9 +524,14 @@ button:hover {
     height: 360px;
     margin: 50px auto;
     padding: 5px;
+    background: rgb(247, 242, 232);
     border: 1px solid var(--border-grey);
     border: 1px solid rgb(76, 76, 76);
     border-radius: var(--wrap-border-radius);
+}
+
+.footer-content.dark-theme {
+    background: #10161b;
 }
 
 .footer-content__row-wrap {
@@ -536,7 +540,7 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .footer-section-container {
@@ -551,9 +555,10 @@ button:hover {
 .slogan-container {
     width: 50%;
     height: fit-content;
+    text-align: left;
     /* margin: 50px; */
     padding: 25px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: var(--wrap-border-radius);
 }
 
@@ -642,10 +647,11 @@ footer .codewars-logo.dark-theme {
 footer h1 {
     font-size: 50px;
 
+    line-height: 4rem;
     font-weight: 900;
     letter-spacing: 1px;
     color: black;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 footer h1.dark-theme {
