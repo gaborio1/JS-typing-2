@@ -274,11 +274,13 @@ h3 {
     border: none;
     /* border: 1px solid rgba(0, 0, 0, 0.43); */
     border: 1px solid rgb(156, 156, 156);
-    box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502);
+    /* box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502); */
     /* border: 1px solid var(--border-grey); */
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+
+    box-shadow: 3px 3px 8px #767676;
 }
 
 .btn--get-started:hover {
@@ -428,6 +430,7 @@ button:disabled:hover {
     height: 150px;
 
     background: rgba(184, 135, 11, 0.08);
+    box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502);
 
     /* transition: background var(--background-transition); */
 }
@@ -549,15 +552,16 @@ button:disabled:hover {
     justify-content: space-around;
     /* background: rgba(0, 119, 255, 0.295); */
     /* background: rgba(0, 76, 163, 0.658); */
-    /* border: 1px solid var(--border-gold); */
 
     /* background: var(--wrap-highlight--light); */
     background: rgba(184, 135, 11, 0.08);
-    border: 1px solid var(--border-grey);
+
+    /* border: 1px solid var(--border-grey); */
 
     border-radius: var(--wrap-border-radius);
     /* padding: 5px 0px 5px 0px; */
     transform: rotateY(180deg);
+    box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502);
 }
 
 .card__face--back--controls.dark-theme {
@@ -2645,6 +2649,7 @@ button.btn--flip:hover {
     border: 1px solid var(--border-grey);
     /* border: 1px solid black; */
     /* transition: background var(--background-transition); */
+    /* box-shadow: 3px 2px 8px #767676; */
 }
 
 .btn--start:disabled:hover {
