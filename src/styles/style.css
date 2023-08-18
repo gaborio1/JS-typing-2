@@ -738,6 +738,7 @@ button:disabled:hover {
     background: var(--text-field-white);
     border: 1px solid var(--border-grey);
     border-radius: var(--wrap-border-radius);
+
     /* border: 1px solid red; */
 
     /* transition: background var(--background-transition); */
@@ -1009,6 +1010,8 @@ p .active-txt-span.active-txt-span--enter {
     border-radius: var(--wrap-border-radius);
 
     background: rgba(184, 135, 11, 0.08);
+
+    box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502);
 
     /* background: rgba(184, 135, 11, 0.199); */
     /* background: var(--wrap-highlight--light); */
