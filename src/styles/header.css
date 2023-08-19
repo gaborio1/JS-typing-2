@@ -564,13 +564,34 @@ button:hover {
 }
 
 .container-3 {
-    width: 30%;
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    padding-left: 5rem;
+    border-left: 1px solid red;
+    border-radius: 0px;
+    /* border-radius: var(--wrap-border-radius); */
+    /* box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.502); */
+}
+
+.container-3.dark-theme {
+    border-color: #013b71;
+}
+
+.container-3 a {
+    padding-left: 1rem;
+    color: rgb(94, 94, 94);
+    /* border-left: 1px solid red; */
 }
 
 .social-media-container {
     /* margin: 50px; */
     width: 100%;
     text-align: right;
+    /* text-align: center; */
     padding-right: 20px;
     /* border: 1px solid red; */
     /* border: none; */
