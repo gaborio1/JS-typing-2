@@ -261,32 +261,50 @@ h3 {
     z-index: 11;
 
     height: 50px;
-    background-color: #00000077;
-    background: rgb(144, 238, 144);
-    background: rgba(82, 209, 82, 0.763);
-    font-weight: 300;
-    color: white;
-    color: black;
-    /* color: orange; */
-    /* letter-spacing: 0.05rem; */
+
+    /* font-weight: 300; */
     font-size: 32px;
-    padding: 0px 24px;
-    border: none;
-    /* border: 1px solid rgba(0, 0, 0, 0.43); */
-    border: 1px solid rgb(156, 156, 156);
-    /* border: 1px solid var(--border-grey); */
-    cursor: pointer;
-    border-radius: 5px;
     text-align: center;
 
+    padding: 0px 24px;
+
+    border: none;
+    border-radius: 5px;
+
+    color: black;
+    background: rgba(82, 209, 82, 0.763);
+
     box-shadow: 3px 3px 8px #767676;
+    cursor: pointer;
 }
 
 .btn--get-started:hover {
+    /* letter-spacing: 0.025rem; */
+    /* font-weight: 400; */
+    /* border-width: 2px; */
+    /* border: 1px solid rgb(74, 74, 74); */
+    /* border-width: 2px; */
+    /* box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.6); */
+}
+
+.btn--get-started.dark-theme {
+    color: rgba(82, 209, 82, 0.763);
+    border-color: rgba(82, 209, 82, 0.763);
+    /* border-color: rgb(80, 80, 80); */
+    box-shadow: 3px 3px 8px #252525;
+    background: transparent;
+}
+
+.btn--get-started.dark-theme:hover {
     /* letter-spacing: 0.065rem; */
     /* font-weight: 400; */
     /* border-width: 2px; */
     /* border: 1px solid rgb(74, 74, 74); */
+    /* border-width: 2px; */
+    /* letter-spacing: 0.025rem; */
+    /* font-weight: 400; */
+    /* border-width: 2px; */
+    /* border-color: rgba(0, 0, 0, 0.763); */
     box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.6);
 }
 
@@ -309,9 +327,25 @@ h3 {
     /* position: relative; */
     /* top: 35%;
     left: 50%; */
+    /* letter-spacing: 0.6px; */
     /* background: rgba(255, 0, 0, 0.537); */
-    background: rgba(82, 209, 82, 0.763);
+    /* background: rgba(82, 209, 82, 0.763); */
     /* background: #013b71; */
+    /* background: rgb(222, 59, 59); */
+    /* background: darkgoldenrod; */
+    /* background: orange; */
+    /* background: rgb(19, 139, 214); */
+    color: rgb(19, 139, 214);
+    border: 1px solid rgb(19, 139, 214);
+    /* background: rgb(14, 176, 36); */
+    background: transparent;
+    box-shadow: 2px 2px 10px rgb(19, 139, 214);
+}
+
+.btn--get-started__footer.dark-theme:hover {
+    border-color: rgb(19, 139, 214);
+    /* letter-spacing: 0.8px; */
+    /* border-width: 2px; */
 }
 
 .divider {
