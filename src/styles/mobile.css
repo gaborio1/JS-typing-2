@@ -150,7 +150,8 @@
 /* IPHONE XR LANDSCAPE */
 /* @media only screen and (max-width: 896px) and (max-height: 414px) { */
 /* IPAD MINI LANDSCAPE */
-@media only screen and (max-width: 1023px) and (max-height: 767px) {
+/* ORIGINALLY: max-width: 1023 */
+@media only screen and (max-width: 600px) and (max-height: 767px) {
     /* @media only screen and (max-width: 896px) { */
     .body {
         height: fit-content;

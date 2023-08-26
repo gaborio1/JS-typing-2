@@ -204,7 +204,6 @@
 
 /* THIS IS MACBOOK 13 SIZE */
 @media only screen and (min-height: 768px) and (max-height: 913px) {
-
     /* HIDE COLOUR CODES AND KEEP APP SIZE */
     .scene--main {
         /* zoom: 90%; */
@@ -265,7 +264,6 @@
 
 /* SWITCH TO MOBILE UNDER 700 */
 @media only screen and (max-height: 670px) {
-
     /* THIS IS FROM MOBILE-LANDSCAPE */
     .body {
         height: fit-content;

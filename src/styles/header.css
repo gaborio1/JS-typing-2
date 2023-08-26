@@ -518,10 +518,12 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    /* justify-content: space-between; */
     width: 80%;
     max-width: 1600px;
     /* height: 80%; */
     height: 360px;
+    height: fit-content;
     margin: 50px auto;
     padding: 5px;
     background: rgb(247, 242, 232);
@@ -567,11 +569,13 @@ button:hover {
 .container-3 {
     width: 30%;
     height: 80%;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: space-around;
     padding-left: 5rem;
+    padding-left: 5%;
     border-left: 1px solid red;
     border-radius: 0px;
     /* border-radius: var(--wrap-border-radius); */
@@ -585,15 +589,20 @@ button:hover {
 .container-3 a {
     padding-left: 1rem;
     color: rgb(94, 94, 94);
+    color: rgb(150, 150, 150);
     /* border-left: 1px solid red; */
 }
 
 .social-media-container {
     /* margin: 50px; */
     width: 100%;
+
+    height: 30px;
+    /* float: left; */
+
     text-align: right;
     /* text-align: center; */
-    padding-right: 20px;
+    margin-right: 20px;
     /* border: 1px solid red; */
     /* border: none; */
 }
@@ -601,6 +610,7 @@ button:hover {
 /* CODEWARS LOGO DOESN'T HAVE .contact-icon  */
 footer .contact-icon {
     margin: 2px;
+    /* margin: -10px; */
     font-size: 25px;
     /* border: 1px solid rgb(177, 19, 19); */
     border-radius: var(--button-border-radius);
@@ -682,14 +692,21 @@ footer .codewars-logo.dark-theme {
     /* color: rgb(181, 181, 181); */
 }
 
+/* SLOGAN */
 footer h1 {
     max-width: 500px;
     font-size: 50px;
 
+    /* text-transform: lowercase; */
+
     line-height: 4rem;
     font-weight: 900;
-    letter-spacing: 1px;
+    font-weight: 400;
+    font-weight: 100;
+    /* font-weight: 100; */
+    /* letter-spacing: 1px; */
     color: black;
+    /* color: rgb(180, 180, 180); */
     margin-bottom: 25px;
 
     text-shadow: 2px 2px 10px #00000082;
@@ -699,11 +716,22 @@ footer h1 {
 footer h1.dark-theme {
     /* font-weight: 100; */
     color: rgb(196, 196, 196);
-    color: rgb(209, 209, 209);
-    /* color: rgb(222, 59, 59); */
-    /* color: darkgoldenrod; */
+    color: rgb(230, 230, 230);
+    color: rgb(222, 59, 59);
+    color: darkgoldenrod;
     color: orange;
     /* color: rgb(19, 139, 214); */
     /* color: rgb(14, 176, 36); */
     text-shadow: 4px 4px 8px rgb(59, 59, 59);
+}
+
+/* footer.footer.dark-theme span:nth-child(1) {
+    color: orange;
+} */
+/* footer.footer.dark-theme span:nth-child(7) {
+    color: orange;
+} */
+
+footer h1 button {
+    margin-left: 2rem;
 }
