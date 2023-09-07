@@ -1747,7 +1747,78 @@ startButton.addEventListener("click", (event) => {
                 // console.log(e);
                 // console.log("TYPED KEY: ", typedKey);
                 if (event.altKey && event.which === 8) {
-                    // console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
+                    console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
+
+                    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    // +++ OPTION + DELETE REFACTOR (DELETE PREVIOUS WORDS) +++
+                    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    // OPTION KEY SHOULD NOT MOVE CURSOR FORWARD !!!
+
+                    // console.table({
+                    //     wordIdx: wordIdx,
+                    //     charIdx: charIdx,
+                    //     strIdx: strIdx,
+                    //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
+                    // });
+
+                    if (wordIdx > 0) {
+                        if (charIdx === 0) {
+                            console.log("ALT+DELETE, DELETE PREVIOUS WORD");
+
+                            const prevWordLength =
+                                wordArrays[lineIdx][wordIdx - 1].length;
+
+                            console.table({
+                                wordIdx: wordIdx,
+                                charIdx: charIdx,
+                                strIdx: strIdx,
+                                prevWordLength: prevWordLength,
+                            });
+
+                            // DECREMENT WORDIDX / CHARIDX
+                            wordIdx -= 1;
+                            charIdx = 0;
+                            // GET CURRENT STRIDX
+
+                            strIdx -= prevWordLength;
+
+                            // GET LENGTH OF PREVIOUS WORD
+                            // START BACKWARDS LOOP FROM CURRENT TO CURRENT - PREV.LENGTH
+                            // REMOVE ALL CLASSES
+                            // ADD CURSOR TO FIRST CHAR OF NOW CURRENT WORD
+
+                            console.table({
+                                wordIdx: wordIdx,
+                                charIdx: charIdx,
+                                strIdx: strIdx,
+                                prevWordLength: prevWordLength,
+                            });
+                        }
+                        // HANDLE FIRST WORD
+                    } else {
+                        console.log("FIRST WORD/CHAR IN LINE!");
+                    }
+
+                    // if (charIdx === 0) {
+                    //     console.log("ALT+DELETE, DELETE PREVIOUS WORD");
+                    //     // HANDLE FIRST WORD
+                    //     if (wordIdx === 0) {
+                    //         console.log("FIRST WORD/CHAR IN LINE!");
+                    //     }
+                    // }
+
+                    //
+
+                    // console.table({
+                    //     charIdx: charIdx,
+                    //     strIdx: strIdx,
+                    //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
+                    // });
+
+                    // --------------------------------------------------------
+                    // --- OPTION + DELETE REFACTOR (DELETE PREVIOUS WORDS) ---
+                    // --------------------------------------------------------
 
                     // CURSOR BEYOND END OF LINE
                     if (!currentCharacter) {
@@ -3134,6 +3205,15 @@ window.onload = () => {
 /*
 
 CENTER KEYBOARD
+
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  TODOS  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
+🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 
+
+UP ARROW RE-APPEARS WHEN USING "GO TO APP" IN FOOTER
+DISABLED CONTROL BUTTONS HOVER SHOULD NOT CHANGE BUTTON STYLE
+DIFFICULTY LEVEL TEXT :HOVER LETTER SPACING ISSUES
+OPTION+DELETE SHORTCUT TO WORK ON UNLIMITED NUMBER OF WORDS
 
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
