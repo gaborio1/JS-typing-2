@@ -1391,14 +1391,8 @@ const removeCharStyles = (element) => {
             redCounter -= 1;
         }
     }
-    if (
-        element.classList.contains(
-            "red-background"
-        )
-    ) {
-        element.classList.remove(
-            "red-background"
-        );
+    if (element.classList.contains("red-background")) {
+        element.classList.remove("red-background");
     }
     if (element.classList.contains("orange")) {
         element.classList.remove("orange");
@@ -1406,37 +1400,17 @@ const removeCharStyles = (element) => {
             orangeCounter -= 1;
         }
     }
-    if (
-        element.classList.contains(
-            "background"
-        )
-    ) {
+    if (element.classList.contains("background")) {
         element.classList.remove("background");
     }
-    if (
-        element.classList.contains(
-            "black-border"
-        )
-    ) {
-        element.classList.remove(
-            "black-border"
-        );
+    if (element.classList.contains("black-border")) {
+        element.classList.remove("black-border");
     }
-    if (
-        element.classList.contains(
-            "red-border"
-        )
-    ) {
+    if (element.classList.contains("red-border")) {
         element.classList.remove("red-border");
     }
-    if (
-        element.classList.contains(
-            "orange-border"
-        )
-    ) {
-        element.classList.remove(
-            "orange-border"
-        );
+    if (element.classList.contains("orange-border")) {
+        element.classList.remove("orange-border");
     }
     if (element.classList.contains("green")) {
         element.classList.remove("green");
@@ -1444,7 +1418,7 @@ const removeCharStyles = (element) => {
             greenCounter -= 1;
         }
     }
-}
+};
 
 // EXTRACT COUNTER FUNCTIONALITY FROM ABOVE FUNCTION?
 // const decrementColourCounters = (character) => {}
@@ -1799,13 +1773,13 @@ startButton.addEventListener("click", (event) => {
             typedKey !== "Backspace" &&
             typedKey !== "CapsLock"
         ) {
-            // console.log(
-            //     "WRONG KEY!",
-            //     "typed:",
-            //     typedKey,
-            //     "actual:",
-            //     wordArrays[lineIdx][wordIdx][charIdx]
-            // );
+            console.log(
+                "WRONG KEY!",
+                "typed:",
+                typedKey,
+                "actual:",
+                wordArrays[lineIdx][wordIdx][charIdx]
+            );
 
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
@@ -1852,13 +1826,16 @@ startButton.addEventListener("click", (event) => {
                             // GET LENGTH OF PREVIOUS WORD
                             // START BACKWARDS LOOP FROM CURRENT TO CURRENT - PREV.LENGTH
                             // REMOVE ALL CLASSES
-                            for (let i = stringWords.length - 1; i > strIdx - 1; i -= 1) {
+                            for (
+                                let i = stringWords.length - 1;
+                                i > strIdx - 1;
+                                i -= 1
+                            ) {
                                 console.log(stringWords[i]);
                                 let currentCharacter = document.getElementById(
                                     `span-${i}`
                                 );
                                 removeCharStyles(currentCharacter);
-
                             }
                             // ADD CURSOR TO FIRST CHAR OF NOW CURRENT WORD
 
@@ -1915,7 +1892,6 @@ startButton.addEventListener("click", (event) => {
                             console.log("CURRENT CHAR: ", currentCharacter);
 
                             removeCharStyles(currentCharacter);
-
                         }
 
                         strIdx = stringWords.length - lastWordLength;
@@ -1947,13 +1923,19 @@ startButton.addEventListener("click", (event) => {
                         //     strIdx = stringWords.length - 1;
                         // }
 
-                        for (let i = strIdx; i > strIdx - length; i -= 1) {
+                        // for (let i = strIdx; i > strIdx - length; i -= 1) {
+
+                        // START LOOP AT THE END OF LINE TO REMOVE ALL STYLES FROM AHEAD OF CURSOR
+                        for (
+                            let i = stringWords.length - 1;
+                            i > strIdx - length;
+                            i -= 1
+                        ) {
                             let currentCharacter = document.getElementById(
                                 `span-${i}`
                             );
 
                             removeCharStyles(currentCharacter);
-
                         }
 
                         // FIND STRIDX FOR FIRST LETTER OF CURRENT WORD
@@ -1995,7 +1977,6 @@ startButton.addEventListener("click", (event) => {
                         );
 
                         removeCharStyles(currentCharacter);
-
                     }
 
                     strIdx = 0;
