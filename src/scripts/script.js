@@ -1385,6 +1385,9 @@ const countErrorsInCurrentWord = () => {
 
 // REMOVE STYLES IN BACKWARDS LOOP (WRONG KEY: KEYBOARD SHORTCUTS)
 const removeCharStyles = (element) => {
+    // RESET CONSECUTIVE ERRORS
+    consecutiveErrorCounter = 0;
+    console.log("CONSECUTIVE ERRORS", consecutiveErrorCounter);
     if (element.classList.contains("red")) {
         element.classList.remove("red");
         if (redCounter > 0) {
@@ -1781,11 +1784,19 @@ startButton.addEventListener("click", (event) => {
                 wordArrays[lineIdx][wordIdx][charIdx]
             );
 
+            // DETECT OPTION(ALT) KEY
+            // typedKey === "Alt" && console.log("ALT (OPTION) KEY");
+
+            if (typedKey === "Alt") {
+                console.log("ALT (OPTION) KEY, DO NOTHING!");
+            }
+
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
             document.onkeyup = (event) => {
                 // console.log(e);
                 // console.log("TYPED KEY: ", typedKey);
+
                 if (event.altKey && event.which === 8) {
                     console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
 
@@ -1793,7 +1804,7 @@ startButton.addEventListener("click", (event) => {
                     // +++ OPTION + DELETE REFACTOR (DELETE PREVIOUS WORDS) +++
                     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-                    // OPTION KEY SHOULD NOT MOVE CURSOR FORWARD !!!
+                    // OPTION KEY SHOULD NOT MOVE CURSOR FORWARD ???
 
                     // console.table({
                     //     wordIdx: wordIdx,
@@ -1851,22 +1862,6 @@ startButton.addEventListener("click", (event) => {
                         console.log("FIRST WORD/CHAR IN LINE!");
                     }
 
-                    // if (charIdx === 0) {
-                    //     console.log("ALT+DELETE, DELETE PREVIOUS WORD");
-                    //     // HANDLE FIRST WORD
-                    //     if (wordIdx === 0) {
-                    //         console.log("FIRST WORD/CHAR IN LINE!");
-                    //     }
-                    // }
-
-                    //
-
-                    // console.table({
-                    //     charIdx: charIdx,
-                    //     strIdx: strIdx,
-                    //     firstChar: wordArrays[lineIdx][wordIdx][charIdx],
-                    // });
-
                     // --------------------------------------------------------
                     // --- OPTION + DELETE REFACTOR (DELETE PREVIOUS WORDS) ---
                     // --------------------------------------------------------
@@ -1881,9 +1876,11 @@ startButton.addEventListener("click", (event) => {
                         const lastWordLength =
                             wordArrays[lineIdx][wordIdx].length;
 
+                        // START THIS LOOP AT LAST CHAR IN LINE AND STOP AT FIRST CHAR OF LAST WORD, DO NOT RELY ON STRINDX AS IT CAN AFFECT WHERE LOOP ENDS AND NOT ALL STYLES WILL BE REMOVED
                         for (
                             let i = stringWords.length - 1;
-                            i >= strIdx - lastWordLength - 1;
+                            // i >= strIdx - lastWordLength - 1;
+                            i >= stringWords.length - 1 - lastWordLength - 1;
                             i -= 1
                         ) {
                             let currentCharacter = document.getElementById(
@@ -2003,6 +2000,7 @@ startButton.addEventListener("click", (event) => {
 
             // +++ END +++
 
+            // DO NOT INCREMENT ERRORS WITH OPTION / COMMAND ??
             consecutiveErrorCounter += 1;
 
             if (strIdx >= stringWords.length - 1) {
@@ -2170,6 +2168,11 @@ startButton.addEventListener("click", (event) => {
                 }
             }
 
+            if (typedKey === "Alt") {
+                console.log("stop cursor now");
+                // strIdx -= 1;
+                // charIdx -= 1;
+            }
             nextChar();
         }
 
@@ -3116,8 +3119,10 @@ CENTER KEYBOARD
 UP ARROW RE-APPEARS WHEN USING "GO TO APP" IN FOOTER
 DISABLED CONTROL BUTTONS HOVER SHOULD NOT CHANGE BUTTON STYLE
 DIFFICULTY LEVEL TEXT :HOVER LETTER SPACING ISSUES
-OPTION+DELETE SHORTCUT TO WORK ON UNLIMITED NUMBER OF WORDS
+OPTION + DELETE TO WORK ON LAST WORD AND BEYOND END OF LINE
+    IT DOES NOT ALWAYS REMOVE STYLES!!! (BLUE/GREEN CLASS)
 
+OPTON KEYPRESS ALONE SHOULD NOT MOVE CURSOR FORWARD
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 
         MAKE DIFFICULTY LEVEL OPTIONS SIMPLER

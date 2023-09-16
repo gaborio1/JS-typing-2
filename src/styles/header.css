@@ -511,9 +511,11 @@ button:hover {
 }
 
 .footer-top.dark-theme {
-    background: rgba(82, 209, 82, 0.763);
-    background: rgba(82, 209, 82, 0.763);
-    background: #013b71;
+    /* background: rgba(82, 209, 82, 0.763); */
+    /* background: rgba(82, 209, 82, 0.763); */
+    /* background: #013b71; */
+    background: rgba(142, 142, 142, 0.411);
+    background: rgb(34, 34, 34);
 }
 
 .footer-content {
@@ -539,9 +541,9 @@ button:hover {
 .footer-content.dark-theme {
     background: #10161b;
     box-shadow: none;
-    border: 1px solid rgb(85, 85, 85);
-    border: 1px solid rgba(28, 92, 171, 0.321);
-    border: 1px solid var(--border-gold);
+    /* border: 1px solid rgb(85, 85, 85); */
+    /* border: 1px solid rgba(28, 92, 171, 0.321); */
+    /* border: 1px solid var(--border-gold); */
 }
 
 .footer-content__row-wrap {
