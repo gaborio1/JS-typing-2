@@ -2552,6 +2552,8 @@ button {
 .btn--toggle:disabled:hover {
     font-weight: 100;
     border-width: 1px;
+
+    box-shadow: none;
 }
 
 /* APPLY BUTTONS */

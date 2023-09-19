@@ -71,7 +71,10 @@ getStartedHome.onclick = () => {
 
 // const scrollContent = document.getElementById("sliding-content");
 getStartedFooter.onclick = () => {
-    console.log("clicked");
+    // console.log("clicked");
+
+    // THIS DOES NOT WORK
+    upArrow.classList.add("hidden");
     let appSectionRect = document
         .getElementById("app-section-trigger")
         .getBoundingClientRect().top;
@@ -91,7 +94,6 @@ getStartedFooter.onclick = () => {
         // console.log(appSectionRect);
         window.scrollTo({ top: appSectionRect - 50, behavior: "smooth" });
     }, 750);
-
 };
 
 // !!! REFACTOR THIS !!!

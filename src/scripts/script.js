@@ -286,7 +286,7 @@ const nextLine = () => {
     nullValueSpanCounter = 0;
     // DISPLAY MESSAGE WHEN BOTH TEXT FIELDS HAVE BEEN CLEARED
     if (lineIdx === wordArrays.length) {
-        console.log("END OF TEXT");
+        // console.log("END OF TEXT");
         messageDiv.textContent = `CONGRATULATIONS! ${wordArrays.length} LINES TYPED!`;
     }
 };
@@ -1387,7 +1387,7 @@ const countErrorsInCurrentWord = () => {
 const removeCharStyles = (element) => {
     // RESET CONSECUTIVE ERRORS
     consecutiveErrorCounter = 0;
-    console.log("CONSECUTIVE ERRORS", consecutiveErrorCounter);
+    // console.log("CONSECUTIVE ERRORS", consecutiveErrorCounter);
     if (element.classList.contains("red")) {
         element.classList.remove("red");
         if (redCounter > 0) {
@@ -1776,20 +1776,20 @@ startButton.addEventListener("click", (event) => {
             typedKey !== "Backspace" &&
             typedKey !== "CapsLock"
         ) {
-            console.log(
-                "WRONG KEY!",
-                "typed:",
-                typedKey,
-                "actual:",
-                wordArrays[lineIdx][wordIdx][charIdx]
-            );
+            // console.log(
+            //     "WRONG KEY!",
+            //     "typed:",
+            //     typedKey,
+            //     "actual:",
+            //     wordArrays[lineIdx][wordIdx][charIdx]
+            // );
 
             // DETECT OPTION(ALT) KEY
             // typedKey === "Alt" && console.log("ALT (OPTION) KEY");
 
-            if (typedKey === "Alt") {
-                console.log("ALT (OPTION) KEY, DO NOTHING!");
-            }
+            // if (typedKey === "Alt") {
+            //     console.log("ALT (OPTION) KEY, DO NOTHING!");
+            // }
 
             //  +++ DETECT KEY SHORTCUT OPTION+BACKSPACE +++
             // SOURCE: https://codepen.io/melwinalm/pen/zKeWWj
@@ -1798,7 +1798,7 @@ startButton.addEventListener("click", (event) => {
                 // console.log("TYPED KEY: ", typedKey);
 
                 if (event.altKey && event.which === 8) {
-                    console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
+                    // console.log("ALT+DELETE, DELETE CURRENT WORD NOW");
 
                     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     // +++ OPTION + DELETE REFACTOR (DELETE PREVIOUS WORDS) +++
@@ -1815,17 +1815,17 @@ startButton.addEventListener("click", (event) => {
 
                     if (wordIdx > 0) {
                         if (charIdx === 0) {
-                            console.log("ALT+DELETE, DELETE PREVIOUS WORD");
+                            // console.log("ALT+DELETE, DELETE PREVIOUS WORD");
 
                             const prevWordLength =
                                 wordArrays[lineIdx][wordIdx - 1].length;
 
-                            console.table({
-                                wordIdx: wordIdx,
-                                charIdx: charIdx,
-                                strIdx: strIdx,
-                                prevWordLength: prevWordLength,
-                            });
+                            // console.table({
+                            //     wordIdx: wordIdx,
+                            //     charIdx: charIdx,
+                            //     strIdx: strIdx,
+                            //     prevWordLength: prevWordLength,
+                            // });
 
                             // DECREMENT WORDIDX / CHARIDX
                             wordIdx -= 1;
@@ -1842,7 +1842,7 @@ startButton.addEventListener("click", (event) => {
                                 i > strIdx - 1;
                                 i -= 1
                             ) {
-                                console.log(stringWords[i]);
+                                // console.log(stringWords[i]);
                                 let currentCharacter = document.getElementById(
                                     `span-${i}`
                                 );
@@ -1850,17 +1850,18 @@ startButton.addEventListener("click", (event) => {
                             }
                             // ADD CURSOR TO FIRST CHAR OF NOW CURRENT WORD
 
-                            console.table({
-                                wordIdx: wordIdx,
-                                charIdx: charIdx,
-                                strIdx: strIdx,
-                                prevWordLength: prevWordLength,
-                            });
+                            // console.table({
+                            //     wordIdx: wordIdx,
+                            //     charIdx: charIdx,
+                            //     strIdx: strIdx,
+                            //     prevWordLength: prevWordLength,
+                            // });
                         }
                         // HANDLE FIRST WORD
-                    } else {
-                        console.log("FIRST WORD/CHAR IN LINE!");
                     }
+                    // else {
+                    //     console.log("FIRST WORD/CHAR IN LINE!");
+                    // }
 
                     // --------------------------------------------------------
                     // --- OPTION + DELETE REFACTOR (DELETE PREVIOUS WORDS) ---
@@ -1868,7 +1869,7 @@ startButton.addEventListener("click", (event) => {
 
                     // CURSOR BEYOND END OF LINE
                     if (!currentCharacter) {
-                        console.log("BEYOND END OF LINE - NULL");
+                        // console.log("BEYOND END OF LINE - NULL");
                         // SET STRIDX TO FIRST CHAR OF LAST WORD
                         // console.log(wordArrays[lineIdx][wordIdx]);
 
@@ -1886,19 +1887,17 @@ startButton.addEventListener("click", (event) => {
                             let currentCharacter = document.getElementById(
                                 `span-${i}`
                             );
-                            console.log("CURRENT CHAR: ", currentCharacter);
+                            // console.log("CURRENT CHAR: ", currentCharacter);
 
                             removeCharStyles(currentCharacter);
                         }
 
                         strIdx = stringWords.length - lastWordLength;
-                        console.log(strIdx);
 
                         nullValueSpanCounter = 0;
                         lastWordRedCounter = 0;
                         // RESET CHAR IDX
                         charIdx = 0;
-                        console.log(wordArrays[lineIdx][wordIdx][charIdx]);
 
                         // ADD CURSOR AND BACKGROUND TO CURRENT (FIRST) CHAR
                         document
@@ -2168,11 +2167,11 @@ startButton.addEventListener("click", (event) => {
                 }
             }
 
-            if (typedKey === "Alt") {
-                console.log("stop cursor now");
-                // strIdx -= 1;
-                // charIdx -= 1;
-            }
+            // if (typedKey === "Alt") {
+            //     console.log("stop cursor now");
+            //     // strIdx -= 1;
+            //     // charIdx -= 1;
+            // }
             nextChar();
         }
 
@@ -3117,10 +3116,12 @@ CENTER KEYBOARD
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 
 
 UP ARROW RE-APPEARS WHEN USING "GO TO APP" IN FOOTER
-DISABLED CONTROL BUTTONS HOVER SHOULD NOT CHANGE BUTTON STYLE
+    CHECK handleUpArrow in navbar-logic.js
+☑️ DISABLED CONTROL BUTTONS HOVER SHOULD NOT CHANGE BUTTON STYLE
 DIFFICULTY LEVEL TEXT :HOVER LETTER SPACING ISSUES
-OPTION + DELETE TO WORK ON LAST WORD AND BEYOND END OF LINE
+☑️ OPTION + DELETE TO WORK ON LAST WORD AND BEYOND END OF LINE
     IT DOES NOT ALWAYS REMOVE STYLES!!! (BLUE/GREEN CLASS)
+LOOK INTO HOW COLOUR COUNTER BEHAVES WITH KBR SHORTCUTS
 
 OPTON KEYPRESS ALONE SHOULD NOT MOVE CURSOR FORWARD
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 CHRIS' IDEAS 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
