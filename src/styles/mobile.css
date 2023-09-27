@@ -145,6 +145,12 @@
         margin: 50px auto;
         /* border: 1px solid var(--border-grey); */
     }
+
+    /* LANDSCAPE */
+    /* FOOTER */
+    .footer {
+        display: none;
+    }
 }
 
 /* IPHONE XR LANDSCAPE */
@@ -207,6 +213,12 @@
 
     .small-container p {
         padding: 10px;
+    }
+
+    /* PORTRAIT */
+    /* FOOTER */
+    .footer {
+        display: none;
     }
 }
 

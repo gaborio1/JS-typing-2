@@ -26,6 +26,7 @@
     /* BORDER RADIUS */
     /* APP, WRAPS */
     --wrap-border-radius: 5px;
+    --wrap-border-radius: 10px;
     /* TIMER, INPUT, MESSAGE DIV */
     --small-border-radius: 5px;
     --button-border-radius: 5px;
@@ -1677,7 +1678,8 @@ p .active-txt-span.active-txt-span--enter {
 
 /* PROBLEM KEYS ON KEYBOARD */
 .red-background {
-    background: rgba(255, 0, 0, 0.463);
+    background: rgba(255, 0, 0, 0.679);
+    font-weight: 800;
 }
 
 /* LAST SPACE HIGHLIGHT 200MS */
@@ -1701,8 +1703,10 @@ p .active-txt-span.active-txt-span--enter {
 }
 
 #keyboard.dark-theme .green-background__keyboard {
-    background: rgba(0, 128, 0, 0.304);
+    /* background: rgba(0, 128, 0, 0.304); */
     background: #529ce194;
+    color: black;
+    font-weight: 900;
 }
 
 /* CURRENTLY TYPED KEY WITH EXISTING RED BACKGROUND */
@@ -1711,8 +1715,13 @@ p .active-txt-span.active-txt-span--enter {
     background: #529ce194;
 }
 
+/* PROBLEM KEY HIGHLIGHT DARK THEME */
 .keyboard.dark-theme .red-background {
-    background: rgba(255, 0, 0, 0.463);
+    /* background: rgba(255, 0, 0, 0.463); */
+    border: 1.5px solid rgba(255, 0, 0, 0.72);
+    color: rgba(255, 0, 0, 0.799);
+    font-weight: 800;
+    /* color: rgb(0, 0, 0); */
 }
 
 .dark-gold-background {
