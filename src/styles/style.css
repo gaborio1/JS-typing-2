@@ -1678,7 +1678,7 @@ p .active-txt-span.active-txt-span--enter {
 
 /* PROBLEM KEYS ON KEYBOARD */
 .red-background {
-    background: rgba(255, 0, 0, 0.679);
+    background: rgba(255, 0, 0, 0.401);
     font-weight: 800;
 }
 
@@ -1704,8 +1704,9 @@ p .active-txt-span.active-txt-span--enter {
 
 #keyboard.dark-theme .green-background__keyboard {
     /* background: rgba(0, 128, 0, 0.304); */
-    background: #529ce194;
-    color: black;
+    /* background: #529ce194; */
+    border: 2px solid #529ce194;
+    color: #529ce194;
     font-weight: 900;
 }
 
@@ -1850,7 +1851,17 @@ p .active-txt-span.active-txt-span--enter {
 }
 
 /* CONTAINER (APP) WHILE TIMER IS RUNNING */
+
+/* +++ */
+.timer-style__main-scene {
+    width: 100% !important;
+    /* height: 100% !important; */
+}
+
 .timer-style__container {
+    width: 100% !important;
+    /* height: 100% !important; */
+    margin: 0px;
     border-color: transparent;
 }
 

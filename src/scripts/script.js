@@ -1431,6 +1431,13 @@ const removeCharStyles = (element) => {
 startButton.classList.add("apply--active");
 textInput.disabled = true;
 
+// PREVENT SPACE BAR FROM SCROLLING PAGE
+window.addEventListener("keydown", function (e) {
+    if (e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+    }
+});
+
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 START BUTTON 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 // 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
@@ -2523,9 +2530,15 @@ const countdown = () => {
     document.querySelector(".body").classList.add("timer-style__body");
     container.classList.add("timer-style__container");
     messageDiv.classList.add("timer-style__message-div");
+    // +++
+    mainScene.classList.add("timer-style__main-scene");
+    coverImageLight.style.opacity = 0;
+    coverImageDark.style.opacity = 0;
+    document.querySelector("#img__portrait--light-theme").style.opacity = 0;
+    // sliderWrap.style.opacity = 0;
 
     let seconds = 60;
-    // seconds = 5;
+    seconds = 10;
     const tick = () => {
         const counter = document.getElementById("counter-div");
         seconds -= 1;
@@ -2547,7 +2560,7 @@ const countdown = () => {
             finalSpeed = currentSpeed;
         }
 
-        // FADE IN CONTROLS AT 2 SECOND MARK
+        // FADE IN CONTROLS AT 1 SECOND MARK
         if (seconds === 1) {
             for (let i = 0; i < fadeWithTimerElements.length; i += 1) {
                 fadeWithTimerElements[i].classList.add("fadeIn");
@@ -2582,6 +2595,13 @@ const countdown = () => {
                 .classList.remove("timer-style__body");
             container.classList.remove("timer-style__container");
             messageDiv.classList.remove("timer-style__message-div");
+            // +++
+            mainScene.classList.remove("timer-style__main-scene");
+            coverImageLight.style.opacity = 1;
+            coverImageDark.style.opacity = 1;
+            document.querySelector(
+                "#img__portrait--light-theme"
+            ).style.opacity = 1;
 
             textInput.removeEventListener("keydown", startCountdown);
             const totalKeystrokes = keyStrokeCounter;
@@ -3122,7 +3142,10 @@ DIFFICULTY LEVEL TEXT :HOVER LETTER SPACING ISSUES
 ☑️ OPTION + DELETE TO WORK ON LAST WORD AND BEYOND END OF LINE
     IT DOES NOT ALWAYS REMOVE STYLES!!! (BLUE/GREEN CLASS)
 LOOK INTO HOW COLOUR COUNTER BEHAVES WITH KBR SHORTCUTS
+
 HIDE BACKGROUND ENTIRELY WITH TIMER, DON'T SHOW APP BORDER
+    REFACTOR THIS WITH CSS CLASSES, ADD ANIMATION TO COVER IMG
+
 ☑️ INCREASE BORDER RADIUS ON CONTAINERS TO MATCH BACKGROUND IMG?
 MAKE LIGHT THEME FOOTER NON TRANSPARENT
 MAKE FOOTER CSS
@@ -3131,8 +3154,8 @@ BUG: SPACE ON APP/CONTAINERS TRIGGERS PAGE SCROLL
 APP WIDTH: 80%, MAX WIDTH: 1000PX
 
 KEYBOARD PROBLEM KEYS HIGHLIGHT CSS
-    INCREASE FONT WEIGHT?
-    ADJUST CONTRAST
+    ☑️ INCREASE FONT WEIGHT?
+    ☑️ ADJUST CONTRAST
 
 REAL TIME TRACK HIGHLIGHT BACKGROUND / COLOR / FONT WEIGHT
 
