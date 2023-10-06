@@ -1858,6 +1858,7 @@ p .active-txt-span.active-txt-span--enter {
     /* height: 100% !important; */
 }
 
+/* WIDTH WILL NOT CHANGE UNLESS MAIN SCENE IS EXTENDED */
 .timer-style__container {
     width: 100% !important;
     /* height: 100% !important; */

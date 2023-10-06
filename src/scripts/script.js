@@ -2523,6 +2523,7 @@ enterToggleBeginner.addEventListener("click", handleEnterToggleBeginner);
 
 // ONE TIME LISTENER FOR TIMER SETTIMEOUT
 const countdown = () => {
+    // image-container IS NOW ADDED TO fadeWithTimerElements, SO ALL IMAGES WILL FADE IN OUT
     for (let i = 0; i < fadeWithTimerElements.length; i += 1) {
         fadeWithTimerElements[i].classList.remove("fadeIn");
         fadeWithTimerElements[i].classList.add("fadeOut");
@@ -2531,11 +2532,8 @@ const countdown = () => {
     container.classList.add("timer-style__container");
     messageDiv.classList.add("timer-style__message-div");
     // +++
-    mainScene.classList.add("timer-style__main-scene");
-    coverImageLight.style.opacity = 0;
-    coverImageDark.style.opacity = 0;
-    document.querySelector("#img__portrait--light-theme").style.opacity = 0;
-    // sliderWrap.style.opacity = 0;
+    // MAIN SCENE WIDTH EXTENDS TO 100% TO ALLOW CONTAINER FULL WIDTH
+    // mainScene.classList.add("timer-style__main-scene");
 
     let seconds = 60;
     seconds = 10;
@@ -2596,12 +2594,8 @@ const countdown = () => {
             container.classList.remove("timer-style__container");
             messageDiv.classList.remove("timer-style__message-div");
             // +++
-            mainScene.classList.remove("timer-style__main-scene");
-            coverImageLight.style.opacity = 1;
-            coverImageDark.style.opacity = 1;
-            document.querySelector(
-                "#img__portrait--light-theme"
-            ).style.opacity = 1;
+            // MAIN SCENE WIDTH EXTENDS TO 100% TO ALLOW CONTAINER FULL WIDTH
+            // mainScene.classList.remove("timer-style__main-scene");
 
             textInput.removeEventListener("keydown", startCountdown);
             const totalKeystrokes = keyStrokeCounter;
