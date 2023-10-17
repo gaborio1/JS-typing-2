@@ -262,8 +262,13 @@
     }
 }
 
+/* HEIGHT */
+
 /* SWITCH TO MOBILE UNDER 700 */
-@media only screen and (max-height: 670px) {
+/* @media only screen and (max-height: 670px) { */
+/* +++ */
+@media only screen and (max-height: 500px) {
+    /* +++ */
     /* THIS IS FROM MOBILE-LANDSCAPE */
     .body {
         height: fit-content;

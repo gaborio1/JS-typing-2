@@ -3129,6 +3129,11 @@ CENTER KEYBOARD
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰  TODOS  🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰
 🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰🀰 
 
+PREVENT LETTER SPACING CHANGE WITH BUTTON / LINK HOVER
+
+APP IS NOT DISPLAYED ON OTHER LAPTOPS
+    TABLET CSS 270 ???
+
 UP ARROW RE-APPEARS WHEN USING "GO TO APP" IN FOOTER
     CHECK handleUpArrow in navbar-logic.js
 
