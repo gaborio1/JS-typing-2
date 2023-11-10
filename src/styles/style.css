@@ -1021,6 +1021,7 @@ p .active-txt-span.active-txt-span--enter {
 .text-input.dark-theme {
     /* color: rgb(225, 224, 224); */
     color: rgb(178, 178, 178);
+    
     font-weight: 300;
     /* border: none; */
     border: 1px solid rgba(184, 135, 11, 0.253);
@@ -1228,11 +1229,16 @@ p .active-txt-span.active-txt-span--enter {
 
 .keyboard.dark-theme .keyboard__row > * {
     color: var(--border-gold);
+    color: #b8860b;
+    color: rgb(185, 138, 18);
+    /* color: white; */
     -webkit-user-select: none;
     /* border: 1px solid #444; */
     /* border: 1px solid rgb(0, 0, 0); */
-    border: 1px solid var(--border-gold);
+    /* border: 1px solid var(--border-gold); */
+    border: 1px solid rgb(126, 93, 10);
     background: rgb(20, 20, 20);
+    background: rgb(10, 10, 10);
     /* BLACK KEYS STYLE */
 
     /* background: #333; */
