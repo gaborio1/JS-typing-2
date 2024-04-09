@@ -604,7 +604,7 @@ export const common500 = [
 
     "back ball be beautiful became because become been before began begin behind being below bet better between big black blue boat body book both bottom box boy bring brought build built but by",
 
-    "called came can can’t cannot car care carefully carry center certain change check children city class close cold come common complete could country course cut ",
+    "called came can can’t cannot car care carefully carry center certain change check children city class close cold come common complete could country course cut",
 
     "dark day deep did didn’t different distance do does dog don’t done door down draw dry during",
 
@@ -612,17 +612,17 @@ export const common500 = [
 
     "face fact fall family far fast father feel feet felt few field finally find fine fire first fish five floor follow food foot for form found four friend from front full",
 
-    "game gave get girl give glass go going gold gone good got great green ground group grow ",
+    "game gave get girl give glass go going gold gone good got great green ground group grow",
 
-    "had half hand happened hard has have he head hear heard heart heavy held help her here high him himself his hold home horse hot hour house how however hundred ",
+    "had half hand happened hard has have he head hear heard heart heavy held help her here high him himself his hold home horse hot hour house how however hundred",
 
-    "I I’ll I’m ice idea if important in inside instead into is it it’s its itself ",
+    "I I’ll I’m ice idea if important in inside instead into is it it’s its itself",
 
     "job just",
 
-    "keep kept kind knew know ",
+    "keep kept kind knew know",
 
-    "land language  large last later lay learn learned least leave leaves left less let letter life light like line list little live lived living long longer look low ",
+    "land language  large last later lay learn learned least leave leaves left less let letter life light like line list little live lived living long longer look low",
 
     "made main make man many map matter may me mean men might mind miss money moon more morning most mother move much must my",
 
@@ -632,7 +632,7 @@ export const common500 = [
 
     "page paper part past pattern people perhaps person picture piece place plants play point poor possible power probably problem put",
 
-    "question quite ",
+    "question quite",
 
     "rain ran read ready real really red remember rest right river road rock room round run",
 
@@ -646,7 +646,7 @@ export const common500 = [
 
     "walk walked want warm was watch water way we weather well went were  what when where whether which while white who whole why wide wild will wind winter with within without words work world would write",
 
-    "yes yet you young your ",
+    "yes yet you young your",
 ];
 
 // SOURCE: https://www.ef.co.uk/english-resources/english-vocabulary/top-3000-words/
